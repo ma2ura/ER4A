@@ -1,0 +1,39 @@
+# 線形代数
+
+<!-- Matrices come to us from a branch of mathematics known as linear algebra.  -->
+行列は，線形代数として知られる数学の分野からきている。
+<!-- A full course in linear algebra would provide a lot more detail than we can cover here.  -->
+線形代数のフルコースは，本書でカバーする範囲より多くの内容を提供している。
+<!-- Our goal is merely to provide enough background to make sense of the material in the text that uses matrices.  -->
+ここでは，本章で行列を用いる内容を理解するために必要はバックグラウンドを提供することのみを目指している。
+<!-- We focus on some basic details such as what matrices are, some of the operations we can perform with them, and some useful results. -->
+行列とは何か，行列に対して行える操作，および有用な結果などの基本的な詳細に焦点を当てる。
+
+<!-- In the canonical setting in econometrics, we have $n$ observations on $k$ variables. -->
+経済学の標準的な設定では， $k$ 個の変数について$n$個の観測値がある。
+<!-- Each observation might be a person or a firm, or even a firm at a particular point in time. -->
+各観測値は，個人や企業，あるいは特定の時点での企業であるかもしれない。
+<!-- In earlier chapters of the book, we considered the possibility that the variables for observation $i$ are related in the following way: -->
+本書の前の章では，観測値 $i$ の変数が以下のように関連している可能性を考慮した。
+
+$$
+y_i = \beta_0 + x_{1i} \beta_1 + x_{2i} \beta_2 + \cdots + x_{ki} \beta_k + \varepsilon_i
+$$
+
+<!-- For example, $y_i$ might represent the profitability of a firm in a given year and the various $x$ variables are factors assumed to affect that profitability, such as capital stock and market concentration. -->
+たとえば， $y_i$ は特定の年の企業の収益性を表し，さまざまな $x$ 変数は，その収益性に影響を与えると仮定される要因である（たとえば，資本ストックや市場集中度など）。
+<!-- The error term ($\varepsilon$) allows the equation to hold when the variables $x_{1i}$ through $x_{ki}$ do not determine the exact value of $y_i$. -->
+誤差項（$\varepsilon$）は，変数 $x_{1i}$ から $x_{ki}$ が $y_i$ の正確な値を決定しない場合に方程式が成立するようにする。
+<!-- Given we have $n$ observations, we actually have $n$ equations. -->
+$n$ 個の観測値があるため，実際には $n$ 個の方程式がある。
+
+
+$$
+\begin{aligned}
+y_1 &= \beta_0 + x_{11} \beta_1 + x_{21} \beta_2 + \cdots + x_{k1} \beta_k + \varepsilon_1 \\
+y_2 &= \beta_0 + x_{12} \beta_1 + x_{22} \beta_2 + \cdots + x_{k2} \beta_k + \varepsilon_2 \\
+& \vdots \\
+y_n &= \beta_0 + x_{1n} \beta_1 + x_{2n} \beta_2 + \cdots + x_{kn} \beta_k + \varepsilon_n
+\end{aligned}
+$$
+
