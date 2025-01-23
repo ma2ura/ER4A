@@ -1,0 +1,17 @@
+# Beaver (1968)
+
+<!-- In this chapter, we cover Beaver (1968), the second winner of the Seminal Contributions to Accounting Literature Award.1  -->
+本章では，「the Seminal Contributions to Accounting Literature Award」の2番目の受賞者であるBeaver (1968)について説明する。
+<!-- Beaver (1968) followed Ball and Brown (1968) and examines whether investors appear to react to earnings announcements. -->
+Beaver (1968)は，Ball and Brown (1968)に続いており，投資家が決算発表に反応するかどうかを検討している。
+
+<!-- Beaver (1968) uses two approaches to measure investor reaction.  -->
+Beaver (1968)は，投資家の反応を測定するために2つのアプローチを使用している。
+<!-- The first approach measures market reaction using trading volume and the second uses the squared return residuals, where return residuals are the difference between observed returns and fitted returns using a market model (1968, p. 78). -->
+最初のアプローチは，取引量を使用して市場の反応を測定し，2番目のアプローチは，リターン残差の2乗を使用している。ここで，リターン残差は，観測されたリターンと市場モデルを使用して適合されたリターンとの差である（1968年，p. 78）。
+
+<!-- In this chapter, we start with a close study of Beaver (1968) itself before introducing Bamber et al.(2000), which provides a critique of Beaver (1968). -->
+本章では，Beaver (1968)自体を詳しく調査した後，Beaver (1968)を批判するBamber et al. (2000)を紹介する。
+<!-- We then conduct a “replication” of Beaver (1968) using a more recent sample period and use that replication to think about Beaver (1968) and the issues raised by Bamber et al. (2000). -->
+その後，より新しいサンプル期間を使用してBeaver (1968)の「レプリケーション」を行い，そのレプリケーションを使用してBeaver (1968)とBamber et al. (2000)によって提起された問題について考える。
+

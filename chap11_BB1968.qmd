@@ -1,0 +1,39 @@
+# Ball and Brown (1968)
+
+<!-- In this and the following chapter, we cover the first two winners of the Seminal Contributions to Accounting Literature Award: Ball and Brown (1968) and Beaver (1968).1 -->
+本章と次章では，「the Seminal Contributions to Accounting Literature Award」の最初の2つの受賞者であるBall and Brown (1968)とBeaver (1968)について説明する。
+
+<!-- Ball and Brown (1968) won the inaugural Seminal Contribution to the Accounting Literature Award with a citation: “No other paper has been cited as often or has played so important a role in the development of accounting research during the past thirty years.” -->
+Ball and Brown (1968)は最初に「the Seminal Contribution to the Accounting Literature Award」を受賞し，その受賞理由は「過去30年間において，他のどの論文よりも引用されている論文はなく，会計研究の発展において重要な役割を果たしている」とされている。
+<!-- However, Philip Brown (Brown, 1989) recalled in a presentation to the 1989 JAR conference that the paper was rejected by The Accounting Review with the editor indicating a willingness to “reconsider the manuscript if Ray and I wished to cut down the empirical stuff and expand the ‘bridge’ we had tried to build between our paper and the accounting literature.” (Brown, 1989, p. 205) -->
+しかし，Philip Brown (Brown, 1989)は1989年のJARカンファレンスでのプレゼンテーションで，この論文がThe Accounting Reviewに拒否されたことを振り返り，編集者が「Rayと私が実証的な部分を削減し，私たちが試みた論文と会計文献との間に構築しようとした『橋』を拡大することを望むなら，原稿を再検討する用意がある」と述べている。
+
+<!-- According to Kothari (2001, p. 113), “Ball and Brown (1968) and Beaver (1968) heralded empirical capital markets research as it is now known.” -->
+Kothari (2001, p. 113)によると，「Ball and Brown (1968)とBeaver (1968)は，現在知られている実証的な資本市場研究の到来を告げた」としている。
+<!-- Prior to that period, accounting research was a largely theoretical discipline focused on normative research, that is, research concerned with the “right” or “best” way to account for various events and transactions. -->
+それ以前の時期には，会計研究は主に理論的な学問であり，規範的研究に焦点を当てていた。つまり，さまざまな事象や取引について「正しい」または「最良の」会計処理方法に関心を持つ研究であった。
+<!-- In addition to being normative, accounting theory was largely deductive, meaning that detailed theories were derived from general principles. -->
+会計理論は規範的であるだけでなく，主に帰納的であった。つまり，一般的な原則から詳細な理論が導かれていた。
+
+<!-- Beaver (1998) identifies one approach as asking, say, “what properties should the ‘ideal’ net income have?” -->
+Beaver (1998)は，あるアプローチを「『理想的な』純利益にはどのような特性があるべきか？」と問うものとして特定している。
+<!-- One answer to this question is that accounting income a period should reflect the change in the net present value of cash flows (plus cash distributions) to shareholders during the period. -->
+この質問に対する1つの回答は，ある期間の会計収益は，その期間中の株主へのキャッシュフローの現在価値の変化（およびキャッシュ配当）を反映すべきであるというものである。
+<!-- But other answers existed. -->
+しかし，他の回答も存在した。
+<!-- Accounting researchers would start with a set of desired properties and use these to derive the “best” approach to accounting for depreciation of long-lived assets, inventory, or lease assets. -->
+会計研究者は，望ましい特性の集合から始め，これらを使用して長期資産の減価償却、棚卸資産、またはリース資産の会計処理の「最良」のアプローチを導き出していた。
+<!-- Kothari (2001) points out that there was “little emphasis on the empirical validity” of theory. -->
+Kothari (2001)は，理論の「実証的な妥当性」にはほとんど重点が置かれていなかったと指摘している。
+
+<!-- Similar ideas still permeate the thinking of standard-setters, who purport to derive detailed accounting standards from their “conceptual frameworks”, which outline broad definitions of things such as assets and liabilities that standard-setters can supposedly use to derive the correct accounting approach in any given setting. -->
+同様の考え方は，基準設定主体の考え方に依然として浸透しており，基準設定主体は「概念フレームワーク」から詳細な会計基準を導出しようとしている。
+概念フレームワークは，資産や負債などの広義の定義を概説し，基準設定主体が任意の状況で正しい会計処理方法を導き出すために使用できるとされている。
+
+<!-- However, in the period since Ball and Brown (1968), these approaches have been largely discarded in academic research. -->
+しかし，Ball and Brown (1968)以降の時期において，これらのアプローチは学術研究においてほとんど捨てられている。
+<!-- A largely normative, theoretical emphasis has been replaced by a positive, empirical one. -->
+主に規範的で理論的な重点は，実証的で経験的な重点に置き換えられている。
+
+<!-- This chapter uses Ball and Brown (2019) as a kind of reading guide to Ball and Brown (1968) before considering a replication of Ball and Brown (1968) styled on that provided by Nichols and Wahlen (2004). -->
+本章では，Ball and Brown (2019)をBall and Brown (1968)の読み方のガイドとして使用し，Nichols and Wahlen (2004)によるBall and Brown (1968)のレプリケーションを検討する。
