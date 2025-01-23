@@ -516,7 +516,8 @@ index_returns <-
   collect()
 ```
 
-Fama et al. (1969, pp. 4–5) express concern about non-zero excess returns causing “specification error” and exclude “fifteen months before the split for all securities and fifteen months after the split for splits followed by dividend decreases.”
+<!-- Fama et al. (1969, pp. 4–5) express concern about non-zero excess returns causing “specification error” and exclude “fifteen months before the split for all securities and fifteen months after the split for splits followed by dividend decreases.” -->
+Fama et al. (1969, pp.4-5)は，「特定化誤差」(specification error)を引き起こす非ゼロの超過リターンについて懸念を示し，「すべての証券について分割前の15か月と，配当減少に続く分割後の15か月を除外する」と述べている。
 <!-- We partially implement this by excluding fifteen months before the split for all securities, but not excluding any months after the split, as this requires data on dividends that would not have been available at the time of the split - which we do not compile until later (see below) - and thus induces additional look-ahead issues. -->
 すべての証券について、分割前の15カ月は除外するが、分割後の月は除外しないことで、これを部分的に実施している、
 というのも、分割時には入手できなかったであろう配当に関するデータが必要となり、その結果、さらなる先行問題(look-ahead issue)が生じるからである。
@@ -639,7 +640,8 @@ table2_data <-
   select(permno, exdt, month_gap, resid)
 ```
 
-Before proceeding, we check that we have just one row for each split (permno and exdt) and relative month (month_gap).[^9]
+<!-- Before proceeding, we check that we have just one row for each split (permno and exdt) and relative month (month_gap).[^9] -->
+処理の前に，各分割（`permno`と`exdt`）と相対月（`month_gap`）について1行だけあることを確認する。[^9]
 
 [^9]: aaa09
 
@@ -733,14 +735,20 @@ nyse_divs_raw <-
 <!-- The following code aggregates the variables needed to calculate the dividend change ratio mentioned above: dividends paid in the twelve months after the split and dividends paid during the twelve months before the split. -->
 次のコードは、上記で言及した配当変化率を計算するために必要な変数を集計する。すなわち、分割後12ヶ月に支払われた配当と分割前12ヶ月に支払われた配当である。
 
-In this case, we specify `group_by(permno)` as we want windows to be applied on a by - PERMNO basis (i.e., when calculating trailing and forward dividends, we are only interested in dividends related to a single PERMNO) and then `window_order(month)`, as we want to arrange the data within each window by month so that “go back 11 months” is meaningfully defined. In the next step, we specify `window_frame(from = -11, to = 0)` to indicate that in the subsequent calculation, we want to include values from $t-11$ to $t$ in the window.13
-This drives the values considered in the subsequent `mutate()` step, which calculates `div_trailing` and `mths_trailing`.
-Note that `na.rm = TRUE` is always the case for SQL (which this code is ultimately translated into) and that `n()` counts the numbers of rows included in the window.
+<!-- In this case, we specify `group_by(permno)` as we want windows to be applied on a by - PERMNO basis (i.e., when calculating trailing and forward dividends, we are only interested in dividends related to a single PERMNO) and then `window_order(month)`, as we want to arrange the data within each window by month so that “go back 11 months” is meaningfully defined. In the next step, we specify `window_frame(from = -11, to = 0)` to indicate that in the subsequent calculation, we want to include values from $t-11$ to $t$ in the window.13 -->
+この場合，`PERMNO`ごとにウィンドウを適用したいため，`group_by(permno)`を指定している。そして，各ウィンドウ内のデータを月で並べ替えるために`window_order(month)`を指定している。次のステップでは、`window_frame(from = -11, to = 0)`を指定して、以降の計算でウィンドウに $t-11$ から $t$ までの値を含めることを示している。
+<!-- This drives the values considered in the subsequent `mutate()` step, which calculates `div_trailing` and `mths_trailing`. -->
+これにより、次の`mutate()`ステップで計算される`div_trailing`と`mths_trailing`が考慮される。
+<!-- Note that `na.rm = TRUE` is always the case for SQL (which this code is ultimately translated into) and that `n()` counts the numbers of rows included in the window. -->
+`na.rm = TRUE`は常にSQL（このコードが最終的に変換されるもの）の場合であり、`n()`はウィンドウに含まれる行数を数える。
 
-We then respecify the window using `window_frame(from = 1, to = 12)` so that we can calculate `div_forward` and `mths_forward`.
+<!-- We then respecify the window using `window_frame(from = 1, to = 12)` so that we can calculate `div_forward` and `mths_forward`. -->
+次に、`div_forward`と`mths_forward`を計算するために、ウィンドウを`window_frame(from = 1, to = 12)`に再指定する。
 
-Finally, to exclude cases where, say, a stock has listed within the last twelve months or delists in the subsequent twelve months and thereby perhaps makes the calculation of the dividend change ratio less meaningful, we use filter(`mths_trailing == 12`, `mths_forward == 12`).
-Finally, we ungroup to remove the `group_by(permno)` grouping that we no longer need, select the variables of interest, and then collect the data.
+<!-- Finally, to exclude cases where, say, a stock has listed within the last twelve months or delists in the subsequent twelve months and thereby perhaps makes the calculation of the dividend change ratio less meaningful, we use filter(`mths_trailing == 12`, `mths_forward == 12`). -->
+最後に、例えば、株式が過去12か月以内に上場したり、次の12か月で上場廃止されたりして、配当変化率の計算があまり意味をなさない場合を除外するために、`filter(mths_trailing == 12, mths_forward == 12)`を使用する。
+<!-- Finally, we ungroup to remove the `group_by(permno)` grouping that we no longer need, select the variables of interest, and then collect the data. -->
+不要になったグループ化`group_by(permno)`を除去するために`ungroup()`を使い，興味のある変数を選択し、データを収集している。
 
 
 ```{r}
@@ -762,7 +770,8 @@ nyse_divs <-
   collect()
 ```
 
-Now that we have data on div_trailing and div_forward for every (permno, month) combination on NYSE, we can use these data to calculate the dividend change ratio (div_ratio) for each of the split months on nyse_splits.
+<!-- Now that we have data on div_trailing and div_forward for every (permno, month) combination on NYSE, we can use these data to calculate the dividend change ratio (div_ratio) for each of the split months on nyse_splits. -->
+NYSEのすべての（`permno`、`month`）の組み合わせについて`div_trailing`と`div_forward`のデータがあるので、これらのデータを使用して、nyse_splitsの各分割月の配当変化率（`div_ratio`）を計算することができる。
 
 
 ```{r}
@@ -777,7 +786,10 @@ split_firm_dividends <-
   select(permno, month, exdt, div_ratio)
 ```
 
-Fama et al. (1969, p. 8) measure dividend changes “relative to the average dividends paid by all securities on the New York Stock Exchange during the relevant time periods. … Dividend ‘increases’ are then defined as cases where the dividend change ratio of the split stock is greater than the ratio for the Exchange as a whole.” We calculate the “market” dividend change ratio (mkt_div_ratio) by averaging the div_trailing and div_forward values for each month across all stocks.
+<!-- Fama et al. (1969, p. 8) measure dividend changes "relative to the average dividends paid by all securities on the New York Stock Exchange during the relevant time periods. … Dividend ‘increases’ are then defined as cases where the dividend change ratio of the split stock is greater than the ratio for the Exchange as a whole."  -->
+Fama et al. (1969, p.8)は、「関連する期間中にNYSEで全証券が支払った配当平均に対する配当変化を測定する。…配当の「増加」は、分割株の配当変化率が取引所全体の比率よりも大きい場合と定義される。」
+<!-- We calculate the “market” dividend change ratio (mkt_div_ratio) by averaging the div_trailing and div_forward values for each month across all stocks. -->
+各月の全株式にわたる`div_trailing`と`div_forward`の値を平均することで、「市場」の配当変化率（`mkt_div_ratio`）を計算する。
 
 ```{r}
 #| eval: false
@@ -792,9 +804,11 @@ div_mkt <-
                                  div_forward / div_trailing, NA))
 ```
 
-We can then combine data on split- and market-level dividend change ratios for each month in which there is a split to calculate up_div, which is an indicator for the dividend change ratios for a stock undergoing a split being greater than that for the market in that month.
+<!-- We can then combine data on split- and market-level dividend change ratios for each month in which there is a split to calculate up_div, which is an indicator for the dividend change ratios for a stock undergoing a split being greater than that for the market in that month. -->
+本稿では，分割が行われる各月について，分割レベルと市場レベルの配当変化率のデータを組み合わせて，分割を受ける株式の配当変化率がその月の市場の配当変化率よりも大きいかどうかを示す指標である`up_div`を計算する。
 
-Fama et al. (1969, p. 9) do not pretend that their measure of dividend increases is perfect and merely use it as “a simple and convenient way of … classifying year-to-year dividend changes for individual securities.”14
+<!-- Fama et al. (1969, p. 9) do not pretend that their measure of dividend increases is perfect and merely use it as “a simple and convenient way of … classifying year-to-year dividend changes for individual securities.”14 -->
+Fama et al. (1969, p.9)は、配当増加の測定が完璧であるとは主張しておらず、「個々の証券の年間配当変化を分類するための簡単で便利な方法」として使用している。
 
 ```{r}
 #| eval: false
@@ -806,7 +820,8 @@ dividends_file <-
   mutate(up_div = div_ratio >= mkt_div_ratio)
 ```
 
-Finally, we can combine data on relative dividend change ratios with abnormal return data.
+<!-- Finally, we can combine data on relative dividend change ratios with abnormal return data. -->
+最後に，相対的な配当変化率のデータを超過リターンデータと組み合わせることができる。
 
 ```{r}
 #| eval: false
@@ -816,8 +831,8 @@ table2_w_divs <-
   left_join(dividends_file, by = c("permno", "exdt"))
 ```
 
-We can now produce Figure 10.2, our analogue of Figure 3c from Fama et al. (1969, p. 15).
-
+<!-- We can now produce Figure 10.2, our analogue of Figure 3c from Fama et al. (1969, p. 15). -->
+これで、Fama et al. (1969, p. 15)の図3cのアナログである図10.2を作成することができる。
 
 ```{r}
 #| eval: false
@@ -832,7 +847,8 @@ table2_w_divs |>
   geom_point()
 ```
 
-Figure 10.3 provides our equivalent of Figure 3d from Fama et al. (1969, p. 15).
+<!-- Figure 10.3 provides our equivalent of Figure 3d from Fama et al. (1969, p. 15). -->
+図10.3は、Fama et al. (1969, p. 15)の図3dに相当するものである。
 
 ```{r}
 #| eval: false
@@ -932,7 +948,7 @@ table2_w_divs |>
 <!-- Chapter 13 builds on the three previous chapters in providing more depth on event studies, including coverage of how event studies have evolved since Fama et al. (1969).  -->
 第13章は、Fama et al. (1969)以来のイベント研究の進化についても含め、イベント研究についてさらに詳しく説明するために、前の3章に基づいて構築されている。
 <!-- Chapter 14 examines post-earnings announcement drift, a much-studied anomaly in the pricing of accounting information in capital markets.  -->
-第14章では、資本市場における会計情報の価格設定における多くの研究された異常である**ポスト・アナウンスメント・ドリフト**(post-earnings annoucement drift)を調査する。
+第14章では、資本市場における会計情報の価格設定における多くの研究された異常である**決算発表後の株価ドリフト**(Post-Earnings Annoucement Drift: PEAD)を調査する。
 <!-- Chapter 15 goes deeper into the measurement of accruals, a critical element of financial accounting, and also provides an opportunity to explore simulation analysis in more detail.  -->
 第15章では、負債の計測についてさらに詳しく説明し、財務会計の重要な要素であることと、シミュレーション分析をより詳しく探求する機会を提供する。
 <!-- Chapter 16 explores earnings management, which has been the focus of significant body of accounting research over several decades, and also provides an opportunity to understand issues related to measurement in research and the power of statistical tests. -->
