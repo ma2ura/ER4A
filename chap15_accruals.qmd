@@ -226,7 +226,7 @@ $$
 
 get_data <- function(add_perc = 0.03, n_years = 20) {
 
-    # Parameters
+    # パラメータの設定
     add_true <- 0.03
     gross_margin <- 0.8
     beg_cash <- beg_se <- 1500
@@ -236,33 +236,32 @@ get_data <- function(add_perc = 0.03, n_years = 20) {
     rho <- 0.9
 
     # Generate sales as an AR(1) process around mean_sale
-    sale_err <- rnorm(n_years, sd = sd_sale)
-    sales <- vector("double", n_years)
-    sales[1] <- mean_sale + sale_err[1]
-    for (i in 2:n_years) {
+    sale_err <- rnorm(n_years, sd = sd_sale) # 売上の誤差を作成
+    sales <- vector("double", n_years) # 売上を格納するベクトルを作成
+    sales[1] <- mean_sale + sale_err[1] # 平均売上高に誤差を加える
+    for (i in 2:n_years) {              # AR(1) 仮定に基づいて売上を生成
       sales[i] = mean_sale +  rho * (sales[i-1] - mean_sale) + sale_err[i]
     }
 
-    # Combine data so far into a data frame;
-    # add slots for variables to come
+    # データを結合してdata.frameを作成
     df <- tibble(year = 1:n_years,
                  add_perc = add_perc,
                  sales,
+                 # 初期値は欠損値で
                  writeoffs = NA, collect = NA,
                  div = NA, se = NA, ni = NA,
                  bde = NA, cash = NA)
 
-    # All sales at the same margin
+    # COGSは売上高の一定割合と仮定
     df$cogs <- (1 - gross_margin) * df$sales
 
-    # All sales are on credit;
-    # collections/write-offs occur in next period
+    # 売上は全て掛売上で，回収・貸倒損失は翌期
     df$ar <- df$sales
 
-    # Allowance for doubtful debts
+    # 貸倒引当金addを設定
     df$add <- add_perc * df$sales
 
-    # Calculate year-1 values
+    # 前期の値を設定
     df$writeoffs[1] <- 0
     df$collect[1] <- 0
     df$bde[1] <- df$add[1]
@@ -271,7 +270,7 @@ get_data <- function(add_perc = 0.03, n_years = 20) {
     df$cash[1] <- beg_cash + df$collect[1] - df$cogs[1] - df$div[1]
     df$se[1] <- beg_se + df$ni[1] - df$div[1]
 
-    # Loop through years from 2 to n_years
+    # 2年目からループ設定
     for (i in 2:n_years) {
       df$writeoffs[i] <- add_true * df$ar[i-1]
       df$collect[i] <- (1 - add_true) * df$ar[i-1]
