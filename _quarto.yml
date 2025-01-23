@@ -31,6 +31,8 @@ book:
     - part: "資本市場研究"
       chapters:
         - chap10_FFJR.qmd
+        - chap11_BB1968.qmd
+        - chap12_Beaver1968.qmd
         - chap15_accruals.qmd
         - chap16_em.qmd
     - part: "因果推論"
