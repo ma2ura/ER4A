@@ -227,20 +227,20 @@ $$
 get_data <- function(add_perc = 0.03, n_years = 20) {
 
     # パラメータの設定
-    add_true <- 0.03
+    add_true   <- 0.03
     gross_margin <- 0.8
-    beg_cash <- beg_se <- 1500
+    beg_cash   <- beg_se <- 1500
     div_payout <- 1
-    mean_sale <- 1000
-    sd_sale <- 100
-    rho <- 0.9
+    mean_sale  <- 1000
+    sd_sale    <- 100
+    rho        <- 0.9
 
     # Generate sales as an AR(1) process around mean_sale
     sale_err <- rnorm(n_years, sd = sd_sale) # 売上の誤差を作成
     sales <- vector("double", n_years) # 売上を格納するベクトルを作成
     sales[1] <- mean_sale + sale_err[1] # 平均売上高に誤差を加える
     for (i in 2:n_years) {              # AR(1) 仮定に基づいて売上を生成
-      sales[i] = mean_sale +  rho * (sales[i-1] - mean_sale) + sale_err[i]
+      sales[i] = mean_sale + rho * ( sales[i-1] - mean_sale ) + sale_err[i]
     }
 
     # データを結合してdata.frameを作成
