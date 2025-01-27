@@ -1,0 +1,139 @@
+# SQL入門
+
+This brief appendix aims to serve two groups of users. The first group comprises those who have followed the material in the main part of the book and would like a quick introduction to SQL. The second group comprises those who know SQL (say, SAS’s PROC SQL) would like a quick introduction to the dplyr-based approach to R that we use in this book.
+
+## What are SQL and dplyr?
+
+SQL is a specialized language for manipulating and retrieving tabular data used by almost all modern database systems.
+
+The R package dplyr is a core part of the Tidyverse and perhaps the package we use the most in this book. From the Tidyverse website:
+
+> dplyr is a grammar of data manipulation, providing a consistent set of verbs that help you solve the most common data manipulation challenges:
+>
+> - mutate() adds new variables that are functions of existing variables
+> - select() picks variables based on their names
+> - filter() picks cases based on their values
+> - summarize() reduces multiple values down to a single summary
+> - arrange() changes the ordering of the rows
+
+| `dplyr` verb (R) | `SQL` equivalent |
+|:----------------:|:----------------:|
+| `|>`             | `FROM`           |
+| `select()`       | `SELECT`         |
+| `filter()`       | `WHERE`          |
+| `group_by()`     | `GROUP BY`       |
+| `arrange()`      | `ORDER BY`       |
+| `mutate()`       | used-defined columns  |
+| `summarize()`    | used-defined aggregate columns |
+: SQL translation of key `dplyr` verbs
+
+
+Prior to the advent of the dplyr in 2014, most users of R would have used base R functions and operators, such as subset(), $, and [. However, dplyr provides a much more consistent framework for manipulating data that is easier to learn, especially for users familiar with SQL. This is unsurprising given that SQL provides something like a “grammar of data manipulation” of its own. In fact, each dplyr verb has an SQL equivalent keyword or concept, as seen in Table B.1, which provides a translation table of sorts between dplyr and SQL.
+
+
+:::{.panel-tabset}
+
+### PostgreSQL
+
+In this appendix, we use the following packages:
+
+```{r}
+#| message: false
+#| error: false
+library(DBI)
+library(dplyr)
+```
+
+As in earlier chapters, we set up a database connection that we can use within R. We also create remote data frames for each of the two tables from WRDS that we use in this appendix: crsp.dsf and crsp.dsi.
+
+```{r}
+#| eval: false
+db <- dbConnect(RPostgres::Postgres())
+
+crsp.dsf <- tbl(db, Id(table = "dsf", schema = "crsp"))
+crsp.dsi <- tbl(db, Id(table = "dsi", schema = "crsp"))
+```
+
+### parquet
+
+In this appendix, we use the following packages:
+
+```{r}
+#| eval: false
+
+library(DBI)
+library(dplyr)
+library(farr)
+```
+
+
+
+As in earlier chapters, we set up a database connection that we can use within R. We also create remote data frames for each of the two tables from WRDS that we use in this appendix: crsp.dsf and crsp.dsi. A wrinkle with our parquet-based approach to DuckDB is that to access the tables from SQL, we need to create named tables that refer to the underlying parquet files. The create_view() function does this. Note that we use CREATE VIEW rather than CREATE TABLE so that the data are not read into memory (this is costly with crsp.dsf).
+
+
+```{r}
+#| eval: false
+
+create_view <- function(conn, table, schema = "", 
+                         data_dir = Sys.getenv("DATA_DIR"))  {
+  dbExecute(conn, paste0("CREATE SCHEMA IF NOT EXISTS ", schema))
+  file_path <- file.path(data_dir, schema, paste0(table, ".parquet"))
+  df_sql <- paste0("CREATE VIEW ", schema, ".", table, " AS ",
+                   "SELECT * FROM read_parquet('", file_path, 
+                   "')")
+  DBI::dbExecute(conn, dplyr::sql(df_sql))
+}
+
+db <- dbConnect(duckdb::duckdb())
+
+crsp.dsi <- create_view(db, table = "dsi", schema = "crsp") 
+crsp.dsf <- create_view(db, table = "dsf", schema = "crsp")
+```
+
+
+:::
+
+## SQL terms `SELECT` and `FROM`
+
+Let’s begin with a basic SQL query. (Note that, throughout this appendix, we only display the first five records when there are more than five records returned by a query. Note that a record is SQL terminology for what we might call a row in the context of an R data frame.)
+
+
+```{sql}
+#| eval: false
+
+SELECT date, vwretd, ewretd
+FROM crsp.dsi
+```
+
+The query above
+
+- extracts the data in three columns (date, vwretd, ewretd) (the first line)
+- from the table named crsp.dsi (the second line)
+
+
+While the syntax differs, SQL’s SELECT operates very much like select() from dplyr.
+
+Translating this into `dplyr` code using the pipe operator (`|>`), it’s easy to see that the order of presentation is one of the big differences between SQL and `dplyr`.
+
+To use `dplyr` we first need to set up the table on which to operate; once we’ve done so we can see that SQL’s `FROM` is implicit in the `|>` operator.
+
+
+```{sql}
+#| eval: false
+
+crsp.dsi |>
+  select(date, vwretd, ewretd)
+```
+
+## SQL `WHERE`
+
+The filter() verb from dplyr corresponds to WHERE in SQL. Note that WHERE goes after the FROM clause in SQL, though in practice the query optimizer will execute the filter implied by the WHERE clause before executing other elements of a query (it would be wasteful to perform calculations on data that are going to be filtered out later on).
+
+```{sql}
+#| eval: false
+
+SELECT date, vwretd, ewretd
+FROM crsp.dsi
+WHERE date = '2015-01-02'
+```
+
