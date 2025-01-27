@@ -1,0 +1,737 @@
+# データを読み込む
+
+<!-- Thus far, our data have come from either the farr package or WRDS.  -->
+これまでのデータは、farrパッケージまたはWRDSから取得してきた。
+<!-- In most cases, the WRDS data are nicely rectangular, meaning that we have $N$ observations of $K$ variables, and they already have assigned data types, etc.[^1] -->
+ほとんどの場合、WRDSデータはきれいな長方形であり、 $N$ 個の観測値と $K$ 個の変数があり、データ型が割り当てられている。[^1]
+<!-- In practice, researchers often obtain data from other sources, especially the internet, and such data are often rather messy.  -->
+実際には、研究者はしばしばインターネットなどの他のソースからデータを取得し、そのようなデータはしばしばかなり乱雑である。
+<!-- This chapter provides an introduction to importing data from such sources. -->
+この章では、そのようなソースからデータをインポートする方法について紹介する。
+
+
+While this chapter is fairly task-oriented, we think that it serves to reinforce two deeper ideas.
+
+- **Reproducibility**. This is a big idea—certainly bigger than we can cover in a chapter. But what we will do here will emphasize approaches that are completely reproducible, whether by people you don’t know, co-authors, or even yourself at some subsequent date.
+- [**Tidy data**](https://tidyr.tidyverse.org/articles/tidy-data.html). A lot of data we see out there—including the data we work with in this chapter—is essentially tabular and relational in nature. Once you recognize this, many data problems become much more straightforward.
+Even dedicated users of SAS or Stata may find this chapter useful, as R handles tricky data-munging tasks quite easily and the end results are easily exported in formats that other software can read (e.g., `write_dta()` from the `haven` package creates Stata data files).
+
+We also introduce **regular expressions**. 
+Briefly speaking, a regular expression is a sequence of characters that define a pattern which can be used in a kind of search (or search-and-replace) on steroids. 
+Regular expressions are very useful when working with data in many contexts.[^2]
+The chapters on strings and regular expressions in R for Data Science provide excellent introductions that complement material in this chapter. 
+We recommend that you refer to those chapters as you work through this chapter.
+
+
+
+:::{.callout-tip}
+The code in this chapter uses the packages listed below. For instructions on how to set up your computer to use the code found in this book, see Section 1.2. Quarto templates for the exercises below are available on GitHub.
+:::
+
+
+```{r}
+#| eval: false
+
+library(dplyr)
+library(tidyr)     
+library(readr)     # read_lines(), read_fwf(), etc.
+library(stringr)   # str_c(), str_detect()
+library(pdftools)  # pdf_text()
+library(lubridate) # ymd()
+```
+
+<!-- ## Reading (seemingly) non-tabular data -->
+## (見かけ上) 非表形式データの読み込み
+
+<!-- ### Fama-French industry definitions -->
+### Fama-French産業定義
+
+<!-- The first task that we will explore is collecting data on Fama-French industry definitions, which are widely used in finance and accounting research to map SIC codes, of which there are hundreds, into a smaller number of industry groups for analysis.3 -->
+最初に探求するタスクは、Fama-French産業分類のデータを収集することである。これは、ファイナンスや会計研究において広く使用されており、数百種類あるSICコードを、分析のためのより少ない数の産業グループにマッピングするために役立つ。[^3]
+<!-- For example, we might want to group firms into 48, 12, or even 5 industry groups. --> -->
+例えば、企業を48、12、または5つの産業グループに分類することが考えられる。
+
+<!-- The basic data on Fama-French industry definitions are available from Ken French’s website at Tuck School of Business. -->
+Fama-French産業分類の基本データは、Tuckビジネススクールのケン・フレンチの[ウェブサイト](https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/data_library.html)から入手可能である。
+
+<!-- There are multiple classifications, starting with 5 industries, then 10, 12, 17, 30, 38, 48, and finally 49 industries. The data are supplied as zipped text files. For example, the 48-industry data can be found on this page, by clicking the link displayed as Download industry definitions. -->
+複数の分類が存在し、5つの産業から始まり、10、12、17、30、38、48、そして最終的に49の産業に分けられる。データはzip形式のテキストファイルとして提供されている。例えば、48の産業分類データは、[このページ](https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/Data_Library/det_48_ind_port.html)にある「Download industry definitions」と表示されたリンクをクリックすることで見つけることができる。
+
+<!-- If we download that linked file and unzip it, we can open it in a text editor or even Excel. The first ten lines of the file are as follows: -->
+そのリンク先の[ファイル](http://mba.tuck.dartmouth.edu/pages/faculty/ken.french/ftp/Siccodes12.zip)をダウンロードして解凍すると、テキストエディタやExcelで開くことができる。ファイルの最初の10行は以下の通りである：
+
+1 Agric  Agriculture
+          0100-0199 Agricultural production - crops
+          0200-0299 Agricultural production - livestock
+          0700-0799 Agricultural services
+          0910-0919 Commercial fishing
+          2048-2048 Prepared feeds for animals
+
+ 2 Food   Food Products
+          2000-2009 Food and kindred products
+          2010-2019 Meat products
+
+Looking at the second row, we interpret this as saying that firms with SIC codes between `0100` and `0199` are assigned to industry group `1` (let’s call this field `ff_ind`), which has a label or short description (`ff_ind_short_desc`) Agric and a full industry description (`ff_ind_desc`) of Agriculture.
+
+One approach to this task might be to write a function like the following (this one is woefully incomplete, as it only covers the first two lines of data above):
+
+
+```{r}
+#| eval: false
+
+get_ff_ind_48 <- function(sic) {
+  case_when(sic >= 100 & sic <= 199 ~ 1,
+            sic >= 200 & sic <= 299 ~ 1)
+}
+```
+
+While tedious and time-consuming, this is perfectly feasible. In fact, this is essentially the approach taken in code you can find on the internet (e.g., SAS code here or here or Stata code here).
+
+However, doing this would only solve the problem for the 48-industry grouping. And it certainly could not be described as particularly robust to, for example, changes in Fama-French industry definitions.[^4]
+
+Part of the solution that we use below recognizes that the data are really tabular in nature. A relational database purist would likely look at the data above as representing two tables. One table relates Fama-French industries to short and full industry descriptions. The first two rows in this table would look something like this:
+
+
+| `ff_ind` | `ff_ind_short_desc` | `ff_ind_desc` |
+|----------|---------------------|---------------|
+| 1        | Agric               | Agriculture   |
+| 2        | Food                | Food Products |
+
+The second table would relate Fama-French industries to ranges of SIC codes, and the first few rows of this table would look something like this:
+
+| `ff_ind` | `sic_min` | `sic_max` | `sic_desc` |
+|----------|-----------|-----------|------------|
+| 1        | 100       | 199       | Agricultural production - crops |
+| 1        | 200       | 299       | Agricultural production - livestock |
+| 1        | 700       | 799       | Agricultural services |
+| 1        | 910       | 919       | Commercial fishing |
+
+To keep things simple for this exercise, we will disappoint the purists and make a single table with all six fields: `ff_ind`, `ff_ind_short_desc`, `ff_ind_desc`, `sic_min`, `sic_max`, `sic_desc`.[^5]
+
+
+So how do we make this table? One approach to this task might be to download the linked file, unzip it, open it up in some program (e.g., Excel), and then massage the data manually into the desired form. But this would have the same issues as the approach above.
+
+We can do better by using R and tools from the Tidyverse package. The first step is to download the data. While one can easily do this manually, but we want to automate this process as much as possible. And we probably don’t have any reason to keep the .zip file once we have used it. R provides two functions that we can use here: download.file() and tempfile(). The tempfile() function creates a random file name in a location that will be cleaned up by our system automatically once we’re no longer using it.
+
+
+```{r}
+#| eval: false
+
+t <- tempfile(fileext = ".zip")
+url <- str_c("http://mba.tuck.dartmouth.edu/pages/faculty/",
+             "ken.french/ftp/Siccodes48.zip")
+```
+
+Here t is file65404704f67c.zip, which is random except for the .zip extension, something we need for our code to recognize the supplied file as a zipped file. The download.file() function downloads the file at url and saves it as t.
+
+
+```{r}
+#| eval: false
+
+download.file(url, t)
+```
+
+If you look at Ken French’s website, you will see that all the industry-definition files have URLs that follow a certain pattern, with just the number of industry groups (in this case, 48) changing. Recognizing this, we can rewrite the code above as follows:
+
+
+```{r}
+#| eval: false
+
+ind <- 48
+t <- tempfile(fileext = ".zip")
+url <- str_c("http://mba.tuck.dartmouth.edu",
+             "/pages/faculty/ken.french/ftp/Siccodes", ind, ".zip")
+download.file(url, t)
+```
+
+<!-- Here the str_c() function from the stringr package pastes all the pieces back together.6 -->
+ここでは、`stringr`パッケージの`str_c()`関数がすべての部分を結合している。[^6]
+
+From visual inspection, we can see that our text file is a fixed-width format text file. So to read the data, we will use the function read_fwf() from the readr package.
+
+There are two required arguments to read_fwf(): file and col_positions. From the help for read_fwf() (type ? readr::read_fwf in the R console to see this), we see that col_positions refers to “Column positions, as created by fwf_empty(), fwf_widths() or fwf_positions(). If the width of the last column is variable (i.e., we have a ragged fixed-width format file), we can supply the last end position as NA.” We can also see that fwf_widths() is itself a function: fwf_widths(widths, col_names = NULL).
+
+Given that we have a very simple file, we can identify the column widths pretty easily. Manually adding a “ruler” of sorts at the top of the file, we can see below that the first column covers columns 1-3, the second column covers 4-10, and the third column starts at 11.
+
+123456789-123456789-123456789-123456789-123456789-...
+ 1 Agric  Agriculture
+          0100-0199 Agricultural production - crops
+          0200-0299 Agricultural production - livestock
+          0700-0799 Agricultural services
+So we have widths of 3, 7, and we can use NA to have R figure out the width of the last column. The first two columns should be named ff_ind and ff_ind_short_desc, but the third column is problematic, as some rows provide information on ff_ind_short_desc and some rows provide data that we will eventually put into sic_min and sic_max; so let’s call that column temp for now. Finally, as the first column contains integer values, while the other two are text columns, we can supply a string to the option col_types argument of read_fwf() to ensure that the columns are read as those types.
+
+
+```{r}
+#| eval: false
+
+t |>
+  read_fwf(col_positions = fwf_widths(
+    c(3, 7, NA),
+    c("ff_ind", "ff_ind_short_desc", "temp")
+    ), col_types = "icc") 
+```
+
+<!-- The next step is to handle the problematic temp column.  -->
+次のステップは、問題のある`temp`列を処理することである。
+<!-- We can see that if ff_ind is NA, then temp contains (if it contains anything) a range of SIC codes, but if ff_ind is not NA, then temp contains the value we want to store in ff_ind_desc.  -->
+`ff_ind`がNAであれば、`temp`には（何かが含まれていれば）SICコードの範囲が含まれているが、`ff_ind`がNAでない場合、`temp`には`ff_ind_desc`に格納したい値が含まれていることがわかる。
+<!-- We can use mutate along with if_else statements to extract the data into the appropriate columns (we’ll call the range of SIC codes sic_range for now) and, having done so, we can drop the column temp.7 -->
+`mutate`と`if_else`ステートメントを使用して、適切な列にデータを抽出することができる（一時的にSICコードの範囲を`sic_range`と呼ぶことにする）。そして、その後、`temp`列を削除することができる。[^7]
+
+
+```{r}
+#| eval: false
+t |>
+  read_fwf(
+    col_positions = fwf_widths(
+        c(3, 7, NA),
+        c("ff_ind", "ff_ind_short_desc", "temp")),
+    col_types = "icc") |>
+  mutate(ff_ind_desc = if_else(!is.na(ff_ind), temp, NA),
+         sic_range = if_else(is.na(ff_ind), temp, NA)) |>
+  select(-temp)
+```
+
+We are getting closer. Now, we see that the issue is that our sic_range column does not line up with the other three columns. To solve this, we can use fill() from the tidyr package. The fill function accepts arguments for the columns to “fill”. In this case, we can fill missing values with the previous non-missing value.
+
+
+```{r}
+#| eval: false
+
+t |>
+  read_fwf(
+    col_positions = fwf_widths(
+        c(3, 7, NA), c("ff_ind", "ff_ind_short_desc", "temp")),
+    col_types = "icc") |>
+  mutate(ff_ind_desc = if_else(!is.na(ff_ind), temp, NA),
+         sic_range = if_else(is.na(ff_ind), temp, NA)) |>
+  select(-temp) |>
+  fill(ff_ind, ff_ind_short_desc, ff_ind_desc)
+```
+
+At this point, we have no further use for the rows where sic_range is NA, so we can filter them out.
+
+
+```{r}
+#| eval: false
+
+t |>
+  read_fwf(
+    col_positions = fwf_widths(
+        c(3, 7, NA), c("ff_ind", "ff_ind_short_desc", "temp")),
+     col_types = "icc") |>
+  mutate(ff_ind_desc = if_else(!is.na(ff_ind), temp, NA),
+         sic_range = if_else(is.na(ff_ind), temp, NA)) |>
+  select(-temp) |>
+  fill(ff_ind, ff_ind_short_desc, ff_ind_desc) |>
+  filter(!is.na(sic_range))
+```
+
+The last issue to address is the column sic_range. We want to split that into three target columns (sic_min, sic_max, and sic_desc). To do this, we can use extract() from the tidyr package. The two required arguments for extract() are col, the column from which data are being extracted, and into, the columns that will get the data.
+
+<!-- The regex argument to extract() allows us to specify a regular expression that is used to split the data.  -->
+`extract()`の`regex`引数を使用すると、データを分割するために使用される正規表現を指定できる。
+<!-- We will discuss regular expressions more carefully later in the chapter, so it is fine if you don’t fully follow what’s going on here.  -->
+正規表現については、後の章で詳しく説明するため、ここで何が起こっているか完全に理解できなくても問題ない。
+<!-- For now, we just need to know that the portions contained in each pair of parentheses (( and )) are what is captured for each field.  -->
+今のところ、各括弧のペア`((`と`))`に含まれる部分が各フィールドにキャプチャされるものであることを知っておくだけで十分である。
+<!-- The first pair of parentheses surround [0-9]+, which we can read as “one or more digit characters”.  -->
+最初の括弧は`[0-9]+`を囲んでおり、これは「1つ以上の数字文字」を表すと読むことができる。
+<!-- So, for the case of 0100-0199 Agricultural production - crops, this would match 0100.  -->
+したがって、`0100-0199 Agricultural production - crops`の場合、これは`0100`に一致する。
+<!-- This is followed by a - which is a literal dash that matches the - after 0100.  -->
+これに続くのは、`-`であり、これは`0100`の後の`-`に一致する。
+<!-- The next pair of parentheses is again “one or more digit characters” and captures 0199.  -->
+次の括弧は再び「1つ以上の数字文字」であり、`0199`をキャプチャする。
+<!-- This is followed by \\s*.  -->
+これに続くのは`\\s*`である。
+<!-- The \\s represents “any space” and the * means “zero or more”, so \\s* means “zero or more spaces”, which are matched, but not captured.  -->
+`\\s`は「任意のスペース」を表し、`*`は「0個以上」を意味するため、`\\s*`は「0個以上のスペース」を意味し、一致するがキャプチャされない。
+<!-- Finally we have (.*)$.  -->
+最後に、`(.*)$`がある。
+The `.` represents “any character”, so .* means “zero or more of any character”, which are captured as the third variable. 
+この`.`は「任意の文字」を表し、`.*`は「任意の文字の0個以上」を意味し、これが3番目の変数としてキャプチャされる。
+<!-- The $ just means “the end of the string”; this mirrors the ^ at the start of the regular expression, which means “the start of the string”.  -->
+`$`は「文字列の終わり」を意味し、これは正規表現の先頭にある`^`と対応しており、「文字列の開始」を意味する。
+<!-- Together, ^ and $ ensure that we are considering the whole string in our analysis.8 -->
+`^`と`$`を合わせることで、分析対象が文字列全体であることを確認する。[^8]
+
+<!-- The argument convert = TRUE asks extract() to convert the data types of the extracted fields to types that seem appropriate (e.g., integers for sic_min and sic_max). -->
+引数`convert = TRUE`は、`extract()`に抽出されたフィールドのデータ型を適切な型（例えば、`sic_min`と`sic_max`に整数）に変換するように求める。
+
+
+```{r}
+#| eval: false
+
+t |>
+  read_fwf(col_positions = fwf_widths(
+    c(3, 7, NA), c("ff_ind", "ff_ind_short_desc", "temp")),
+           col_types = "icc") |>
+  mutate(ff_ind_desc = if_else(!is.na(ff_ind), temp, NA),
+         sic_range = if_else(is.na(ff_ind), temp, NA)) |>
+  select(-temp) |>
+  fill(ff_ind, ff_ind_short_desc, ff_ind_desc) |>
+  filter(!is.na(sic_range)) |>
+  extract(sic_range, 
+          into = c("sic_min", "sic_max", "sic_desc"),
+          regex = "^([0-9]+)-([0-9]+)\\s*(.*)$",
+          convert = TRUE) 
+```
+
+Lastly, we can put all of the above into a function. But, as we do so, let’s take a gamble that the same code will work for any of the Fama-French industry classifications if we only change the URL. To do this, we use an argument ind that reflects the industry grouping of interest and inserts that in the URL. Here we use the str_c() function from the stringr package to create the URL using the value supplied as ind.
+
+
+```{r}
+#| eval: false
+
+get_ff_ind <- function(ind) {
+  t <- tempfile(fileext = ".zip")
+  url <- str_c("https://mba.tuck.dartmouth.edu/pages/",
+               "faculty/ken.french/ftp/Siccodes", ind, ".zip")
+  download.file(url, t)
+
+  t |>
+    read_fwf(col_positions = fwf_widths(c(3, 7, NA),
+                                        c("ff_ind", "ff_ind_short_desc",
+                                          "temp")),
+             col_types = "icc") |>
+    mutate(ff_ind_desc = if_else(!is.na(ff_ind), temp, NA),
+         sic_range = if_else(is.na(ff_ind), temp, NA)) |>
+    select(-temp) |>
+    fill(ff_ind, ff_ind_short_desc, ff_ind_desc) |>
+    filter(!is.na(sic_range)) |>
+    extract(sic_range, 
+            into = c("sic_min", "sic_max", "sic_desc"),
+            regex = "^([0-9]+)-([0-9]+)\\s*(.*)$",
+            convert = TRUE) 
+}
+```
+
+We can test out for 48-industry classification above (just to make sure we didn’t mess up what we already had working):
+
+
+
+```{r}
+#| eval: false
+
+get_ff_ind(48)
+get_ff_ind(5)
+get_ff_ind(12)
+```
+
+### 練習問題
+
+1. Follow the steps below to produce a data set where each column has the appropriate data type.
+    a. Go to the MSCI GICS website.
+    b. Get the link to the file under historical GICS structures that is “Effective until Sep 28, 2018”.
+    c. Use this link and the tempfile() and download.file() functions to download the linked file.
+    d. Use read_excel() from the readxl package to read the downloaded file.
+    e. Identify any variables that need to be handled like temp in the Fama-French data set above and process accordingly.
+    f. Use the fill() function from the tidyr package to fill in rows as necessary.
+    g. Make sure that each column has the appropriate data type.
+
+Hints:
+
+a. You may find it helpful to look at the Excel file so you can see how the data are structured.
+b. The read_excel() function has skip and col_names arguments that you will probably want to use.
+c. Your final column names should be sector, sector_desc, ind_group, ind_group_desc, industry, industry_desc, sub_ind, sub_ind_desc, and sub_ind_details.
+d. The following code snippets might be useful:
+    - filter(!is.na(sub_ind_details))
+    - fill(sector:sub_ind_desc, .direction = "down")
+    - mutate(across(where(is.numeric), as.integer))
+
+<!-- ## 9.2 Extracting data from messy formats -->
+## 整形されていない形式からデータを抽出する
+
+<!-- Sometimes data are provided in formats even messier than fixed-width text files.  -->
+時には、データが固定幅のテキストファイルよりもさらに乱雑な形式で提供されることがある。
+<!-- For example, we may want to extract data (perhaps tabular data) from a PDF.  -->
+例えば、PDFからデータ（おそらく表形式のデータ）を抽出したい場合がある。
+<!-- While the data may appear tabular to our eyes, the reality is that PDFs retain very little information about the structure of data, as the PDF format is a lightweight way of making a computer or printer present text for consumption by humans, not statistical software packages. -->
+データは私たちの目には表形式に見えるかもしれないが、PDF形式はデータの構造についてほとんど情報を保持していない。PDF形式は、コンピュータやプリンタがテキストを人間が消費するために提示するための軽量な方法であり、統計ソフトウェアパッケージのためのものではない。
+
+<!-- In this section, we will examine a case study in extracting tabular data from a PDF.  -->
+このセクションでは、PDFから表形式のデータを抽出するケーススタディを調査する。
+<!-- Our initial focus will be on extracting data about money “left on the table” by firms in initial public offerings (IPOs).  -->
+最初の焦点は、新規株式公開（IPO）において企業が「テーブルに残した」金額に関するデータを抽出することである。
+<!-- These data are provided by Jay Ritter at the University of Florida in a PDF found here. -->
+これらのデータは、フロリダ大学のJay Ritterによって提供されており、ここで見つけることができるPDFに記載されている。
+
+<!-- In this case, we will use pdf_text() from the pdftools package.  -->
+この場合、`pdftools`パッケージの`pdf_text()`を使用する。
+<!-- From the help for `pdf_text()`, we learn that “the pdf_text function renders all text boxes on a text canvas and returns a character vector of equal length to the number of pages in the PDF file.”  -->
+`pdf_text()`のヘルプから、`pdf_text`関数はテキストキャンバス上のすべてのテキストボックスをレンダリングし、PDFファイルのページ数と同じ長さの文字ベクトルを返す、ということがわかる。
+<!-- We also learn that the function accepts an argument for the “pdf file path or raw vector with pdf data”.  -->
+また、関数は「PDFファイルのパスまたはPDFデータを含むrawベクトル」の引数を受け入れることがわかる。
+<!-- Since the above URL actually provides an absolute file path for the PDF, we can simply call pdf_text(url) to download the PDF from the url and convert it to a text representation in R. -->
+上記のURLは実際にPDFの絶対ファイルパスを提供しているため、`pdf_text(url)`を呼び出すことで、R内でPDFをダウンロードし、テキスト表現に変換することができる。
+
+
+```{r}
+#| eval: false
+
+url <- str_c("
+  https://site.warrington.ufl.edu/ritter/files/", 
+  "money-left-on-the-table.pdf")
+```
+
+<!-- Looking at the PDF, we see that the first page is text and the table starts on page 2.  -->
+PDFを見ると、最初のページはテキストであり、表は2ページ目から始まる。
+<!-- We can omit the first page returned by pdf_text(url) below by appending [-1]. -->
+以下の`pdf_text(url)`で返される最初のページを`[-1]`で省略することができる。
+
+
+```{r}
+#| eval: false
+
+output <- pdf_text(url)[-1]
+```
+
+<!-- While the output from pdf_text(url) or even pdf_text(url)[-1] uses up too much space to be shown here, if you run the code immediately above, then call each of these alternatives, you can see that the second function returns data that appears quite regular.  -->
+`pdf_text(url)`または`pdf_text(url)[-1]`の出力は、ここに表示するにはスペースが多すぎるが、直前のコードを実行してから、それぞれの代替案を呼び出すと、2番目の関数がかなり規則的に見えるデータを返すことがわかる。
+<!-- In this case, it makes sense to run the text through read_lines() from readr. -->
+この場合、`readr`の`read_lines()`を使ってテキストを実行することが理にかなっている。
+<!-- We will do this and store the result in temp so that we can examine it here more closely.9 -->
+こうして行い、結果を`temp`に保存して、ここでより詳しく調べることができる。[^9]
+
+
+```{r}
+#| eval: false
+
+temp <- 
+  output |>
+  read_lines()
+```
+
+<!-- Let’s look at a few selected lines.  -->
+いくつかの選択された行を見てみよう。
+<!-- Lines 1:5 represent the top of the table, with the column names unfortunately split into two rows.10 -->
+1行から5行は表の上部を表し、残念ながら列名が2行に分割されている。[^10]
+
+
+```{r}
+#| eval: false
+
+print_width <- 70
+str_sub(temp[1:5], 1, print_width)
+```
+
+Rather than trying to deal with the column-names-spread-over-two-rows issue with code, we can just manually specify the column names and skip the first two rows when we import the data. For now, we merely create variables to reflect those choices; we will use these variables later.
+
+
+```{r}
+#| eval: false
+
+col_names <-  c(
+  "amount_left_on_table", "company", "ipo_date", "offer_price", "first_close_price", 
+  "shares_offered", "ticker")
+skip_rows <- 2
+```
+
+While the top portion of the table looks like it might be able to work with read_fwf(), once we look at the lines 56 through 62 at the bottom of the first page and top of the second pages (pp. 2–3 of the original PDF), we can see that they are not aligned.
+
+
+```{r}
+#| eval: false
+
+str_sub(temp[56:62], 1, print_width)
+```
+
+The same is true of lines 114 through 120 at the bottom of the second page and top of the third pages (pp. 3–4 of the original PDF).
+
+
+```{r}
+#| eval: false
+
+str_sub(temp[114:120], 1, print_width)
+```
+
+<!-- Finally, rows 461 through 463 contain a footer that is not part of the table. -->
+最後に、461行から463行には、表に含まれていないフッターが含まれている。
+
+
+```{r}
+#| eval: false
+
+str_sub(temp[458:464], 1, print_width)
+```
+
+<!-- We can flag that by looking for Source: at the start of a row.  -->
+行の先頭に`Source:`があるかどうかを調べることで、これを示すことができる。
+<!-- To match at the start of a string, we need to anchor the regular expression using `^` to match the start.11  -->
+文字列の先頭に一致させるためには、正規表現を`^`でアンカーする必要がある。[^11]
+<!-- We want to read only up to one row before 461, and we will be skipping skip_rows at the start.  -->
+461行の1つ前までだけ読み込みたいので、最初に`skip_rows`をスキップする。
+<!-- So we can calculate the maximum number of rows we want to read as follows: -->
+したがって、読み込みたい最大行数を以下のように計算できる。
+
+
+```{r}
+#| eval: false
+
+max_rows <- str_which(temp, "^Source:") - 1 - skip_rows
+```
+
+Also, as we will use Tidyverse tools to munge the data, we will find it useful to put the data in a tibble, albeit one with just a single column, which we call temp.
+
+
+```{r}
+#| eval: false
+
+ritter_data_raw <-
+  output |>
+  read_lines(skip = skip_rows, n_max = max_rows) |>
+  tibble(temp = _)
+```
+
+Coming as it does from a PDF, there are some messy elements of the data.
+
+First, there are empty rows, which we can detect by matching on ^$ (i.e., the start and end with nothing in between) and we will want to filter out these rows.
+
+
+```{r}
+#| eval: false
+
+ritter_data_raw |> 
+  filter(str_detect(temp, "^$")) 
+```
+
+Second, there are rows with just spaces and page numbers, which we can match with:
+
+
+```{r}
+#| eval: false
+
+ritter_data_raw |> 
+   filter(str_detect(temp, "^\\s+\\d+$")) 
+```
+
+So we want to filter out these rows too:
+
+```{r}
+#| eval: false
+
+ritter_data_raw <- 
+  output |>
+    read_lines(skip = 2, n_max = max_rows) |>
+    tibble(temp = _) |>
+    filter(!str_detect(temp, "^$"), 
+           !str_detect(temp, "^\\s+\\d+$"))
+```
+
+The next step will be, as before, to use extract() from tidyr and a regular expression to arrange the data into columns. However, the regular expression that we will need to use will be a bit more complicated than the one above. If it weren’t for the second column, we could use a function from the readr package such as read_delim() that is designed to read delimited text data, such as comma-separated values (CSVs), tab-separated values, or (most relevant here) values separated by spaces.
+
+<!-- Unfortunately, the second column (company) contains spaces (e.g., United Parcel Service*), so this would be read as three columns (for this row, at least).12 -->
+不幸なことに、2番目の列（`company`）にはスペース（例：`United Parcel Service*`）が含まれているため、これは3つの列として読み込まれる（少なくともこの行に関しては）。[^12]
+
+Fortunately, company is the only column with embedded spaces and it is followed by a column (ipo_date) that is strictly six digits (it has the form yymmdd, where yy is the last two digits of the year, mm are the month digits, and dd represents the date of the month). So we can use this to effectively “delimit” the company column from the rest of the data.
+
+<!-- The first column (amount_left_on_table) contains non-space characters, which we can represent as [^\\s].  -->
+最初の列（`amount_left_on_table`）にはスペース以外の文字が含まれており、これは`[^\\s]`として表すことができる。
+<!-- Here the ^ functions to negate the expression following it \\s, which is the general way of representing spaces in regular expressions.  -->
+ここで、`^`は、その後に続く`\\s`を否定するために機能し、これは正規表現でスペースを一般的に表す方法である。
+<!-- So [^\\s]+ denotes “one or more non-space characters” and embedding this in parentheses (i.e., as ([^\\s]+)) allows us to capture the matching characters.  -->
+したがって、`[^\\s]+`は「1つ以上のスペース以外の文字」を示し、これを括弧で囲む（つまり、`([^\\s]+)`）ことで、一致する文字を**キャプチャ**することができる。
+<!-- The second column could contain pretty much anything (that is `.` in regex terms), followed by one or more spaces, which we could represent as `(.+)\\s+`.  -->
+2番目の列にはほとんど何でも含まれる可能性がある（つまり、正規表現の用語で`.`である）、これに続く1つ以上のスペースを`(.+)\\s+`として表すことができる。
+<!-- The third column (ipo_date) can be captured by a regular expression for six digits (again followed by one or more spaces that we don’t capture): ([0-9]{6})\\s+.  -->
+3番目の列（`ipo_date`）は、6桁の数字をキャプチャする正規表現でキャプチャできる（再び、キャプチャしない1つ以上のスペースに続く）：`([0-9]{6})\\s+`。
+<!-- The next four columns are like the first column, so we can use ([^\\s]+) to capture these, with all but the last column being followed by one or more spaces (\\s+).  -->
+次の4つの列は最初の列と同じように、これらをキャプチャするために`([^\\s]+)`を使用し、最後の列以外は1つ以上のスペース（`\\s+`）に続く。
+<!-- One issue that is not evident initially is that some, but not all, rows begin with spaces.  -->
+最初には明らかでない問題の1つは、いくつかの行がスペースで始まっているが、すべてがそうではないということである。
+<!-- We don’t want to capture these spaces, but we want to allow for them to be there, so we can use ^\\s* to represent “the start of the line followed by zero or more spaces” to do this. -->
+これらのスペースをキャプチャしたくはないが、それらが存在することを許可したいので、これを行うために`^\\s*`を使用して「行の先頭に続く0個以上のスペース」を表すことができる。
+
+<!-- Now we can put all of this together as follows: -->
+
+```{r}
+#| eval: false
+
+regex <- str_c("^\\s*",          # Start string (perhaps followed by spaces)
+               "([^\\s]+)\\s+",  # Non-space characters (followed by spaces)
+               "(.+)\\s+",       # Any characters, which may include spaces 
+                                 #  (followed by spaces)
+               "([0-9]{6})\\s+", # Six digits (followed by spaces)
+               "([^\\s]+)\\s+",  # Non-space characters (followed by spaces)
+               "([^\\s]+)\\s+",  # Non-space characters (followed by spaces)
+               "([^\\s]+)\\s+",  # Non-space characters (followed by spaces)
+               "([^\\s]+)",      # Non-space characters 
+               "$")              # End of string
+```
+
+<!-- We can then run this through extract(). -->
+これを`extract()`を通して実行できる。
+
+
+```{r}
+#| eval: false
+
+ritter_data_raw |>
+    # Here we use the regular expression to split the data into columns
+    extract(temp, col_names, regex) 
+```
+
+<!-- We are getting close.  -->
+もうすぐだ。
+<!-- Now we want to convert the fields `amount_left_on_table`, `offer_price`, `first_close_price`, and `shares_offered` to numerical values.  -->
+次に、`amount_left_on_table`、`offer_price`、`first_close_price`、`shares_offered`のフィールドを数値に変換したい。
+<!-- For this task, the `parse_number()` function from readr is ideal.  -->
+このタスクには、`readr`の`parse_number()`関数が最適である。
+<!-- Note that we can use `across()` to apply a single function `parse_number()` to multiple columns (in this case, `all_of()` these four columns) and, by default, the results will replace the values previously found in those columns.  -->
+`across()`を使用して、複数の列（この場合、これらの4つの列の`all_of()`）に単一の関数`parse_number()`を適用し、デフォルトでは、これらの列で以前に見つかった値が置き換えられる。
+<!-- And we also want to convert ipo_date to an actual date, which we can do using `ymd()` from the lubridate package.  -->
+また、`ipo_date`を実際の日付に変換したいので、`lubridate`パッケージの`ymd()`を使用してこれを行うことができる。
+<!-- At this stage, we store the result in a data frame ritter_data. -->
+この段階で、結果をデータフレーム`ritter_data`に保存する。
+
+
+```{r}
+#| eval: false
+
+ritter_data <-
+  ritter_data_raw |>
+  # Here we use the regular expression to split the data into columns
+  extract(temp, col_names, regex) |>
+  # Finally, fix up the data types of the columns
+  mutate(across(all_of(c("amount_left_on_table", "first_close_price",
+                         "offer_price", "shares_offered")), 
+                parse_number),
+         ipo_date = ymd(ipo_date),
+         company = str_trim(company)) 
+
+ritter_data
+```
+
+<!-- At this stage, we should check if we have any rows with NA values, as the existence of such rows would suggest possible parsing issues. -->
+この段階で、NA値を持つ行があるかどうかを確認する必要がある。NA値を持つ行が存在する場合、解析の問題が考えられる。
+
+```{r}
+#| eval: false
+
+ritter_data |>
+  filter(if_any(.cols = everything(), .fns = is.na))
+```
+
+
+<!-- We have none! -->
+なし！
+
+
+### 9.2.1 Exercises
+
+
+<!-- 1. In the PDF, Ritter states "IPOs marked with an `*` also had international tranches (and probably some others, too)." -->
+このPDFで、Ritterは「`*`でマークされたIPOは国際トランシェも持っていた（おそらく他のものも）」と述べている。
+<!-- Write code to remove this “*” when present and create an additional column `intl_tranche` that indicates an international tranche.  -->
+この「*」が存在する場合にこれを削除し、国際トランシェを示す追加の列`intl_tranche`を作成するコードを書きなさい。
+<!-- (Hint: The `extract()` function can be used here.  -->
+（ヒント：`extract()`関数をここで使用できる。）
+<!-- In a first pass, you might use `into = c("company", "intl_tranche")` and `regex = "^(.*?)(\\*?)$"` with this function.  -->
+最初の段階では、この関数を使用して、`into = c("company", "intl_tranche")`と`regex = "^(.*?)(\\*?)$"`を使用するかもしれない。)
+<!-- Can you see what the `?` in `.*?` is doing?  -->
+`.*?`の`?`が何をしているのか説明せよ。
+<!-- There is some explanation here.  -->
+[ここ](https://stackoverflow.com/questions/3075130/what-is-the-difference-between-and-regular-expressions)に説明がある。
+<!-- Does the regex work without this ?? What does \\*? match?) -->
+この`?`なしで正規表現は機能するか？`\\*?`は何に一致するか？）
+
+2. Ritter defines money left on the table as “the difference between the closing price on the first day of trading and the offer price, multiplied by the number of shares sold.” Can you calculate this from the data provided? Is the calculated amount (amount) equal to the amount in amount_left_on_table in each case? What explains the differences? (Hints: There will be more than one reason. You may find it helpful to calculate ratio = amount / amount_left_on_table and to focus on differences of more than 1% with filter(abs(ratio - 1) > 0.01).)
+
+<!-- 3. In words, what do each of the following regular expressions match? What do they capture? -->
+3. 次の正規表現はそれぞれ何にマッチするか？何をキャプチャするか？
+
+- `"^\\s*"`
+- `"(.+)\\s+"`
+- `"([^\\s]+)\\s+"`
+- `"([0-9]{1,2}/[0-9]{4})\\s+"`
+- `"([0-9,]+)\\s+"`
+
+<!-- 4. The online appendix for “The Customer Knows Best: The Investment Value of Consumer Opinions” contains Table OA.1 entitled List of firms with customer reviews on Amazon.com.  -->
+4. 「The Customer Knows Best: The Investment Value of Consumer Opinions」のオンライン付録には、Amazon.comでの顧客レビューを持つ企業のリストを示すTable OA.1が含まれている。
+<!-- Using an approach similar to that we used for ritter_data above, create a data frame huang_data with columns company_name, industry, start, end, months, reviews. -->
+上記の`ritter_data`と同様のアプローチを使用して、次のカラムを持つデータフレーム`huang_data`を作成する。
+  <!-- - months and reviews should be numerical values. -->
+  - `months`と`reviews`は数値であるべき。
+  <!-- - start and end should be dates (use the first day of the month if only the month and year is specified). -->
+  - `start`と`end`は日付であるべき（月と年のみが指定されている場合は、月の最初の日を使用する）。
+  <!-- - You can solve this by combining the partial regular expressions above into a single regular expression (in the way we combined partial regular expressions above for ritter_data using str_c()). -->
+  - 上記の部分的な正規表現に単一の正規表現を組み合わせることで、これを解決できる。
+  (この法法で、`str_c()`を使用して`ritter_data`の部分的な正規表現を組み合わせた方法と同様にすることができる。)
+
+
+<!-- 5. Using the following code, where the URL provides a sample of observations on mergers and acquisitions from SDC, create a first-pass import of the data.13  -->
+5. 次のコードを使用して、URLがSDCからの企業の合併と買収に関する観測値のサンプルを提供している場合、データの初回インポートを作成する。[^13]
+<!-- What is the first issue you see when you look at the data in ma_sdc? -->
+`ma_sdc`のデータを見るときに最初に見る問題は何か？
+<!-- (Hint: Look at the first five rows.)  -->
+（ヒント：最初の5行を確認しなさい。）
+<!-- Adapt the code to address this issue. (Hint: You may have to experiment with different values for the skip argument to get the right setting.) -->
+この問題に対処するためにコードを適応させなさい。（ヒント：適切な設定を得るために、skip引数に異なる値を試してみる必要があるかもしれません。）
+
+
+```{r}
+#| eval: false
+
+col_names <- c("date_announced", "date_effective", "tgt_name",
+               "tgt_nation", "acq_name", "acq_nation",
+               "status", "pct_of_shares_acq", "pct_owned_after_transaction",
+               "acq_cusip", "tgt_cusip", "value_of_transaction_mil",
+               "acq_prior_mktval", "tgt_prior_mktval",
+               "acq_nation_code", "tgt_nation_code")
+
+url <- str_c("https://gist.githubusercontent.com/iangow/",
+             "eb7dfe1cd0913821429bdf0566465d41/raw/",
+             "358d60a4429f5747abc61f8acc026d335fc165f3/sap_sample.txt")
+ma_sdc_file <- tempfile()
+download.file(url, ma_sdc_file)
+```
+
+
+```{r}
+#| eval: false
+
+ma_sdc_cols <- fwf_empty(ma_sdc_file, col_names = col_names)
+ma_sdc <- read_fwf(ma_sdc_file, col_positions = ma_sdc_cols)
+```
+
+Open the file found at url in your browser (browseURL(url) will help here) and locate the row containing the word Coffey. What do you see there as relates to the variable status? How does this compare with what you see in status if you filter using tgt_name == "Coffey International Ltd")? What do you think has happened here? How can setting a value for n in fwf_empty() help here? (Hint: Using which(ma_sdc$status == "Unconditi") might help here.)
+
+Using an appropriate function from the lubridate package, fix the variables date_announced and date_effective so that they have type Date.
+
+What are the minimum and maximum values of date_announced and date_effective? What explains missing values (if any) here?
+
+What do you observe about acq_cusip and tgt_cusip? Can you write some code to check that these variables have been read in correctly? (Hint: The function str_length() might be useful here.)
+
+## 9.3 Further reading
+
+Chapter 7 of R for Data Science provides an introduction to importing data, including functions such as read_csv() and read_fwf(). Chapter 14 in R for Data Science covers strings and Chapter 15 covers regular expressions.
+
+The topic of regular expressions is surprisingly deep and regular expressions are useful in more contexts than might be apparent when first learning about them. Friedl (2006) provides a deep treatment of the topic. Goyvaerts and Levithan (2009) is full of examples of solutions to common cases.
+
+[^1]: Some WRDS data sets have “incorrect” data types and additional work is needed to address these cases.
+
+[^2]: Regular expressions are available in pretty much every package, include Python, R, PostgreSQL, and SAS. Learning on one platform largely carries over to any other. Stata’s support for regular expressions is much weaker than the other platforms’.
+
+[^3]: According to https://siccode.com, “Standard Industrial Classification Codes (SIC Codes) identify the primary line of business of a company. It is the most widely used system by the US Government, public, and private organizations.”↩︎
+
+[^4]: While Fama-French industry definitions might not change very often, we will see other benefits from a more robust and general approach below.
+
+[^5]: We justify this approach using the fact that these data sets are not large by any stretch and the assumption that, in general, only one of ff_ind, ff_ind_short_desc and ff_ind_desc actually gets used in practice.
+
+[^6]: Note that an alternative to str_c() would be paste0() from base R; we use str_c() here because the stringr functions seem easier to learn as a group than their base R equivalents.
+
+[^7]: Throughout this section, we will repeat code, but in practice, we would simply add additional lines as we work through the code. This is simply a way to represent the idea of working through the data interactively, something that the Tidyverse makes very easy.
+
+[^8]: It seems that omitting ^ and $ has no effect in this case.
+
+[^9]: Again, you may find it useful to inspect the full contents of temp yourself. We don’t do that here due to space constraints.
+
+[^10]: We only print the first 70 characters of each row to keep the output on the page.
+
+[^11]: Note that in other contexts, such as inside [ and ], ^ will act as a kind of “not” operator.
+
+[^12]: If the values in company had been quoted, e.g., as "United Parcel Service*", then reading the data as space-delimited would work. But these are “wild” data from a PDF and such niceties cannot be expected.
+
+[^13]: We messed with these data, so these cannot be used for research! But they are a realistic representation of an actual data set.
+
