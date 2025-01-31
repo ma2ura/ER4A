@@ -1,0 +1,160 @@
+# 序論 {.unnumbered}
+
+<!-- This book provides a course on financial accounting research that begins at an upper-undergraduate ("honours") or introductory PhD level.  -->
+本書は、学部上級（「honours」）あるいは博士課程の入門レベルからスタートする財務会計研究の講義を提供している。
+<!-- One goal of the course, like most PhD courses, is to prepare PhD students to take further research courses and to go on to do their own research.  -->
+この講義の目的は、ほとんどの博士課程の講義と同じように、博士課程の学生がより上級の講義を取るために準備することや、自ら研究をすすめることができるようにすることである。
+<!-- Another goal of the course is to provide students with a set of skills that is useful in other domains, such as consulting or finance.  -->
+もう一つの目的は、コンサルティングやファイナンスといった他の領域で有用なスキルをもつ生徒を育てることである。
+<!-- This second goal stems from the origins of parts of this course in a joint honours-PhD course at the University of Melbourne, where the honours students are undergraduates completing an additional year of study with a focus on research.  -->
+この2つ目の目的は、メルボルン大学の優秀学生と博士課程のジョイント講義の一部が起源である。
+ここで優秀学生(honours students)は、研究を中心とした追加の1年間の学習を完了する学部生である。
+<!-- While some honours students progress to PhD studies, most elect to take jobs in industry, such as consulting, auditing, or public service. -->
+優秀学生の一部は博士課程に進むが、ほとんどはコンサルティング、監査、公共サービスなどの業界での仕事を選択する。
+
+
+## 本書の特徴
+
+<!-- Some features of this book mean that a course based on it will be distinguished from a more traditional PhD-level course in a number of respects that we discuss here. -->
+本書の特徴のいくつかは、本書に基づいた講義が、従来の博士課程レベルの講義とは異なる点で区別されることを意味している。
+
+<!-- ## Pedagogically driven selection of papers -->
+## 教育的な観点から論文の選択
+
+
+<!-- Many syllabuses for PhD courses in accounting focus on recent papers with a view to giving students a sense of the current themes and trends in research to help students spot gaps in the literature that they can fill with their own research.  -->
+会計を専攻する博士課程の講義の多くは、学生が自分自身の研究で埋めることができる文献の空白を見つけるのを助けるために、最新の論文に焦点を当てている。
+<!-- We view such courses as complementary to this course, but take a different approach. -->
+このような講義は本書と補完的なものと考えているが、異なるアプローチを取っている。
+<!-- Aiming to provide a more fundamental understanding of accounting research, the selection of papers in this course is driven more by pedagogical goals than an attempt to represent the current state of play in accounting research.  -->
+会計研究のより基本的な理解を提供することを目指して、この講義で選ばれた論文は、会計研究の現状を確認しようとするのではなく、教育的な目的を重視して選択されている。
+<!-- In some cases, this means covering older papers (e.g., Ball and Brown, 1968), but in other cases we use a recent paper that features a core idea or approach. -->
+場合によっては、古い論文（例：Ball and Brown, 1968）を取り上げることもあるが、他の場合には、中心的なアイデアやアプローチを特徴とする最近の論文を使用している。
+
+<!-- ## Incorporation of data analysis skills -->
+## データ解析スキルの組み込み
+
+<!-- A second feature that distinguishes this course from most PhD courses in accounting is an emphasis on data analysis skills, which are woven into the course throughout.  -->
+本書を特徴づける2番目の特徴は、ほとんどの博士課程コースとは違って、データ解析スキルに重点を置いていることである。
+<!-- While it might have been possible to make this a course focused exclusively on such skills, it is our view that these skills are best learned through applying them to real research questions. -->
+本書をデータ解析スキルに特化させることも可能であったが、これらのスキルは実際の研究課題に適用することで最もよく学ぶことができると考えている。
+<!-- Conversely, we believe that being able to pull data, run simulations, and get more involved with critical elements of the research process engenders a better understanding of research. -->
+逆に、データを取得し、シミュレーションを実行し、研究プロセスの重要な要素により深く関わることができるようになることは、研究に対する理解を深めると考えている。
+<!-- We build data analysis and computing skills into the course at each step in a systematic way.  -->
+データ解析とコンピューティングスキルを体系的に講義の各段階に組み込んでいる。
+<!-- In practice, research computing skills are the bread and butter of a researcher's toolkit but are generally neglected in PhD programs' formal curricula.  -->
+実際には、研究コンピューティングスキルは研究者のツールキットの中心的な部分を占めているが、一般的には博士課程のカリキュラムでは無視されがちである。
+<!-- The prevailing ethos seems to be that research computing skills are acquired informally from other students, through research assistantships and collaboration with faculty members, and so on. -->
+一般的な考え方は、研究コンピューティングスキルは他の学生から、研究助手や教員との協力を通じて、などの形で非公式に獲得されるというものである。
+
+<!-- In some doctoral programs, this approach may work to a degree.  -->
+博士課程プログラムによっては、このアプローチがある程度は機能するかもしれない。
+<!-- But in many doctoral pro-grams, such informal learning fails to prepare students adequately.  -->
+しかし、多くの博士課程プログラムでは、このような非公式な学習では学生を十分に準備することができない。
+<!-- For example, if students' collaboration with faculty members is informal and related to collaboration on papers where the students do the data analysis with limited or no hands-on guidance from the faculty member, then the opportunity for clear and comprehensive guidance is limited. -->
+例えば、学生が教員との協力が非公式であり、学生がデータ解析を行う際に教員からの指導が限られているかない場合、明確で包括的な指導の機会は限られる。
+
+<!-- ## Greater emphasis on research design and methods -->
+## 研究デザインと方法に対する強い重点
+
+<!-- Accounting research is overwhelmingly an empirical discipline seeking to draw causal inferences and, as such, significant research training should be focused on research design issues. -->
+会計研究は圧倒的に因果推論を行う実証的な学問であり、そのため、重要な研究トレーニングは研究デザインの問題に焦点を当てるべきである。
+<!-- Part III of the book examines causal inference in depth, including natural experiments, regression discontinuity designs, instrumental variables, and fixed effects.  -->
+本書の第III部では、自然実験、回帰不連続デザイン、操作変数、固定効果など、因果推論について詳しく調べている。
+<!-- However, we will see that there are flaws in the common belief that it is these techniques that offer hope for warranted causal inference, rather than the settings in which they can be deployed.  -->
+しかし、これらの技術が保証された因果推論の可能性を提供するという一般的な信念には欠陥があることがわかるだろう。
+<!-- Throughout the course, we will offer a broader set of tools for making inferences about real-world phenomena. -->
+講義全体を通じて、実世界の現象について推論を行うためのより広いツールセットを提供する。
+<!-- In this course, we strive to give students the skills that are needed to conduct the analyses that we cover.  -->
+この講義では、カバーする分析を実施するために必要なスキルを学生に提供することを目指している。
+<!-- We believe that understanding of statistical and econometric techniques by accounting researchers is more likely to be enhanced by hands-on simulation analysis than by analysis of consistency and asymptotic variance of estimators.  -->
+会計研究者による統計的および計量経済学的手法の理解は、一貫性や推定量の漸近分散の分析よりも、実際のシミュレーション分析によってより高い可能性で向上すると考えている。
+<!-- By building in the data analysis skills needed to perform such simulations, we hope that this course provides a platform for accounting researchers to think more carefully about the properties of their estimators.  -->
+このようなシミュレーションを実行するために必要なデータ解析スキルを組み込むことで、この講義が会計研究者が推定量の特性についてより慎重に考えるためのプラットフォームを提供することを期待している。
+<!-- A core commitment we make in this book is that every analysis we present can be conducted by the reader using the code found herein. -->
+本書で行う分析は、本書に記載されているコードを使用して読者が実行できることを前提としている。
+
+<!-- ## Prerequisites -->
+## 前提条件
+
+<!-- We presume prior knowledge of some topics and access to certain computing resources.  -->
+いくつかのトピックについての事前知識と、特定のコンピューティングリソースへのアクセスを前提としている。
+<!-- We have endeavoured to keep these requirements to a minimum. -->
+これらの要件を最小限に抑えるよう努めている。
+
+
+<!-- 1. Knowledge of accounting and business.  -->
+1. 会計とビジネスに関する知識。
+<!-- In terms of accounting, we assume a solid understanding of the content of an introductory financial accounting course and enough understanding of business to make sense of accounting. -->
+会計に関しては、入門的な財務会計コースの内容についての理解と、会計を理解するためのビジネスに関する十分な理解を前提としている。
+
+<!-- 2. Prior exposure to statistics and econometrics.  -->
+2. 統計学と計量経済学の事前学習
+<!-- Some familiarity with the elements of statistical inference and ordinary least-squares (OLS) regression will be helpful.  -->
+統計推論の要素や最小二乗（OLS）回帰についての基本的な知識があると有用である。
+<!-- While we do provide some introductory material on elements of these in Chapters 3-5, this is selective and it may help to use a textbook to brush up on these topics as you work through the book. -->
+第3章から第5章ではこれらの要素についての入門的な資料を提供しているが、これは選択的なものであり、本書を読み進める際にこれらのトピックを復習するために教科書を使用すると役立つかもしれない。
+
+<!-- 3. Access to academic journals.  -->
+3. 学術誌へのアクセス
+<!-- The course makes extensive use of papers in academic journals.  -->
+講義では、学術誌の論文を広範に使用している。
+<!-- If you are a faculty member, researcher, or student at an academic institution, then you should be able to access the papers we use through your library.  -->
+学術機関の教員、研究者、学生であれば、所属する図書館を通じて使用する論文にアクセスできるはずである。
+<!-- Some universities provide a service (perhaps for a fee) for alumni access to academic journals.  -->
+一部の大学は、卒業生が学術誌にアクセスするためのサービス（おそらく有料）を提供している。
+<!-- Unfortunately, if you cannot access the papers, it will be difficult to make full use of this course book beyond Part I. -->
+残念ながら、論文にアクセスできない場合、第I部以降の本書を十分に活用することは難しいだろう。
+
+<!-- ## A guide for readers -->
+## 読者へのガイド
+
+<!-- The book is written so as to be fairly accessible to a novice reading independently (subject to the prerequisites outlined above).  -->
+本書は、上記の前提条件を満たしている読者にとっては、比較的独学で読むことができるように書かれている。
+<!-- We recommend that such readers work through the first few chapters in order, including running the code, completing the exercises, and thinking about the discussion questions.  -->
+このような読者には、最初の数章を順番に読み進め、コードを実行し、演習を完了し、議論の質問について考えることをお勧めする。
+<!-- That said, some elements of the exercises and discussion questions are subtle and having an instructor or someone to discuss these with will help you to get the full value from this material. -->
+ただし、演習や議論の質問の一部は微妙であり、これらについて議論するためのインストラクターや他の人がいると、この教材から最大の価値を得るのに役立つだろう。
+<!-- We hope that this book will be useful to a variety of readers, learners, and instructors beyond the novices.  -->
+本書が初心者以外のさまざまな読者、学習者、インストラクターにとって有用であることを願っている。
+<!-- Below we discuss possible approaches for some hypothetical readers. -->
+以下では、いくつかの仮想的な読者に対するアプローチについて議論する。
+
+<!-- • I am interested in learning more about issues related to research design and causal inference.  -->
+- 研究デザインと因果推論に関連する問題についてもっと学びたい。
+<!-- You might find you can dive into Chapters 2 and 4, then move to Chapter 17 and subsequent chapters. -->
+第2章と第4章に飛び込んで、その後第17章以降の章に進むことができるかもしれない。
+<!-- - I am interested in learning more about issues related to research design and causal inference, but I don't really want to learn R.  -->
+- 研究デザインと因果推論に関連する問題についてもっと学びたいが、Rを学ぶ気はあまりない。
+<!-- The plan for the hypothetical reader in the previous bullet point likely works.  -->
+前の項目の仮想的な読者の計画がおそらく適している。
+<!-- Even if you aren't interested in learning R, we think that running the code helps solidify understanding and that what the code is doing is sufficiently clear that copy-pasting the code into your own computer should be enough to get the gist of what is going on. -->
+Rを学ぶことに興味がなくても、コードを実行することが理解を固めるのに役立つと考えており、コードが何をしているかが十分に明確であるため、コードを自分のコンピュータにコピーして貼り付けるだけで、何が起こっているかの要点を把握できるはずである。
+<!-- - I have heard about R and would like to learn more about it.  -->
+- Rについて聞いたことがあり、もっと詳しく知りたい。
+<!-- Chapters 2 and 3 cover some of the basics.  -->
+第2章と第3章では、基本的な内容をカバーしている。
+<!-- But if you're already proficient in something like SAS or Stata, you may find it pretty easy to skip those chapters (after meeting the prerequisites above) -->
+ただし、SASやStataなどの他のソフトウェアに精通している場合、これらの章をスキップするのはかなり簡単かもしれない（上記の前提条件を満たした後）。
+
+
+## 謝辞
+
+省略
+
+<!-- ## Some notes on style -->
+## スタイルに関するいくつかの注意
+
+<!-- We follow British (hence Australian) conventions for the most part.  -->
+本書は、ほぼイギリス（したがってオーストラリア）の慣習に従っている。
+<!-- Reflecting the enduring influence of a Pocket Oxford Dictionary one of us received at age seven, we tend to use "-ize" spellings instead of "-ise" spellings (in any case, these are more familiar to American readers). --->
+7歳のときに受け取ったPocket Oxford Dictionaryの持続的な影響を反映して、私たちは「-ize」の綴りを使うことが多い（いずれにせよ、これはアメリカの読者にとってより馴染み深い）。
+<!-- Also we likely use the Oxford comma more often than not.  -->
+また、おそらくオックスフォードカンマをよく使っている。
+<!-- One benefit of our choice is that we do not have to follow the prescription of American English that commas and full stops (periods) always go inside quotes and can instead put them where they naturally belong (i.e., where speakers of languages other than American English put them) even if this produces sentences that may look odd to some American readers.  -->
+私たちの選択の利点の一つは、アメリカ英語の規則に従う必要がないことである。つまり、コンマやピリオドを常に引用符の内側に置かなければならないという規則に従う必要がなく、代わりに（アメリカ英語以外の言語を話す人々がそれらを置く場所）自然な場所に置くことができる。これにより、一部のアメリカの読者には奇妙に見えるかもしれないが、それでも構わない。
+<!-- (It's hard to disagree with Hadley Wickham - the lead author of the Tidyverse on this point: "That is literally the stupidest rule in American English and I refuse to follow it?") -->
+（この点についてTidyverseの主要作者であるHadley Wickhamの意見に異論を唱えるのは難しい。
+「それはアメリカ英語で最も愚かなルールであり、私はそれに従うことを拒否する」と彼は述べている。）
+<!-- For code, we largely follow the Tidyverse style guide for R code, except that we often put the first item after the assignment operator (<-) on a new line. -->
+コードについては、RコードのTidyverseスタイルガイドに基づいているが、代入演算子（`<-`）の後の最初の項目を新しい行に置くことが多い。

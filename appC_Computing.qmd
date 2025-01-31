@@ -1,0 +1,314 @@
+# 研究のためのコンピュータ概論
+
+
+<!-- In this appendix, we provide a brief overview of the research computing landscape with a focus on the statistical programming languages most commonly used in empirical accounting research.  -->
+この付録では，実証的会計研究で最も一般的に使用される統計プログラミング言語に焦点を当てて，研究コンピューティングの概要を簡単に説明する。
+<!-- We also discuss some fundamental ideas associated with data management that help to explain the approach we emphasize in this book. -->
+また，本書で強調しているアプローチを説明するのに役立つデータ管理に関連するいくつかの基本的なアイデアについても議論する。
+
+## Languages
+
+<!-- A downside of developing a course that involves hands-on data analysis is that material in at least one statistical programming language is needed.  -->
+実際のデータ解析を含むコースを開発する際の欠点は，少なくとも1つの統計プログラミング言語の資料が必要であることである。
+<!-- In this course, we focus on R and, somewhat indirectly, on PostgreSQL as tools.  -->
+このコースでは，ツールとしてRと，ある程度間接的にPostgreSQLに焦点を当てている。
+<!-- We believe that this choice is much less restrictive than it may seem.  -->
+この選択が思われるほど制限的ではないと考えている。
+<!-- However, before explaining this choice, it makes sense to discuss the primary alternatives. -->
+ただし，この選択を説明する前に，主要な代替案について議論することが理にかなっている。
+
+### SAS
+
+<!-- According to Wikipedia, “SAS is a statistical software suite developed by SAS Institute for data management, advanced analytics, multivariate analysis, business intelligence, criminal investigation, and predictive analytics.”  -->
+Wikipediaによると，「SASは，データ管理，高度な分析，多変量分析，ビジネスインテリジェンス，犯罪捜査，予測分析のためにSAS Instituteによって開発された統計ソフトウェアスイートである」。
+<!-- SAS has long been a staple of research in accounting and finance, in part because it is used by Wharton Research Data Services (WRDS, pronounced “words”).  -->
+SASは，一部の理由で，会計およびファイナンスの研究の中心であり続けており，Wharton Research Data Services（WRDS，発音は「ワーズ」）で使用されているためである。
+<!-- WRDS provides its data sets in SAS data format and historically WRDS offered SAS as the primary programming language on its research computing servers. -->
+WRDSは，データセットをSASデータ形式で提供しており，歴史的には，WRDSは研究コンピューティングサーバーでSASを主要なプログラミング言語として提供していた。
+
+<!-- SAS offers a number of advantages to researchers. -->
+SASは，研究者に多くの利点を提供している。
+
+<!-- 
+- Rich set of statistical tools
+- Ability to use SQL to prepare data sets (via PROC SQL)
+- Ability to process large data sets due to an on-disk orientation to data processing
+- Availability to most researchers via WRDS servers
+-->
+
+- 豊富な統計ツール
+- データセットを準備するために（PROC SQLを介して）SQLを使用できる
+- データ処理にディスク指向のため，大規模なデータセットを処理できる
+- WRDSサーバーを介してほとんどの研究者が利用できる
+
+<!-- However, SAS has some disadvantages. -->
+しかし，SASにはいくつかの欠点がある。
+
+<!--
+- Specialized programming language is relatively foreign to users of other languages
+- Proprietary software limited to Windows and Linux (i.e., not MacOS)
+- Limited set of data types
+- Limitations in handling textual data
+- Some important functionality (e.g., graphs) seems fairly inaccessible to most users
+-->
+
+- 他の言語のユーザーにとっては比較的馴染みのない専門的なプログラミング言語
+- WindowsとLinux（つまり，MacOSではない）に限定されたプロプライエタリソフトウェア
+- 限られたデータ型のセット
+- テキストデータの処理に関する制限
+- 一部の重要な機能（例：グラフ）は，ほとんどのユーザーにはかなりアクセスしにくいように見える
+
+
+
+
+### Stata
+
+<!-- According to Wikipedia, “Stata is a general-purpose statistical software package created in 1985 by StataCorp. -->
+Wikipediaによると，「Stataは，1985年にStataCorpによって作成された汎用統計ソフトウェアパッケージである。
+<!-- Most of its users work in research, especially in the fields of economics, sociology, political science, biomedicine, and epidemiology.” -->
+そのほとんどのユーザーは，経済学，社会学，政治学，生物医学，疫学などの研究分野で働いている。
+
+<!-- Stata offers a number of advantages to researchers. -->
+Stataは，研究者に多くの利点を提供している。
+
+<!--
+- Rich set of statistical tools, especially for economists and those in downstream disciplines, such as finance and accounting
+- Availability on all three end-user operating systems (Windows, MacOS, and Linux)
+- Friendly interface coupled with command-based orientation suits many workflows
+-->
+
+- 経済学者やファイナンス，会計などの下流分野の研究者にとって特に豊富な統計ツール
+- すべてのエンドユーザーオペレーティングシステム（Windows，MacOS，Linux）で利用可能
+- 友好的なインターフェースとコマンドベースの指向は，多くのワークフローに適している
+
+<!-- However, Stata has some disadvantages. -->
+しかし，Stataにはいくつかの欠点がある。
+
+<!--
+- Proprietary system (i.e., it costs money)
+- In-memory orientation makes it unsuitable for large data sets
+- Historical limitation to one in-memory data set makes data preparation challenging
+- Tendency for Stata users to produce code that is opaque
+--->
+
+- プロプライエタリシステム（つまり有料）
+- インメモリ指向のため，大規模なデータセットには適していない
+- 1つのインメモリデータセットへの歴史的な制限は，データの準備を難しくする
+- Stataユーザーが不透明なコードを生成する傾向がある
+
+
+
+### Python
+
+<!-- According to Wikipedia, “Python is an interpreted, high-level and general-purpose programming language.”  -->
+Wikipediaによると，「Pythonは，インタプリタ型，高水準，汎用プログラミング言語である」。
+<!-- While not designed specifically for statistical or econometric analyses, Python has become a mainstay of the data science community, and there exist many packages that make it possible to perform research computing tasks for accounting research in Python. -->
+統計分析や計量経済学のために特に設計されたわけではないが，Pythonはデータサイエンスコミュニティの中心となっており，Pythonを使用して会計研究のための研究コンピューティングタスクを実行することが可能になるパッケージが多数存在している。
+
+<!-- Python offers a number of advantages to researchers. -->
+Pythonは，研究者に多くの利点を提供している。
+
+<!---
+- As a full-featured computer programming language, pretty much anything can be done using Python
+- Rich set of statistical tools, especially in areas such as statistical learning
+- Availability on all three end-user operating systems (Windows, MacOS, and Linux)
+--->
+
+- 完全な機能を備えたコンピュータプログラミング言語として，Pythonを使用してほとんどすべてのことができる
+- 統計学習などの分野において特に豊富な統計ツール
+- すべてのエンドユーザーオペレーティングシステム（Windows，MacOS，Linux）で利用可能
+
+<!-- However, Python has some disadvantages. -->
+しかし，Pythonにはいくつかの欠点がある。
+
+<!--
+- Due to its origins as a general-purpose computing language, some design choices are not optimized for data analysis
+- A little more difficult to set up for a relatively non-technical user
+--->
+
+- 一般的なコンピューティング言語としての起源から，データ解析に最適化されていない設計選択肢がいくつかある
+- 比較的非技術的なユーザーにとってセットアップが少し難しい
+
+
+
+### PostgreSQL
+
+
+PostgreSQL is in some ways out of place in this list, as it is not a programming language or statistical software package. 
+But given that much of this course uses PostgreSQL, we discuss it briefly here. 
+According to its website, “PostgreSQL is a powerful, open source object-relational database system with over 35 years of active development that has earned it a strong reputation for reliability, feature robustness, and performance.” For our purposes, the relevant fact is that PostgreSQL is a powerful system for storing data in a way that it can be processed, combined, and used in analysis.
+
+There are a number of similar database systems, including SQLite, MySQL, and Oracle. 
+We use PostgreSQL in part because we make extensive use of WRDS data, which is made available in a PostgreSQL database, and also because PostgreSQL is a very robust database system offering perhaps the strongest feature set among the main open-source alternatives.
+
+Starting from Chapter 6, we make extensive use of data sources from the PostgreSQL supplied by WRDS. 
+WRDS essentially provides data in two forms: as SAS data files (accessible via SFTP) and as tables in a PostgreSQL database.
+
+Chapter 2 provides an extended tutorial on R with an emphasis on the so-called Tidyverse. 
+Using dbplyr, tables in a (possibly remote) database can be represented as a kind of data frame that allows us “to use remote database tables as if they are in-memory data frames by automatically converting dplyr code into SQL” (we explain what a data frame is in Chapter 2). 
+In this way, the dbplyr package allows us to deploy the skills we learn in Chapter 2 to the manipulation and analysis of data stored in relational databases almost seamlessly. 
+The best way to understand these ideas is through hands-on use, for which we provide guidance in the chapters beginning with Chapter 6.
+
+### R
+
+<!-- According to Wikipedia, “R is a programming language and free software environment for statistical computing and graphics”. -->
+Wikipediaによると，「Rは，統計計算とグラフィックスのためのプログラミング言語およびフリーソフトウェア環境である」。
+
+<!-- Compared to SAS and Stata, R has the benefit of being open-source and free.  -->
+SASやStataと比較して，Rはオープンソースで無料であるという利点がある。
+<!-- Like SAS, there is a seemingly endless list of packages to support almost any statistical procedure or data management task that one can think of.  -->
+SASと同様に，ほとんどすべての統計手続きやデータ管理タスクをサポートするためのパッケージがほとんど無限にあるように思われる。
+<!-- A disadvantage of R is that, like Stata, its default approach uses in-memory data analysis.  -->
+Rの欠点は，Stataと同様に，デフォルトのアプローチがインメモリデータ解析を使用していることである。
+<!-- However, as we will see, this disadvantage can be overcome with packages that facilitate on-disk data manipulation and analysis. -->
+しかし，後述するように，ディスク上のデータ操作と解析を容易にするパッケージを使用することで，この欠点を克服することができる。
+
+### Why R?
+
+<!-- This book contains a lot of R code and a reader might ask why we chose R for this book and we provide an answer in this section. -->
+本書には多くのRコードが含まれており，読者はなぜこの本でRを選んだのかと尋ねるかもしれないが，このセクションでその答えを提供する。
+
+<!-- A more basic question might be: Why choose any software package?  -->
+もっと基本的な質問は，どのソフトウェアパッケージを選ぶのかということである。
+<!-- We believe that there are significant pedagogical benefits to covering not only research papers and their methods, but in studying in detail the computing steps required to apply those methods to produce the results in those papers.  -->
+我々は，研究論文や研究手法だけでなく，それらの方法を適用して論文の結果を生み出すために必要な計算手順を詳細に学ぶことには，教育上の重要な利点があると考えている。
+<!-- For example, having actual code that a reader can tweak makes it easy for the reader to appreciate how the results might have been different if different approaches had been used.  -->
+たとえば，読者が調整できる実際のコードを持っていることで，異なるアプローチを使用した場合に結果がどのように異なるかを読者が理解することが容易になる。
+<!-- Producing the numerous replications found in this book required a significant investment of time that a reader is unlikely to be able to make for everything covered in this book, especially for a reader who is new to research computing. -->
+本書に含まれる多くの複製を生成するには，読者が本書でカバーされているすべての内容について行うことができる可能性は低いため，特に研究コンピューティングに新しい読者にとっては，かなりの時間を要する。
+
+<!-- Having decided to include code in the book, why did we choose R in particular?  -->
+本書にコードを含めることを決定した後，なぜ特にRを選んだのか。
+<!-- An alternative approach would have been to include code in multiple languages.  -->
+別のアプローチとして，複数の言語でコードを含める方法がある。
+<!-- For example, “The Effect: An Introduction to Research Design and Causality” (Huntington-Klein, 2021) provides code in Python, R, and Stata.  -->
+たとえば，「The Effect: An Introduction to Research Design and Causality」（Huntington-Klein, 2021）は，Python，R，Stataのコードを提供している。
+<!-- And “Causal Inference: The Mixtape” (Cunningham, 2021) provides code in R and Stata. -->
+そして，「Causal Inference: The Mixtape」（Cunningham, 2021）は，RとStataのコードを提供している。
+
+<!-- There are two critical differences between these two books and ours.  -->
+これらの2つの本と当書の間には，2つの重要な違いがある。
+<!-- First, we felt it was important to include code to reproduce every analysis in the book.  -->
+第1に，本書のすべての分析を再現するためのコードを含めることが重要だと考えた。
+<!-- In contrast, “The Effect” and “The Mixtape” only include code to produce some of the analyses they contain.  -->
+これに対して，「The Effect」と「The Mixtape」は，それらに含まれる分析の一部を生成するためのコードのみを含んでいる。
+<!-- Including code for every analysis in those books would likely have resulted in significant greater length and complexity, and doing so in multiple languages even more so. -->
+これらの本のすべての分析にコードを含めることは，おそらく長さと複雑さが大幅に増加し，複数の言語で行うことはさらに増加するだろう。
+
+<!-- Second, “The Effect” and “The Mixtape” largely skip complicated data steps and use small data sets.  -->
+第2に，「The Effect」と「The Mixtape」は，複雑なデータステップをほとんどスキップし，小規模なデータセットを使用している。
+<!-- In contrast, we generally go through all the data steps required to produce our analyses.1  -->
+これに対して，通常，分析を生成するために必要なすべてのデータステップを実行する。
+<!-- And also we use (relatively!) large data sets, such as CRSP and Compustat that require paying attention to the “logistics” of getting the data into whatever statistical analysis package is being used.  -->
+また，CRSPやCompustatなどの（比較的！）大規模なデータセットを使用しており，データを使用している統計解析パッケージに取り込む「物流」に注意を払う必要がある。
+
+<!-- In this regard, the approach we use in this book provides a particularly low-cost way to access these data sets, as we discuss in Section 6.1.  -->
+この点において，本書で使用しているアプローチは，これらのデータセットに特に低コストでアクセスする方法を提供しており，6.1節で詳しく説明する。
+<!-- Achieving similar results with (say) Stata would require in most cases a significant “data step” (to use SAS terminology) using SQL followed by data analysis of the resulting data frames using native tools.  -->
+たとえば、Stataを使用して同様の結果を得るには，ほとんどの場合，SQLを使用した大規模な「データステップ」（SAS用語を使用）に続いて，結果のデータフレームを使用したデータ解析が必要となる。
+<!-- We believe that the dplyr-based approach used here results in code that is easier to understand.2 -->
+ここで使用されている`dplyr`ベースのアプローチは，理解しやすいコードを生成すると考えている。[^2]
+
+<!-- Finally, this book has been written with Quarto, a software package that works most seamlessly with R code.  -->
+最後に，本書はQuartoで書かれており，Rコードと最もシームレスに動作するソフトウェアパッケージである。
+<!-- Producing this book using Stata or SAS would have been much more challenging.3 -->
+StataやSASを使用してこの本を作成することは，はるかに困難であったであろう。
+
+<!-- Even though this book uses R, we believe it should be of interest to dedicated users of SAS, Stata, and Python.  -->
+本書はRを使用しているが，SAS，Stata，Pythonの熱心なユーザーにも興味を持ってもらえると考えている。
+<!-- First, one can probably get a lot of out this book with a minimal investment in learning R.  -->
+第1に，Rの学習に最小限の投資をすることで，本書から多くのことを得ることができると思われる。
+<!-- We have endeavoured to make the code understandable even if viewed as a kind of pseudo-code (in this regard, we think R—especially with dplyr—is superior to, say, SAS or Stata).  -->
+コードを疑似コードのように見ても理解できるように努めており（この点において，Rは，SASやStataなどに比べて優れていると考えている），多くのことを得ることができる。
+<!-- While one could read the book without running code, we strongly encourage you to run code in some places, even if just to be able to do some of the exercises.  -->
+コードを実行せずに本を読むこともできるが，練習問題のいくつかを行うためにコードを実行することを強くお勧めする。
+<!-- After some initial set-up (see Section 1.2), every analysis in the book can be produced by copying and pasting the code into R and the book has been written so that the code in any chapter can be run independently of that in other chapters (though code later in a chapter may depend on that earlier in the chapter). -->
+初期設定を行った後（1.2節を参照），本書のすべての分析は，コードをRにコピー＆ペーストすることで生成することができ，本書は，各章のコードが他の章のコードと独立して実行できるように書かれている（ただし，章の後半のコードは，章の前半のコードに依存する場合がある）。
+
+<!-- Second, we believe that some investment in R is worthwhile even if you will remain a dedicated user of, say, Stata.  -->
+第2に，Stataの熱心なユーザーであるとしても，Rに投資することは価値があると考えている。
+<!-- Even a dedicated Stata user is likely to benefit from the ability to read SAS, as co-authors may use it, and authors of papers may supply SAS code.  -->
+Stataの熱心なユーザーであっても，共著者が使用する可能性があるSASを読む能力から利益を得ることができるだろうし，論文の著者がSASコードを提供することもある。
+<!-- As R’s popularity increases, the ability to read R is likely to become more important.  -->
+Rの人気が高まるにつれて，Rを読む能力はより重要になる可能性がある。
+<!-- Already R is a kind of lingua franca in much of statistics, including (along with Python) machine learning. -->
+すでにRは，統計学の多くの分野（Pythonと共に）や機械学習などで一種の共通語となっている。
+
+<!-- Finally, the researcher who is a “dedicated user of X” is probably an endangered species.  -->
+最後に，「Xの熱心なユーザー」である研究者は，おそらく絶滅危惧種である。
+<!-- Most emerging researchers will likely need to use multiple statistical languages over their careers and R is a good candidate to be one of those.4 -->
+新興研究者のほとんどは，キャリア全体で複数の統計言語を使用する必要があると考えられ，Rはそのうちの1つである。
+
+
+## Data management
+
+<!-- ### Desiderata for data storage -->
+### データストレージのための望ましい条件
+
+<!-- 1. Fast random access to on-disk data.  -->
+1. **ディスク上のデータへの高速なランダムアクセス**
+<!-- Occasionally you will see benchmarks that compare alternative approaches to processing in-memory data.  -->
+時折，メモリ内データの処理の代替手段を比較するベンチマークを見ることがある。
+<!-- However, the reality is that data mostly “live” on disk and we want the ability to access these data quickly.  -->
+しかし、データは主にディスク上にあり，これらのデータに迅速にアクセスできる能力が必要となる。
+<!-- In many cases, we will want only a small sample of the observations in a data set.  -->
+多くの場合，データセットの観測値の一部のみが必要となる。
+<!-- For example, we may want stock-return data for Microsoft for a few dates.5  -->
+たとえば，いくつかの日付のマイクロソフトの株価データが必要となる場合がある。
+<!-- These data are found on crsp.dsf in the WRDS PostgreSQL database and can be retrieved from that system very quickly.  -->
+これらのデータは，WRDS PostgreSQLデータベースの`crsp.dsf`にあり，そのシステムから非常に迅速に取得できる。
+<!-- In contrast, some data storage systems would require us to load (or at least scan) the entirety of crsp.dsf to get these rows. -->
+一方，一部のデータストレージシステムでは，これらの行を取得するために`crsp.dsf`の全体をロード（または少なくともスキャン）する必要がある。
+
+<!-- 2. **Data accessible by any software package.**  -->
+2. **どのソフトウェアパッケージからもアクセス可能なデータ**
+<!-- Ideally, our data would be accessible from R, Stata, Python, Perl, … pretty much any software.  -->
+理想的には，データはR，Stata，Python，Perlなどのほとんどのソフトウェアからアクセス可能である。
+<!-- Being able to do this has subtle but important advantages for data collaboration and multilingual programming.  -->
+これを行うことは，データの共同作業や多言語プログラミングにおいて微妙だが重要な利点がある。
+<!-- For example, you may be a Stata devotee who needs help preparing a data set from Web data.  -->
+たとえば，Webデータからデータセットを準備するのに助けが必要なStataの信者かもしれない。
+<!-- Finding people with the skills to do this is going to be a lot easier if you don’t need them to have Stata skills so you can work with a Python guru.  -->
+これを行うスキルを持つ人々を見つけることは，Pythonの専門家と協力するためにStataスキルを持っていない必要がない場合にははるかに簡単である。
+<!-- So long as the data can be accessed through Stata, a Stata user is unlikely to care much if the data were created using Python or Stata.  -->
+データがStataを介してアクセスできる限り，Stataユーザーは，データがPythonまたはStataを使用して作成されたかどうかについてはあまり気にしないだろう。
+<!-- Alternatively, you may have written some complicated Perl code to generate some data sets, and occasionally need to tweak the code to accommodate changes in the source data.  -->
+または，いくつかの複雑なPerlコードを書いてデータセットを生成し，時折，ソースデータの変更に対応するためにコードを微調整する必要があるかもしれない。
+<!-- So long as the data sets are stored in a form that can be accessed by any system, you will have no need to translate the entire code into something you still know how to code in. -->
+データセットがどのシステムからもアクセス可能な形式で保存されている限り，コード全体をまだコーディングできる形式に変換する必要はない。
+
+<!-- 3. Data accessible from anywhere.  -->
+3. **どこからでもアクセス可能なデータ**
+<!-- Ideally, data should be able to be accessed from anywhere with an internet connection (in the 2020s, this essentially means anywhere).  -->
+理想的には，データはインターネット接続があればどこからでもアクセスできるようになっているべきである（2020年代には，これは基本的にどこでもということである）。
+<!-- For example, it should be easy for a researcher in Boston to share data with co-authors in California, Australia, or Singapore. -->
+たとえば，ボストンの研究者がカリフォルニア，オーストラリア，シンガポールの共著者とデータを共有するのは簡単であるべきである。
+
+<!-- 4. Possibility of centralized processing.  -->
+4. **集中処理の可能性**
+<!-- While less important than it once was, the ability to move data processing and analysis to a computer more powerful than one’s laptop can still be useful today.  -->
+かつてほど重要ではなくなったが，データ処理と分析を自分のラップトップよりも強力なコンピュータに移動できる能力は，今日でも依然として有用である。
+<!-- In the text, there are a number of cases where the heavy part of data processing is accomplished on the WRDS PostgreSQL server even when executing R code locally.  -->
+本文では，Rコードをローカルで実行している場合でも，データ処理の重い部分をWRDS PostgreSQLサーバーで実行するケースがいくつかある。
+<!-- SAS offers similar functionality with RSUBMIT. -->
+SASは`RSUBMIT`と同様の機能を提供している。
+
+<!-- 5. Support for a wide range of data types.  -->
+5. **幅広いデータ型のサポート**
+<!-- Ideally, available data types will include strings, floating-point, integers, large integers, dates, timestamps with time zones, JSON, XML, and other types.  -->
+理想的には，利用可能なデータ型には，文字列，浮動小数点数，整数，大きな整数，日付，タイムゾーン付きのタイムスタンプ，JSON，XMLなどが含まれるべきである。
+<!-- At one end, text files are simply text, with data types either being inferred when reading the data or specified in a separate file.  -->
+一方，テキストファイルは単なるテキストであり，データ型はデータを読み込む際に推論されるか，別のファイルで指定される。
+<!-- At the other end are systems such as PostgreSQL, which offer all the data types listed above and more. -->
+他方，上記にリストされているすべてのデータ型とそれ以上のデータ型を提供する`PostgreSQL`などのシステムがある。
+
+<!-- 6. Ability to handle textual data with ease.  -->
+6. **テキストデータを容易に処理できる能力**
+<!-- Textual data have emerged as an important data source in research in recent years.  -->
+テキストデータは，近年の研究において重要なデータソースとして浮上している。
+<!-- In practice, good text-handling capability often means supporting Unicode and encoding as UTF-8.  -->
+実際には，良好なテキスト処理能力は，UnicodeとUTF-8でのエンコードをサポートすることを意味することが多い。
+<!-- According to Stata, “Unicode is the modern way that computers encode characters such as the letters in the words you are now reading.”  -->
+Stataによると，「Unicodeは，あなたが今読んでいる単語の文字などをコンピュータがエンコードする現代的な方法です。」
+<!-- Additionally, text fields can be “wide” and the data storage approach should not impose restrictions on these that limit its usefulness. -->
+さらに，テキストフィールドは「ワイド」であり，データストレージアプローチは，その有用性を制限する制約を課さないようにする必要がある。

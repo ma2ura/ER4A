@@ -1,0 +1,299 @@
+# 線形代数
+
+<!-- Matrices come to us from a branch of mathematics known as linear algebra.  -->
+行列は，線形代数として知られる数学の分野からきている。
+<!-- A full course in linear algebra would provide a lot more detail than we can cover here.  -->
+線形代数のフルコースは，本書でカバーする範囲より多くの内容を提供している。
+<!-- Our goal is merely to provide enough background to make sense of the material in the text that uses matrices.  -->
+ここでは，本章で行列を用いる内容を理解するために必要はバックグラウンドを提供することのみを目指している。
+<!-- We focus on some basic details such as what matrices are, some of the operations we can perform with them, and some useful results. -->
+行列とは何か，行列に対して行える操作，および有用な結果などの基本的な詳細に焦点を当てる。
+
+<!-- In the canonical setting in econometrics, we have $n$ observations on $k$ variables. -->
+経済学の標準的な設定では， $k$ 個の変数について$n$個の観測値がある。
+<!-- Each observation might be a person or a firm, or even a firm at a particular point in time. -->
+各観測値は，個人や企業，あるいは特定の時点での企業であるかもしれない。
+<!-- In earlier chapters of the book, we considered the possibility that the variables for observation $i$ are related in the following way: -->
+本書の前の章では，観測値 $i$ の変数が以下のように関連している可能性を考慮した。
+
+$$
+y_i = \beta_0 + x_{1i} \beta_1 + x_{2i} \beta_2 + \cdots + x_{ki} \beta_k + \varepsilon_i
+$$
+
+<!-- For example, $y_i$ might represent the profitability of a firm in a given year and the various $x$ variables are factors assumed to affect that profitability, such as capital stock and market concentration. -->
+たとえば， $y_i$ は特定の年の企業の収益性を表し，さまざまな $x$ 変数は，その収益性に影響を与えると仮定される要因である（たとえば，資本ストックや市場集中度など）。
+<!-- The error term ($\varepsilon$) allows the equation to hold when the variables $x_{1i}$ through $x_{ki}$ do not determine the exact value of $y_i$. -->
+誤差項（$\varepsilon$）は，変数 $x_{1i}$ から $x_{ki}$ が $y_i$ の正確な値を決定しない場合に方程式が成立するようにする。
+<!-- Given we have $n$ observations, we actually have $n$ equations. -->
+$n$ 個の観測値があるため，実際には $n$ 個の方程式がある。
+
+
+$$
+\begin{aligned}
+y_1 &= \beta_0 + x_{11} \beta_1 + x_{21} \beta_2 + \cdots + x_{k1} \beta_k + \varepsilon_1 \\
+y_2 &= \beta_0 + x_{12} \beta_1 + x_{22} \beta_2 + \cdots + x_{k2} \beta_k + \varepsilon_2 \\
+& \vdots \\
+y_n &= \beta_0 + x_{1n} \beta_1 + x_{2n} \beta_2 + \cdots + x_{kn} \beta_k + \varepsilon_n
+\end{aligned}
+$$
+
+<!-- As we shall see, matrices allow us to write this system of equations in a succinct fashion that allows manipulations to be represented concisely. -->
+行列を使うと，この方程式系を簡潔に書くことができ，操作を簡潔に表現することができる。
+
+## ベクトル
+
+<!-- For an observation, we might have data on sales, profit, R&D spending, and fixed assets. We can arrange these data as a vector:  -->
+観測値には，売上高，利益，研究開発費，固定資産などのデータがあるかもしれない。これらのデータを**ベクトル**(vector): $y=(\text{sales}, \text{profit}, \text{R\&D}, \text{fixed assets})$ として配置することができる。
+<!-- This $y_i$ is an $n$ -tuple (here $n = 4$), which is a finite ordered list of elements. A more generic representation of a $y$  would be $y = (y_1, y_2, \ldots, y_n)$. -->
+この $y_i$ は $n$ -tuple（ここでは $n = 4$）であり，これは要素の有限の順序付きリストである。より一般的な表現としては，$y = (y_1, y_2, \ldots, y_n)$ がある。
+
+### ベクトルの演算
+
+ここで2つのベクトル $x = (x_1, x_2, \ldots, x_n)$ と $y = (y_1, y_2, \ldots, y_n)$ があるとする。
+
+<!-- Vectors of equal length can be added: -->
+同じ長さのベクトルは加算できる。
+
+$$
+x + y = (x_1 + y_1, x_2 + y_2, \ldots, x_n + y_n)
+$$
+
+また減算もできる。
+
+$$
+x - y = (x_1 - y_1, x_2 - y_2, \ldots, x_n - y_n).
+$$
+
+ベクトルは実数でスカラー倍することもできる。
+
+$$
+\lambda y = (\lambda y_1, \lambda y_2, \ldots, \lambda y_n).
+$$
+
+<!-- **定義 A.1 (Dot product)** -->
+**定義 A.1 (内積)** 2つの $n$ 次元ベクトル $x$ と $y$ の内積は、$x \cdot y$ で表され、次のように定義される。
+
+$$
+x \cdot y = x_1 y_1 + x_2 y_2 + \cdots + x_n y_n = \sum_{i=1}^{n} x_i y_i.
+$$
+
+## 行列
+
+
+<!-- A matrix is a rectangular array of real numbers. -->
+行列は実数の長方形の配列である。
+
+$$
+A = \begin{bmatrix}
+a_{11} & a_{12} & \cdots & a_{1k} \\
+a_{21} & a_{22} & \cdots & a_{2k} \\
+\vdots & \vdots & \ddots & \vdots \\
+a_{m1} & a_{m2} & \cdots & a_{mk}
+\end{bmatrix}
+$$
+
+<!-- Matrices are typically denoted with capital letters (e.g., $\boldsymbol{A}$ ) and the generic element of a matrix is denoted as $a_{ij}$ . -->
+行列は通常大文字で表記され（例：$\boldsymbol{A}$），行列の一般的な要素は $a_{ij}$ と表記される。
+<!-- We can also express a matrix in terms of its generic element and its dimensions as $[a_{ij}]_{m \times k}$. -->
+行列は，一般的な要素とその次元を用いて $[a_{ij}]_{m \times k}$ と表現することもできる。
+
+2つの重要な行列は，ゼロだけで構成される**ゼロ行列**(null matrix) $\boldsymbol{0}$ と対角要素が1 $(i_{kk} = 1, \forall k)$ で、非対角要素がゼロ $(i_{jk} = 0, \text{for} \forall j \not = k)$ あるサイズ $n$ の**単位行列**(identity matrix) $\boldsymbol{I}_n$ (あるいは単に $\boldsymbol{I}$ )である
+<!-- Provided that $\boldsymbol{I}$ and $\boldsymbol{A}$ are conformable for multiplication (e.g., they are both $n \times n$ square matrices), then $\boldsymbol{A} \boldsymbol{I} =  \boldsymbol{A} $ and  $ \boldsymbol{I} \boldsymbol{A}= \boldsymbol{A}$, hence the term *identity matrix* (in some ways, $\boldsymbol{I}$ is the matrix equivalent of the number $1$). -->
+$\boldsymbol{I}$ と $\boldsymbol{A}$ が乗算可能である場合（たとえば，両方とも $n \times n$ の正方行列である場合），$\boldsymbol{A} \boldsymbol{I} =  \boldsymbol{A} $ および $ \boldsymbol{I} \boldsymbol{A}= \boldsymbol{A}$ となる。したがって，*単位行列*（いくつかの点では，$\boldsymbol{I}$ は数値 $1$ の行列版である）という用語がある。
+
+<!-- Each row or column of a matrix can be considered a vector, so that an $m \times k$ matrix can be viewed as $m \ k$-vectors (the rows) or $k \ m$ -vectors (the columns). -->
+行列の各行または列はベクトルとして考えることができるため、$m \times k$ 行列は $m \ k$-ベクトル（行）または $k \ m$ -ベクトル（列）として見ることができる。
+
+### 行列の演算
+
+2つの行列 $\boldsymbol{A} = [a_{ij}]_{m \times k}$ と $\boldsymbol{B} = [b_{ij}]_{m \times k}$ があるとする。
+そして、これらの行列を足すことができる。
+
+$$
+\boldsymbol{A} + \boldsymbol{B} = [a_{ij} + b_{ij}]_{m \times k}
+$$
+
+実数 $\lambda $を行列に掛けることもできる。
+
+$$
+\lambda \boldsymbol{A} = [\lambda a_{ij}]_{m \times k}
+$$
+
+<!-- Matrix multiplication is defined for two matrices if the number of columns for the first is equal to the number of rows of the second. -->
+**行列の積**(matrix multiplication)は，第1行列の列数が第2行列の行数と等しい場合に定義される。
+
+行列 $\boldsymbol{A} = [a_{ij}]_{m \times l}$ と $\boldsymbol{B} = [b_{jk}]_{l \times n}$ があるとして、要素 $c_{ik}$ をもつ $m \times n$ 行列 $\boldsymbol{A} \boldsymbol{B}$ は次のように定義される。
+
+$$
+\boldsymbol{A} \boldsymbol{B} = \left [
+    c_{ik} := \sum_{j=1}^{l} a_{ij} b_{jk} \right ]_{m \times n}
+$$
+
+
+<!-- Alternatively $c_{ik} = a_i \cdot b_k$, where $a_i$ is the $i$-th row of $\boldsymbol{A}$ and $b_k$ is the $k$-th column of $\boldsymbol{B}$.  -->
+あるいは $c_{ik} = a_i \cdot b_k$ とも書ける。ここで，$a_i$ は $\boldsymbol{A}$ の $i$ 番目の行であり，$b_k$ は $\boldsymbol{B}$ の $k$ 番目の列である。
+<!-- Not that multiplication of $\boldsymbol{A}$ and $\boldsymbol{B}$ requires that they be **conformable** for multiplication.  -->
+$\boldsymbol{A}$ と $\boldsymbol{B}$ の乗算には，乗算可能であることが必要である。
+<!-- In particular, the number of columns of $\boldsymbol{A}$ must equal the number of rows of $\boldsymbol{B}$ for $\boldsymbol{A} \boldsymbol{B}$ to exist.  -->
+特に，$\boldsymbol{A} \boldsymbol{B}$ が存在するためには $\boldsymbol{A}$ の列数は $\boldsymbol{B}$ の行数と等しい必要がある。
+<!-- If the number of rows of $\bolsdymbol{A}$ does not equal the number of columns of $\boldsymbol{B}$ , then $\boldsymbol{B} \boldsymbol{A}$ will not exist (let alone equal $\boldsymbol{A} \boldsymbol{B}$). -->
+$\boldsymbol{A}$ の行数が $\boldsymbol{B}$ の列数と等しくない場合，$\boldsymbol{B} \boldsymbol{A}$ は存在しない（$\boldsymbol{A} \boldsymbol{B}$ と等しくなることはない）。
+
+
+
+
+<!-- Definition A.2 (Transpose) The matrix $\boldsymbol{B} = \left[ b_{ij} \right]_{n \times m}$ is called the transpose of a matrix  $\boldsymbol{A} = \left[ a_{ij} \right]_{m \times n}$ (and denoted  $\boldsymbol{A}^{\mathsf{T}}$ ) if  $b_{ij} = a_{ji}$  for all  $i \in \{1, 2, \dots, m\}$  and all  $j \in \{1, 2, \dots, n\}$ .  -->
+**定義 A.2 (転置)** 行列 $\boldsymbol{B} = \left[ b_{ij} \right]_{n \times m}$ は，行列 $\boldsymbol{A} = \left[ a_{ij} \right]_{m \times n}$ の**転置**(transpose)と呼ばれ（$\boldsymbol{A}^{\mathsf{T}}$ と表記される），すべての $i \in \{1, 2, \dots, m\}$ およびすべての $j \in \{1, 2, \dots, n\}$ に対して $b_{ij} = a_{ji}$ が成り立つ。
+
+<!-- Definition A.3 (Square matrix) A matrix that has the same number of rows and columns is called a square matrix.  -->
+**定義 A.3 (正方行列)** 行数と列数が同じである行列を正方行列と呼ぶ。
+
+<!-- Definition A.4 (Symmetric) A square matrix is symmetric if  $a_{ij} = a_{ji}, \forall i, j$ . Clearly if  $\boldsymbol{A}$ is a symmetric matrix, then  $\boldsymbol{A} = \boldsymbol{A}^{\mathsf{T}}$ .  -->
+**定義 A.4 (対称)** 正方行列は，すべての $i, j$ に対して $a_{ij} = a_{ji}$ である場合に対称である。明らかに，$\boldsymbol{A}$ が対称行列である場合，$\boldsymbol{A} = \boldsymbol{A}^{\mathsf{T}}$ である。
+
+<!-- Definition A.5 (Matrix inverse) An  $m \times m$  square matrix $\boldsymbol{A}$  has an inverse, if there exists a matrix denoted as  $\boldsymbol{A}^{-1}$  such that  $\boldsymbol{A}^{-1} \boldsymbol{A} = I_m$  and  $\boldsymbol{A} \boldsymbol{A}^{-1} = I_m$ , where  $I_m$  denotes the  $m \times m$  identity matrix. A matrix that has an inverse is said to be invertible or non-singular.  -->
+**定義 A.5 (行列の逆)** $m \times m$ の正方行列 $\boldsymbol{A}$ は，$\boldsymbol{A}^{-1}$ と表記される行列が存在し，$\boldsymbol{A}^{-1} \boldsymbol{A} = I_m$ および $\boldsymbol{A} \boldsymbol{A}^{-1} = I_m$ が成り立つ場合，逆行列を持つという。ここで，$I_m$ は $m \times m$ の単位行列を表す。逆行列を持つ行列は，*逆行列可能*または*非特異*と言われる。
+
+<!-- **Properties of inverses.** -->
+**逆行列の性質**
+
+<!-- 1. If an inverse of $\boldsymbol{A}$ exists, it is unique. -->
+1. $\boldsymbol{A}$ の逆行列が存在する場合，それは一意である。
+<!-- 2. If $\alpha \neq 0$ and $\boldsymbol{A}$ is invertible, then $(\alpha \boldsymbol{A})^{-1} = \frac{1}{\alpha} \boldsymbol{A}^{-1}$. -->
+2. $\alpha \neq 0$ かつ $\boldsymbol{A}$ が逆行列可能である場合，$(\alpha \boldsymbol{A})^{-1} = 1/\alpha \boldsymbol{A}^{-1}$。
+<!-- 3. If $\boldsymbol{A}$ and $\boldsymbol{B}$ are both invertible $m \times m$ matrices, then $(\boldsymbol{A}\boldsymbol{B})^{-1} = \boldsymbol{B}^{-1} \boldsymbol{A}^{-1}$. -->
+3. $\boldsymbol{A}$ と $\boldsymbol{B}$ がともに逆行列可能な $m \times m$ 行列である場合，$(\boldsymbol{A}\boldsymbol{B})^{-1} = \boldsymbol{B}^{-1} \boldsymbol{A}^{-1}$。
+
+<!-- Here we show a couple of useful results about transposes. First, for two square, invertible matrices $\boldsymbol{A}$ and $\boldsymbol{B}$, we have $(\boldsymbol{A}\boldsymbol{B})^{\mathsf{T}} = \boldsymbol{B}^{\mathsf{T}} \boldsymbol{A}^{\mathsf{T}}$. -->
+ここでは，転置に関するいくつかの有用な結果を示す。まず，2つの正方行列 $\boldsymbol{A}$ と $\boldsymbol{B}$ が逆行列可能である場合，$(\boldsymbol{A}\boldsymbol{B})^{\mathsf{T}} = \boldsymbol{B}^{\mathsf{T}} \boldsymbol{A}^{\mathsf{T}}$ が成り立つ。
+
+$$
+\begin{aligned}
+(\boldsymbol{A}\boldsymbol{B})^{\mathsf{T}} &= [ab_{ij}]^{\mathsf{T}} \\
+&= \left[ ab_{ji} \right] \\
+&= \left[ \sum_{k=1}^n a_{jk} b_{ki} \right] \\
+&= \left[ \sum_{k=1}^n (\boldsymbol{B}^{\mathsf{T}})_{ik}  (\boldsymbol{A}^{\mathsf{T}})_{kj} \right] \\
+&= \boldsymbol{B}^{\mathsf{T}} \boldsymbol{A}^{\mathsf{T}}
+\end{aligned}
+$$
+
+<!-- Second, for a square, invertible matrix $\boldsymbol{A}$, we have $\left(\boldsymbol{A}^{\mathsf{T}}\right)^{-1} = \left(\boldsymbol{A}^{-1}\right)^{\mathsf{T}}$: -->
+次に，正方行列 $\boldsymbol{A}$ が逆行列可能である場合，$\left(\boldsymbol{A}^{\mathsf{T}}\right)^{-1} = \left(\boldsymbol{A}^{-1}\right)^{\mathsf{T}}$ が成り立つ。
+
+$$
+\begin{aligned}
+\boldsymbol{A} \boldsymbol{A}^{-1}  &= \boldsymbol{I} \\
+\left(\boldsymbol{A}^{-1}\right)^{\mathsf{T}} \boldsymbol{A}^{\mathsf{T}} &= \boldsymbol{I} \\
+\left(\boldsymbol{A}^{-1}\right)^{\mathsf{T}} \boldsymbol{A}^{\mathsf{T}} \left(\boldsymbol{A}^{\mathsf{T}}\right)^{-1} &= \left(\boldsymbol{A}^{\mathsf{T}}\right)^{-1} \\
+\left(\boldsymbol{A}^{-1}\right)^{\mathsf{T}} &= \left(\boldsymbol{A}^{\mathsf{T}}\right)^{-1}
+\end{aligned}
+$$
+
+<!-- **Definition A.6 (Diagonal matrix)** A square matrix $\boldsymbol{A}$ is a *diagonal matrix* if $a_{ij} = 0, \forall i \neq j$. In words, all off-diagonal elements of a diagonal matrix are zero. -->
+**定義 A.6 (対角行列)** 正方行列 $\boldsymbol{A}$ が，$a_{ij} = 0, \forall i \neq j$ である場合，*対角行列*である。言い換えれば，対角行列のすべての非対角要素はゼロである。
+
+<!-- **Definition A.7 (Linear independence)** Let $\{x_1, x_2, \dots, x_r\}$ be a set of $n \times 1$ vectors. We say that these vectors are *linearly independent* if and only if: -->
+**定義 A.7 (線形独立)** $\{x_1, x_2, \dots, x_r\}$ が $n \times 1$ ベクトルの集合であるとする。これらのベクトルが*線形独立*であるとは，次の条件が成り立つ場合に限る。つまり
+
+$$
+\alpha_1 x_1 + \alpha_2 x_2 + \dots + \alpha_r x_r = 0 \tag{A.1}
+$$
+
+<!-- implies that $\alpha_1 = \alpha_2 = \dots = \alpha_r = 0$. If Equation (A.1) holds for a set of scalars that are not all zero, then $\{x_1, x_2, \dots, x_r\}$ is *linearly dependent*. -->
+となる場合，$\alpha_1 = \alpha_2 = \dots = \alpha_r = 0$ である。式 (A.1) がすべてゼロでないスカラーの集合に対して成り立つ場合，$\{x_1, x_2, \dots, x_r\}$ は*線形従属*(linearly dependent)である。
+
+<!-- **Definition A.8 (Matrix rank)** Let $\boldsymbol{A}$ be an $m \times k$ matrix. The *rank* of a matrix $\boldsymbol{A}$ is the maximum number of linearly independent columns of $\boldsymbol{A}$. If $\boldsymbol{A}$ is $m \times k$ and the rank of $\boldsymbol{A}$ is $k$, then $\boldsymbol{A}$ has *full column rank*. If $\boldsymbol{A}$ is $m \times k$ and $m \geq k$, then its rank can be at most $k$. -->
+**定義 A.8 (行列のランク)** $\boldsymbol{A}$ を $m \times k$ 行列とする。行列 $\boldsymbol{A}$ の*ランク*は，$\boldsymbol{A}$ の線形独立な列の最大数である。$\boldsymbol{A}$ が $m \times k$ であり，$\boldsymbol{A}$ のランクが $k$ である場合，$\boldsymbol{A}$ は*完全列ランク*を持つ。$\boldsymbol{A}$ が $m \times k$ であり，$m \geq k$ の場合，そのランクは最大で $k$ である。
+
+<!-- Some properties of rank include: -->
+ランクのいくつかの性質は次の通りである。
+
+<!-- 1. The rank of $\boldsymbol{A}$ equals the rank of $\boldsymbol{A}^{\mathsf{T}}$. -->
+1. $\boldsymbol{A}$ のランクは $\boldsymbol{A}^{\mathsf{T}}$ のランクと等しい。
+<!-- 2. If $\boldsymbol{A}$ is a $k \times k$ square matrix with rank $k$, then it is **non-singular**. -->
+2. $\boldsymbol{A}$ がランク $k$ の $k \times k$ 正方行列である場合，それは**非特異**である。
+
+<!-- **Definition A.9 (Idempotent)** A matrix $\boldsymbol{A}$ is *idempotent* if it has the property that $\boldsymbol{A} \boldsymbol{A} = \boldsymbol{A}$. -->
+**定義 A.9 (恒等行列)** 行列 $\boldsymbol{A}$ が $\boldsymbol{A} \boldsymbol{A} = \boldsymbol{A}$ という性質を持つ場合，*恒等行列*(idempotent)である。
+
+
+<!-- **Definition A.10 (Projection matrix)** Given a matrix $\boldsymbol{X}$, the **projection matrix** for $\boldsymbol{X}$ is denoted as $\boldsymbol{P_X}$ and is defined as: -->
+**定義 A.10 (射影行列)** 行列 $\boldsymbol{X}$ が与えられた場合，$\boldsymbol{X}$ の**射影行列**は $\boldsymbol{P_X}$ と表記され，次のように定義される。
+
+$$
+\boldsymbol{P_X} = \boldsymbol{X}(\boldsymbol{X}^{\mathsf{T}} \boldsymbol{X})^{-1}\boldsymbol{X}^{\mathsf{T}}
+$$
+
+<!-- The following shows that $\boldsymbol{P_X}$ is idempotent: -->
+次の式は，$\boldsymbol{P_X}$ が恒等行列であることを示している。
+
+$$
+\boldsymbol{P_X} \boldsymbol{P_X} = \boldsymbol{X}(\boldsymbol{X}^{\mathsf{T}} \boldsymbol{X})^{-1}\boldsymbol{X}^{\mathsf{T}} \boldsymbol{X}(\boldsymbol{X}^{\mathsf{T}} \boldsymbol{X})^{-1}\boldsymbol{X}^{\mathsf{T}} = \boldsymbol{X}(\boldsymbol{X}^{\mathsf{T}} \boldsymbol{X})^{-1}\boldsymbol{X}^{\mathsf{T}} = \boldsymbol{P_X}
+$$
+
+<!-- Note also that $\boldsymbol{P_X}$ is **symmetric**, which means that it and its transpose are equal, as the following demonstrates: -->
+また，$\boldsymbol{P_X}$ が**対称**であることに注意する。つまり，$\boldsymbol{P_X}$ とその転置が等しいことを示す。
+
+$$
+\begin{aligned}
+\boldsymbol{P_X}^{\mathsf{T}} &= \left(\boldsymbol{X}(\boldsymbol{X}^{\mathsf{T}} \boldsymbol{X})^{-1}\boldsymbol{X}^{\mathsf{T}}\right)^{\mathsf{T}} \\
+  &= \boldsymbol{X} \left((\boldsymbol{X}^{\mathsf{T}} \boldsymbol{X})^{-1}\right)^{\mathsf{T}} \boldsymbol{X}^{\mathsf{T}} \\
+  &= \boldsymbol{X} \left((\boldsymbol{X}^{\mathsf{T}} \boldsymbol{X})^{\mathsf{T}}\right)^{-1} \boldsymbol{X}^{\mathsf{T}} \\
+  &= \boldsymbol{X} (\boldsymbol{X}^{\mathsf{T}} \boldsymbol{X})^{-1} \boldsymbol{X}^{\mathsf{T}} \\
+  &= \boldsymbol{P_X}
+\end{aligned}
+$$
+
+<!-- In this analysis, we used two results about transposes discussed above. -->
+この分析では，上で議論した転置に関する2つの結果を使用した。
+
+<!-- ## A.3 The OLS estimator -->
+## A.3 OLS推定量
+
+<!-- The **classical linear regression model** assumes that the data-generating process has $y = \boldsymbol{X} \boldsymbol{\beta} + \boldsymbol{\varepsilon}$ where $\boldsymbol{\varepsilon} \sim IID(0, \sigma^2 \boldsymbol{I})$, where $y$ and $\boldsymbol{\varepsilon}$ are $n$-vectors, $\boldsymbol{X}$ is an $n \times k$ matrix (including the constant term), $\boldsymbol{\beta}$ is a $k$-vector, and $\boldsymbol{I}$ is the $n \times n$ identity matrix. -->
+**古典的線形回帰モデル**は，データ生成過程が $y = \boldsymbol{X} \boldsymbol{\beta} + \boldsymbol{\varepsilon}$ であると仮定している。ここで $\boldsymbol{\varepsilon} \sim IID(0, \sigma^2 \boldsymbol{I})$ であり，$y$ と $\boldsymbol{\varepsilon}$ は $n$-ベクトル，$\boldsymbol{X}$ は $n \times k$ 行列（定数項を含む），$\boldsymbol{\beta}$ は $k$-ベクトル，$\boldsymbol{I}$ は $n \times n$ の単位行列である。
+
+<!-- As discussed in [Chapter 3](reg-basics.html), the ordinary least-squares (OLS) estimator is given by: -->
+[第3章](reg-basics.html)で議論したように，最小二乗（OLS）推定量は次のように与えられる。
+
+$$
+\hat{\boldsymbol{\beta}} = \left(\boldsymbol{X}^{\mathsf{T}} \boldsymbol{X}\right)^{-1} \boldsymbol{X}^{\mathsf{T}} y
+$$
+
+<!-- Here we can see that we can only calculate $\hat{\boldsymbol{\beta}}$ if $\boldsymbol{X}^{\mathsf{T}} \boldsymbol{X}$ is invertible, which requires that it be of rank $k$. This requires that no one column of $\boldsymbol{X}$ is a linear combination of the other columns of $\boldsymbol{X}$. -->
+ここで，$\boldsymbol{X}^{\mathsf{T}} \boldsymbol{X}$ が逆行列可能である場合にのみ $\hat{\boldsymbol{\beta}}$ を計算できることがわかる。これには，$\boldsymbol{X}$ の各列が他の列の線形結合でないことが必要である。
+
+<!-- Assuming $\mathbb{E}[\boldsymbol{\varepsilon} | \boldsymbol{X}] = 0$, we can derive the following result: -->
+$\mathbb{E}[\boldsymbol{\varepsilon} | \boldsymbol{X}] = 0$ と仮定すると，次の結果を導出できる。
+
+$$
+\begin{aligned}
+\mathbb{E}\left[\hat{\boldsymbol{\beta}} \right] &= \mathbb{E}\left[\mathbb{E}\left[\hat{\boldsymbol{\beta}} | \boldsymbol{X} \right] \right] \\
+&= \mathbb{E}\left[\left(\boldsymbol{X}^{\mathsf{T}} \boldsymbol{X}\right)^{-1} \boldsymbol{X}^{\mathsf{T}} (\boldsymbol{X}\boldsymbol{\beta} + \boldsymbol{\varepsilon}) | \boldsymbol{X} \right] \\
+&= \mathbb{E}\left[\left(\boldsymbol{X}^{\mathsf{T}} \boldsymbol{X}\right)^{-1} \boldsymbol{X}^{\mathsf{T}} \boldsymbol{X}\boldsymbol{\beta}  | \boldsymbol{X} \right]  + \mathbb{E}\left[\left(\boldsymbol{X}^{\mathsf{T}} \boldsymbol{X}\right)^{-1} \boldsymbol{X}^{\mathsf{T}} \boldsymbol{\varepsilon} | \boldsymbol{X} \right] \\
+&= \boldsymbol{\beta} + \left(\boldsymbol{X}^{\mathsf{T}} \boldsymbol{X}\right)^{-1} \boldsymbol{X}^{\mathsf{T}} \mathbb{E}\left[ \boldsymbol{\varepsilon} | \boldsymbol{X} \right] \\
+&= \boldsymbol{\beta}
+\end{aligned}
+$$
+
+<!-- This demonstrates that $\hat \boldsymbol{\beta}$ is unbiased given these assumptions. But note that the assumption that $\mathbb{E}[\boldsymbol{\varepsilon} | \boldsymbol{X}] = 0$ can be a strong one in some situations.  -->
+これは，これらの仮定の下で $\hat{\boldsymbol{\beta}}$ が不偏であることを示している。ただし，$\mathbb{E}[\boldsymbol{\varepsilon} | \boldsymbol{X}] = 0$ という仮定は，いくつかの状況では強いものであることに注意する。
+<!-- For example, Davidson and MacKinnon point out that “in the context of time-series data, [this] assumption is a very strong one that we may often not feel comfortable making.” -->
+たとえば，Davidson and MacKinnon は「時系列データの文脈では，[この]仮定は非常に強いものであり，しばしば快適に行うことができない」と指摘している。
+<!-- As such, many textbook treatments replace $\mathbb{E}[\boldsymbol{\varepsilon} | \boldsymbol{X}] = 0$ with weaker assumptions and focus on the asymptotic property of consistency instead of unbiasedness. -->
+そのため，多くの教科書では，$\mathbb{E}[\boldsymbol{\varepsilon} | \boldsymbol{X}] = 0$ をより弱い仮定に置き換え，不偏性の代わりに一致性の漸近的性質に焦点を当てている。
+
+
+
+
+<!-- ## A.4 Further reading -->
+## さらなる読書
+
+<!-- This appendix barely scratches the surface of matrices and linear algebra.  -->
+この付録は，行列と線形代数のほんの一部を取り上げているに過ぎない。
+<!-- Many econometrics textbooks have introductory sketches of linear algebra that go beyond what we have provided here.  -->
+多くの計量経済学の教科書には，ここで提供した内容を超える線形代数の入門的なスケッチがある。
+<!-- Chapter 1 of Davidson and MacKinnon (2004) and Appendix D of Wooldridge (2000) cover the results provided here and more. -->
+Davidson and MacKinnon (2004) の第1章や Wooldridge (2000) の付録 D は，ここで提供されている結果やそれ以上の内容をカバーしている。
+<!-- Standard introductory texts for mathematical economics, such as Chiang (1984) and Simon and Blume (1994), provide introductions to linear algebra. -->
+Chiang (1984) や Simon and Blume (1994) などの数理経済学の標準的な入門書は，線形代数のイントロダクションを提供している。

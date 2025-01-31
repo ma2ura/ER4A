@@ -1,0 +1,955 @@
+# FFJR
+
+
+<!-- The (brief!) introduction in Fama et al. (1969) (“FFJR”) confirms that the goal of the paper is to shed light on market efficiency.  -->
+Fama et al. (1969)("FFJR")における（簡潔な！）導入部は、論文の目的が市場効率に光を当てることであることを確認している。
+<!-- Prior empirical work had inferred “market efficiency from the observed independence of successive price changes.”  -->
+これまでの実証的研究は、「連続する価格変動の独立性から市場効率を推論していた」。
+<!-- In contrast, FFJR focuses on the “speed of adjustment of prices to specific kinds of new information … [specifically] the information (if any) that is implicit in a stock split.”  -->
+これに対して、FFJRは、「特定の種類の新しい情報に対する価格の調整速度... [具体的には]、（あるなら）株式分割に暗黙の情報」に焦点を当てている。
+<!-- We start this chapter with a brief introduction to the efficient markets hypothesis. -->
+この章では、**効率的市場仮説**について簡単に紹介する。
+
+<!-- To examine their research question, FFJR conduct one of the earliest event studies.  -->
+彼らの研究課題を検討するために、FFJRは初期のイベント研究の1つを実施している。
+<!-- Event studies have a tight connection with notions of efficient markets, especially the “semi-strong” form of the hypothesis offered by Fama (1970), which in turn has important implications for the study of accounting information in capital markets.  -->
+イベント・スタディは、特にFama (1970)によって提供された効率的市場仮説の「セミストロング」フォームと密接に関連しており、これは資本市場における会計情報の研究に重要な影響を与えている。
+<!-- Thus we use FFJR to provide an initial introduction to event studies, which we revisit in more depth in Chapter 13. -->
+したがって、我々はFFJRを用いて、イベント研究について初めて紹介し、第13章でより詳しく取り上げる。
+
+<!-- We also use this chapter to introduce the reader to important additional data sets on CRSP, such as those related to dividends and stock splits, and to some R functions for efficiently manipulating data and models (e.g., the unnest() function from the tidyr package).  -->
+また、この章では、配当や株式分割に関連するCRSPの重要な追加データセットや、データやモデルを効率的に操作するためのいくつかのR関数（例：`tidyr`パッケージの`unnest()`関数）を紹介する。
+<!-- To better understand FFJR, we also provide some background on stock splits and dividends.  -->
+FFJRをよりよく理解するために、株式分割と配当に関する背景情報も提供する。
+<!-- We then conduct a replication of FFJR and provide exercises for the reader. We conclude the chapter with a guide to this part of the book. -->
+その後、FFJRの複製を行い、読者向けの演習を提供する。本章の最後には、本書のこの部分へのガイドを示す。
+
+:::{.callout-tip}
+<!-- The code in this chapter uses the packages listed below.  -->
+この章のRコードは次のパッケージを利用している。
+<!-- For instructions on how to set up your computer to use the code found in this book, see Section 1.2.  -->
+本書に書かれているコードを利用するために自身のコンピューターの設定を行う方法は，1.2節を参照せよ。
+<!-- Quarto templates for the exercises below are available on GitHub. -->
+練習問題のためのQuartoテンプレートは，GitHubで利用できる。
+:::
+
+
+## 効率的市場仮説
+
+<!-- One of the core ideas in capital market research is the efficient markets hypothesis (EMH).  -->
+資本市場研究の中心的なアイデアの1つは、効率的市場仮説(EMH)である。
+<!-- Fama (1991) defines the EMH as “the simple statement that security prices fully reflect all available information.”  -->
+Fama (1991)は、EMHを「証券価格がすべての利用可能な情報を完全に反映している」というシンプルな記述で定義している。
+<!-- The EMH is perhaps the most empirically tested proposition in all of social sciences. -->
+EMHは、おそらく社会科学全体で最も実証的に検証された命題である。
+
+<!-- In Fama’s formulation, the terms fully reflect and all available information are doing a lot of work.  -->
+Famaの定式化では、「完全に反映している」と「すべての利用可能な情報」の用語が多くの役割を果たしている。
+<!-- One widely understood implication of the notion that security prices fully reflect a piece of information is that there are no opportunities to generate risk-adjusted profits by trading on that information.1 -->
+ある情報が証券価格に完全に反映されているという概念の広く理解されている帰結の1つは、その情報に基づいて取引することでリスク調整済み利益を生み出す機会がないということである。[^1]
+
+<!-- [^1]: Another deeper implication of the EMH is that prices should be “correct” in some sense. -->
+[^1]: EMHのもう1つの深い含意は、価格がある意味で「正しい」はずであるということである。
+
+<!-- The EMH is particularly important for accounting research and practice for at least two reasons.  -->
+EMHは、少なくとも2つの理由で会計研究と実践にとって特に重要である。
+<!-- First, accounting information is often a component of “all available information” against which the EMH is tested.  -->
+第1に、会計情報は、EMHが検証される「すべての利用可能な情報」の一部であることが多い。
+<!-- In particular, Beaver (1998, p.136) points out that accounting earnings “are widely analyzed by the investment community.  -->
+具体的には、Beaver (1998, p.136)が、会計利益は「投資コミュニティによって広く分析されている」と指摘している。
+<!-- No other firm-specific variable receives more attention by the analysts and other capital market participants than earnings.”  -->
+他の企業固有の変数は、アナリストや他の資本市場参加者によって利益よりも多くの注意を受けていない。
+<!-- Second, whether the EMH holds or not has significant implications for preparers, zusers, and regulators of accounting information. -->
+第2に、EMHが成立するかどうかは、会計情報の作成者、利用者、および規制当局にとって重要な意味を持つ。
+
+<!-- Richard Thaler identifies two notions of the EMH, which he labels the “price is right” and “no free lunch” principles.  -->
+Richard Thalerは、EMHの2つの概念を特定し、「価格は正しい」(price is right)と「無料のランチはない」(no free lunch)という原則とラベルを付けている。
+<!-- The “price is right” principle says asset prices will “fully reflect” available information and thus “provide accurate signals for resource allocation”.  -->
+「価格は正しい」原則は、資産価格が利用可能な情報を「完全に反映」し、したがって「資源配分のための正確なシグナルを提供する」と述べている。
+<!-- The “no free lunch” principle holds that market prices are impossible to predict making it very hard for an investor to beat the market after taking account of risk.  -->
+「無料のランチはない」原則は、市場価格を予測することは不可能であり、リスクを考慮した後に市場を上回る投資家を見つけることは非常に困難であると述べている。
+<!-- The “no free lunch” principle is the variant that is both less demanding of market foresight and more empirically testable. -->
+「無料のランチはない」原則は、市場の先見の明を要求されることが少なく、実証的に検証可能な変種である。
+
+<!-- Most empirical studies of the EMH test the “no free lunch” principle.  -->
+EMHのほとんどの実証的研究は、「無料のランチはない」原則を検証している。
+<!-- However, Shiller (1984) laments the existence of “claims that because real returns are nearly unforecastable, the real price of stocks is close to the intrinsic value” and suggest that “this argument for the efficient markets hypothesis represents one of the most remarkable errors in the history of economic thought” (1984, p.459).  -->
+しかし、Shiller (1984)は、「現実のリターンがほとんど予測不可能であるため、現実の株価は内在価値に近い」という主張が存在することを嘆き、「この効率的市場仮説の議論は、経済思想史上で最も注目すべき誤りの1つを表している」と述べている。
+<!-- In other words, a common fallacy is to conflate the two variants so that evidence for the “no free lunch” variant is adduced as supporting the “price is right” theory. -->
+言い換えれば、一般的な誤謬は、2つの変種を混同し、その結果、「無料のランチはない」変種の証拠が「価格は正しい」理論を支持するとされる。
+
+<!-- The “price is right” theory often underlies papers that use event studies to evaluate the merits of corporate policies or regulation.  -->
+「価格は正しい」理論は、企業の政策や規制のメリットを評価するためにイベント・スタディを使用する論文の基礎となることがよくある。
+<!-- We will discuss some issues with conflation of these two principles in Chapter 13. -->
+これら2つの原則を混同することに関するいくつかの問題については、第13章で議論する。
+
+
+<!-- ## Stock splits -->
+## 株式分割
+
+<!-- Because much about FFJR and its setting is implicit rather than explicit and might not be clear to a reader entering the field more than fifty years later, we first elucidate some elements of the paper. -->
+FFJRとその設定については、明示的でなく暗黙的であり、50年以上後にこの分野に入る読者には明確でないかもしれないため、まず論文のいくつかの要素を明らかにする。
+
+<!-- Walker (2021, p.1) describes a stock split as “the issuance of an additional number of shares, at no cost to the shareholder, in proportion to the number of shares already owned. -->
+Walker (2021, p.1)は，株式分割を「株主がすでに所有している株式の数に比例して、追加の株式を無償で発行すること」と説明している。
+<!-- For example, a 2-for-1 split is implemented by a firm issuing one new share for each existing share, thereby doubling the total number of shares outstanding.” -->
+たとえば、2対1の株式分割は、企業が既存の株式に対して新しい株式を1株発行することで、発行済み株式の総数を倍増させる。
+
+<!-- From a fundamental perspective, a stock split might appear to have no economic consequences. -->
+ファンダメンタルの観点からは、株式分割には経済的な影響がないように見えるかもしれない。
+<!-- Suppose we hold 1,000 shares in a company with an intrinsic value of $500 million and 10 million shares outstanding. -->
+たとえば、1,000株を保有しているとし、その会社の内在価値が5億ドルで、発行済み株式が1,000万株であるとする。
+<!-- Our shares would be worth $50,000 (). -->
+私たちの株式は50,000ドルの価値があるだろう（$1000 \times 500 \div 10$）。
+<!-- If the company then does a 2-for-1 split so that it now has 20 million shares outstanding, we would have 2,000 shares worth $50,000 (). -->
+その後、会社が2対1の株式分割を行い、発行済み株式が2,000万株になったとすると、私たちは2,000株を保有し、50,000ドルの価値があるだろう（$2000 \times 500 \div 20$）。
+
+<!-- As such, it seems natural to ask why firms engage in stock splits. -->
+このように、企業が株式分割を行う理由を尋ねるのは自然なことである。
+<!-- One explanation posits that, even though there is no underlying effect of a stock splits on the intrinsic value of the firm, markets are not efficient and the stock does not properly adjust for the change in the number of shares, leading to our hypothetical stock holding being worth (say) more than $50,000 after the split. -->
+ある説明は、株式分割が企業の内在価値に影響を与えないにもかかわらず、市場が効率的でないため、株式が株式数の変更に適切に調整されず、仮想的な株式保有が分割後に50,000ドル以上の価値になる可能性があると主張している。
+<!-- If managers would prefer the firm to have a higher stock market value, this would be a reason to do a stock split.2 -->
+もし経営者が企業の株価を高くしたいと考えているなら、株式分割を行う理由になるだろう。[^2]
+
+<!-- [^2]: In some cases, managers might benefit from a lower post-split stock market value, say, if they want to purchase shares themselves after the split. -->
+[^2]: いくつかの場合、経営者は、分割後に自分自身で株式を購入したい場合など、分割後の株価が低いほうが有利になるかもしれない。
+
+<!-- But if we assume market efficiency (and being able to calculate the stock-price impact of a stock split is surely a modest level of efficiency), we need to find alternative explanations for stock splits. -->
+しかし、市場効率性を仮定すると（株式分割の株価への影響を計算できることは、確かに効率性の控えめなレベルである）、株式分割の代替的な説明を見つける必要がある。
+<!-- Walker (2021, p.2) identifies “two leading explanations”. -->
+Walker (2021, p.2)は、「2つの主要な説明」を特定している。
+
+<!-- The first explanation is the information-signalling hypothesis, which posits that “management uses the split as a channel to signal their private information about the firm’s positive outlook” (Walker, 2021, p.2). -->
+第1の説明は，情報シグナリング仮説であり，「経営陣が企業の前向きな見通しに関する非公開情報をシグナルするための手段として分割を利用する」と主張している（Walker, 2021, p.2）。
+<!-- But this is a non-explanation unless there is some underlying effect of a split that is differentially beneficial or costly for firms with private information. -->
+しかし，これは，非公開情報を持つ企業にとって有益であるかコストがかかるような分割の基礎となる効果がある場合にのみ説明となる。
+<!-- For example, a signalling equilibrium might be sustained if a stock split is less costly for firms with better prospects.3  -->
+たとえば、シグナリング均衡は、株式分割が見込みが良い企業にとってコストが低い場合に維持されるかもしれない。[^3]
+<!-- But we need to account for such differences in costs. -->
+しかし、そのようなコストの違いを考慮する必要がある。
+
+<!-- [^3]: For more on signalling theory, see Chapter 17 of Kreps (1990). -->
+[^3]: シグナリング理論については、Kreps (1990)の第17章を参照。
+
+<!-- The second explanation is the liquidity hypothesis, which “posits that management use a split as a way to improve their stock’s liquidity” (Walker, 2021, p.2). -->
+第2の説明は、流動性仮説であり、「経営陣が株式分割を利用して株式の流動性を向上させる手段として利用する」と主張している（Walker, 2021, p.2）。
+<!-- Delving into the detailed explanations of a liquidity effect of splits would take us too far away from the objectives of this chapter, so we offer a more stylized account that is adequate for our purposes here. -->
+株式分割の流動性効果の詳細な説明に入ることは、この章の目的から遠ざかりすぎるため、ここでは目的に適したよりスタイライズされた説明を提供する。
+<!-- We can label this account as a kind of Goldilocks stock price theory whereby a firm’s liquidity is maximized when its stock price trades in a certain range - neither too high nor too low - and that firms tend split their shares if doing so gets their stock prices into this range. -->
+この説明を、企業の流動性が特定の範囲で最大化されるときに、株価がその範囲にトレードされると、企業は株式を分割する傾向があるというゴルディロックスの株価理論としてラベル付けすることができる。
+<!-- For example, if a company’s liquidity is maximized with a stock price around $40, but it is trading at around $80, then a 2-for-1 split would enhance liquidity. -->
+たとえば，企業の流動性が株価が40ドル前後のときに最大化されるが，実際には80ドル前後で取引されている場合，2対1の株式分割は流動性を向上させるだろう。
+
+<!-- The liquidity hypothesis might fill the gap we identified in the information-signalling hypothesis. -->
+流動性仮説は、情報シグナリング仮説で特定したギャップを埋めるかもしれない。
+<!-- If a firm expects to trade at $100 in the future (due to inside information that will come to light later), it might want to do a 2-for-1 split, as a stock at $40 rising to $50 will enjoy better liquidity. -->
+将来100ドルで取引されることを期待している企業（後で明らかになる内部情報による）は、2対1の株式分割を行いたいと考えるかもしれない。なぜなら、40ドルから50ドルに上昇する株式は流動性が向上するからである。
+<!-- But a firm that has inside information and expects to trade closer to $40 in the future (without a split) would be reluctant to do a 2-for-1 split, as it would then expect to trade closer to $20 in the future, and thus would have worse liquidity. -->
+しかし、内部情報を持ち、将来40ドルに近い価格で取引されることを期待している企業（分割を行わない場合）は、2対1の株式分割を行うことに消極的であるだろう。なぜなら、その後は将来20ドルに近い価格で取引されることを期待しているからである。
+
+<!-- An important element of an event study is the identification of the period during which the market is expected to react to the event information. -->
+イベント研究の重要な要素の1つは、市場がイベント情報に反応すると予想される期間の特定である。
+<!-- Like dividends, stock splits will generally be announced prior to their effective date. -->
+配当と同様に、株式分割は通常、有効日の前に発表される。
+<!-- Fama et al.(1969, p.7) “define month $0$ as the month in which the effective date of a split occurs”. -->
+Fama et al. (1969, p.7)は、「分割の有効日が発生する月を月 $0$ と定義する」と述べている。
+<!-- Fama et al. (1969, p. 9) mention that for “a random sample of fifty-two splits” from their sample “the median time between the announcement date and the effective date of the split was 44.5 days.”  -->
+Fama et al. (1969, p. 9)は、サンプルからの「52の分割の無作為なサンプル」について、「分割の発表日と有効日の中央値は44.5日であった」と述べている。
+<!-- If there is information content in stock splits, we would expect an efficient market to react when the split is announced, not when it is effective. -->
+株式分割に情報が含まれている場合、効率的な市場では、分割が発表されたときに反応することが期待される。
+<!-- The analyses in FFJR use monthly data, so a median announcement date for splits of 44.5 days before the effective date implies that the median split is announced in month $-2$.-->
+FFJRの分析は月次データを使用しているため、分割の中央値の発表日が有効日の44.5日前であることから、中央値の分割は月 $-2$ に発表されることを意味する。
+<!-- FFJR do not provide details on the distribution of split announcement dates, but some splits may be announced in month $-1$ , while others could occur in month $-3$ or even earlier.-->
+FFJRは、分割の発表日の分布についての詳細を提供していないが、一部の分割は月 $-1$ に発表されるかもしれず、他の分割は月 $-3$ またはそれ以前に発生するかもしれない。
+
+## ディスカッション課題
+
+<!-- Consider the following alternative theories. -->
+以下の代替理論を考えてみよう。
+
+<!-- - **Theory A**: Firms like to keep their stock price within certain bounds.  -->
+- **理論A**: 企業は株価を一定の範囲内に保ちたいと考えている。
+  <!-- When the stock price rises above a certain threshold, a firm may initiate a split, announcing it several weeks in advance of its effective date.  -->
+  株価がある閾値を超えると、企業は分割を開始し、有効日の数週間前に発表するかもしれない。
+  <!-- Firms do not use splits to signal private information about firm prospects. -->
+  企業は、分割を行うことで企業の見通しに関する非公開情報をシグナルするために使用しない。
+<!-- - **Theory B**: Firms use splits to signal private information about firm prospects.  -->
+- **理論B**: 企業は、企業の見通しに関する非公開情報をシグナルするために分割を使用する。
+  <!-- A firm will announce a split several weeks in advance of its effective date. -->
+  企業は、有効日の数週間前に分割を発表する。
+
+<!-- - Theory C: Capital market participants don’t fully adjust for the effect of splits, tending to anchor on the pre-split price to some degree.  -->
+- **理論C**: 資本市場参加者は、分割の効果に完全に適応せず、ある程度前の株価にアンカーを置く傾向がある。
+  <!-- Firms do not use splits to signal private information about firm prospects. -->
+  企業は、分割を行うことで企業の見通しに関する非公開情報をシグナルするために使用しない。
+
+
+
+<!-- Produce a set of indicative plots (e.g., drawn by hand) for the predicted behaviour of cumulative abnormal returns for assuming that the split is announced in month $-2$.  -->
+分割が月 $-2$ に発表されたと仮定して、累積異常収益の予測される挙動の一連の指標プロット（例：手描き）を作成する。
+<!-- What impact would variation in the announcement dates relative to the split effective date have on the plots? -->
+発表日の変動が分割の有効日に対する影響はどうなるか？
+
+
+
+
+<!-- ## Dividend policy -->
+## 配当政策
+
+<!-- Black (1976, p. 9) points out that the “Miller-Modigliani theory … says that the dividends a corporation pays do not affect the value of its shares or the returns to investors.”  -->
+Black (1976, p.9)は，ミラー・モディリアーニの理論によると企業が支払う配当は株価あるいは株式リターンに影響を与えない，と指摘している。
+<!-- Of course, assumptions underlying the Miller-Modigliani theory include the absence of tax effects or transaction costs. -->
+もちろん，ミラー・モディリアーニの理論の基礎となる仮定は，税効果と取引コストが存在しない，というものがる。
+<!-- While these assumptions are violated in reality, the violations generally do not provide an explanation for the existence of dividends (e.g., dividends are generally treated unfavourably for tax purposes). -->
+現実ではこれらの仮定は違反している一方で，この違反は一般的に配当の存在に対する説明を提供しない（たとえば，一般的に配当は税目的で優遇されない）。
+
+<!-- Black (1976, p. 10) summarizes the common understanding of dividends: “For one reason or another, managers and directors do not like to cut the dividend. -->
+Black (1976, p.10)は，配当に関する一般的な理解をまとめている。「何らかの理由で，経営者や取締役は配当を削減したくない。-->
+<!-- So they will raise the dividend only if they feel the company’s prospects are good enough to support the higher dividend for some time. -->
+そのため，会社の見通しが一定期間にわたって高い配当を支持するのに十分であると感じる場合にのみ，配当を引き上げる。-->
+<!-- And they cut the dividend only if they think the prospects for a quick recovery are poor.”  -->
+そして，見通しがすぐに回復する可能性が低いと考える場合にのみ，配当を削減する。」-->
+<!-- While this theory is “behavioural” (see Thaler, 2015, p. 166, for discussion of this), it has real teeth because managers and directors have inside information and therefore, if they act in accordance with this theory, dividend policy will convey some of this information. -->
+この理論は「行動的」であるが（これについてはThaler, 2015, p.166を参照）、経営者や取締役は内部情報を持っているため、この理論に従って行動すると、配当政策はその情報の一部を伝えることになる。
+
+<!-- Fama et al. (1969, pp.2–3) endorse this account of dividends: “Studies … have demonstrated that, once dividends have been increased, large firms show great reluctance to reduce them, except under the most extreme conditions. -->
+Fama et al. (1969, pp.2–3)は，配当に関するこの説明を支持している。「研究によると，一度配当が増加すると，大企業は最も極端な状況を除いて，それらを削減することに非常に消極的であることが示されている。-->
+<!-- Directors have appeared to hedge against such dividend cuts by increasing dividends only when they are quite sure of their ability to maintain them in the future, i.e., only when they feel strongly that future earnings will be sufficient to maintain the dividends at their new higher rate. -->
+取締役は，将来の利益が新しい高い率で配当を維持するのに十分であると確信しているときにのみ，配当を増やすことで，そのような配当削減に対するヘッジを行っているように見える。
+<!-- Thus dividend changes may be assumed to convey important information to the market concerning management’s assessment of the firm’s long-run earning and dividend paying potential.” -->
+したがって，配当の変更は，経営陣が企業の長期的な収益と配当支払いの潜在能力をどのように評価しているかに関する市場への重要な情報を伝えるものと見なすことができる。
+
+<!-- The connection between stock splits and dividends is not spelt out clearly in FFJR. -->
+株式分割と配当の関係は，FFJRでは明確に説明されていない。
+<!-- Fama et al. (1969, p. 2) do say that “in the past a large fraction of stock splits have been followed closely by dividend increases.”  -->
+Fama et al. (1969, p. 2)は，「過去には，株式分割の大部分が直後に配当の増加に続いている」と述べている。
+<!-- Fama et al. (1969, pp. 12–16) offer the following explanation: “When a split is announced or anticipated, the market interprets this (and correctly so) as greatly improving the probability that dividends will soon be substantially increased. -->
+Fama et al. (1969, pp. 12–16)は，次の説明を提供している。「分割が発表されるか予想されると，市場はこれを（正しく）配当がすぐに大幅に増加する可能性が大幅に高まると解釈する。
+<!-- (In fact, … in many cases the split and dividend increase will be announced at the same time.)” -->
+（実際には，多くの場合，分割と配当の増加は同時に発表されることがある。）」
+
+<!-- Several assumptions are buried in that explanation, which appears to be based on some kind of signalling story.4 -->
+この説明にはいくつかの仮定が含まれており，何らかのシグナリングの物語に基づいているように見える。[^4]
+<!-- For example, why would firms signal future dividend increases using stock splits? -->
+たとえば，なぜ企業は株式分割を使用して将来の配当増加をシグナルするのか？
+<!-- And, what are firms signalling with splits when they announce splits and dividend increases at the same time? -->
+また、分割と配当の増加を同時に発表するとき、企業は何をシグナルしているのか？
+
+[^4]: Evidence that FFJR have a signalling story in mind comes from subsequent sentences in the paper.
+
+
+<!-- 10.3.1 Discussion questions -->
+### ディスカッション課題
+
+<!-- 1. Does the research design of FFJR include the use of a control group? If so, how?  -->
+1. FFJRのリサーチ・デザインでは、コントロールグループを利用しているか？もしそうなら、どのように利用しているか？
+   <!-- What alternative methods could have been used to introduce a control group? -->
+   コントロールグループを導入するために使用できる代替手法は何か？
+
+<!-- 3. Fama et al. (1969, p. 9) state “the most important empirical results of this study are summarized in Tables 2 and 3 and Figures 2 and 3.”  -->
+2. Fama et al. (1969, p. 9)は「この研究の最も重要な実証結果は、表2と表3、図2と図3にまとめられている」と述べている。
+   <!-- What does Table 3 of FFJR tell us? (Hint: Read p. 11.) Do you find the presentation of Table 3 to be effective? -->
+    FFJRの表3は何を示しているか？（ヒント：p.11を見なさい）表3の提示は効果的だと思うか？
+
+<!-- 4. Consider Table 2 of FFJR.  -->
+3. FFJRの表2を考えてみよう。
+   <!-- Is it more or less important than Table 3?  -->
+    それは表3よりも重要ですか？
+   <!-- What is the relationship between Table 2 and Figures 2 and 3? -->
+    表2と図2、図3の関係は何ですか？
+
+<!-- 5. What statistical tests are used to test the hypotheses of the paper? -->
+4. 論文の仮説を検証するために使用される統計的検定は何か？
+
+<!-- 10.4 Replication of FFJR -->
+## FFJRの再現
+
+<!-- We will now conduct a rough replication of FFJR.5 -->
+ここでは、FFJRのおおまかな再現を行う。[^5]
+
+<!-- All the data we will use come from the crsp schema.  -->
+使用するすべてのデータは、`crsp`スキーマから取得する。
+<!-- The new table here is dsedist, which contains information on distributions, including dividends and stock splits. -->
+ここで新しいテーブルは`dsedist`であり、配当や株式分割を含む分配に関する情報が含まれている。
+
+::: {.panel-tabset}
+## PostgreSQL
+
+```{r}
+#| eval: false
+db <- dbConnect(RPostgres::Postgres(), bigint = "integer")
+
+msf <- tbl(db, Id(schema = "crsp", table = "msf"))
+msi <- tbl(db, Id(schema = "crsp", table = "msi"))
+stocknames <- tbl(db, Id(schema = "crsp", table = "stocknames"))
+dsedist <- tbl(db, Id(schema = "crsp", table = "dsedist"))
+```
+
+## parquet
+
+``` {r}
+#| eval: false
+db <- dbConnect(duckdb::duckdb())
+
+msf <- load_parquet(db, schema = "crsp", table = "msf")
+msi <- load_parquet(db, schema = "crsp", table = "msi")
+stocknames <- load_parquet(db, schema = "crsp", table = "stocknames")
+dsedist <- load_parquet(db, schema = "crsp", table = "dsedist")
+```
+
+:::
+
+
+<!-- Fama et al. (1969, p. 3) “define a ‘stock split’ as an exchange of shares in which at least five shares are distributed for every four formerly outstanding.  -->
+Fama et al. (1969, p.3)は、「株式分割」を、少なくとも4株が以前に発行された株式に対して5株が配布される取引と定義している。
+<!-- Thus this definition of splits includes all stock dividends of 25 per cent or greater.” -->
+したがって、この分割の定義には、25％以上の株式配当が含まれる」。
+
+
+
+```{r}
+#| eval: false
+splits <-
+  dsedist |>
+  filter(between(exdt, "1927-01-01", "1959-12-31"),
+         distcd %in% c(5523L, 5533L),
+         facshr >= 0.25) |>
+  group_by(permno, exdt) |>
+  summarize(facshr = sum(facshr, na.rm = TRUE), .groups = "drop") |>
+  mutate(split = TRUE)
+```
+
+
+<!-- Fama et al. (1969, p. 3) continue: “Since the data cover only common stocks listed on the New York Stock Exchange, our rules require that to qualify for inclusion in the tests a split security must be listed on the Exchange for at least twelve months before and twelve months after the split.  -->
+Fama et al. (1969, p.3)は続けて、「このデータはニューヨーク証券取引所に上場されている普通株式のみをカバーしているため、テストに含めるためのルールとして、分割証券は分割の前後12か月間、少なくとも12か月間取引所に上場されている必要がある」と述べている。
+<!-- From January, 1927, through December, 1959, 940 splits meeting these criteria occurred on the New York Stock Exchange.”  -->
+1927年1月から1959年12月まで、ニューヨーク証券取引所でこれらの基準を満たす940回の分割が発生した。」
+<!-- NYSE-listed stocks have exchcd == 1 and ordinary common shares are those for which the first character of shrcd is 1.  -->
+NYSEに上場している株式は`exchcd == 1`となり、普通株式は`shrcd`の最初の文字が1となっているものとする。
+<!-- Data on exchcd and shrcd on various dates is found on crsp.stocknames.  -->
+さまざまな日付の`exchcd`と`shrcd`のデータは`crsp.stocknames`にある。
+<!-- The following code creates a table with the permno values and date ranges for the securities meeting these criteria. -->
+以下のコードは、これらの基準を満たす証券の`permno`値と日付範囲を持つテーブルを作成する。
+
+```{r}
+#| eval: false
+nyse_stocks <-
+  stocknames |>
+  filter(exchcd == 1,
+         str_sub(as.character(shrcd), 1L, 1L) == "1") |>
+  select(permno, namedt, nameenddt)
+```
+
+<!-- We can then use this table to focus splits on these securities. -->
+このテーブルを使用して、これらの証券に焦点を当てて分割を行うことができる。
+
+```{r}
+#| eval: false
+nyse_splits_raw <-
+  splits |>
+  inner_join(nyse_stocks,
+             join_by(permno, between(exdt, namedt, nameenddt)))
+```
+
+<!-- We will need to combine these data with data on returns from crsp.msf.  -->
+これらのデータを`crsp.msf`からのリターンデータと組み合わせる必要がある。
+<!-- The table crsp.msf contains monthly data indexed by permno and date, where date is the last trading day of the month.  -->
+テーブル`crsp.msf`には、`permno`と`date`でインデックス付けされた月次データが含まれており、`date`は月の最終取引日である。
+<!-- The splits in nyse_splits_raw will generally not occur on dates found on crsp.msf, so we need to create a “month” variable so that we can line up observations on crsp.msf and nyse_splits_raw. -->
+`nyse_splits_raw`の分割は一般的に`crsp.msf`で見つかる日付には発生しないため、`crsp.msf`と`nyse_splits_raw`の観測値を整列させるために「月」変数を作成する必要がある。
+
+<!-- To this end we create a table month_indexes that includes the “index” of the month, which will also be used in doing the arithmetic to go backwards and forwards in months. -->
+このために、月の「インデックス」を含む`month_indexes`というテーブルを作成する。これは、月の前後に移動するための算術を行う際にも使用される。
+<!-- In performing this arithmetic, we use window functions, which are discussed in the documentation for dplyr and in the “Databases” chapter of R for Data Science.6  -->
+この計算を行う際に`window`関数を使用する。
+これについては、`dplyr`のドキュメントやR for Data Scienceの「データベース」章で説明されている。[^6]
+<!-- Here the “index” of a month refers to its placement in the sequence of months found on crsp.msf and crsp.msi.7 -->
+ここでの月の「インデックス」とは、`crsp.msf`と`crsp.msi`にある月のシーケンスの配置を指す。[^7]
+
+[^6]: Also see https://www.postgresql.org/docs/current/tutorial-window.html.
+
+[^7]: Note that we are operating on remote data here, so we use window_order() instead of arrange() when using window functions. In fact, window_order() offers power that is not available with local data frames. In Chapters 6 and 8, we used dbplyr implicitly when connecting to databases through the dplyr package, but window_order() is not “re-exported” by the dplyr package and thus we needed to invoke library(dbplyr) above.
+
+```{r}
+#| eval: false
+
+month_indexes <-
+  msi |>
+  mutate(month = as.Date(floor_date(date, 'month'))) |>
+  window_order(month) |>
+  mutate(month_index = row_number()) |>
+  select(date, month, month_index) |>
+  collect()
+```
+
+
+<!-- We actually used window functions in Chapter 2 when we used fill() to complete data for calculating market-to-book ratios.  -->
+実際には、市場価格純資産倍率を計算するためのデータを補完するために`fill()`を使用したときに、`window()`関数を使用した。
+<!-- It turns out that the window-function functionality made available via the `dbplyr` package and PostgreSQL (using `window_order()`) are more powerful in this case than those available via the base dplyr package and tibble data frames (using `arrange()`), as the `dbplyr` version allows us to specify a `window_frame()` over which window functions are applied, as we will see below. -->
+この場合、`dbplyr`パッケージとPostgreSQL（`window_order()`を使用）を介して提供される`window`関数の機能は、基本的なdplyrパッケージとtibbleデータフレーム（`arrange()`を使用）を介して提供されるものよりも強力であることがわかった。`dbplyr`バージョンでは、適用される`window_frame()`を指定することができるため、以下で見るように、これを利用する。
+
+<!-- We next bring our splits data (nyse_splits_raw) into R and merge it with month_indexes. -->
+次に、分割データ（`nyse_splits_raw`）をRに取り込み、`month_indexes`とマージする。
+
+
+```{r}
+#| eval: false
+
+nyse_splits <-
+  nyse_splits_raw |>
+  mutate(month = as.Date(floor_date(exdt, 'month'))) |>
+  collect() |>
+  inner_join(month_indexes, by = "month") |>
+  rename(ex_month_index = month_index) |>
+  select(-namedt, -nameenddt, -date)
+```
+
+
+<!-- We construct nyse_msf, which is essentially crsp.msf restricted to NYSE stocks and months with non-missing returns, and with the added variable month_index. -->
+NYSE株と欠損のないリターンを持つ月に制限された`crsp.msf`である`nyse_msf`を構築する。さらに、`month_index`という変数を追加する。
+
+
+```{r}
+#| eval: false
+
+
+nyse_msf <-
+  msf |>
+  filter(!is.na(ret)) |>
+  inner_join(nyse_stocks,
+             join_by(permno, between(date, namedt, nameenddt))) |>
+  collect() |>
+  inner_join(month_indexes, by = "date") |>
+  select(permno, month_index, date, ret)
+```
+
+<!-- The following code merges data on splits from nyse_splits with data on returns from nyse_msf.  -->
+以下のコードは、`nyse_splits`からの分割データと`nyse_msf`からのリターンデータをマージする。
+<!-- We create a variable (month_rel_ex) that measures the number of months between the split and the return. -->
+分割とリターンの間の月数を測定する変数（`month_rel_ex`）を作成する。
+
+<!-- Because we may have multiple splits for a given permno in nyse_splits (each with a different exdt) and each will be joined with multiple return months in nyse_msf, we will have a many-to-many relationship between rows in nyse_splits and rows in nyse_msf.  -->
+`nyse_splits`の特定の`permno`に複数の分割（それぞれ異なる`exdt`）がある可能性があるため、`nyse_splits`の行と`nyse_msf`の行との間には多対多の関係がある。
+<!-- To suppress a warning that dplyr issues in such cases, we indicate that we anticipate such matches by specifying relationship = "many-to-many" as an argument to left_join(). -->
+このような場合にdplyrが発行する警告を抑制するために、`left_join()`の引数として`relationship = "many-to-many"`を指定して、このようなマッチを予想していることを示す。
+
+```{r}
+#| eval: false
+
+split_return_data <-
+  nyse_splits |>
+  left_join(nyse_msf, by = "permno", relationship = "many-to-many") |>
+  mutate(month_rel_ex = month_index - ex_month_index) |>
+  select(permno, exdt, month_rel_ex, date, ret)
+```
+
+<!-- However, we want to ensure that we have just one row for each (permno, exdt, month_rel_ex) combination: -->
+ただし、各（`permno`、`exdt`、`month_rel_ex`）の組み合わせに1行だけあることを確認したい。
+
+```{r}
+#| eval: false
+
+split_return_data |>
+  count(permno, exdt, month_rel_ex) |>
+  count(n_rows = n)
+```
+
+<!-- Fama et al. (1969, p. 3) “decided, arbitrarily, that in order to get reliable estimates of the parameters that will be used in the analysis, it is necessary to have at least twenty-four successive months of price-dividend data around the split date.”  -->
+Fama et al. (1969, p.3)は、「分析に使用されるパラメータの信頼性の高い推定値を得るためには、分割日の周囲に少なくとも24か月連続して価格配当データが必要である」と任意に決定した。
+<!-- Note that Fama et al. (1969) actually look at 12 months before and 12 months after the split, so including the month of the split, we have 25 months.  -->
+実際にFama et al. (1969)は分割の前後12か月を見ているため、分割の月を含めると25か月となる。
+<!-- The table split_sample imposes this restriction and, by doing a semi_join() of this with split_return_data, we create split_returns, which contains the data from crsp.msf for our sample of splits. -->
+`split_sample`テーブルはこの制限を課し、`split_return_data`との`semi_join()`を行うことで、サンプルの分割データを含む`split_returns`を作成する。
+
+```{r}
+#| eval: false
+
+split_sample <-
+  split_return_data |>
+  filter(between(month_rel_ex, -12, 12)) |>
+  group_by(permno, exdt) |>
+  summarize(n_obs = n(), .groups = "drop") |>
+  filter(n_obs == 25L) |>
+  select(permno, exdt)
+
+split_returns <-
+  split_return_data |>
+  semi_join(split_sample, by = "permno")
+```
+
+<!-- The sample of Fama et al. (1969, p. 4) comprises 940 splits for 622 securities.  -->
+Fama et al. (1969, p.4)のサンプルは、622の証券に対する940の分割から構成されている。
+<!-- The output from the code below suggests that our sample is slightly larger, perhaps due to changes in the underlying data since 1966. -->
+以下のコードの出力から、私たちのサンプルがわずかに大きいことが示唆されているが、これは1966年以降の基礎データの変更によるものかもしれない。
+
+```{r}
+#| eval: false
+split_sample |> distinct(permno) |> count() |> pull()
+
+split_sample |> count() |> pull()
+```
+
+<!-- We follow the basic approach of FFJR in estimating excess returns. -->
+我々は、FFJRの超過リターンを推定する基本的なアプローチに従う。
+<!-- FFJR estimate a market model by regressing the log of gross returns of each stock on the log of gross returns of a market index and taking the residual. -->
+FFJRは、各株式の総リターンの対数を市場指数の対数の総リターンに回帰させ、残差を取ることで市場モデルを推定している。
+
+<!-- The market index used in Fama et al. (1969, p.4) is Fisher’s Combination Investment Performance Index, which is made available as Table A1 in Fisher (1966). -->
+Fama et al. (1969, p.4)で使用されている市場指数は、Fisher (1966)の表A1として提供されている，Fisherの組み合わせ投資パフォーマンス指数(combination investment performance index)である。
+<!-- To use this table, which is not available in a machine-readable form, we would have to type in the hundreds of numbers contained therein. -->
+この表を使用するためには、機械可読形式で利用できないため、そこに含まれる数百の数値を入力する必要がある。
+<!-- Instead of doing that, we will use one of the standard indexes provided by CRSP in crsp.msi. -->
+その代わりに、`crsp.msi`で提供されているCRSPの標準指数の1つを使用する。
+<!-- There are two widely used indexes on crsp.msi: vwretd provides the value-weighted return including distributions and ewretd provides the equal-weighted return including distributions. -->
+`crsp.msi`には、2つの広く使用されている指数がある：`vwretd`は配当を含む時価総額加重リターンを提供し、`ewretd`は配当を含む等加重リターンを提供する。
+<!-- A value-weighted index weights each security in the portfolio based on its market value at the time of portfolio formation, while an equal-weighted index puts equal weight on each security in the portfolio regardless of its market value. -->
+時価総額加重指数は、ポートフォリオ形成時の各証券の時価総額に基づいてポートフォリオ内の各証券に重みを付ける一方、等加重指数は各証券に等しい重みを付ける。
+<!-- For our base analysis, we will focus on vwretd. -->
+基本分析では、`vwretd`に焦点を当てる。
+
+
+```{r}
+#| eval: false
+index_returns <-
+  msi |>
+  select(date, vwretd, ewretd) |>
+  collect()
+```
+
+<!-- Fama et al. (1969, pp. 4–5) express concern about non-zero excess returns causing “specification error” and exclude “fifteen months before the split for all securities and fifteen months after the split for splits followed by dividend decreases.” -->
+Fama et al. (1969, pp.4-5)は，「特定化誤差」(specification error)を引き起こす非ゼロの超過リターンについて懸念を示し，「すべての証券について分割前の15か月と，配当減少に続く分割後の15か月を除外する」と述べている。
+<!-- We partially implement this by excluding fifteen months before the split for all securities, but not excluding any months after the split, as this requires data on dividends that would not have been available at the time of the split - which we do not compile until later (see below) - and thus induces additional look-ahead issues. -->
+すべての証券について、分割前の15カ月は除外するが、分割後の月は除外しないことで、これを部分的に実施している、
+というのも、分割時には入手できなかったであろう配当に関するデータが必要となり、その結果、さらなる先行問題(look-ahead issue)が生じるからである。
+
+<!-- Note that because a (permno, date) combination may appear for more than one split, and be within fifteen months before the split for one split, and not so for another split, we need to aggregate data across such observations. -->
+(`permno`, `date`)の組み合わせは複数の分割に対して現れる可能性があるため、ある分割の15か月前にあるが、別の分割にはそうではない場合があるため、このような観測を横断してデータを集約する必要があることに注意する。
+<!-- The following code sets exclude to true if the (permno, date) combination is within fifteen months before any split for that stock. -->
+以下のコードは、その株式に対して15か月以内のいずれかの分割がある場合、(`permno`, `date`)の組み合わせが真である場合、`exclude`を`true`に設定する。
+
+```{r}
+#| eval: false
+omit_returns <-
+  split_returns |>
+  mutate(
+    # month_rel_exが-15から0の間の場合はtrue
+    exclude = between(month_rel_ex, -15, 0)
+    ) |>
+  group_by(permno, date) |>
+  summarize(
+    exclude = any(exclude), # excludeにTrueが1つでもあればTrue
+    .groups = "drop" # グループ化を解除
+     )
+```
+
+<!-- The following code adds exclude to the data from split_returns.  -->
+以下のコードは、`split_returns`からのデータに`exclude`を追加する。
+<!-- Note that we need to select distinct values for return data from split_returns, as a (permno, date) combination may appear more than once, but with different values of month_rel_ex due to it relating to more than one split.  -->
+`split_returns`からのリターンデータについては、(`permno`, `date`)の組み合わせが複数回現れる可能性があるため、`month_rel_ex`の値が異なることがあるため、一意の値を選択する必要があることに注意する。
+<!-- Note also that we do not simply drop rows from the data set where exclude is TRUE, as we want to calculate abnormal returns for these months.  -->
+また、`exclude`が`TRUE`のデータセットから行を単純に削除しないことに注意する。これらの月の異常リターンを計算したいからである。
+<!-- Instead, we merely exclude these observations from the regression analysis by specifying subset = !exclude. -->
+代わりに、`subset = !exclude`を指定することで、これらの観測を回帰分析から除外するだけである。
+
+```{r}
+#| eval: false
+
+split_returns_reg <-
+  split_returns |>
+  inner_join(omit_returns, by = c("permno", "date")) |>
+  select(permno, date, ret, exclude) |>
+  distinct()
+```
+
+<!-- The next step is to estimate regressions by permno.  -->
+次のステップは、`permno`ごとに回帰を推定することである。
+<!-- Like FFJR, we estimate a market model by regressing the log of gross returns of each stock on the log of gross returns of a market index.  -->
+FFJRと同様に、各株式の総リターンの対数を市場指数の総リターンの対数に回帰させることで、市場モデルを推定する。
+<!-- In the code below, we make extensive use of ideas from the “many models” chapter of the first edition of R for Data Science and you may find it helpful to read that chapter.8 -->
+以下のコードでは、R for Data Scienceの第1版の「多数のモデル」章のアイデアを広く活用しており、その章を読むと役立つかもしれません。[^8]
+
+[^8]: aaa08
+
+<!-- Because we want to fit one model for each permno, we facilitate this by using nest() to put all the data for each value of permno (other than the value of permno) into a single column. -->
+各`permno`の値について1つのモデルを適合させたいため、`permno`の値以外のすべてのデータを1つの列にまとめるために`nest()`を使用する。
+<!-- We can then use map() from the purrr library to create a new column fit that contains a fitted linear (OLS) model for each permno value. -->
+その後、purrrライブラリの`map()`を使用して、各`permno`値に対して適合した線形（OLS）モデルを含む新しい列`fit`を作成することができる。
+<!-- If we apply predict() to the model, we will get fitted values only for those observations used to estimate the model, which will mean we will not have predicted values for months within fifteen months before the split. -->
+モデルに`predict()`を適用すると、モデルを推定するために使用された観測値のみに対して適合値が得られるため、分割の15か月前の月に対して予測値が得られないことになる。
+<!-- Instead, we need to supply data for all observations as the second argument (newdata) of the predict function. -->
+代わりに、`predict`関数の第2引数（`newdata`）としてすべての観測データを提供する必要がある。
+<!-- To do this, we use map2() from the purrr library and store the result in the variable predicted. -->
+これを行うために、purrrライブラリの`map2()`を使用し、結果を変数`predicted`に格納する。
+
+<!-- Note that predicted will be a list-column in which each element is a vector of predicted values using the market model for the applicable permno. -->
+`predicted`はリスト列であり、各要素は該当する`permno`に対して市場モデルを使用して予測された値のベクトルである。
+<!-- We can use unnest() from the tidyr package to “expand” the data frame so that each row relates to a given (permno, date) pair. -->
+`tidyr`パッケージの`unnest()`を使用して、各行が特定の（`permno`、`date`）のペアに関連するようにデータフレームを「展開」することができる。
+<!-- Finally, we calculate excess returns by subtracting predicted from the actual value of lpr and store the result in the column named resid. -->
+最後に、予測値を`lpr`の実際の値から引いて超過リターンを計算し、その結果を`resid`という列に格納する。
+
+
+```{r}
+#| eval: false
+
+abnormal_returns <-
+  split_returns_reg |>
+  left_join(index_returns, by = "date") |>
+  mutate(lpr = log(1 + ret),
+         lm = log(1 + vwretd)) |>
+  select(permno, date, lpr, lm, exclude) |>
+  nest(data = !permno) |>
+  mutate(fit = map(data, \(x) lm(lpr ~ lm, data = x, subset = !exclude,
+                              na.action = "na.exclude"))) |>
+  mutate(predicted = map2(fit, data, \(x, y) predict(x, newdata = y))) |>
+  unnest(cols = c(predicted, data)) |>
+  mutate(resid = lpr - predicted) |>
+  select(permno, date, resid)
+```
+
+<!-- To facilitate joining abnormal_returns with nyse_splits, we create a version of nyse_splits with start and end columns that indicate the month_index of the first and last months that we want abnormal returns for (i.e., within 30 months of the split). -->
+`abnormal_returns`を`nyse_splits`と結合するために、`nyse_splits`のバージョンを作成し、`start`と`end`列を作成する。これらは、超過リターンを取得したい最初の月と最後の月の`month_index`を示している（つまり、分割の30か月以内）。
+
+
+
+```{r}
+#| eval: false
+
+nyse_splits_join <-
+  nyse_splits |>
+  mutate(start = ex_month_index - 30,
+         end = ex_month_index + 30)
+```
+
+
+<!-- We can combine abnormal_returns with nyse_splits, but before doing so, we need to pull in month_index for each date from month_indexes. -->
+`abnormal_returns`を`nyse_splits`と組み合わせることができるが、その前に`month_indexes`から各日付の`month_index`を取得する必要がある。
+<!-- We join abnormal_returns with nyse_splits using permno and month_index between start and end. -->
+`abnormal_returns`を`nyse_splits`と結合する際には、`permno`と`month_index`を`start`と`end`の間で使用する。
+
+
+```{r}
+#| eval: false
+
+table2_data <-
+  abnormal_returns |>
+  inner_join(month_indexes, by = "date") |>
+  inner_join(nyse_splits_join,
+             join_by(permno, between(month_index, start, end))) |>
+  mutate(month_gap = month_index - ex_month_index) |>
+  select(permno, exdt, month_gap, resid)
+```
+
+<!-- Before proceeding, we check that we have just one row for each split (permno and exdt) and relative month (month_gap).[^9] -->
+処理の前に，各分割（`permno`と`exdt`）と相対月（`month_gap`）について1行だけあることを確認する。[^9]
+
+[^9]: aaa09
+
+```{r}
+#| eval: false
+
+table2_data |>
+  count(permno, exdt, month_gap) |>
+  count(n_rows = n)
+```
+
+<!-- We now have the data we need to produce Figure 10.1, our analogue of Figure 2b from Fama et al. (1969, p. 13). -->
+これで、Fama et al. (1969, p.13)の図2bのアナログである図10.1を作成するために必要なデータが揃った。
+
+```{r}
+#| eval: false
+
+table2_data |>
+  group_by(month_gap) |>
+  summarize(all_u = mean(resid), .groups = "drop") |>
+  arrange(month_gap) |>
+  mutate(all_U = cumsum(all_u)) |>
+  ggplot(aes(x = month_gap, y = all_U)) +
+  geom_point()
+```
+
+
+<!-- 10.4.1 Data on dividends -->
+### 配当データ
+
+<!-- Most columns of Table 2 of FFJR and all plots in Figure 3 of FFJR require data on dividends.  -->
+FFJRの表2のほとんどの列とFFJRの図3のすべてのプロットには、配当データが必要である。
+<!-- We collect data on dividends from dsedist.10  -->
+配当データは`dsedist`から収集する。[^10]
+<!-- Ordinary dividends are distinguished from other distributions (e.g., liquidating dividends or exchanges and reorganizations) by the first digit of distcd, which is 1 for ordinary dividends. -->
+普通配当は、`distcd`の1桁目が普通配当の1であることで、他の分配（清算配当や交換・再編成など）と区別される。
+
+[^10]: aaa10
+
+
+<!-- It turns out that there can be more than one dividend paid in a given month for a given security, so we aggregate dividends by (permno, month). -->
+特定の証券について特定の月に複数の配当が支払われることがあるため、（`permno`、`month`）で配当を集計する。
+
+
+```{r}
+#| eval: false
+
+div_months <-
+  dsedist |>
+  filter(str_sub(as.character(distcd), 1L, 1L) == "1") |>
+  mutate(month = as.Date(floor_date(exdt, 'month'))) |>
+  group_by(permno, month) |>
+  summarize(divamt = sum(divamt, na.rm = TRUE), .groups = "drop")
+```
+
+
+<!-- For each month, FFJR define “the dividend change ratio as total dividends (per equivalent unsplit share) paid in the twelve months after the split, divided by total dividends paid during the twelve months before the split” Fama et al. (1969, p.8).  -->
+各月に対して，FFJRは「分割後12ヶ月に支払われた(分割前の株式1株当たり)配当合計を分割前12ヶ月に支払われた配当合計で割ったもの」を配当変化率と定義している。(Fama et al., 1969, p.8)。
+
+<!-- So, for each month $t$,  we want to sum up dividends from month $t-11$ to month $t$ and also dividends for months $t+1$  through $t+12$ .  -->
+したがって、各月$t$について、月$t-11$から月$t$までの配当と、月$t+1$から月$t+12$までの配当を合計したい。
+
+<!-- Care is needed to calculate dividends “per equivalent unsplit share” as a firm paying 80 cents per share each quarter prior to a 2-for-1 split should be considered to have increased its dividends if it paid 45 cents per share (i.e., 90 cents per original share) in each quarter after the split.  -->
+「分割前に四半期ごとに1株当たり80セントを支払っていた企業が、分割後に1株当たり45セント（つまり、元の株式1株当たり90セント）を支払った場合、配当を増やしたと見なすべきである」ということを考慮して、「分割前の株式1株当たり」で配当を計算するために注意が必要である。
+<!-- The variable cfacshr from msf allows us to make the necessary adjustment.11 -->
+`msf`の`cfacshr`変数を使用することで、必要な調整を行うことができる。[^11]
+
+[^11]: aaa11
+
+<!-- If no dividends are paid on a stock in a given month, we set divamt to zero; this allows us to distinguish months where a stock is not an NYSE stock on crsp.msf (missing from this table) from ones where it is, but pays no dividend that month (i.e., zero divamt).12 -->
+所与とした月に株式に配当が支払われない場合、`divamt`をゼロに設定する。これにより、株式が`crsp.msf`においてNYSE株ではない月（この表にはない）と、NYSE株であるがその月に配当を支払わない月（つまり、`divamt`がゼロ）を区別することができる。[^12]
+
+[^12]: aaa12
+
+
+```{r}
+#| eval: false
+
+nyse_divs_raw <-
+  msf |>
+  inner_join(nyse_stocks, by = "permno") |>
+  filter(between(date, namedt, nameenddt)) |>
+  mutate(month = as.Date(floor_date(date, 'month'))) |>
+  select(permno, date, month, cfacshr) |>
+  left_join(div_months, by = c("permno", "month")) |>
+  mutate(divamt = coalesce(divamt / cfacshr, 0)) |>
+  select(permno, month, divamt)
+```
+
+
+<!-- The following code aggregates the variables needed to calculate the dividend change ratio mentioned above: dividends paid in the twelve months after the split and dividends paid during the twelve months before the split. -->
+次のコードは、上記で言及した配当変化率を計算するために必要な変数を集計する。すなわち、分割後12ヶ月に支払われた配当と分割前12ヶ月に支払われた配当である。
+
+<!-- In this case, we specify `group_by(permno)` as we want windows to be applied on a by - PERMNO basis (i.e., when calculating trailing and forward dividends, we are only interested in dividends related to a single PERMNO) and then `window_order(month)`, as we want to arrange the data within each window by month so that “go back 11 months” is meaningfully defined. In the next step, we specify `window_frame(from = -11, to = 0)` to indicate that in the subsequent calculation, we want to include values from $t-11$ to $t$ in the window.13 -->
+この場合，`PERMNO`ごとにウィンドウを適用したいため，`group_by(permno)`を指定している。そして，各ウィンドウ内のデータを月で並べ替えるために`window_order(month)`を指定している。次のステップでは、`window_frame(from = -11, to = 0)`を指定して、以降の計算でウィンドウに $t-11$ から $t$ までの値を含めることを示している。
+<!-- This drives the values considered in the subsequent `mutate()` step, which calculates `div_trailing` and `mths_trailing`. -->
+これにより、次の`mutate()`ステップで計算される`div_trailing`と`mths_trailing`が考慮される。
+<!-- Note that `na.rm = TRUE` is always the case for SQL (which this code is ultimately translated into) and that `n()` counts the numbers of rows included in the window. -->
+`na.rm = TRUE`は常にSQL（このコードが最終的に変換されるもの）の場合であり、`n()`はウィンドウに含まれる行数を数える。
+
+<!-- We then respecify the window using `window_frame(from = 1, to = 12)` so that we can calculate `div_forward` and `mths_forward`. -->
+次に、`div_forward`と`mths_forward`を計算するために、ウィンドウを`window_frame(from = 1, to = 12)`に再指定する。
+
+<!-- Finally, to exclude cases where, say, a stock has listed within the last twelve months or delists in the subsequent twelve months and thereby perhaps makes the calculation of the dividend change ratio less meaningful, we use filter(`mths_trailing == 12`, `mths_forward == 12`). -->
+最後に、例えば、株式が過去12か月以内に上場したり、次の12か月で上場廃止されたりして、配当変化率の計算があまり意味をなさない場合を除外するために、`filter(mths_trailing == 12, mths_forward == 12)`を使用する。
+<!-- Finally, we ungroup to remove the `group_by(permno)` grouping that we no longer need, select the variables of interest, and then collect the data. -->
+不要になったグループ化`group_by(permno)`を除去するために`ungroup()`を使い，興味のある変数を選択し、データを収集している。
+
+
+```{r}
+#| eval: false
+
+nyse_divs <-
+  nyse_divs_raw |>
+  group_by(permno) |>
+  window_order(month) |>
+  window_frame(from = -11, to = 0) |>
+  mutate(div_trailing = sum(divamt, na.rm = TRUE),
+         mths_trailing = n()) |>
+  window_frame(from = 1, to = 12) |>
+  mutate(div_forward = sum(divamt, na.rm = TRUE),
+         mths_forward = n()) |>
+  filter(mths_trailing == 12, mths_forward == 12) |>
+  ungroup() |>
+  select(permno, month, div_trailing, div_forward) |>
+  collect()
+```
+
+<!-- Now that we have data on div_trailing and div_forward for every (permno, month) combination on NYSE, we can use these data to calculate the dividend change ratio (div_ratio) for each of the split months on nyse_splits. -->
+NYSEのすべての（`permno`、`month`）の組み合わせについて`div_trailing`と`div_forward`のデータがあるので、これらのデータを使用して、nyse_splitsの各分割月の配当変化率（`div_ratio`）を計算することができる。
+
+
+```{r}
+#| eval: false
+
+split_firm_dividends <-
+  nyse_splits |>
+  left_join(nyse_divs, by = c("permno", "month")) |>
+  mutate(div_ratio = if_else(div_trailing > 0,
+                             div_forward / div_trailing, NA)) |>
+  filter(!is.na(div_ratio)) |>
+  select(permno, month, exdt, div_ratio)
+```
+
+<!-- Fama et al. (1969, p. 8) measure dividend changes "relative to the average dividends paid by all securities on the New York Stock Exchange during the relevant time periods. … Dividend ‘increases’ are then defined as cases where the dividend change ratio of the split stock is greater than the ratio for the Exchange as a whole."  -->
+Fama et al. (1969, p.8)は、「関連する期間中にNYSEで全証券が支払った配当平均に対する配当変化を測定する。…配当の「増加」は、分割株の配当変化率が取引所全体の比率よりも大きい場合と定義される。」
+<!-- We calculate the “market” dividend change ratio (mkt_div_ratio) by averaging the div_trailing and div_forward values for each month across all stocks. -->
+各月の全株式にわたる`div_trailing`と`div_forward`の値を平均することで、「市場」の配当変化率（`mkt_div_ratio`）を計算する。
+
+```{r}
+#| eval: false
+
+div_mkt <-
+  nyse_divs |>
+  group_by(month) |>
+  summarize(div_trailing = mean(div_trailing, na.rm = TRUE),
+            div_forward = mean(div_forward, na.rm = TRUE),
+            .groups = "drop") |>
+  mutate(mkt_div_ratio = if_else(div_trailing > 0,
+                                 div_forward / div_trailing, NA))
+```
+
+<!-- We can then combine data on split- and market-level dividend change ratios for each month in which there is a split to calculate up_div, which is an indicator for the dividend change ratios for a stock undergoing a split being greater than that for the market in that month. -->
+本稿では，分割が行われる各月について，分割レベルと市場レベルの配当変化率のデータを組み合わせて，分割を受ける株式の配当変化率がその月の市場の配当変化率よりも大きいかどうかを示す指標である`up_div`を計算する。
+
+<!-- Fama et al. (1969, p. 9) do not pretend that their measure of dividend increases is perfect and merely use it as “a simple and convenient way of … classifying year-to-year dividend changes for individual securities.”14 -->
+Fama et al. (1969, p.9)は、配当増加の測定が完璧であるとは主張しておらず、「個々の証券の年間配当変化を分類するための簡単で便利な方法」として使用している。
+
+```{r}
+#| eval: false
+
+dividends_file <-
+  split_firm_dividends |>
+  inner_join(div_mkt, by = "month") |>
+  select(permno, exdt, div_ratio, mkt_div_ratio) |>
+  mutate(up_div = div_ratio >= mkt_div_ratio)
+```
+
+<!-- Finally, we can combine data on relative dividend change ratios with abnormal return data. -->
+最後に，相対的な配当変化率のデータを超過リターンデータと組み合わせることができる。
+
+```{r}
+#| eval: false
+
+table2_w_divs <-
+  table2_data |>
+  left_join(dividends_file, by = c("permno", "exdt"))
+```
+
+<!-- We can now produce Figure 10.2, our analogue of Figure 3c from Fama et al. (1969, p. 15). -->
+これで、Fama et al. (1969, p. 15)の図3cのアナログである図10.2を作成することができる。
+
+```{r}
+#| eval: false
+
+table2_w_divs |>
+  filter(up_div) |>
+  group_by(month_gap) |>
+  summarize(u = mean(resid), .groups = "drop") |>
+  arrange(month_gap) |>
+  mutate(U = cumsum(u)) |>
+  ggplot(aes(x = month_gap, y = U)) +
+  geom_point()
+```
+
+<!-- Figure 10.3 provides our equivalent of Figure 3d from Fama et al. (1969, p. 15). -->
+図10.3は、Fama et al. (1969, p. 15)の図3dに相当するものである。
+
+```{r}
+#| eval: false
+
+table2_w_divs |>
+  filter(!up_div) |>
+  group_by(month_gap) |>
+  summarize(u = mean(resid), .groups = "drop") |>
+  arrange(month_gap) |>
+  mutate(U = cumsum(u)) |>
+  ggplot(aes(x = month_gap, y = U)) +
+  geom_point()
+```
+
+
+<!-- ### 10.4.2 Discussion questions and exercises -->
+### 議論の問題と演習
+
+
+<!-- 1. “In the past a large fraction of stock splits have been followed closely by dividend increases - and increases greater than those experienced at the same time by other securities in the market.”  -->
+   <!-- What evidence to support this claim (if any) is provided by FFJR?  -->
+   <!-- Do we see evidence consistent with this in the data underlying our replication above? -->
+
+<!-- 2. Consider the three alternative theories below.  -->
+   <!-- Suggest tests that could distinguish which of these theories best explains observed phenomena.  -->
+   <!-- Which theory best aligns the theory proposed by FFJR? -->
+   <!-- How would this theory need to be modified to comport better with the theory proposed by FFJR?  -->
+
+<!-- - **Theory $A`$ ** : Firms like to keep their stock price within certain bounds. When the stock price rises above a certain threshold, a firm may initiate a split, announcing it several weeks in advance of its effective date.  Firms do not use splits to signal private information about firm prospects.  -->
+<!-- Pre-split stock prices may be driven by information that suggests an imminent increase in dividends. -->
+
+<!-- - **Theory $B`$** : Firms use splits to signal private information about firm prospects. -->
+<!-- A firm will announce a split several weeks in advance of its effective date. -->
+<!-- Firms may also use dividend changes to signal private information about firm prospects. -->
+
+<!-- - **Theory $B``$** : Firms use splits to signal private information about future dividend increases, which in turn signal private information about firm prospects. -->
+<!-- A firm will announce a split several weeks in advance of its effective date. -->
+
+
+1. 「過去には、多くの株式分割が直後に配当増加に続いてきた。そして、他の証券と比較して、より大きな増加が経験されてきた。」
+   この主張を支持する証拠（あれば）は、FFJRによって提供されているか？
+   上記の再現データの背後にあるデータには、この主張と一致する証拠が見られるか？
+2. 以下の3つの代替理論を考えなさい。
+  観察された現象を最もよく説明するのは、これらの理論のうちどれかを区別するためのテストを提案しなさい。
+  FFJRが提案する理論と最も一致するのはどの理論か？
+  この理論をFFJRが提案する理論とよりよく一致させるためには、どのように修正する必要があるか？
+  - **理論 $A'$** : 企業は株価を一定の範囲内に保ちたいと考えている。
+  株価がある閾値を超えると、企業は分割を開始し、有効日の数週間前に発表するかもしれない。
+  企業は、企業の見通しに関する非公開情報を示すために分割を使用しない。
+  分割前の株価は、近々の配当増加を示唆する情報によって駆動されるかもしれない。
+  - **理論 $B'$** : 企業は、企業の見通しに関する非公開情報を示すために分割を使用する。
+  企業は、有効日の数週間前に分割を発表する。
+  企業は、企業の見通しに関する非公開情報を示すために配当変更を使用するかもしれない。
+
+  - **理論 $B''$** : 企業は、将来の配当増加に関する非公開情報を示すために分割を使用し、これにより企業の見通しに関する非公開情報を示す。
+  企業は、有効日の数週間前に分割を発表する。
+
+<!-- 3. On p. 17 of Fama et al. (1969), it is argued that “our data suggest that once the information effects of associated dividends are properly considered, a split per se has no net effect on common stock returns.”  -->
+3. Fama et al. (1969)の17ページでは、「関連する配当の情報効果が適切に考慮されると、分割そのものは普通株式のリターンに対して純効果を持たない」と主張されている。
+   <!-- Is it clear what meaning the words “per se” have in this sentence?  -->
+    この文中の「per se」という言葉の意味が明確ですか？
+   <!-- Does FFJR provide persuasive evidence in support of this claim?  -->
+    FFJRは、この主張を支持するための説得力のある証拠を提供していますか？
+   <!-- Describe how you might test this claim using the richer data available today.  -->
+    今日利用可能なより豊富なデータを使用して、この主張をどのようにテストするかを説明してください。
+   <!-- What data would you use beyond that used in FFJR? -->
+    FFJRで使用されたデータ以外のデータは何ですか？
+
+<!-- 4. How do the figures produced above compare with their equivalents in FFJR? What might account for any differences? -->
+4. 上記で生成された図は、FFJRのそれと比較してどのように異なるか？ どのような違いがあるか？
+
+<!-- 5. In the analysis above we used vwretd as the market index.  -->
+5. 上記の分析では、市場指数として`vwretd`を使用しました。
+   <!-- Modify the code above to instead use ewretd.  -->
+  上記のコードを変更して、代わりに`ewretd`を使用してください。
+   <!-- Do you observe any changes in the resulting figures? -->
+  結果の図に変化はありますか？
+   <!-- Which do you believe is the better market index for these plots? Why? -->
+  これらのプロットにとってより良い市場指数は何だと思いますか？ なぜですか？
+
+
+<!-- ## 10.5 Capital markets research in accounting -->
+## 10.5 会計における資本市場研究
+
+<!-- This part of the book focuses on capital markets research, which is arguably the area in which academic research has most contributed to our understanding of real-world accounting phenomena.  -->
+本書のこの章は、おそらく学術研究が現実の会計現象を理解するのに最も貢献している分野である資本市場研究に焦点を当てている。
+<!-- One goal of this part is to provide a solid introduction to classical ideas and papers related to capital markets research in accounting. -->
+この章の目的の1つは、会計の資本市場研究に関連する古典的なアイデアと論文についての堅実な導入を提供することである。
+
+<!-- This chapter introduced the idea of efficient capital markets and focuses on Fama et al. (1969), one of the earliest event studies in capital markets research.  -->
+この章では、効率的な資本市場のアイデアを紹介し、資本市場研究の初期のイベント研究の1つであるFama et al. (1969)に焦点を当てた。
+<!-- The next two chapters—Chapters 11 and 12—cover two seminal papers, Ball and Brown (1968) and Beaver (1968), respectively.  -->
+次の2章、第11章と第12章では、それぞれBall and Brown (1968)とBeaver (1968)という2つの画期的な論文について取り上げる。
+<!-- While the first three chapters of this part study papers from more than 50 years ago, we believe that they provide an excellent introduction to the foundations of research design that remain relevant to this day. -->
+最初の3章は、50年以上前の論文を研究しているが、それらは今日でも有効な研究デザインの基礎を優れた導入を提供していると考えている。
+
+<!-- Chapter 13 builds on the three previous chapters in providing more depth on event studies, including coverage of how event studies have evolved since Fama et al. (1969).  -->
+第13章は、Fama et al. (1969)以来のイベント研究の進化についても含め、イベント研究についてさらに詳しく説明するために、前の3章に基づいて構築されている。
+<!-- Chapter 14 examines post-earnings announcement drift, a much-studied anomaly in the pricing of accounting information in capital markets.  -->
+第14章では、資本市場における会計情報の価格設定における多くの研究された異常である**決算発表後の株価ドリフト**(Post-Earnings Annoucement Drift: PEAD)を調査する。
+<!-- Chapter 15 goes deeper into the measurement of accruals, a critical element of financial accounting, and also provides an opportunity to explore simulation analysis in more detail.  -->
+第15章では、負債の計測についてさらに詳しく説明し、財務会計の重要な要素であることと、シミュレーション分析をより詳しく探求する機会を提供する。
+<!-- Chapter 16 explores earnings management, which has been the focus of significant body of accounting research over several decades, and also provides an opportunity to understand issues related to measurement in research and the power of statistical tests. -->
+第16章では、数十年にわたり多くの会計研究の焦点となってきた**利益マネジメント**(earnings management)を探求し、研究における測定に関連する問題や統計的検定の力を理解する機会を提供する。

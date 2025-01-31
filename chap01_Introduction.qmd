@@ -1,0 +1,187 @@
+# はじめに
+
+## 本書の構成
+
+<!-- The book is organized into four parts. -->
+本書は4部に分かれています。
+
+<!-- Part I: Foundations covers a variety of topics, including research computing, statistics, causal inference, and some details of data sets commonly used in accounting research.  -->
+*第1部：基礎*では，研究のためのコンピューティング，統計学，因果推論，および会計研究で一般的に使用されるデータセットの詳細など，さまざまなトピックをカバーしている。
+<!-- This part of the book covers material often not included in the formal coursework of a PhD in accounting.  -->
+本書のこの部分は，会計の博士課程の正式なカリキュラムには通常含まれていない内容をカバーしている。
+<!-- For example, material related to statistics and causal inference is often assumed to be covered in coursework in statistics and econometrics rather than in the accounting-specific courses.  -->
+たとえば，統計学や因果推論に関連する内容は，統計学や計量経済学の授業でカバーされることが多く，会計専門の授業ではカバーされないことが多い。
+<!-- Material on research computing and detailed investigation of data sets is generally not covered in PhD coursework at all, with the typical approach being for these skills and knowledge to be picked up informally. -->
+研究のためのコンピューティングやデータセットの詳細な調査に関する内容は，一般的に博士課程の授業では全くカバーされず，これらのスキルや知識は非公式に身につけることが一般的である。
+
+<!-- Assuming very little in terms of prior knowledge, Part I: Foundations covers core concepts and skills in data analysis, statistics, and causal inference. -->
+*第1部：基礎*では，事前の知識がほとんどないことを前提として，データ分析，統計学，因果推論の基本的な概念とスキルをカバーしている。
+
+
+<!-- - Chapter 1 provides an introduction to the book, including a reading guide and instructions for setting up your computer. -->
+- 第1章では，本書の概要，読書ガイド，およびコンピュータの設定手順について説明している。
+<!-- - Given the centrality of data skills to getting the full value out of this book, we provide a fast-paced tutorial-style introduction to R in Chapter 2. -->
+- この本を最大限に活用するためには，データスキルが中心的な役割を果たすため，第2章では，Rの速習チュートリアル形式の紹介を提供している。
+<!-- - As we assume very little knowledge of statistics and regression analysis, we provide an introduction to the basics of regression analysis in Chapter 3. -->
+- 統計学や回帰分析についてほとんど知識がないことを前提としているため，第3章では，回帰分析の基本を紹介している。
+<!-- - Chapter 4 builds on Chapter 3 to provide an introduction to elements of causal inference. -->
+- 第4章では，第3章を基に因果推論の要素を紹介している。
+<!-- - Chapter 5 provides an introduction to statistical inference, which is a core part of empirical accounting research. -->
+- 第5章では，統計的推論の基本を紹介している。これは実証的な会計研究の中核をなす部分である。
+
+
+<!-- Part I: Foundations introduces key data sets frequently used in empirical accounting research. -->
+*第1部：基礎*では，実証的な会計研究で頻繁に使用される主要なデータセットを紹介している。
+
+<!-- - Chapters 6 and 8 provide an introduction to Compustat and accessing data through WRDS. -->
+- 第6章と第8章では，Compustatの紹介とWRDSを通じてデータにアクセスする方法を紹介している。
+<!-- - Chapter 7 discusses the linking of data sets from different providers with a focus on linking financial statement data from Compustat with stock return data from CRSP. -->
+- 第7章では，異なるプロバイダーからのデータセットをリンクする方法に焦点を当て，Compustatからの財務諸表データをCRSPからの株価データとリンクする方法について説明している。
+<!-- - We wrap up Part I with Chapter 9, which provides additional data skills useful for both later chapters and (we hope) readers’ own research efforts. -->
+- 第1部は，後の章や（読者自身の）研究活動に役立つ追加のデータスキルを提供する第9章で締めくくっている。
+
+
+
+<!-- Part I provides the foundations for the remaining parts of the book.  -->
+第1部は，本書の残りの部分の基礎を提供している。
+<!-- Depending on the preferences of readers and instructors, one could either continue with Part II: Capital Markets Research or skip ahead to Part III: Causal Inference.  -->
+読者や教員の好みによっては，*第2部：資本市場研究*に進むか，*第3部：因果推論*に進むかを選択することができる。
+<!-- While some parts of Part III draw on skills and concepts covered in Part II, we flag such instances in each case. -->
+第3部の一部は，第2部でカバーされたスキルや概念を引用しているが，そのような場合にはそれぞれにフラグを立てている。
+
+<!-- The material of Part I could be covered in a number of ways.  -->
+第1部の内容は，いくつかの方法でカバーすることができる。
+<!-- One approach would be to cover this material in a standalone introductory course or “boot camp”.  -->
+1つのアプローチは，独立した入門コースや「ブートキャンプ」でこの内容をカバーすることである。
+<!-- A reader will notice that Chapter 2 actually incorporates by reference significant portions of R for Data Science, which could easily be a course in its own right (and one highly complementary to the material covered here), so there is plenty of material here for a full-fledged course for a program willing to devote class time to these skills. -->
+読者は，第2章が実際には「R for Data Science」の重要な部分を参照していることに気づくだろう。これは独立したコース（ここでカバーされている内容と非常に補完的なもの）になりうるため，これらのスキルにクラス時間を割くことを惜しまないプログラムにとっては，十分な材料がある。
+
+<!-- Another approach might be to assign Part I: Foundations to students on a self-study basis, perhaps with select portions being covered when they are most relevant for later portions of the book. -->
+別のアプローチとしては，*第1部：基礎*を自己学習のために学生に割り当てることが考えられる。後の部分に最も関連するときに選択された部分をカバーすることもあるだろう。
+<!-- For example, for a course based on Part II: Capital Markets Research of the book, Chapter 7 covers the important topic of correctly linking databases—not often encountered in PhD courses—and could be assigned as background work as and when relevant to material from Part II. -->
+たとえば，本書の*第2部：資本市場研究*に基づいたコースの場合，第7章はデータベースを正しくリンクするという重要なトピックをカバーしており，博士課程の授業ではあまり遭遇しないが，*第2部*の内容に関連するときに背景作業として割り当てることができる。
+
+<!-- Part II: Capital Markets Research provides the basis for a PhD-level course focused on capital markets research. -->
+*第2部：資本市場研究*は，資本市場研究に焦点を当てた博士課程レベルのコースの基礎を提供している。
+<!-- This part alone easily provides materials for about eight weeks of coursework. -->
+この部分だけでも，約8週間の授業に必要な材料が十分に提供されている。
+<!-- For a ten- or twelve-week course, an instructor could draw on materials from other parts of the book, or could easily supplement using other materials. -->
+10週間または12週間のコースの場合，教員は本書の他の部分から材料を引用するか，他の材料を使用して簡単に補足することができる。
+<!-- Part II is deliberately focused on more “classical” material and thus could easily complement related material that focuses on more contemporary work in financial accounting research. -->
+第2部は，意図的により「古典的な」材料に焦点を当てているため，金融会計研究のより現代的な研究に焦点を当てた関連する材料を簡単に補完することができる。
+<!-- Part II starts with research from the 1960s—such as Fama et al. (1969), Ball and Brown (1968), and Beaver (1968)—and covers some of the most important studies of subsequent decades, including Bernard and Thomas (1989), Sloan (1996), and key earnings management papers of the 1980s and 1990s.--->
+第2部は，Fama et al. (1969)，Ball and Brown (1968)，Beaver (1968)などの1960年代の研究から始まり，Bernard and Thomas (1989)，Sloan (1996)，1980年代と1990年代の主要な益出し管理論文など，その後の数十年間の最も重要な研究をカバーしている。
+
+<!-- Part III: Causal Inference provides the basis for a PhD-level course focused on causal inference in empirical accounting research. -->
+第3部:因果推論は，実証的な会計研究における因果推論に焦点を当てた博士課程レベルのコースの基礎を提供している。
+<!-- Part III has a more contemporary orientation and is not focused on capital markets research. -->
+第3部はより現代的な方向性を持ち，資本市場研究に焦点を当てていない。
+
+<!-- Depending on the needs of students in a given program, Part III could be taught as a standalone course with elements of Part I being drawn upon as needed. -->
+プログラムの学生のニーズに応じて，*第1部*の要素が必要に応じて引用される独立したコースとして*第3部*を教えることができる。
+<!-- Topics in Chapter 19 draw on materials in Part I, with extensive discussion of causal diagrams (Chapter 4), standard errors (Chapter 5), linking databases (Chapter 7), using regular expressions (Chapter 9), and two-step regressions (drawing on materials covered in Chapter 3). -->
+第19章のトピックは，*第1部*の材料を引用しており，因果図（第4章），標準誤差（第5章），データベースのリンク（第7章），正規表現の使用（第9章），および2段階回帰（第3章でカバーされた材料を引用）について詳しく説明している。
+
+<!-- While there are connections between Part II and Part III (e.g., Chapter 19 covers measures of accruals and earnings management that are covered in Chapters 15 and 16), these do not seem to rise to the level of considering Part II a prerequisite for Part III. -->
+第2部と第3部にはつながりがある（たとえば，第19章では，第15章と第16章でカバーされている計上額と益出し管理の指標について説明している）が，これらは第3部の前提条件として第2部を考慮するほどのものではない。
+<!-- Chapter 19 focuses on earnings management, which is the topic of an entire chapter in Part II (Chapter 16). -->
+19章は利益マネジメントに焦点を当てているが，これは第2部の1章（第16章）のトピックである。
+<!-- While the material of Part III might typically be covered later in the coursework of an accounting PhD program, we have endeavoured to present this material in a way that is fairly self-contained and therefore accessible to students earlier in their PhD studies (perhaps using materials from Part I to fill in gaps). -->
+第3部の内容は，通常は会計の博士課程の後半にカバーされることが多いが，この材料はかなり自己完結的に提示されているため，博士課程の初期の学生にもアクセスしやすくなっている（*第1部*の材料を使ってギャップを埋めることもできる）。
+<!-- There may even be merit in covering most of Part III before Part II, as it will allow students to read Part II materials (mostly older papers) through a more contemporary lens. -->
+*第2部*の前に*第3部*のほとんどをカバーすることで，学生がより現代的な視点で*第2部*の材料（主に古い論文）を読むことができるかもしれない。
+
+<!-- Part IV: Additional Topics provides chapters on topics such as matching, handling extreme values, selection models, and statistical (machine) learning. -->
+*第4部：追加のトピック*では，マッチング，極端な値の処理，選択モデル，統計（機械）学習などのトピックに関する章が提供されている。
+<!-- While these are important topics, we believe they are less closely related than the materials of Parts II and III. -->
+これらは重要なトピックであるが，*第2部*や*第3部*の材料ほど密接に関連しているとは考えていない。
+<!-- Instructors could easily incorporate chapters from Part IV in courses based on Part II or Part III of this book, or as standalone material for courses not based on this book. -->
+教員は，本書の*第2部*や*第3部*に基づいたコースに*第4部*の章を簡単に組み込むことができる。また，本書に基づかないコースの独立した材料としても利用できる。
+
+<!-- 1.2 Setting up your computer -->
+## コンピュータの設定
+
+
+Assuming that you have the ability to install software and a WRDS account, setting up your computer so that you can run the code in this book is straightforward and takes just a few minutes.
+We list the required steps below and also provide a video demonstrating these steps online.
+
+1. Download and install R.
+R is available for all major platforms (Windows, Linux, and MacOS) at https://cloud.r-project.org.
+
+2. Download and install RStudio.
+An open-source version of RStudio is available on the Posit website.
+
+3. Install the required packages from CRAN.
+CRAN stands for “Comprehensive R Archive Network” and is the official repository for packages (also known as libraries) made available for R.
+In this course, we will make use of a number of R packages.
+These can be installed easily by running the following code in RStudio.1
+
+```{r}
+#| eval: false
+# install.packages("pacman") # first time only
+pacman::p_load(
+    DBI, # Database Interface
+    MASS, # Modern Applied Statistics with S
+    MatchIt, # Propensity Score Matching
+    RPostgres, # PostgreSQL
+    arrow, # Apache Arrow
+    car, # Companion to Applied Regression
+    duckdb, # DuckDB
+    farr, # 著者のパッケージ
+    fixest, # 固定効果モデル
+    furrr, # 平行処理
+    glmnet, # ラッソ回帰
+    httr2, # HTTP
+    kableExtra,  # 作表
+    lmtest, # 統計検定
+    modelsummary, # モデルの要約
+    optmatch, # Propensity Score Matching
+    pdftools, #endregion PDF
+    plm, # 固定効果モデル
+    rdrobust,  # ロバスト推定
+    robustbase, # ロバスト推定
+    rpart, # 決定木
+    rpart.plot,  # 決定木
+    sandwich, # サンドイッチ推定量
+    tidyverse # データ処理
+    )
+```
+
+Note that farr is an R package one of us created just for this course (Gow, 2022).
+(As the package is related to the course Financial Accounting Research at the University of Melbourne, farr stands for “Financial Accounting Research with R”.)
+Set up R to connect to the WRDS PostgreSQL database.
+To actually use much of the code from Chapter 6 on, you will need to tell R how to access WRDS data stored in its PostgreSQL database by running the following line within RStudio.
+
+```{r}
+#| eval: false
+Sys.setenv(PGHOST = "wrds-pgdata.wharton.upenn.edu",
+           PGPORT = 9737L,
+           PGDATABASE = "wrds",
+           PGUSER = "your_WRDS_ID",
+           PGPASSWORD = "your_WRDS_password")
+```
+
+
+Obviously, you should replace your_WRDS_ID and your_WRDS_password with your actual WRDS ID and WRDS password, respectively.
+This code will need to be run each time you open RStudio to access WRDS data in the code examples below.
+But once you have run this code, you do not need to run it again during the same session (i.e., until you close and reopen RStudio).
+
+If the only PostgreSQL database you access is the WRDS database, you could put the values above in .Renviron, a special file that is opened every time you open R (see here for more information on this file).2 The contents of this file would look something like this:
+
+```{r}
+#| eval: false
+PGHOST = "wrds-pgdata.wharton.upenn.edu"
+PGPORT = 9737L
+PGDATABASE = "wrds"
+PGUSER = "your_WRDS_ID"
+PGPASSWORD = "your_WRDS_password"
+```
+
+
+We discuss alternative approaches to setting up the WRDS database connection in Section 6.1, but we recommend this approach as it keeps the user-specific aspects of the code separate from the parts of the code that should work for everyone.
+By using environment variables, we ensure that the code in the book works for you if you copy it and paste it in your R console.
+
+Note that we have striven to make the code in each chapter independent of the code in other chapters.
+So, if you feel comfortable with using R and have fulfilled the requirements listed above, you could easily jump ahead to a chapter of interest and start running code.
+
+

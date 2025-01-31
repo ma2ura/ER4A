@@ -1,0 +1,547 @@
+# Ball and Brown (1968)
+
+<!-- In this and the following chapter, we cover the first two winners of the Seminal Contributions to Accounting Literature Award: Ball and Brown (1968) and Beaver (1968).1 -->
+本章と次章では，「the Seminal Contributions to Accounting Literature Award」の最初の2つの受賞者であるBall and Brown (1968)とBeaver (1968)について説明する。
+
+<!-- Ball and Brown (1968) won the inaugural Seminal Contribution to the Accounting Literature Award with a citation: “No other paper has been cited as often or has played so important a role in the development of accounting research during the past thirty years.” -->
+Ball and Brown (1968)は最初に「the Seminal Contribution to the Accounting Literature Award」を受賞し，その受賞理由は「過去30年間において，他のどの論文よりも引用されている論文はなく，会計研究の発展において重要な役割を果たしている」とされている。
+<!-- However, Philip Brown (Brown, 1989) recalled in a presentation to the 1989 JAR conference that the paper was rejected by The Accounting Review with the editor indicating a willingness to “reconsider the manuscript if Ray and I wished to cut down the empirical stuff and expand the ‘bridge’ we had tried to build between our paper and the accounting literature.” (Brown, 1989, p. 205) -->
+しかし，Philip Brown (Brown, 1989)は1989年のJARカンファレンスでのプレゼンテーションで，この論文がThe Accounting Reviewに拒否されたことを振り返り，編集者が「Rayと私が実証的な部分を削減し，私たちが試みた論文と会計文献との間に構築しようとした『橋』を拡大することを望むなら，原稿を再検討する用意がある」と述べている。
+
+<!-- According to Kothari (2001, p. 113), “Ball and Brown (1968) and Beaver (1968) heralded empirical capital markets research as it is now known.” -->
+Kothari (2001, p. 113)によると，「Ball and Brown (1968)とBeaver (1968)は，現在知られている実証的な資本市場研究の到来を告げた」としている。
+<!-- Prior to that period, accounting research was a largely theoretical discipline focused on normative research, that is, research concerned with the “right” or “best” way to account for various events and transactions. -->
+それ以前の時期には，会計研究は主に理論的な学問であり，規範的研究に焦点を当てていた。つまり，さまざまな事象や取引について「正しい」または「最良の」会計処理方法に関心を持つ研究であった。
+<!-- In addition to being normative, accounting theory was largely deductive, meaning that detailed theories were derived from general principles. -->
+会計理論は規範的であるだけでなく，主に帰納的であった。つまり，一般的な原則から詳細な理論が導かれていた。
+
+<!-- Beaver (1998) identifies one approach as asking, say, “what properties should the ‘ideal’ net income have?” -->
+Beaver (1998)は，あるアプローチを「『理想的な』純利益にはどのような特性があるべきか？」と問うものとして特定している。
+<!-- One answer to this question is that accounting income a period should reflect the change in the net present value of cash flows (plus cash distributions) to shareholders during the period. -->
+この質問に対する1つの回答は，ある期間の会計収益は，その期間中の株主へのキャッシュフローの現在価値の変化（およびキャッシュ配当）を反映すべきであるというものである。
+<!-- But other answers existed. -->
+しかし，他の回答も存在した。
+<!-- Accounting researchers would start with a set of desired properties and use these to derive the “best” approach to accounting for depreciation of long-lived assets, inventory, or lease assets. -->
+会計研究者は，望ましい特性の集合から始め，これらを使用して長期資産の減価償却、棚卸資産、またはリース資産の会計処理の「最良」のアプローチを導き出していた。
+<!-- Kothari (2001) points out that there was “little emphasis on the empirical validity” of theory. -->
+Kothari (2001)は，理論の「実証的な妥当性」にはほとんど重点が置かれていなかったと指摘している。
+
+<!-- Similar ideas still permeate the thinking of standard-setters, who purport to derive detailed accounting standards from their “conceptual frameworks”, which outline broad definitions of things such as assets and liabilities that standard-setters can supposedly use to derive the correct accounting approach in any given setting. -->
+同様の考え方は，基準設定主体の考え方に依然として浸透しており，基準設定主体は「概念フレームワーク」から詳細な会計基準を導出しようとしている。
+概念フレームワークは，資産や負債などの広義の定義を概説し，基準設定主体が任意の状況で正しい会計処理方法を導き出すために使用できるとされている。
+
+<!-- However, in the period since Ball and Brown (1968), these approaches have been largely discarded in academic research. -->
+しかし，Ball and Brown (1968)以降の時期において，これらのアプローチは学術研究においてほとんど捨てられている。
+<!-- A largely normative, theoretical emphasis has been replaced by a positive, empirical one. -->
+主に規範的で理論的な重点は，実証的で経験的な重点に置き換えられている。
+
+<!-- This chapter uses Ball and Brown (2019) as a kind of reading guide to Ball and Brown (1968) before considering a replication of Ball and Brown (1968) styled on that provided by Nichols and Wahlen (2004). -->
+本章では，Ball and Brown (2019)をBall and Brown (1968)の読み方のガイドとして使用し，Nichols and Wahlen (2004)によるBall and Brown (1968)のレプリケーションを検討する。
+
+:::{.callout-tip}
+<!-- The code in this chapter uses the packages listed below. -->
+この章のコードは，以下のパッケージを使用する。
+<!-- Because we use several packages from the Tidyverse, we save time by using library(tidyverse) to load them in one go.  -->
+Tidyverseからいくつかのパッケージを使用するため，`library(tidyverse)`を使用して一括で読み込むことで時間を節約する。
+<!-- For instructions on how to set up your computer to use the code found in this book, see Section 1.2.  -->
+この書籍で見つかるコードを使用するためのコンピュータのセットアップ方法については，セクション1.2を参照してください。
+<!-- Quarto templates for the exercises below are available on GitHub. -->
+以下の演習用のQuartoテンプレートはGitHubで入手できる。
+:::
+
+```{r}
+library(tidyverse)
+library(DBI)
+library(farr)
+library(dbplyr)     # window_order()
+```
+
+<!-- ## Principal results of Ball and Brown (1968) -->
+## Ball and Brown (1968)の主要結果
+
+<!-- The first two pages of Ball and Brown (1968) address the (then) extant accounting literature. -->
+Ball and Brown (1968)の最初の2ページは，（当時の）既存の会計文献について述べている。
+<!-- This discussion gives the impression that the (academic) conventional wisdom at that time was that accounting numbers were (more or less) meaningless (“the difference between twenty-seven tables and eight chairs”) and further research was needed to devise more meaningful accounting systems. -->
+この議論から，当時の（学術的な）常識は，会計数値は（おおよそ）意味がない（「27のテーブルと8つの椅子の違い」）というものであり，より意味のある会計システムを考案するためにさらなる研究が必要であるという印象を受ける。
+
+<!-- Arguably this notion informs the null hypothesis of Ball and Brown (1968). -->
+おそらく，この考え方は，Ball and Brown (1968)の帰無仮説に影響を与えている。
+<!-- If accounting numbers are meaningless, then they should bear no relationship to economic decisions made by rational actors. -->
+会計数値が意味を持たない場合，それらは合理的な行為者によって行われる経済的な意思決定とは何の関係もないはずである。
+<!-- Ball and Brown (1968) seek to test this (null) hypothesis by examining the relationship between security returns and unexpected income changes. -->
+Ball and Brown (1968)は，株式リターンと期待外収益変化との関係を調査することで，この（帰無）仮説を検証しようとしている。
+<!-- Ball and Brown (1968) argue that “recent developments in capital theory … [justify] selecting the behavior of security prices as an operational test of usefulness.” -->
+Ball and Brown (1968)は，「資本理論の最近の発展により，証券価格の挙動を有用性の操作的なテストとして選択することが正当化される」と主張している。
+
+<!-- The evidence provided by Ball and Brown (1968) might not convince critics of the usefulness of adding chairs and tables unless the market is a rational, efficient user of a broader set of information. -->
+Ball and Brown (1968)によって提供される証拠は，市場がより広範な情報を合理的かつ効率的に利用する場合にのみ，椅子とテーブルを追加することの有用性を疑問視する批評家を納得させるかもしれない。
+<!-- There are accounts for the results of Ball and Brown (1968) that do not rely on such rationality and efficiency. -->
+Ball and Brown (1968)の結果には，そのような合理性や効率性に依存しない説明もある。
+<!-- First, the market might react to “twenty-seven tables less eight chairs” because it does not know what it is doing. -->
+第一に，市場は「27のテーブルから8つの椅子を引いたもの」に反応するかもしれないが，それは何をしているのかわからないためである。
+<!-- Second, the market might know that “twenty-seven tables less eight chairs” is meaningless, but has no better information to rely upon. -->
+第二に，市場は「27のテーブルから8つの椅子を引いたもの」が意味をなさないことを知っているかもしれないが，それ以上の情報がないために頼ることができない。
+<!-- Given the arguments they seek to address, assumptions that the market is (a) efficient and (b) has access to a rich information set beyond earnings seem implicit in the use of security returns in a test of usefulness. -->
+彼らが取り組もうとしている議論を考慮すると，株式リターンを使用して有用性のテストを行う際に，市場が（a）効率的であり，（b）収益以外の豊富な情報セットにアクセスできるという仮定は暗黙的に含まれているように思われる。
+
+<!-- Ball and Brown (2019, p.414) identify three main results of Ball and Brown (1968): “The most fundamental result was that accounting earnings and stock returns were correlated. -->
+Ball and Brown (2019, p.414)は，Ball and Brown (1968)の3つの主要な結果を次のように特定している。「最も基本的な結果は，会計収益と株価リターンが相関していたことである。
+<!-- … Nevertheless, annual accounting earnings lacked timeliness. -->
+… それにもかかわらず，年次の会計収益にはタイムリー性が欠けていた。
+<!-- … After the earnings announcement month, the API (which cumulated abnormal returns) continued to drift in the same direction.” -->
+… 収益発表月の後，API（異常リターンを累積したもの）は同じ方向にドリフトし続けた。」
+
+<!-- Figure 1 of Ball and Brown (1968) depicts the data provided in Table 5 and comprises all three of the principal results flagged by Ball and Brown (2019). -->
+Ball and Brown (1968)の図1は，表5に提供されたデータを描いており，Ball and Brown (2019)が指摘した3つの主要な結果すべてを含んでいる。
+
+<!-- The returns reported in Figure 1 of Ball and Brown (1968) are not feasible portfolios because the earnings variables used to form each portfolio at month $-12$ are not reliably available until month $0$ or later. -->
+Ball and Brown (1968)の図1に報告されているリターンは，月 $-12$ で各ポートフォリオを形成するために使用される収益変数が，月 $0$ 以降にならないと信頼できないため，実現可能なポートフォリオではない。
+<!-- Yet one can posit the existence of a mechanism (e.g., a time machine or a magical genie) that would suffice to make the portfolios notionally feasible. -->
+しかし、仮にポートフォリオを理論的に実現可能にするメカニズム（例：タイムマシンや魔法の妖精）が存在すると仮定することはできる。
+<!-- For example, if a genie could tell us whether earnings for the upcoming year for each firm will increase or decrease at month $-12$, we could go long on firms expecting positive news, and go short on firms expecting negative news.2  -->
+たとえば、もし妖精さんが各企業の翌年の収益が増加するのか減少するのかを， $12$ ヶ月前に教えてくれるとすれば、利益がプラスであるというニュースを期待できる企業の株を買い（ロング）、マイナスとなるニュースを期待する企業の株を売る（ショート）ことが可能になる。
+<!-- Note that this hypothetical genie is sparing with the information she provides. -->
+この仮想的な妖精さんは，提供する情報を非常に限定的にしている点に注意が必要である。
+<!-- For example, we might want further details on how much earnings increased or decreased, but our genie gives us just the sign of the earnings news. -->
+たとえば，利益がどれほど増加・減少したのかについてさらに詳細をしりたいかもしれないが，妖精さんは利益ニュースの符号だけを教えてくれる。
+
+<!-- Additionally, we have implicit constraints on the way we can use this information in forming portfolios. -->
+さらに，ポートフォリオを形成する際にこの情報を使用する方法には暗黙の制約がある。
+<!-- We might do better to adjust the portfolio weights according to other factors, such as size or liquidity, but the portfolios implicit in Figure 1 of Ball and Brown (1968) do not do this. -->
+サイズや流動性などの他の要因に応じてポートフォリオのウェイトを調整する方が良いかもしれないが，Ball and Brown (1968)の図1に暗黙的に含まれるポートフォリオはこれを行っていない。
+<!-- Nor do the portfolios represented in Figure 1 involve any opportunity to adjust portfolio weights during the year. -->
+また，図1に表されているポートフォリオには，年間を通じてポートフォリオのウェイトを調整する機会もない。
+
+<!-- In assessing the relative value of various sources of information, Ball and Brown (1968) consider three approaches to constructing portfolios, which they denote as TI, NI, and II (Ball and Brown (2019) denote II as AI and we follow this notation below). -->
+さまざまな情報源の相対的価値を評価する際，Ball and Brown (1968)は， $TI$ ， $NI$ ， $II$ として示される3つのポートフォリオの構築方法を考慮している（Ball and Brown (2019)は $II$ を $AI$ として示しており，以下ではこの表記に従う）。
+
+<!-- Using these metrics, Ball and Brown (1968, p.1)  conclude that “of all the information about an individual firm which becomes available during a year, one-half or more is captured in that year’s income number. -->
+これらのメトリクスを使用して，Ball and Brown (1968, p.1) は「1年間に個々の企業に関するすべての情報のうち，半分以上がその年の収益数値に含まれている」と結論づけている。
+<!-- … However, the annual income report does not rate highly as a timely medium, since most of its content (about 85 to 90 per cent) is captured by more prompt media which perhaps include interim reports.”3 -->
+… ただし，年次の収益報告書はタイムリーな媒体として高く評価されていない。なぜなら，その内容の大部分（約85〜90％）は，中間報告書を含むより迅速な媒体によって把握されているからである。」
+
+<!-- The third principal result is shown in Table 5, where we see that the income surprise is correlated with the API to a statistically significant extent in each month up to two months after the earnings announcement.4 -->
+3番目の主要な結果は，表5に示されており，収益サプライズは，収益発表後2ヶ月までの各月において，APIと統計的に有意な程度で相関していることがわかる。
+
+<!-- This result, which later become known as post-earnings announcement drift (or simply PEAD), was troubling to Ball and Brown (1968), who argue that some of it may be explained by “peak-ahead” in the measure of market income and transaction costs causing delays in trade. -->
+この結果は，後に収益発表後のドリフト（または単にPEAD）として知られるようになり，Ball and Brown (1968)にとって問題となっていた。彼らは，市場収益の「ピーク・アヘッド」と取引コストによる取引の遅延が一部説明できる可能性があると主張している。
+<!-- We study PEAD more closely in Chapter 14. -->
+PEADについては，第14章で詳しく検討する。
+
+
+<!-- ### 11.1.1 Discussion questions -->
+### ディスカッション課題
+
+
+<!-- 1. What is the research question of Ball and Brown (1968)? -->
+1. Ball and Brown (1968)の研究課題は何か？
+    <!-- Do you find the paper to be persuasive? -->
+    この論文は説得力がありますか？
+
+<!-- 2. What do you notice about the references in Ball and Brown (1968, pp. 177–178)? -->
+2. Ball and Brown (1968, pp. 177–178)の参考文献について気づいたことは何ですか？
+
+<!-- 3. Given that “the most fundamental result” of Ball and Brown (1968) relates to an association or correlation, is it correct to say that the paper provides no evidence on causal linkages?  -->
+3. Ball and Brown (1968)の「最も基本的な結果」が関連性または相関に関するものであることを踏まえると、この論文が因果関係についての証拠を提供していないと言うのは正しいのか？
+    <!-- Does this also mean that Ball and Brown (1968) is a “merely” descriptive paper according to the taxonomy of research papers outlined in Chapter 4. -->
+    これは，第4章で概説された研究論文の分類に従うと，Ball and Brown (1968)が「単なる」記述的論文であるということを意味するでしょうか？[^4]
+    <!-- How might the results of Ball and Brown (1968) be represented in a causal diagram assuming that accounting information is meaningful and markets are efficient? -->
+    会計情報が意味を持ち，市場が効率的であると仮定した場合，Ball and Brown (1968)の結果はどのように因果図で表現されるでしょうか？
+    <!-- Would an alternative causal diagram be assumed by a critic who viewed accounting information as meaningless? -->
+    会計情報を無意味と見なす批評家は，どのような代替の因果図を仮定するでしょうか？
+
+<!-- 4. Describe how Figure 1 of Ball and Brown (1968) supports each of principal results identified by Ball and Brown (2019). -->
+4. Ball and Brown (2019)が特定した主要な結果それぞれを，Ball and Brown (1968)の図1がどのように支持しているかを説明してください。
+
+<!-- 5. Consider the causal diagrams you created above. Do the results of Ball and Brown (1968) provide more support for one causal diagram than the other? -->
+5. Ball and Brown (1968)の結果は，上で作成した因果関係図のうち、どちら一方をより強く支持しているといえるのか？
+
+<!-- 6. Compare Figure 1 of Ball and Brown (2019) with Figure 1 of BB68. What is common between the two figures? What is different? -->
+6. Ball and Brown (2019)の図1とBall and Brown (1968)の図1を比較しなさい。これら2つの図の共通点は何か？異なる点は何か？
+
+<!-- 7. What does “less their average” mean in the title of Figure 1 of Ball and Brown (2019)?  -->
+7. Ball and Brown (2019)の図1のタイトルにある「less their average」とは何を意味するか？
+<!-- What effect does this have on the plot?  -->
+このプロットにどのような影響を与えるか？  -->
+<!-- (Does it make this plot different from Figure 1 of BB68? Is information lost in the process?) -->
+（このプロットはBall and Brown (1968)の図1と異なるものか？
+このプロセスで情報が失われているのか？）
+
+<!-- 8. Ball and Brown (2019, p. 418) say “in this replication we address two issues with the BB68 significance tests.” Do you understand the points being made here? -->
+8. Ball and Brown (2019, p. 418)は「このレプリケーションでは，Ball and Brown (1968)の有意性検定に関する2つの問題に取り組んでいる」と述べている。ここで述べられているポイントを理解できますか？
+
+<!-- 9.  Ball and Brown (2019, p. 418) also say “the persistence of PEAD over time is evidence it does not constitute market inefficiency.” What do you make of this argument? -->
+9. Ball and Brown (2019, p. 418)はまた「PEADの時間経過に伴う持続性は，それが市場の非効率性を構成していないことの証拠である」と述べている。この議論についてどう思いますか？
+
+<!-- 10. What is the minimum amount of information that our hypothetical genie needs to provide to enable formation of the portfolios underlying TI, NI, and II? What are the rules for construction of each of these portfolios? -->
+10. $TI$ 、$NI$ 、 $II$ の基礎となるポートフォリオを形成するために，仮想的な妖精さんが提供する必要がある最小限の情報は何ですか？
+これらのポートフォリオの構築にはどのようなルールがありますか？
+
+<!-- 11. Ball and Brown (1968) observe a ratio of NI to TI of about $0.23$ . What do we expect this ratio to be? Does this ratio depend on the information content of accounting information? -->
+11. Ball and Brown (1968)は，$NI$ と $TI$ の比率が約 $0.23$ であることを観察している。この比率はどのようになると予想されますか？この比率は会計情報の情報内容に依存するのでしょうか？
+
+<!-- 12. Consider the paragraph in Ball and Brown (2019, p. 418) beginning “an innovation in BB68 was to estimate …”. How do the discussions of these results differ between Ball and Brown (1968) and Ball and Brown (2019)? -->
+12. Ball and Brown (2019, p. 418)の「Ball and Brown (1968)のイノベーションは，…」という段落を考えなさい。
+これらの結果に関する議論は，Ball and Brown (1968)とBall and Brown (2019)の間でどのように異なるか？
+
+<!-- 13. Consider column (4) of Table 2 of Ball and Brown (2019).Is an equivalent set of numbers reported in BB68? What is the underlying investment strategy associated with this column (this need not be feasible in practice)? -->
+13. Ball and Brown (2019)の表2の列（4）を考えなさい。
+Ball and Brown (1968)で同等の数値が報告されているか？
+この列に関連付けられた基礎となる投資戦略は何か（これは現実に実現可能である必要はあるか）？
+
+<!-- 15. Heading 6.3 of Ball and Brown (2019) is “Does ‘useful’ disprove ‘meaningless’?”  -->
+14.   Ball and Brown (2019)の6.3節の見出しは「『useful』は『meaningless』を否定するか？」である。
+  <!-- Do you think that “not meaningless” implies “not useless”?  -->
+  「『無意味』でない」ということは「『無用』でない」ということを意味すると思か？
+    <!-- Which questions (or facts) does BB68 address in these terms? -->
+  Ball and Brown (1968)がこれらの観点でどのような問題（または事実）に取り組んでいるか。
+
+
+## Ball and Brown (1968)の再現
+
+<!-- In this section, we follow Nichols and Wahlen (2004) in conducting an updated replication of Ball and Brown (1968). -->
+この章では，Nichols and Wahlen (2004)に倣って，Ball and Brown (1968)の最新のレプリケーションを行う。
+
+<!-- We get earnings and returns data from Compustat and CRSP, respectively. -->
+利益とリターンのデータは，それぞれCompustatとCRSPから取得する。
+
+:::{.panel-tabset}
+
+### PostgreSQL
+
+```{r}
+#| eval: false
+db <- dbConnec#| t(RPostgres::Postgres(),
+                bigint = "integer",
+                check_interrupts = TRUE)
+
+msf <- tbl(db, Id(schema = "crsp", table = "msf"))
+msi <- tbl(db, Id(schema = "crsp", table = "msi"))
+ccmxpf_lnkhist <- tbl(db, Id(schema = "crsp",
+                             table = "ccmxpf_lnkhist"))
+stocknames <- tbl(db, Id(schema = "crsp",
+                         table = "stocknames"))
+
+funda <- tbl(db, Id(schema = "comp", table = "funda"))
+fundq <- tbl(db, Id(schema = "comp", table = "fundq"))
+```
+
+
+### parquet
+
+```{r}
+#| eval: false
+db <- dbConnect(duckdb::duckdb())
+
+msf <- load_parquet(db, schema = "crsp", table = "msf")
+msi <- load_parquet(db, schema = "crsp", table = "msi")
+ccmxpf_lnkhist <- load_parquet(db, schema = "crsp",
+                               table = "ccmxpf_lnkhist")
+stocknames <- load_parquet(db, schema = "crsp",
+                               table = "stocknames")
+
+funda <- load_parquet(db, schema = "comp", table = "funda")
+fundq <- load_parquet(db, schema = "comp", table = "fundq")
+```
+
+:::
+
+
+<!-- 11.2.1 Announcement dates and returns data -->
+### 発表日とリターンデータ
+
+<!-- Getting earnings announcement dates involved significant data-collection effort for Ball and Brown (1968).  -->
+Ball and Brown (1968)の収益発表日を取得するためには，かなりのデータ収集作業が必要であった。
+<!-- Fortunately, as discussed in Ball and Brown (2019), quarterly Compustat (comp.fundq) has data on earnings announcement dates from roughly 1971 onwards.  -->
+幸いなことに，Ball and Brown (2019)で議論されているように，四半期Compustat(`comp.fundq`)には，1971年以降の利益発表日のデータがある。
+<!-- Like Ball and Brown (1968), we are only interested in fourth quarters and firms with 31 December year-ends.  -->
+Ball and Brown (1968)と同様に，我々は四半期と12月31日の年度末を持つ企業に関心がある。
+<!-- Because we will need to line up these dates with data from monthly CRSP (crsp.msf), we create an annc_month variable. -->
+これらの日付を月次CRSP(`crsp.msf`)のデータと整合させる必要があるため，`annc_month`変数を作成する。
+
+
+```{r}
+#| eval: false
+
+annc_events <-
+  fundq |>
+  filter(indfmt == "INDL", datafmt == "STD",
+         consol == "C", popsrc == "D") |>
+  filter(fqtr == 4, fyr == 12, !is.na(rdq)) |>
+  select(gvkey, datadate, rdq) |>
+  mutate(annc_month = as.Date(floor_date(rdq, unit = "month")))
+```
+
+
+<!-- To compile returns for months $t-11$ through $t+6$ for each earnings announcement date ($t$) (as Ball and Brown (1968) and Nichols and Wahlen (2004) do), we will need the date values on CRSP associated with each of those months. -->
+Ball and Brown (1968)やNichols and Wahlen (2004)が行うように，各利益発表時点（$t$）の $t-11$ 月から $t+6$ 月までのリターンを集計するためには，それらの月に関連付けられたCRSPの日付値が必要となる。
+
+<!-- We will create a table td_link that will provide the link between announcement events in annc_events and dates on CRSP’s monthly stock file (crsp.msf). -->
+`annc_events`とCRSPの月次株式ファイル（`crsp.msf`）の日付とのリンクを提供する`td_link`というテーブルを作成する。
+
+<!-- The first step is to create a table (crsp_dates) that orders the dates on monthly CRSP and assigns each month a corresponding “trading date” value (td), which is 1 for the first month, 2 for the second month, and so on. -->
+最初のステップは，月次CRSPの日付を順序付け，各月に対応する「取引日」値（`td`）を割り当てるテーブル（`crsp_dates`）を作成することである。最初の月には1，2番目の月には2，といった具合である。
+<!-- Because the date values on crsp.msf line up with the date values on crsp.msi, we can use the latter (much smaller) table. -->
+`crsp.msf`の日付値は`crsp.msi`の日付値と整合しているため，後者（はるかに小さい）のテーブルを使用することができる。
+
+
+```{r}
+#| eval: false
+
+crsp_dates <-
+  msi |>
+  select(date) |>
+  window_order(date) |>
+  mutate(td = row_number()) |>
+  mutate(month = as.Date(floor_date(date, unit = "month")))
+
+crsp_dates |> collect(n = 10)
+```
+
+
+We want to construct a table that allows us to link earnings announcements (annc_events) with returns from crsp.msf Because we are only interested in months where returns are available, we can obtain the set of potential announcement months from crsp_dates. The table annc_months has each value of annc_month and its corresponding annc_td from crsp_dates, along with the boundaries of the window that contains all values of td within the range $(t-11, t+6)$, where $t$ is the announcement month.
+
+
+```{r}
+#| eval: false
+
+annc_months <-
+  crsp_dates |>
+  select(month, td) |> 
+  rename(annc_month = month, annc_td = td) |>
+  mutate(start_td = annc_td - 11L,
+         end_td = annc_td + 6L)
+
+annc_months |> collect(n = 10)
+```
+
+<!-- We can then join annc_months with crsp_dates to create the table td_link. -->
+次に，`annc_months`を`crsp_dates`と結合して，`td_link`テーブルを作成する。
+
+
+```{r}
+#| eval: false
+
+td_link <-
+  crsp_dates |>
+  inner_join(annc_months, join_by(between(td, start_td, end_td))) |>
+  mutate(rel_td = td - annc_td) |>
+  select(annc_month, rel_td, date)
+```
+
+<!-- Here are the data for one annc_month: -->
+以下は，1つの`annc_month`のデータである。
+
+
+```{r}
+#| eval: false
+
+td_link |> 
+  filter(annc_month == "2001-04-01") |> 
+  collect() |> 
+  print(n = Inf)
+```
+
+<!-- We use ccm_link (as used in Chapter 7) to connect earnings announcement dates on Compustat with returns from CRSP. -->
+Compustatの収益発表日とCRSPのリターンを結びつけるために，`ccm_link`（第7章で使用）を使用する。
+
+
+```{r}
+#| eval: false
+
+ccm_link <-
+  ccmxpf_lnkhist |>
+  filter(linktype %in% c("LC", "LU", "LS"),
+         linkprim %in% c("C", "P")) |>
+  rename(permno = lpermno) |>
+  mutate(linkenddt = coalesce(linkenddt, max(linkenddt, na.rm = TRUE))) |>
+  select(gvkey, permno, linkdt, linkenddt) 
+```
+
+
+<!-- Nichols and Wahlen (2004) focus on firms listed on NYSE, AMEX, and NASDAQ, which correspond to firms with exchcd values of 1, 2, and 3, respectively. -->
+Nichols and Wahlen (2004)は，NYSE，AMEX，NASDAQに上場している企業に焦点を当てており，それぞれ`exchcd`値が1，2，3に対応している。
+<!-- The value of `exchcd` for each firm at each point in time is found on crsp.stocknames.  -->
+各企業の各時点での`exchcd`の値は`crsp.stocknames`にある。
+<!-- Following Nichols and Wahlen (2004), we get data on fiscal years from 1988 to 2002 (2004, p. 270). -->
+Nichols and Wahlen (2004)に倣って，1988年から2002年までの財務年度のデータを取得する。
+
+
+```{r}
+#| eval: false
+
+rets_all <-
+  annc_events |> 
+  inner_join(td_link, by = "annc_month") |>
+  inner_join(ccm_link, by = "gvkey") |>
+  filter(annc_month >= linkdt, annc_month <= linkenddt) |>
+  inner_join(msf, by = c("permno", "date")) |>
+  collect() |>
+  inner_join(
+    stocknames |> 
+      filter(exchcd %in% c(1, 2, 3)) |>
+      collect(), 
+    join_by(permno, between(date, namedt, nameenddt))) |>
+  select(gvkey, datadate, rel_td, permno, date, ret) |>
+  filter(between(year(datadate), 1987L, 2002L))
+```
+
+<!-- To keep things straightforward, we focus on firms that have returns for each month in the $(t-11, t+6)$ window and the table full_panel identifies these firms. -->
+わかりやすくするために，$(t-11, t+6)$のウィンドウ内の各月にリターンを持つ企業に焦点を当て，`full_panel`テーブルがこれらの企業を特定する。
+
+
+```{r}
+#| eval: false
+
+full_panel <-
+  rets_all |> 
+  group_by(gvkey, datadate) |> 
+  mutate(n_obs = n()) |> 
+  ungroup() |> 
+  filter(n_obs == max(n_obs)) |>
+  select(gvkey, datadate)
+```
+
+
+```{r}
+#| eval: false
+
+rets <-
+  rets_all |>
+  semi_join(full_panel, by = c("gvkey", "datadate")) 
+```
+
+<!-- Note that, unlike other early papers (e.g., Beaver, 1968; Fama et al., 1969), Ball and Brown (1968) do not exclude observations due to known confounding events.5 -->
+他の初期の論文（例：Beaver, 1968; Fama et al., 1969）とは異なり，Ball and Brown (1968)は既知の交絡事象による観測値を除外していないことに注意されたい。[^5]
+
+
+<!-- ### 11.2.2 Data on size-portfolio returns -->
+### サイズポートフォリオリターンのデータ
+
+
+<!-- Ball and Brown (1968) focus on abnormal returns and estimate a market model with firm-specific coefficients as the basis for estimating residual returns, which they denote API.  -->
+Ball and Brown (1968)は異常リターンに焦点を当て，企業固有の係数を持つ市場モデルを推定し，残差リターンを推定する基礎として，これを $API$ として示している。
+<!-- The use of residuals from a market model addresses a concern about cross-sectional correlation that would arise if raw returns were used. -->
+市場モデルからの残差の使用は，生のリターンが使用された場合に生じるクロスセクションの相関に関する懸念に対処している。
+<!-- Ball and Brown (1968) note that about 10% of returns are due to industry factors, but conclude that the likely impact of this on inference is likely to be small. -->
+Ball and Brown (1968)は，約10%のリターンが産業要因によるものであるが，これが推論に与える影響は小さいと結論づけている。
+
+<!-- In contrast, Nichols and Wahlen (2004) use size-adjusted returns as their measure of abnormal returns.  -->
+一方，Nichols and Wahlen (2004)は，異常リターンの尺度としてサイズ調整リターンを使用している。
+<!-- To calculate size-adjusted returns, we get two kinds of data from the website of Ken French (as seen in Chapter 9). -->
+サイズ調整リターンを計算するために，（第9章で見たように）Ken Frenchのウェブサイトから2種類のデータを取得する。
+
+<!-- First, we get data on size-decile returns.  -->
+まず，規模の十分位リターンのデータを取得する。
+<!-- Ken French’s website supplies a comma-delimited text file containing monthly and annual data for value-weighted and equal-weighted portfolio returns. -->
+Ken Frenchのウェブサイトは，月次と年次の加重と等加重のポートフォリオ・リターンに対するコンマ区切りのテキストファイルを提供している。
+
+
+```{r}
+t <- "Portfolios_Formed_on_ME_CSV.zip"
+url <- str_c("http://mba.tuck.dartmouth.edu",
+             "/pages/faculty/ken.french/ftp/",
+             "Portfolios_Formed_on_ME_CSV.zip")
+if (!file.exists(t)) download.file(url, t)
+```
+
+<!-- From inspection of the downloaded text file, we observe that there are several data sets in this file.  -->
+ダウンロードしたテキストファイルを確認すると，このファイルにはいくつかのデータセットが含まれていることがわかる。
+<!-- We want monthly returns and will extract both value-weighted and equal-weighted data.  -->
+月次リターンを取得し，時価総額加重リターンと等加重リターンの両方のデータを抽出する。
+<!-- We see that the equal-weighted returns begin with a row starting with text Equal Weight Returns -- Monthly and end a few rows before a row starting with text Value Weight Returns -- Annual. -->
+等加重リターンのデータは、`Equal Weight Returns – Monthly`という文字列で始まる行から始まり、`Value Weight Returns – Annual`という文字列で始まる行の数行手前で終わっている。
+
+
+```{r}
+# Determine breakpoints (lines) for different tables
+temp <- read_lines(t)
+vw_start <- str_which(temp, "^\\s+Value Weight Returns -- Monthly")
+vw_end <- str_which(temp, "^\\s+Equal Weight Returns -- Monthly") - 4
+
+ew_start <- str_which(temp, "^\\s+Equal Weight Returns -- Monthly")
+ew_end <- str_which(temp, "^\\s+Value Weight Returns -- Annual") - 4
+```
+
+<!-- Having identified these separating rows, we can use the following function to read in the data set and organize the associated data tables appropriately.  -->
+これらの区切り行を特定したら，次の関数を使用してデータセットを読み込み，関連するデータテーブルを適切に整理することができる。
+<!-- Note that NA values are represented as -99.99 in the text files and that the dates have a form yyyymm that we convert to dates of form yyyy-mm-01, which we call month. -->
+このテキストファイルではNA値は`-99.99`として表されており，日付は`yyyymm`の形式であり，これを`yyyy-mm-01`の形式の日付に変換し，`month`とする。
+
+<!-- While the original data come in a “wide” format with returns at every fifth percentile, we rearrange the data into a “long” format, retain only the deciles (i.e., every tenth percentile), and rename the decile labels from Lo 10, Dec 2, …, Dec 9, and Hi 10 to 1, 2, …, 9, and 10. -->
+元のデータは，5パーセンタイルごとにリターンがある「ワイド」形式で提供されているが，データを「ロング」形式に再配置し，十分位（つまり10パーセンタイルごと）のみを保持し，デシルラベルを`Lo 10`，`Dec 2`，…，`Dec 9`，`Hi 10`から`1，2，…，9，10`に変更する。
+
+
+```{r function_read_data}
+read_data <- function(start, end) {
+
+  Sys.setenv(VROOM_CONNECTION_SIZE = 500000)
+  
+  fix_names <- function(names) {
+    str_replace_all(names, "^$", "date")
+  }
+
+  read_csv(t, skip = start, n_max = end - start,
+           na = "-99.99",
+           name_repair = fix_names,
+           show_col_types = FALSE) |>
+    mutate(month = ymd(str_c(date, "01"))) |>
+    select(-date) |>
+    pivot_longer(names_to = "quantile",
+                 values_to = "ret",
+                 cols = -month) |>
+    mutate(ret = ret / 100,
+           decile = case_when(quantile == "Hi 10" ~ "10",
+                              quantile == "Lo 10" ~ "1",
+                              str_detect(quantile, "^Dec ") ~
+                                sub("^Dec ", "", quantile)),
+           decile = as.integer(decile)) |>
+    filter(!is.na(decile)) |>
+    select(-quantile)
+}
+```
+
+<!-- Now we can apply this function to extract the relevant data, which we combine into a single data frame size_rets. -->
+この関数を適用して関連データを抽出し，これらを1つのデータフレーム`size_rets`に結合することができる。
+
+
+```{r}
+vw_rets <- 
+  read_data(vw_start, vw_end) |>
+  rename(vw_ret = ret)
+
+ew_rets <- 
+  read_data(ew_start, ew_end) |>
+  rename(ew_ret = ret)
+
+size_rets <-
+  ew_rets |>
+  inner_join(vw_rets, by = c("month", "decile")) |>
+  select(month, decile, everything())
+
+size_rets
+```
+
+The second set of data we need to get from Ken French’s website is data on the cut-offs we will use in assigning firms to decile portfolios in calculating size-adjusted returns.
+
+Again the original data come in a “wide” format with cut-offs at every fifth percentile, so again we rearrange the data into a “long” format, retain only the deciles (i.e., every tenth percentile), and rename the decile labels from p10, p20, …, p90, and p100, to 1, 2, …, 9, and 10.6 Also, we are only interested in the cut-offs for December in each year and use filter() to retain only these.
+
+
+```{r}
+#| eval: false
+me_breakpoints_raw <- 
+  read_csv(t, skip = 1, 
+           col_names = c("month", "n",
+                         str_c("p", seq(from = 5, to = 100, by = 5))),
+           col_types = "c",
+           n_max = str_which(temp, "^Copyright") - 3) |>
+  mutate(month = ymd(str_c(month, "01"))) |>
+  select(-ends_with("5"), -n) |>
+  pivot_longer(cols = - month,
+               names_to = "decile",
+               values_to = "cutoff") |>
+  mutate(decile = str_replace(decile, "^p(.*)0$", "\\1")) |>
+  mutate(decile = as.integer(decile)) 
+```
+
+Finally, we organize the data to facilitate their use in joining with other data. Specifically, we create variables for the range of values covered by each decile (from me_min to me_max). We specify the minimum value for the first decile as zero and the maximum value for the tenth decile to infinity (Inf).
