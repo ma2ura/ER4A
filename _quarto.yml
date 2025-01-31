@@ -1,0 +1,84 @@
+project:
+  type: book
+  output-dir: docs
+
+book:
+  title: "Empirical Research in Accounting"
+  subtitle: "Tools and Methods"
+  author: "Ian Gow and Tongqing Ding"
+  reader-mode: true
+
+  page-footer:
+      border: true
+      # background: "#a10000"
+      left: "Copyright 2024, Soichi Matsuura"
+      right:
+        - icon: github
+          href: https://github.com/ma2ura
+        - icon: twitter
+          href: https://twitter.com/matsuura_rits
+          aria-label: Twitter
+  favicon: img/favicon.ico
+  # site-url: https://so-ichi.com
+  # repo-url: https://github.com/ma2ura/R4A/
+  # repo-branch: main
+
+  chapters:
+    - index.qmd
+    - part: "基礎"
+      chapters:
+        - chap01_Introduction.qmd
+        - chap09_import.qmd
+    - part: "資本市場研究"
+      chapters:
+        - chap10_FFJR.qmd
+        - chap11_BB1968.qmd
+        - chap12_Beaver1968.qmd
+        - chap13_Event.qmd
+        - chap15_accruals.qmd
+        - chap16_em.qmd
+        - chap17_Natural.qmd
+    - part: "因果推論"
+    - part: "追加的なトピック"
+  appendices:
+    - appA_LinearAlgebra.qmd
+    - appB_SQL.qmd
+    - appC_Computing.qmd
+
+
+format:
+  html:
+    theme:
+      light: [flatly, r4ds.scss]
+      dark: [cyborg]
+    # include-in-header: font.html
+    highlight-style: pygments
+    mainfont: "Noto Sans JP"
+    monofont: "MyricaM M"
+    # fontsize: 1.2em
+    html-math-method: katex
+    # author-meta: "Soichi Matsuura"
+    callout-appearance: simple
+    code-copy: true
+    code-overflow: wrap
+    code-link: true
+    link-external-icon: true
+    df-print: paged
+    grid:
+      sidebar-width: 200px
+      body-width: 1200px
+    cover-image: "img/ivan.jpg"
+  # author: "Soichi Matsuura"
+  # date: "1/1/2024"
+    twitter-card: true
+    page-navigation: true
+    back-to-top-navigation: true
+
+  pdf:
+    documentclass: scrreprt
+
+
+engine: knitr
+dev: "ragg_png"
+lang: ja
+
