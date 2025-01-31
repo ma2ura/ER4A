@@ -32,7 +32,7 @@ pacman::p_load(tidyverse, DBI, farr, modelsummary, dbplyr)
 <!-- MacKinlay (1997, p. 13) defines an event study as one that, “using financial market data … measures the impact of a specific event on the value of a firm.  -->
 MacKinlay (1997, p. 13)によると，**イベント・スタディ**(event study)は，「財務市場データを使用して…特定のイベントが企業の価値に与える影響を測定するものである。
 <!-- The usefulness of such a study comes from the fact that, assuming highly efficient markets, the effects of an event will be reflected immediately in security prices.1  -->
-このような研究の有用性は，非常に効率的な市場を仮定すると，イベントの影響はすぐに証券価格に反映されるという事実に由来する。[^1]
+このような研究の有用性は，非常に効率的な市場を仮定すると，イベントの影響はすぐに証券価格に反映されるという事実に由来する。
 <!-- Thus a measure of the event’s economic impact can be constructed using security prices observed over a relatively short time period.” -->
 したがって，比較的短い期間に観察された証券価格を使用して，イベントの経済的影響を測定することができる。」ものとして定義している。
 
@@ -138,6 +138,7 @@ Appleは製品パイプラインについて非常に秘密主義的であるた
 この表の最後の数行を見てみましょう。
 
 ```{r}
+#| eval: false
 tail(apple_events)
 ```
 
@@ -185,7 +186,7 @@ idx_daily <- load_parquet(db, schema = "comp", table = "idx_daily")
 #| eval: false
 
 apple_permno <-
-  stocknames |> 
+  stocknames |>
   filter(ticker == "AAPL") |> # Apple社
   select(permno) |> # permno変数を選択
   distinct() |> # 重複を削除
@@ -193,9 +194,9 @@ apple_permno <-
 ```
 
 <!-- We then use Apple’s PERMNO (apple_permno equals 14593) to get return data from CRSP.  -->
-次に，AppleのPERMNO（`apple_permno`は14593）を使用して，CRSPからリターンデータを取得する。
+次に，AppleのPERMNO（apple_permnoは14593）を使用して，CRSPからリターンデータを取得する。
 <!-- In this case, we will get daily returns for Apple (ret) from `crsp.dsf` and value-weighted “market” returns (vwretd) from crsp.dsi and calculate market-adjusted returns as `ret - vwretd`.[^2]  -->
-この場合，Appleの日次リターン(`ret0`)を`crsp.dsf`から取得し，時価総額加重「市場」リターン(`vwretd`)を`crsp.dsi`から取得し，**市場調整リターン**を`ret - vwretd`として計算する。
+この場合，Appleの日次リターン（ret）を`crsp.dsf`から取得し，時価加重「市場」リターン（vwretd）を`crsp.dsi`から取得し，市場調整リターンを`ret - vwretd`として計算する。
 <!-- In this case, we will grab all returns since the start of 2005, which covers all the events on apple_events. -->
 この場合，2005年初めからのすべてのリターンを取得し，`apple_events`のすべてのイベントをカバーする。
 
@@ -282,7 +283,7 @@ apple_data |>
 ```{r}
 #| eval: false
 
-apple_data |>  
+apple_data |>
   arrange(date) |>
   mutate(cumret = cumprod(1 + coalesce(ret, 0)),
          switch = coalesce(is_event != lead(is_event), FALSE)) |>
@@ -339,7 +340,7 @@ fms <- list("ret_mkt" = lm(ret_mkt ~ is_event, data = apple_data),
 
 rets <-
   apple_events |>
-  mutate(permno = apple_permno) |> 
+  mutate(permno = apple_permno) |>
   get_event_cum_rets(db,
                      win_start = -1, win_end = +1,
                      end_event_date = "end_event_date")
@@ -427,10 +428,10 @@ Zhang (2007, p. 76)は，「主要なSOXイベント」（以下で定義）に�
 #| eval: false
 
 can_rets <-
-  idx_daily |> 
-  filter(gvkeyx == "000193") |> 
+  idx_daily |>
+  filter(gvkeyx == "000193") |>
   window_order(datadate) |>
-  mutate(ret_can = if_else(lag(prccd) > 0, prccd/lag(prccd) - 1, NA)) |> 
+  mutate(ret_can = if_else(lag(prccd) > 0, prccd/lag(prccd) - 1, NA)) |>
   filter(datadate >= "2000-01-01", datadate <= "2002-12-31") |>
   rename(date = datadate) |>
   select(date, ret_can) |>
@@ -448,7 +449,7 @@ reg_data <-
   dsi_local |>
   inner_join(can_rets, by = "date") |>
   filter(date < "2001-12-28") |>
-  top_n(100, wt = date) 
+  top_n(100, wt = date)
 ```
 
 <!-- We then fit models for market returns for both equal-weighted and value-weighted portfolios against Canadian returns. -->
@@ -494,7 +495,7 @@ dsi_merged <-
 <!-- From Table 2, Zhang (2007) appears to calculate the daily standard deviation of returns at about 1.2%.  -->
 表2から、Zhang (2007)はリターンの日次標準偏差を約1.2%として計算しているようだ。
 <!-- The exact basis for this calculation is unclear, but similar analyses are “estimated using daily return data in the 100 days prior to December 28, 2001” (Zhang, 2007, p.88).  -->
-この計算の正確な根拠は不明だが，類似した分析は「2001年12月28日の100日前の日次リターンデータを使用して推定される」(Zhang, 2007, p.88). 
+この計算の正確な根拠は不明だが，類似した分析は「2001年12月28日の100日前の日次リターンデータを使用して推定される」(Zhang, 2007, p.88).
 <!-- So we calculate the daily volatility on this basis using the following calculation, which yields the value 1.28%. -->
 したがって，以下の計算を使用してこの基準で日次ボラティリティを計算し，1.28%という値を得る。
 
@@ -670,4 +671,3 @@ Table 1を作成するための代替アプローチを提案できるか？
 5. LOTはいくつかの**モンテカルロシミュレーション**を使用している。これらは，Zhang (2007)によるブートストラップ解析とどのように比較されるか？
 <!-- Are the simulations addressing the same underlying issues as Zhang (2007) bootstrapping approach? -->
 シミュレーションは，Zhang (2007)のブートストラップアプローチと同じ基本的な問題に対処しているか？
-
