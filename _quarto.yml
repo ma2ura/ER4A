@@ -19,8 +19,8 @@ book:
           href: https://twitter.com/matsuura_rits
           aria-label: Twitter
   favicon: img/favicon.ico
-  # site-url: https://so-ichi.com
-  # repo-url: https://github.com/ma2ura/R4A/
+  site-url: https://so-ichi.com
+  repo-url: https://github.com/ma2ura/ER4A/
   # repo-branch: main
 
   chapters:
