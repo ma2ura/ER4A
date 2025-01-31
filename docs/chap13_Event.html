@@ -1,0 +1,1329 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.40">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>6&nbsp; イベント・スタディ – Empirical Research in Accounting</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./chap15_accruals.html" rel="next">
+<link href="./chap12_Beaver1968.html" rel="prev">
+<link href="./img/favicon.ico" rel="icon">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-1092c56c6cadf2eb47b1bc8063ab382a.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-1092c56c6cadf2eb47b1bc8063ab382a.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-88c88708faf0c485c0387dba1f6eb15f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-2e8bc3580cc84ea2920b26bb0544913d.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark"><script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "一致なし",
+    "search-matching-documents-text": "一致した文書",
+    "search-copy-link-title": "検索へのリンクをコピー",
+    "search-hide-matches-text": "追加の検索結果を非表示",
+    "search-more-match-text": "追加の検索結果",
+    "search-more-matches-text": "追加の検索結果",
+    "search-clear-button-title": "消去",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "取消",
+    "search-submit-button-title": "検索",
+    "search-label": "サーチ"
+  }
+}</script><link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
+<script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script><script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script><script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script><script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+<meta name="twitter:title" content="6&nbsp; イベント・スタディ – Empirical Research in Accounting">
+<meta name="twitter:description" content="">
+<meta name="twitter:card" content="summary">
+</head>
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="サイドバーを切り替える" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./chap10_FFJR.html">資本市場研究</a></li><li class="breadcrumb-item"><a href="./chap13_Event.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">イベント・スタディ</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="サイドバーを切り替える" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="サーチ" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Empirical Research in Accounting</a> 
+        <div class="sidebar-tools-main">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="ダークモードの切り替え"><i class="bi"></i></a>
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="リーダーモードの切り替え">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="サーチ"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">序論</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">基礎</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="セクションを切り替え">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chap01_Introduction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">はじめに</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chap09_import.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">データを読み込む</span></span></a>
+  </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">資本市場研究</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="セクションを切り替え">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chap10_FFJR.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">FFJR</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chap11_BB1968.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Ball and Brown (1968)</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chap12_Beaver1968.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Beaver (1968)</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chap13_Event.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">イベント・スタディ</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chap15_accruals.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">アクルーアル</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chap16_em.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">利益マネジメント</span></span></a>
+  </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">因果推論</span></span>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">追加的なトピック</span></span>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+ <span class="menu-text">付録</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="セクションを切り替え">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./appA_LinearAlgebra.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">線形代数</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./appB_SQL.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">SQL入門</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./appC_Computing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">研究のためのコンピュータ概論</span></span></a>
+  </div>
+</li>
+      </ul>
+</li>
+    </ul>
+</div>
+</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">目次</h2>
+   
+  <ul>
+<li>
+<a href="#%E6%A6%82%E8%A6%81" id="toc-概要" class="nav-link active" data-scroll-target="#%E6%A6%82%E8%A6%81"><span class="header-section-number">6.1</span> 概要</a>
+  <ul class="collapse">
+<li><a href="#%E3%83%87%E3%82%A3%E3%82%B9%E3%82%AB%E3%83%83%E3%82%B7%E3%83%A7%E3%83%B3%E8%AA%B2%E9%A1%8C" id="toc-ディスカッション課題" class="nav-link" data-scroll-target="#%E3%83%87%E3%82%A3%E3%82%B9%E3%82%AB%E3%83%83%E3%82%B7%E3%83%A7%E3%83%B3%E8%AA%B2%E9%A1%8C"><span class="header-section-number">6.1.1</span> ディスカッション課題</a></li>
+  </ul>
+</li>
+  <li>
+<a href="#%E7%8F%BE%E4%BB%A3%E3%81%AE%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%82%B9%E3%82%BF%E3%83%87%E3%82%A3" id="toc-現代のイベントスタディ" class="nav-link" data-scroll-target="#%E7%8F%BE%E4%BB%A3%E3%81%AE%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%82%B9%E3%82%BF%E3%83%87%E3%82%A3"><span class="header-section-number">6.2</span> 13.2 現代のイベント・スタディ</a>
+  <ul class="collapse">
+<li><a href="#%E5%B0%8F%E8%A6%8F%E6%A8%A1%E3%81%AA%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%82%B9%E3%82%BF%E3%83%87%E3%82%A3" id="toc-小規模なイベントスタディ" class="nav-link" data-scroll-target="#%E5%B0%8F%E8%A6%8F%E6%A8%A1%E3%81%AA%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%82%B9%E3%82%BF%E3%83%87%E3%82%A3"><span class="header-section-number">6.2.1</span> 小規模なイベント・スタディ</a></li>
+  <li><a href="#%E6%BC%94%E7%BF%92" id="toc-演習" class="nav-link" data-scroll-target="#%E6%BC%94%E7%BF%92"><span class="header-section-number">6.2.2</span> 演習</a></li>
+  </ul>
+</li>
+  <li>
+<a href="#%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%82%B9%E3%82%BF%E3%83%87%E3%82%A3%E3%81%A8%E8%A6%8F%E5%88%B6" id="toc-イベントスタディと規制" class="nav-link" data-scroll-target="#%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%82%B9%E3%82%BF%E3%83%87%E3%82%A3%E3%81%A8%E8%A6%8F%E5%88%B6"><span class="header-section-number">6.3</span> 13.3 イベント・スタディと規制</a>
+  <ul class="collapse">
+<li><a href="#%E3%83%87%E3%82%A3%E3%82%B9%E3%82%AB%E3%83%83%E3%82%B7%E3%83%A7%E3%83%B3%E8%AA%B2%E9%A1%8C-1" id="toc-ディスカッション課題-1" class="nav-link" data-scroll-target="#%E3%83%87%E3%82%A3%E3%82%B9%E3%82%AB%E3%83%83%E3%82%B7%E3%83%A7%E3%83%B3%E8%AA%B2%E9%A1%8C-1"><span class="header-section-number">6.3.1</span> 13.3.1 ディスカッション課題</a></li>
+  </ul>
+</li>
+  </ul></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./chap10_FFJR.html">資本市場研究</a></li><li class="breadcrumb-item"><a href="./chap13_Event.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">イベント・スタディ</span></a></li></ol></nav><div class="quarto-title">
+<h1 class="title">
+<span class="chapter-number">6</span>&nbsp; <span class="chapter-title">イベント・スタディ</span>
+</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header><!-- In previous chapters, we studied papers that have examined the reaction of financial markets to information.  --><p>これまでの章では，金融市場が情報にどのように反応するかを調査した論文を学習した。 <!-- Chapter 10 covered Fama et al. (1969), which studied the adjustment of prices to the information in stock splits. --> Chapter 10では，株式分割に関する情報への価格調整を研究したFama et al.&nbsp;(1969)を扱った。 <!-- Chapter 11 examined Ball and Brown (1968), which shows that market returns over a year are correlated with earnings news for the period. --> Chapter 11では，Ball and Brown (1968)を取り上げ，1年間の市場リターンがその期間の収益ニュースと相関していることを示した。 <!-- Chapter 12 studied Beaver (1968), which shows that volume and price volatility increase around earnings announcements. --> Chapter 12では，Beaver (1968)を学習し，収益発表の周辺で取引量と価格の変動が増加することを示した。</p>
+<!-- The decades since those early papers have seen significant evolution in how researchers study the market reaction to information and this chapter provides an introduction to current event-study methods. -->
+<p>これらの初期の論文以来の数十年間で，研究者が情報に対する市場の反応をどのように研究するかについては，大きな進化が見られ，本章では現在のイベント・スタディの方法について紹介する。</p>
+<div class="callout callout-style-simple callout-tip">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<!-- The code in this chapter uses the packages listed below.  -->
+<p>この章のコードは，以下のパッケージを使用しています。 <!-- For instructions on how to set up your computer to use the code found in this book, see Section 1.2.  --> この書籍のコードを使用するためのコンピュータの設定方法については，1.2節を参照してください。 <!-- Quarto templates for the exercises below are available on GitHub. --> 以下の演習のためのQuartoテンプレートはGitHubで入手できます。</p>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">pacman</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/pacman/man/p_load.html">p_load</a></span><span class="op">(</span><span class="va">tidyverse</span>, <span class="va">DBI</span>, <span class="va">farr</span>, <span class="va">modelsummary</span>, <span class="va">dbplyr</span><span class="op">)</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<!-- ## Overview -->
+<section id="概要" class="level2" data-number="6.1"><h2 data-number="6.1" class="anchored" data-anchor-id="概要">
+<span class="header-section-number">6.1</span> 概要</h2>
+<!-- MacKinlay (1997, p. 13) defines an event study as one that, “using financial market data … measures the impact of a specific event on the value of a firm.  -->
+<p>MacKinlay (1997, p.&nbsp;13)によると，<strong>イベント・スタディ</strong>(event study)は，「財務市場データを使用して…特定のイベントが企業の価値に与える影響を測定するものである。 <!-- The usefulness of such a study comes from the fact that, assuming highly efficient markets, the effects of an event will be reflected immediately in security prices.1  --> このような研究の有用性は，非常に効率的な市場を仮定すると，イベントの影響はすぐに証券価格に反映されるという事実に由来する。[^1] <!-- Thus a measure of the event’s economic impact can be constructed using security prices observed over a relatively short time period.” --> したがって，比較的短い期間に観察された証券価格を使用して，イベントの経済的影響を測定することができる。」ものとして定義している。</p>
+<!-- MacKinlay (1997, p.14) continues: “In the late 1960s seminal studies by Ray Ball and Philip Brown (1968) and Eugene Fama et al. (1969) introduced the methodology that is essentially the same as that which is in use today.  -->
+<p>MacKinlay (1997, p.14)では，「1960年代後半にRay BallとPhilip Brown（1968）およびEugene Fama et al.&nbsp;(1969)による画期的な研究が行われ，その方法論は基本的に現在使用されているものとほぼ同じである。 <!-- Ball and Brown considered the information content of earnings, and Fama et al. (1969) studied the effects of stock splits after removing the effects of simultaneous dividend increases.” --> Ball and Brown (1968)は利益の情報内容を考慮し， Fama et al.&nbsp;(1969)は同時期の増配の効果を除去した後の株式分割の効果を分析している。」と続けている。</p>
+<!-- Event studies examine the impact of a class of identifiable events on one or more variables of economic interest.  -->
+<p>イベント・スタディは，特定のイベントのクラスが経済的に興味のある1つ以上の変数に与える影響を調査する。 <!-- In capital markets research, the variable of economic interest is typically the returns of a firm’s shares around the event. --> 資本市場研究では，経済的に興味のある変数は，通常，イベントの周辺での企業の株式リターンである。</p>
+<!-- The basic ingredients of an event study are: -->
+<p>イベント・スタディの基本的な要素は次のとおりである。</p>
+<!-- - A class of events: earnings announcements, merger announcements, stock splits, earnings forecast changes. -->
+<ul>
+<li>イベントのクラス：収益発表、合併発表、株式分割、収益予測の変更 <!-- - In many research papers, these events represent the treatment of interest. -->
+</li>
+<li>多くの研究論文では，これらのイベントは興味の対象となる処置を表している。 <!-- - An outcome variable of interest: accounting policy, market returns, trading volume. -->
+</li>
+<li>興味のある結果変数：会計方針、市場リターン、取引量 <!-- - Control observations: observations for which the event did not occur. -->
+</li>
+<li>コントロール観測：イベントが発生しなかった観測 <!-- - Control variables: additional variables that may be correlated with both the event—such as dividend announcements with earnings announcements or forecast revisions with earnings announcements—and also returns (see Chapter 4 for more on control variables). -->
+</li>
+<li>コントロール変数：イベント（たとえば、配当発表と収益発表、予測の修正と収益発表）とリターンの両方と相関する可能性のある追加変数（コントロール変数については、第4章を参照）。</li>
+</ul>
+<!-- Additionally, as we saw in Chapter 12, lining up observations in event time is a critical feature of most event studies. --><p>さらに，第12章で見たように，観測をイベント時刻に整列させることは，ほとんどのイベント・スタディにおいて重要な特徴である。</p>
+<!-- ### 13.1.1 Discussion questions -->
+<section id="ディスカッション課題" class="level3" data-number="6.1.1"><h3 data-number="6.1.1" class="anchored" data-anchor-id="ディスカッション課題">
+<span class="header-section-number">6.1.1</span> ディスカッション課題</h3>
+<!-- Does Ball and Brown (1968) meet the MacKinlay (1997) definition of an event study?  -->
+<p>Ball and Brown (1968)はMacKinlay (1997)のイベント・スタディの定義を満たしていますか？ <!-- What features are present and what, if any, are missing? --> どのような特徴があり，もしあれば何が欠けているか，</p>
+<!-- Does Beaver (1968) meet the MacKinlay (1997) definition of an event study?  -->
+<p>Beaver (1968)はMacKinlay (1997)のイベント・スタディの定義を満たしていますか？ <!-- What features are present and what, if any, are missing? --> どのような特徴があり，もしあれば何が欠けているか，</p>
+<!-- ## 13.2 The modern event study -->
+</section></section><section id="現代のイベントスタディ" class="level2" data-number="6.2"><h2 data-number="6.2" class="anchored" data-anchor-id="現代のイベントスタディ">
+<span class="header-section-number">6.2</span> 13.2 現代のイベント・スタディ</h2>
+<!-- The event study has evolved over time.  -->
+<p>イベント・スタディは時代とともに進化してきた。 <!-- While event studies today generally meet the definition in MacKinlay (1997), the event-study approach has changed as it has been adapted to a wider variety of situations. --> 現在のイベント・スタディは，一般的にMacKinlay (1997)の定義を満たしているが，様々な状況に適応されるにつれて，イベント・スタディのアプローチは変化してきた。</p>
+<!-- One change is that researchers have become more interested in using event studies to understand the economic effects of regulation, rather than the market reaction to firm-specific announcements.  -->
+<p>変化の1つは，研究者が，企業固有の発表に対する市場の反応ではなく，規制の経済的影響を理解するためにイベント・スタディを使用することに興味を持つようになったことである。 <!-- Fama et al. (1969) studied stock-splits and Beaver (1968) studied earnings announcements.  --> Fama et al.&nbsp;(1969)は株式分割を，Beaver (1968)は収益発表を研究した。 <!-- In each case, the events are firm-level events that are largely independent of each other (e.g., they are not excessively clustered in time).  --> 各ケースでは，これらのイベントは，おおむね互いに独立している（たとえば，時間的に過度に集中していない）企業レベルのイベントである。 <!-- In contrast, each of the three more recent event studies we study below uses regulatory events such as events affecting the probability of legislation (Larcker et al., 2011; Zhang, 2007) or accounting standards going into effect (Khan et al., 2017). --> 対照的に，以下で学習する3つの最近のイベント・スタディは，立法の可能性に影響を与えるイベント（Larcker et al., 2011; Zhang, 2007）や会計基準の施行（Khan et al., 2017）などの規制イベントを使用している。</p>
+<!-- A related change is an increased reliance on market efficiency, as the typical modern event study uses (in the words of MacKinlay, 1997) “security prices observed over a relatively short time period” as a “measure of the event’s economic impact”.  -->
+<p>関連する変化は，市場効率性への依存度の増加であり，典型的な現代のイベント・スタディは，MacKinlay（1997）の言葉で言えば，「比較的短い期間に観察された証券価格」を「イベントの経済的影響の尺度」として使用している。 <!-- Neither Fama et al. (1969) nor Beaver (1968) relies heavily on market efficiency in establishing that markets appear to react to stock-splits and earnings announcements, respectively, and neither study seeks to show whether stock-splits or earnings announcements create (or destroy) value.  --> Fama et al.&nbsp;(1969)もBeaver (1968)も，株式分割や収益発表に市場が反応するように見えることを確立する際に，市場効率性に大きく依存しておらず，株式分割や収益発表が価値を創出（または破壊）するかどうかを示そうとしていない。 <!-- In contrast, the modern event study is often leaning on market efficiency to evaluate regulation.  --> 対照的に，現代のイベント・スタディは，しばしば規制を評価するために市場効率性に依存している。 <!-- For example, using an event study to ask “do the FASB’s standards add shareholder value?” (Khan et al., 2017) relies heavily on the market having an informed view of the kind implied by stronger forms of market efficiency. --> たとえば，イベント・スタディを使用して「FASBの基準は株主価値を創出するか？」(Khan et al., 2017)と問うことは，市場がより強度の市場効率性によって暗示されるような情報を持っているという前提に大きく依存している。</p>
+<!-- A consequence of this changed emphasis is that often there are fewer independent observations for the researcher to work with. -->
+<p>この変化した強調の結果，研究者が取り組む独立した観測が少なくなることがしばしばある。 <!-- For example, the primary analysis of Zhang (2007) focuses on four event windows, far fewer than the 506 earnings announcements in Beaver (1968). --> たとえば，Zhang (2007)の主要な分析は4つのイベント・ウィンドウに焦点を当てており，Beaver (1968)の506の収益発表よりもはるかに少ない。 <!-- As we will see, researchers often use supplementary analyses to address the relative paucity of data. --> 後述するように，研究者はしばしばデータの相対的な不足を解消するために補助的な分析を行う。</p>
+<!-- 13.2.1 A small event study -->
+<section id="小規模なイベントスタディ" class="level3" data-number="6.2.1"><h3 data-number="6.2.1" class="anchored" data-anchor-id="小規模なイベントスタディ">
+<span class="header-section-number">6.2.1</span> 小規模なイベント・スタディ</h3>
+<!-- To better understand the modern event study, we conduct a mini-study of our own.  -->
+<p>現代のイベント・スタディをよりよく理解するために，自分自身の小規模な研究を行う。 <!-- Suppose that we want to understand better the value-creation process at Apple with a particular emphasis on Apple’s product development process.  --> Appleの価値創造プロセスをよりよく理解したいとし，特にAppleの製品開発プロセスに焦点を当てることにしたとしよう。 <!-- At the time of writing (mid-2022), Apple is the most valuable company in the world, with a market capitalization over US$2 trillion; so understanding how it creates value for shareholders may be of interest to researchers. --> 執筆時点（2022年中頃）では，Appleは世界で最も価値のある企業であり，時価総額は2兆ドルを超えている。したがって，株主に価値を創出する方法を理解することは研究者にとって興味深いかもしれない。</p>
+<!-- As Apple is notoriously secretive about its product pipeline, the media events at which its products are launched are closely watched affairs.  -->
+<p>Appleは製品パイプラインについて非常に秘密主義的であるため，製品が発売されるメディアイベントは注目されることが多い。 <!-- For example, at the Macworld Conference & Expo San Francisco 2007 (9 January 2007), Apple announced the iPhone, which would go on to become Apple’s primary revenue source and one of the largest phone products in the world.  --> たとえば，2007年1月9日に開催されたMacworld Conference &amp; Expo San Francisco 2007では，AppleはiPhoneを発表し，これがAppleの主要な収益源となり，世界最大の携帯電話製品の1つとなった。 <!-- At an Apple Special Event on 27 January 2010, Apple announced the iPad, Apple’s tablet computer. --> 2010年1月27日に開催されたApple Special Eventでは，AppleはiPadを発表し，Appleのタブレットコンピュータとなった。</p>
+<!-- So, to understand whether Apple’s products create value for Apple shareholders, we might run an event study using Apple’s media events as the events of interest. -->
+<p>したがって，Appleの製品がAppleの株主に価値を創出するかどうかを理解するために，Appleのメディアイベントを興味の対象としてイベント・スタディを実施することができる。</p>
+<!-- The farr package includes the data frame apple_events, which is derived from data found on Wikipedia.  -->
+<p><code>farr</code>パッケージには，Wikipediaで見つかったデータを元にしたデータフレーム<code>apple_events</code>が含まれています。 <!-- Let’s look at the last few rows of this table: --> この表の最後の数行を見てみましょう。</p>
+<div class="cell">
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">tail</a></span><span class="op">(</span><span class="va">apple_events</span><span class="op">)</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["event"],"name":[1],"type":["chr"],"align":["left"]},{"label":["event_date"],"name":[2],"type":["date"],"align":["right"]},{"label":["end_event_date"],"name":[3],"type":["date"],"align":["right"]}],"data":[{"1":"Apple Special Event","2":"2019-09-10","3":"2019-09-10"},{"1":"Apple Special Event","2":"2019-12-02","3":"2019-12-02"},{"1":"WWDC 2020","2":"2020-06-22","3":"2020-06-26"},{"1":"Apple Special Event","2":"2020-09-15","3":"2020-09-15"},{"1":"Apple Special Event","2":"2020-10-13","3":"2020-10-13"},{"1":"Apple Special Event","2":"2020-11-10","3":"2020-11-10"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+<!-- We will need return data from CRSP to conduct our event study.  -->
+<p>イベント・スタディを実施するためには，CRSPからリターンデータが必要となる。 <!-- We first need to get Apple’s PERMNO so we can look up returns on CRSP.  --> まず，CRSPでリターンを検索できるようにAppleのPERMNOを取得する必要がある。 <!-- Knowing that Apple’s ticker is AAPL helps. --> AppleのティッカーがAAPLであることを知っていると便利である。</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist">
+<li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" aria-current="page">PostgreSQL</a></li>
+<li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">parquet</a></li>
+</ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<div class="cell">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">db</span> <span class="op">&lt;-</span> <span class="fu">dbConnect</span><span class="op">(</span><span class="fu">RPostgres</span><span class="fu">::</span><span class="fu"><a href="https://rpostgres.r-dbi.org/reference/Postgres.html">Postgres</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">stocknames</span> <span class="op">&lt;-</span> <span class="fu">tbl</span><span class="op">(</span><span class="va">db</span>, <span class="fu">Id</span><span class="op">(</span>schema <span class="op">=</span> <span class="st">"crsp"</span>, table <span class="op">=</span> <span class="st">"stocknames"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">dsf</span> <span class="op">&lt;-</span> <span class="fu">tbl</span><span class="op">(</span><span class="va">db</span>, <span class="fu">Id</span><span class="op">(</span>schema <span class="op">=</span> <span class="st">"crsp"</span>, table <span class="op">=</span> <span class="st">"dsf"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">dsi</span> <span class="op">&lt;-</span> <span class="fu">tbl</span><span class="op">(</span><span class="va">db</span>, <span class="fu">Id</span><span class="op">(</span>schema <span class="op">=</span> <span class="st">"crsp"</span>, table <span class="op">=</span> <span class="st">"dsi"</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">idx_daily</span> <span class="op">&lt;-</span> <span class="fu">tbl</span><span class="op">(</span><span class="va">db</span>, <span class="fu">Id</span><span class="op">(</span>schema <span class="op">=</span> <span class="st">"comp"</span>, table <span class="op">=</span> <span class="st">"idx_daily"</span><span class="op">)</span><span class="op">)</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<div class="cell">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">db</span> <span class="op">&lt;-</span> <span class="fu">dbConnect</span><span class="op">(</span><span class="fu">duckdb</span><span class="fu">::</span><span class="fu"><a href="https://r.duckdb.org/reference/duckdb.html">duckdb</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">stocknames</span> <span class="op">&lt;-</span> <span class="fu">load_parquet</span><span class="op">(</span><span class="va">db</span>, schema <span class="op">=</span> <span class="st">"crsp"</span>, table <span class="op">=</span> <span class="st">"stocknames"</span><span class="op">)</span></span>
+<span><span class="va">dsf</span> <span class="op">&lt;-</span> <span class="fu">load_parquet</span><span class="op">(</span><span class="va">db</span>, schema <span class="op">=</span> <span class="st">"crsp"</span>, table <span class="op">=</span> <span class="st">"dsf"</span><span class="op">)</span></span>
+<span><span class="va">dsi</span> <span class="op">&lt;-</span> <span class="fu">load_parquet</span><span class="op">(</span><span class="va">db</span>, schema <span class="op">=</span> <span class="st">"crsp"</span>, table <span class="op">=</span> <span class="st">"dsi"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">idx_daily</span> <span class="op">&lt;-</span> <span class="fu">load_parquet</span><span class="op">(</span><span class="va">db</span>, schema <span class="op">=</span> <span class="st">"comp"</span>, table <span class="op">=</span> <span class="st">"idx_daily"</span><span class="op">)</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">apple_permno</span> <span class="op">&lt;-</span></span>
+<span>  <span class="va">stocknames</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">ticker</span> <span class="op">==</span> <span class="st">"AAPL"</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="co"># Apple社</span></span>
+<span>  <span class="fu">select</span><span class="op">(</span><span class="va">permno</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="co"># permno変数を選択</span></span>
+<span>  <span class="fu">distinct</span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="co"># 重複を削除</span></span>
+<span>  <span class="fu">pull</span><span class="op">(</span><span class="op">)</span> <span class="co"># データを取得</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<!-- We then use Apple’s PERMNO (apple_permno equals 14593) to get return data from CRSP.  -->
+<p>次に，AppleのPERMNO（<code>apple_permno</code>は14593）を使用して，CRSPからリターンデータを取得する。 <!-- In this case, we will get daily returns for Apple (ret) from `crsp.dsf` and value-weighted “market” returns (vwretd) from crsp.dsi and calculate market-adjusted returns as `ret - vwretd`.[^2]  --> この場合，Appleの日次リターン(<code>ret0</code>)を<code>crsp.dsf</code>から取得し，時価総額加重「市場」リターン(<code>vwretd</code>)を<code>crsp.dsi</code>から取得し，<strong>市場調整リターン</strong>を<code>ret - vwretd</code>として計算する。 <!-- In this case, we will grab all returns since the start of 2005, which covers all the events on apple_events. --> この場合，2005年初めからのすべてのリターンを取得し，<code>apple_events</code>のすべてのイベントをカバーする。</p>
+<div class="cell">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">apple_rets</span> <span class="op">&lt;-</span></span>
+<span>  <span class="va">dsf</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">inner_join</span><span class="op">(</span><span class="va">dsi</span>, by <span class="op">=</span> <span class="st">"date"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">mutate</span><span class="op">(</span>ret_mkt <span class="op">=</span> <span class="va">ret</span> <span class="op">-</span> <span class="va">vwretd</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">select</span><span class="op">(</span><span class="va">permno</span>, <span class="va">date</span>, <span class="va">ret</span>, <span class="va">ret_mkt</span>, <span class="va">vol</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">permno</span> <span class="op">==</span> <span class="va">apple_permno</span>,</span>
+<span>         <span class="va">date</span> <span class="op">&gt;=</span> <span class="st">"2005-01-01"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">collect</span><span class="op">(</span><span class="op">)</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<!-- Unlike the earnings announcements that we studied in Chapter 12, Apple’s media events extend over multiple days; so our event windows also need to extend over multiple days.  -->
+<p>第12章で学習した利益マネジメントとは異なり，Appleのメディアイベントは複数日にわたって行われるため，イベント・ウィンドウも複数日にわたって拡張する必要がある。 <!-- To allow for some leakage of information in the day before the start of the media events and to allow the market some time to process the value implications of the media event, we will set our event window from one trading day before the start of each media event through to one day after the end of the media event.  --> 情報の漏洩を考慮して，メディアイベントの開始の前日からメディアイベントの終了の翌日までの1取引日をイベント・ウィンドウとして設定し，市場にメディアイベントの価値の意味を処理する時間を与える。 <!-- We will use the get_event_dates() function from the farr package to this end; behind the scenes, get_event_dates() uses get_trading_dates() and get_annc_dates() to get tables like trading_dates and annc_dates, respectively, which we studied in Chapter 12.3 --> このために，<code>farr</code>パッケージの<code>get_event_dates()</code>関数を使用する。<code>get_event_dates()</code>は，裏で<code>get_trading_dates()</code>と<code>get_annc_dates()</code>を使用して，第12章で学習した<code>trading_dates</code>や<code>annc_dates</code>などのテーブルを取得する。</p>
+<div class="cell">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">apple_event_dates</span> <span class="op">&lt;-</span></span>
+<span>  <span class="va">apple_events</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">mutate</span><span class="op">(</span>permno <span class="op">=</span> <span class="va">apple_permno</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">get_event_dates</span><span class="op">(</span><span class="va">db</span>,</span>
+<span>                  end_event_date <span class="op">=</span> <span class="st">"end_event_date"</span>,</span>
+<span>                  win_start <span class="op">=</span> <span class="op">-</span><span class="fl">1</span>, win_end <span class="op">=</span> <span class="op">+</span><span class="fl">1</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">tail</a></span><span class="op">(</span><span class="va">apple_event_dates</span><span class="op">)</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<!-- We now organize the data in a way that allows us to depict Apple’s returns graphically over time including information about media events. -->
+<p>Appleのリターンを時系列でグラフィカルに表現するために，メディアイベントに関する情報を含めてデータを整理する。</p>
+<div class="cell">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">apple_data</span> <span class="op">&lt;-</span></span>
+<span>  <span class="va">apple_rets</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">left_join</span><span class="op">(</span><span class="va">apple_event_dates</span>,</span>
+<span>            <span class="fu">join_by</span><span class="op">(</span><span class="va">permno</span>, <span class="va">date</span> <span class="op">&gt;=</span> <span class="va">start_date</span>, <span class="va">date</span> <span class="op">&lt;=</span> <span class="va">end_date</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">mutate</span><span class="op">(</span>is_event <span class="op">=</span> <span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">start_date</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">select</span><span class="op">(</span><span class="va">permno</span>, <span class="va">date</span>, <span class="va">ret</span>, <span class="va">ret_mkt</span>, <span class="va">vol</span>, <span class="va">is_event</span><span class="op">)</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<!-- Now we have the data we need, we can calculate cumulative returns using the cumprod() function and then plot these returns over time.[^4] -->
+<p>必要なデータが揃ったので，<code><a href="https://rdrr.io/r/base/cumsum.html">cumprod()</a></code>関数を使用して累積リターンを計算し，これらのリターンを時系列でプロットすることができる。</p>
+<div class="cell">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">apple_data</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">arrange</span><span class="op">(</span><span class="va">date</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">mutate</span><span class="op">(</span>cumret <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/cumsum.html">cumprod</a></span><span class="op">(</span><span class="fl">1</span> <span class="op">+</span> <span class="fu">coalesce</span><span class="op">(</span><span class="va">ret</span>, <span class="fl">0</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>         switch <span class="op">=</span> <span class="fu">coalesce</span><span class="op">(</span><span class="va">is_event</span> <span class="op">!=</span> <span class="fu">lead</span><span class="op">(</span><span class="va">is_event</span><span class="op">)</span>, <span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">date</span>, y <span class="op">=</span> <span class="va">cumret</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_line</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_ribbon</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>ymax <span class="op">=</span> <span class="fu">if_else</span><span class="op">(</span><span class="op">!</span><span class="va">is_event</span> <span class="op">|</span> <span class="va">switch</span>, <span class="va">cumret</span>, <span class="cn">NA</span><span class="op">)</span>,</span>
+<span>                  ymin <span class="op">=</span> <span class="fl">0</span>, fill <span class="op">=</span> <span class="st">"Non-event"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_ribbon</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>ymax <span class="op">=</span> <span class="fu">if_else</span><span class="op">(</span><span class="va">is_event</span> <span class="op">|</span> <span class="va">switch</span>, <span class="va">cumret</span>, <span class="cn">NA</span><span class="op">)</span>,</span>
+<span>                  ymin <span class="op">=</span> <span class="fl">0</span>, fill <span class="op">=</span> <span class="st">"Event"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">theme</span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"inside"</span>, legend.position.inside <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.2</span>, <span class="fl">0.8</span><span class="op">)</span><span class="op">)</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<!-- The line in Figure 13.1 represents cumulative returns since the start of the window.  -->
+<p>図13.1の折れ線は，ウィンドウの開始以来の累積リターンを表している。 <!-- Two “area” plots are added to this line: one for the non-event windows and one for the event windows.  --> この折れ線には，2つの「エリア」プロットが追加されている：1つは非イベントウィンドウ用，もう1つはイベントウィンドウ用である。 <!-- The vast majority of dates are non-event dates, making the event windows difficult to discern in the plot.  --> ほとんどの日付は非イベント日であり，プロットではイベントウィンドウを識別するのが難しい。 <!-- But “zooming in” makes the event windows easier to discern, as seen in Figure 13.2, which focuses on the last quarter of 2020. --> しかし，「ズームイン」することで，イベントウィンドウを識別しやすくなる。図13.2は，2020年第4四半期に焦点を当てている。</p>
+<div class="cell">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">apple_data</span> <span class="op">|&gt;</span>  </span>
+<span>  <span class="fu">arrange</span><span class="op">(</span><span class="va">date</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">mutate</span><span class="op">(</span>cumret <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/cumsum.html">cumprod</a></span><span class="op">(</span><span class="fl">1</span> <span class="op">+</span> <span class="fu">coalesce</span><span class="op">(</span><span class="va">ret</span>, <span class="fl">0</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>         switch <span class="op">=</span> <span class="fu">coalesce</span><span class="op">(</span><span class="va">is_event</span> <span class="op">!=</span> <span class="fu">lead</span><span class="op">(</span><span class="va">is_event</span><span class="op">)</span>, <span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">date</span> <span class="op">&gt;=</span> <span class="st">"2020-09-01"</span>, <span class="va">date</span> <span class="op">&lt;=</span> <span class="st">"2020-12-31"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">date</span>, y <span class="op">=</span> <span class="va">cumret</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_line</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_ribbon</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>ymax <span class="op">=</span> <span class="fu">if_else</span><span class="op">(</span><span class="op">!</span><span class="va">is_event</span> <span class="op">|</span> <span class="va">switch</span>, <span class="va">cumret</span>, <span class="cn">NA</span><span class="op">)</span>,</span>
+<span>                  ymin <span class="op">=</span> <span class="fl">0</span>, fill <span class="op">=</span> <span class="st">"Non-event"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_ribbon</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>ymax <span class="op">=</span> <span class="fu">if_else</span><span class="op">(</span><span class="va">is_event</span> <span class="op">|</span> <span class="va">switch</span>, <span class="va">cumret</span>, <span class="cn">NA</span><span class="op">)</span>,</span>
+<span>                  ymin <span class="op">=</span> <span class="fl">0</span>, fill <span class="op">=</span> <span class="st">"Event"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">theme</span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"bottom"</span><span class="op">)</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<!-- There is little in the plots above to suggest that Apple media events are associated with unusual returns, but we will use regression analysis to test this more formally.  -->
+<p>上記のプロットからは，Appleのメディアイベントが異常なリターンと関連していることを示すものはほとんどないが，より形式的にこれをテストするために回帰分析を使用する。 <!-- We consider whether returns are different when the indicator variable is_event is TRUE.  --> リターンがイベント指標変数がTRUEの場合に異なるかどうかを検討する。 <!-- Inspired by , see 12, we also consider the absolute value of returns (similar to squared return residuals used in Beaver, 1968) and relative trading volume. --> 12章で見たように、Beaver (1968)で使用された二乗リターン残差に類似した絶対リターン値と，相対取引量も考慮する。</p>
+<div class="cell">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">fms</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">"ret_mkt"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">ret_mkt</span> <span class="op">~</span> <span class="va">is_event</span>, data <span class="op">=</span> <span class="va">apple_data</span><span class="op">)</span>,</span>
+<span>            <span class="st">"abs(ret)"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span><span class="op">(</span><span class="va">ret</span><span class="op">)</span> <span class="op">~</span> <span class="va">is_event</span>, data <span class="op">=</span> <span class="va">apple_data</span><span class="op">)</span>,</span>
+<span>            <span class="st">"Volume"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">vol</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">vol</span><span class="op">)</span> <span class="op">~</span> <span class="va">is_event</span>, data <span class="op">=</span> <span class="va">apple_data</span><span class="op">)</span><span class="op">)</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">fms</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">"ret_mkt"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">ret_mkt</span> <span class="op">~</span> <span class="va">is_event</span>, data <span class="op">=</span> <span class="va">apple_data</span><span class="op">)</span>,</span>
+<span>            <span class="st">"abs(ret)"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span><span class="op">(</span><span class="va">ret</span><span class="op">)</span> <span class="op">~</span> <span class="va">is_event</span>, data <span class="op">=</span> <span class="va">apple_data</span><span class="op">)</span>,</span>
+<span>            <span class="st">"Volume"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">vol</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">vol</span><span class="op">)</span> <span class="op">~</span> <span class="va">is_event</span>, data <span class="op">=</span> <span class="va">apple_data</span><span class="op">)</span><span class="op">)</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<!-- Results from these regressions are reported in Table 13.1. -->
+<p>これらの回帰の結果は表13.1に報告されている。 <!-- These results—interpreted fairly casually—provide evidence of lower returns, but not higher (or lower) levels of either trading volume or return volatility. --> これらの結果は，比較的簡単に解釈すると，低いリターンが示されているが，取引量やリターンのボラティリティの高い（または低い）レベルは示されていない。</p>
+<!-- The code above examines whether returns for Apple during event periods behave differently from returns during non-event periods.  -->
+<p>上記のコードは，Appleのイベント期間中のリターンが非イベント期間中のリタンと異なるかどうかを調べている。 <!-- Another function from farr, get_event_cum_rets(), calculates cumulative raw returns and cumulative abnormal returns using two approaches: market-adjusted returns and size-adjusted returns over event windows.  --> <code>farr</code>の別の関数である<code>get_event_cum_rets()</code>は，2つのアプローチを使用して，イベントウィンドウ全体で市場調整リターンとサイズ調整リターンを使用して，累積生のリターンと累積異常リターンを計算する。 <!-- We use this function to get cumulative returns around each Apple event. --> この関数を使用して，各Appleイベントの周辺での累積リターンを取得する。</p>
+<div class="cell">
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">rets</span> <span class="op">&lt;-</span></span>
+<span>  <span class="va">apple_events</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">mutate</span><span class="op">(</span>permno <span class="op">=</span> <span class="va">apple_permno</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu">get_event_cum_rets</span><span class="op">(</span><span class="va">db</span>,</span>
+<span>                     win_start <span class="op">=</span> <span class="op">-</span><span class="fl">1</span>, win_end <span class="op">=</span> <span class="op">+</span><span class="fl">1</span>,</span>
+<span>                     end_event_date <span class="op">=</span> <span class="st">"end_event_date"</span><span class="op">)</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<!-- We first look at market-adjusted returns, which on average barely differ from zero. -->
+<p>まず，平均的にほとんどゼロと変わらない市場調整リターンを見てみる。</p>
+<div class="cell">
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">rets</span><span class="op">$</span><span class="va">ret_mkt</span><span class="op">)</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<!-- How many media events are positive-return events? (Answer: Fewer than half!) -->
+<p>正のリターンイベントは何件あるか？（答え：半分以下！）</p>
+<div class="cell">
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">rets</span><span class="op">$</span><span class="va">ret_mkt</span> <span class="op">&gt;</span> <span class="fl">0</span><span class="op">)</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<!-- Finally, Figure 13.3 depicts market-adjusted returns for Apple media events by event date. -->
+<p>最後に，図13.3は，イベント日によるAppleメディアイベントの市場調整リターンを描いている。</p>
+<div class="cell">
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">rets</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">event_date</span>, y <span class="op">=</span> <span class="va">ret_mkt</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_smooth</span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span>, formula <span class="op">=</span> <span class="st">"y ~ 1"</span><span class="op">)</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<!-- ### 13.2.2 Exercises -->
+</section><section id="演習" class="level3" data-number="6.2.2"><h3 data-number="6.2.2" class="anchored" data-anchor-id="演習">
+<span class="header-section-number">6.2.2</span> 演習</h3>
+<!-- How would you expect the plot to change if we used `cumret = exp(cumsum(log(1 + coalesce(ret, 0))))` in place of `cumret = cumprod(1 + coalesce(ret, 0))` in creating the plot above?  -->
+<p>上記のプロット作成時に，<code>cumret = cumprod(1 + coalesce(ret, 0))</code>の代わりに<code>cumret = exp(cumsum(log(1 + coalesce(ret, 0))))</code>を使用した場合，プロットがどのように変化すると予想されるか。 <!-- Is there any reason to prefer one calculation over time other? --> 時間の経過とともに1つの計算を他の計算よりも好む理由はありますか。</p>
+<!-- Do we get different results in this case if we use `cumret = cumprod(1 + ret)` (i.e., remove the coalesce() function)?  -->
+<p>この場合，<code>cumret = cumprod(1 + ret)</code>（つまり，<code>coalesce()</code>関数を削除）を使用した場合，異なる結果が得られますか？ <!-- If so, why?  --> もしそうならば，なぜか？ <!-- If not, would we always expect this to be case (e.g., for stocks other than Apple)? --> そうでない場合，常にこのようなケースであることを期待する理由はあるか（たとえば，Apple以外の株式の場合）？</p>
+<!-- 13.3 Event studies and regulation -->
+</section></section><section id="イベントスタディと規制" class="level2" data-number="6.3"><h2 data-number="6.3" class="anchored" data-anchor-id="イベントスタディと規制">
+<span class="header-section-number">6.3</span> 13.3 イベント・スタディと規制</h2>
+<!-- Zhang (2007, p. 74) “investigates the economic consequences of the Sarbanes–Oxley Act (SOX) by examining market reactions to related legislative events.”  -->
+<p>Zhang (2007, p.&nbsp;74)は，「関連する立法イベントに対する市場の反応を調査することで，サーバンズ・オクスリー法（SOX）の経済的影響を調査する」と述べている。 <!-- Zhang (2007, p. 75) finds that “the cumulative value-weighted (equal-weighted) raw return of the U.S. market amounts to –15.35% (–12.53%) around the key SOX events.”  --> Zhang (2007, p.&nbsp;75)は，「米国市場の累積時価加重（等時価加重）生のリターンは，主要なSOXイベントの周辺でそれぞれ-15.35%（-12.53%）に相当する」と結論付けている。 <!-- As Zhang (2007) uses CRSP returns for the US market, we collect a local copy of the relevant data. --> Zhang (2007)は米国市場のCRSPリターンを使用しているため，関連データのローカルコピーを収集する。</p>
+<div class="cell">
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">dsi_local</span> <span class="op">&lt;-</span></span>
+<span>  <span class="va">dsi</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">select</span><span class="op">(</span><span class="va">date</span>, <span class="va">vwretd</span>, <span class="va">ewretd</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">collect</span><span class="op">(</span><span class="op">)</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<!-- Zhang (2007, p. 76) focuses some analyses on “key SOX events” (defined below) and finds that “the estimated U.S. cumulative abnormal returns range from –3.76% and –8.21% under alternative specifications and are all statistically significant.”  -->
+<p>Zhang (2007, p.&nbsp;76)は，「主要なSOXイベント」（以下で定義）に焦点を当てたいくつかの分析を行い，「代替仕様において推定された米国の累積異常リターンは，すべて統計的に有意であり，-3.76%から-8.21%の範囲に及ぶ」と結論付けている。 <!-- Here “all” means for each of value-weighted and equal-weighted returns and using abnormal returns relative to each of the two models.  --> ここでの「すべて」とは，時価加重リターンと等時価加重リターンのそれぞれについて，および2つのモデルに対する異常リターンを使用していることを意味する。 <!-- For convenience, we focus on the model that measures abnormal returns relative to a “market model”, where the market comprises Canadian stocks not listed in the United States, and omit analysis of the second model, which blends returns on several non-US portfolios as a benchmark.  --> 便宜上，米国に上場していないカナダの株式からなる市場を対象とした「市場モデル」に対する異常リターンを測定するモデルに焦点を当て，複数の非米国ポートフォリオのリターンを基準としてブレンドする第2のモデルの分析を省略する。 <!-- To this end, we collect data on returns for the Toronto composite index (gvkeyx == "000193") from Compustat’s index data (comp.idx_daily) over 2001 and 2002 and merge this data set with our local copy of crsp.dsi. --> このために，2001年と2002年のCompustatの指数データ（<code>comp.idx_daily</code>）からトロント総合指数（<code>gvkeyx == "000193"</code>）のリターンデータを収集し，このデータセットをローカルコピーの<code>crsp.dsi</code>とマージする。</p>
+<div class="cell">
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">can_rets</span> <span class="op">&lt;-</span></span>
+<span>  <span class="va">idx_daily</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">gvkeyx</span> <span class="op">==</span> <span class="st">"000193"</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu">window_order</span><span class="op">(</span><span class="va">datadate</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">mutate</span><span class="op">(</span>ret_can <span class="op">=</span> <span class="fu">if_else</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/lag.html">lag</a></span><span class="op">(</span><span class="va">prccd</span><span class="op">)</span> <span class="op">&gt;</span> <span class="fl">0</span>, <span class="va">prccd</span><span class="op">/</span><span class="fu"><a href="https://rdrr.io/r/stats/lag.html">lag</a></span><span class="op">(</span><span class="va">prccd</span><span class="op">)</span> <span class="op">-</span> <span class="fl">1</span>, <span class="cn">NA</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">datadate</span> <span class="op">&gt;=</span> <span class="st">"2000-01-01"</span>, <span class="va">datadate</span> <span class="op">&lt;=</span> <span class="st">"2002-12-31"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">rename</span><span class="op">(</span>date <span class="op">=</span> <span class="va">datadate</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">select</span><span class="op">(</span><span class="va">date</span>, <span class="va">ret_can</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">collect</span><span class="op">(</span><span class="op">)</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<!-- We follow Zhang (2007, p. 88) in “using daily return data in the 100 days prior to December 28, 2001” for expected return models. -->
+<p>Zhang (2007, p.&nbsp;88)に従い，予想リターンモデルには「2001年12月28日の100日前の日次リターンデータ」を使用する。</p>
+<div class="cell">
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">reg_data</span> <span class="op">&lt;-</span></span>
+<span>  <span class="va">dsi_local</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">inner_join</span><span class="op">(</span><span class="va">can_rets</span>, by <span class="op">=</span> <span class="st">"date"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">date</span> <span class="op">&lt;</span> <span class="st">"2001-12-28"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">top_n</span><span class="op">(</span><span class="fl">100</span>, wt <span class="op">=</span> <span class="va">date</span><span class="op">)</span> </span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<!-- We then fit models for market returns for both equal-weighted and value-weighted portfolios against Canadian returns. -->
+<p>次に，等時価加重ポートフォリオと時価加重ポートフォリオの市場リターンモデルをカナダのリターンに対して適合させる。</p>
+<div class="cell">
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">fm_vw</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">vwretd</span> <span class="op">~</span> <span class="va">ret_can</span>, data <span class="op">=</span> <span class="va">reg_data</span><span class="op">)</span></span>
+<span><span class="va">fm_ew</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">ewretd</span> <span class="op">~</span> <span class="va">ret_can</span>, data <span class="op">=</span> <span class="va">reg_data</span><span class="op">)</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<!-- We then use these models to calculate excess returns for all observations.  -->
+<p>つぎに、これらのモデルを使用してすべての観測値の超過リターンを計算する。 <!-- In the following code, we use pick(everything()), which is an idiom that we use in a few places in this book.  --> 以下のコードでは、この本のいくつかの場所で使用するイディオムである<code>pick(everything())</code>を使用している。 <!-- In the function following the native pipe (|>), we often access the data frame supplied by the item preceding |> using the pipe placeholder _.  --> ネイティブパイプ（<code>|&gt;</code>）に続く関数では、しばしばパイププレースホルダ<code>_</code>を使用して、パイプの前に供給されたデータフレームにアクセスする。 <!-- However, this placeholder is not accessible to functions inside mutate().  --> ただし、このプレースホルダは、<code>mutate()</code>内の関数からはアクセスできません。 <!-- Fortunately, we can use pick() instead.  --> 幸いなことに、代わりに<code>pick()</code>を使用できる。 <!-- The pick() function provides a way to easily select columns from data inside a function like mutate().  --> <code>pick()</code>関数は、<code>mutate()</code>のような関数内でデータから列を簡単に選択する方法を提供する。 <!-- In the current setting, we can use everything() to indicate that we want to select all variables in the source data.  --> 現在の設定では、<code>everything()</code>を使用して、ソースデータのすべての変数を選択することを示すことができる。 <!-- As such, pick(everything()) is a handy workaround to the limitations of the pipe placeholder _. --> そのため、<code>pick(everything())</code>は、パイププレースホルダ<code>_</code>の制限を回避するための便利な回避策である。</p>
+<div class="cell">
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">dsi_merged</span> <span class="op">&lt;-</span></span>
+<span>  <span class="va">dsi_local</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">inner_join</span><span class="op">(</span><span class="va">can_rets</span>, by <span class="op">=</span> <span class="st">"date"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">mutate</span><span class="op">(</span>abret_vw <span class="op">=</span> <span class="va">vwretd</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">fm_vw</span>, <span class="fu">pick</span><span class="op">(</span><span class="fu">everything</span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>         abret_ew <span class="op">=</span> <span class="va">ewretd</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">fm_ew</span>, <span class="fu">pick</span><span class="op">(</span><span class="fu">everything</span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">select</span><span class="op">(</span><span class="op">-</span><span class="va">ret_can</span><span class="op">)</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<!-- From Table 2, Zhang (2007) appears to calculate the daily standard deviation of returns at about 1.2%.  -->
+<p>表2から、Zhang (2007)はリターンの日次標準偏差を約1.2%として計算しているようだ。 <!-- The exact basis for this calculation is unclear, but similar analyses are “estimated using daily return data in the 100 days prior to December 28, 2001” (Zhang, 2007, p.88).  --> この計算の正確な根拠は不明だが，類似した分析は「2001年12月28日の100日前の日次リターンデータを使用して推定される」(Zhang, 2007, p.88). <!-- So we calculate the daily volatility on this basis using the following calculation, which yields the value 1.28%. --> したがって，以下の計算を使用してこの基準で日次ボラティリティを計算し，1.28%という値を得る。</p>
+<div class="cell">
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">sd_ret</span> <span class="op">&lt;-</span></span>
+<span>  <span class="va">dsi_local</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">date</span> <span class="op">&lt;</span> <span class="st">"2001-12-28"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">top_n</span><span class="op">(</span><span class="fl">100</span>, wt <span class="op">=</span> <span class="va">date</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">summarize</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">vwretd</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">pull</span><span class="op">(</span><span class="op">)</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<!-- The `farr` package contains the data frame zhang_2007_windows containing the dates of the event windows found in Table 2 of Zhang (2007).  -->
+<p><code>farr</code>パッケージには，Zhang (2007)の表2にあるイベント・ウィンドウの日付が含まれているデータフレーム<code>zhang_2007_windows</code>が含まれている。 <!-- We can combine these data with return data from dsi_local to calculate cumulative returns for each event window.  --> これらのデータを<code>dsi_local</code>からのリターンデータと組み合わせて，各イベント・ウィンドウの累積リターンを計算することができる。 <!-- Following Zhang (2007), we can estimate the standard error by scaling the daily return volatility by the square-root of the number of trading days in each window to calculate a t-statistic for each event.  --> Zhang (2007)に従い，各イベントについてt統計量を計算するために，各ウィンドウの取引日数の平方根で日次リターンのボラティリティをスケーリングして標準誤差を推定することができる。 <!-- We use the standard deviation of residuals to estimate the daily volatility of the abnormal-return models. --> 異常リターンモデルの日次ボラティリティを推定するために，残差の標準偏差を使用する。</p>
+<div class="cell">
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">zhang_2007_rets</span> <span class="op">&lt;-</span></span>
+<span>  <span class="va">zhang_2007_windows</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">inner_join</span><span class="op">(</span><span class="va">dsi_merged</span>, <span class="fu">join_by</span><span class="op">(</span><span class="va">beg_date</span> <span class="op">&lt;=</span> <span class="va">date</span>, <span class="va">end_date</span> <span class="op">&gt;=</span> <span class="va">date</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">event</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">summarize</span><span class="op">(</span>n_days <span class="op">=</span> <span class="fu">n</span><span class="op">(</span><span class="op">)</span>,</span>
+<span>            vwret <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">vwretd</span><span class="op">)</span>,</span>
+<span>            ewret <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">ewretd</span><span class="op">)</span>,</span>
+<span>            abret_vw <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">abret_vw</span><span class="op">)</span>,</span>
+<span>            abret_ew <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">abret_ew</span><span class="op">)</span>,</span>
+<span>            vw_t <span class="op">=</span> <span class="va">vwret</span> <span class="op">/</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="va">n_days</span><span class="op">)</span> <span class="op">*</span> <span class="va">sd_ret</span><span class="op">)</span>,</span>
+<span>            ew_t <span class="op">=</span> <span class="va">ewret</span> <span class="op">/</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="va">n_days</span><span class="op">)</span> <span class="op">*</span> <span class="va">sd_ret</span><span class="op">)</span>,</span>
+<span>            abret_vw_t <span class="op">=</span> <span class="va">abret_vw</span> <span class="op">/</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="va">n_days</span><span class="op">)</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">fm_vw</span><span class="op">$</span><span class="va">residuals</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>            abret_ew_t <span class="op">=</span> <span class="va">abret_ew</span> <span class="op">/</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="va">n_days</span><span class="op">)</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">fm_ew</span><span class="op">$</span><span class="va">residuals</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<!-- In subsequent analyses, Zhang (2007) focuses on “key SOX events”, which seem to be those events with a “statistically significant” return at the 10% level in a two-tailed test, and reports results in Panel D of Table 1 (2007, pp. 91–92). -->
+<p>その後の分析では，Zhang (2007)は「主要なSOXイベント」に焦点を当てているようであり，これらのイベントは「統計的に有意な」リターンを持つイベントのようであり，表1のパネルD（2007年，91-92ページ）に結果を報告している。 <!-- We replicate the key elements of this procedure and our results correspond roughly with those reported in Zhang (2007) as “CAR2”. --> この手順の主要な要素を再現し，我々の結果はZhang (2007)で「CAR2」として報告された結果とおおよそ一致している。</p>
+<div class="cell">
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">zhang_2007_res</span> <span class="op">&lt;-</span></span>
+<span>  <span class="va">zhang_2007_rets</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span><span class="op">(</span><span class="va">vw_t</span><span class="op">)</span> <span class="op">&gt;</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">qnorm</a></span><span class="op">(</span><span class="fl">.05</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">summarize</span><span class="op">(</span>vwret <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">vwret</span><span class="op">)</span>,</span>
+<span>            ewret <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">ewret</span><span class="op">)</span>,</span>
+<span>            abret_vw <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">abret_vw</span><span class="op">)</span>,</span>
+<span>            abret_ew <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">abret_ew</span><span class="op">)</span>,</span>
+<span>            n_days <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">n_days</span><span class="op">)</span>,</span>
+<span>            vw_t <span class="op">=</span> <span class="va">vwret</span> <span class="op">/</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="va">n_days</span><span class="op">)</span> <span class="op">*</span> <span class="va">sd_ret</span><span class="op">)</span>,</span>
+<span>            ew_t <span class="op">=</span> <span class="va">ewret</span> <span class="op">/</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="va">n_days</span><span class="op">)</span> <span class="op">*</span> <span class="va">sd_ret</span><span class="op">)</span>,</span>
+<span>            abret_vw_t <span class="op">=</span> <span class="va">abret_vw</span> <span class="op">/</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="va">n_days</span><span class="op">)</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">fm_vw</span><span class="op">$</span><span class="va">residuals</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>            abret_ew_t <span class="op">=</span> <span class="va">abret_ew</span> <span class="op">/</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="va">n_days</span><span class="op">)</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">fm_ew</span><span class="op">$</span><span class="va">residuals</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<!-- We estimate cumulative raw value-weighted returns for the four “key SOX events” at  $-15.2\%$ (t-statistic $-3.18$ ), quite close to the value reported in Zhang (2007) ( $-15.35\%$ with a $t$ -statistic of $-3.49$ ).  -->
+<p>「主要なSOXイベント」における累積生の時価加重リターンを推定すると、 <span class="math inline">-15.2\%</span> （$t $統計量 <span class="math inline">-3.18</span> ）となり、Zhang (2007)で報告された値 <span class="math inline">-15.35\%</span> （ <span class="math inline">t</span> 統計量 <span class="math inline">-3.49</span> ）に非常に近い。 <!-- However, our estimate of cumulative abnormal value-weighted returns for the four “key SOX events” is $-3.18\%$ ($t$ -statistic $-1.02$ ), which is closer to zero than the value reported in Zhang (2007) ( $-8.21\%$ with a $t$ -statistic of $-2.99$ ), which is the only value of eight reported in Panel D of Table 1 that is statistically significant at conventional levels (5% in two-tailed tests). --> しかし、4つの「主要なSOXイベント」における累積異常時価加重リターンの推定値は <span class="math inline">-3.18\%</span> （<span class="math inline">t</span> 統計量 <span class="math inline">-1.02</span> ）であり、Zhang (2007)で報告された値 <span class="math inline">-8.21\%</span> （<span class="math inline">t</span> 統計量 <span class="math inline">-2.99</span> ）よりもゼロに近い。これは、表1のパネルDで報告された8つの値のうち、従来のレベル（両側検定で5%）で統計的に有意な唯一の値である。</p>
+<!-- 13.3.1 Discussion questions -->
+<section id="ディスカッション課題-1" class="level3" data-number="6.3.1"><h3 data-number="6.3.1" class="anchored" data-anchor-id="ディスカッション課題-1">
+<span class="header-section-number">6.3.1</span> 13.3.1 ディスカッション課題</h3>
+<!-- ####  13.3.1.1 Zhang (2007)  -->
+<section id="zhang-2007" class="level4" data-number="6.3.1.1"><h4 data-number="6.3.1.1" class="anchored" data-anchor-id="zhang-2007">
+<span class="header-section-number">6.3.1.1</span> Zhang (2007)</h4>
+<!-- What are the relative merits of raw and abnormal returns in evaluating the effect of SOX on market values of US firms? -->
+<ol type="1">
+<li>米国企業の市場価値に対するSOXの影響を評価する際に，生のリターンと異常リターンの相対的なメリットは何か？ <!-- What do you observe in the raw returns for Canada, Europe, and Asia for the four events that are the focus of Panel B of Table 2 of Zhang (2007)?  --> Zhang (2007)の表2のパネルBの焦点となる4つのイベントについて，カナダ，ヨーロッパ，アジアの生のリターンについて何が観察されるか？ <!-- Does this raise concerns about the results of Zhang (2007)? --> これは，Zhang (2007)の結果について懸念を抱かせるか？</li>
+</ol>
+<!-- Describe the process for constructing the test statistics reported in Panel D of Table 2.  --><ol start="2" type="1">
+<li>表2のパネルDに報告されている検定統計量を構築するプロセスを説明せよ。 <!-- How compelling are these results? Do you agree with the assessment by Leuz (2007, p. 150) that Zhang (2007) is “very careful in assessing the significance of the event returns”? --> これらの結果はどれほど説得力があるか？Leuz (2007, p.&nbsp;150)によると，Zhang (2007)は「イベントリターンの有意性を評価する際に非常に慎重である」と評価しているが，これに同意するか？</li>
+</ol>
+<!-- Describe in detail how you might conduct statistical inference using randomization inference in the setting of Zhang (2007) (see Section 19.7 for more on this approach)? --><ol start="3" type="1">
+<li>Zhang (2007)の設定でランダム化推論を使用して統計推論をどのように実施するかを詳細に説明せよ（このアプローチについては，19.7節を参照）。 <!-- What are the challenges faced and design choices you need to make in applying this approach? Does your approach differ from the bootstrapping approach used in Zhang (2007)? --> このアプローチを適用する際に直面する課題と設計上の選択肢は何か？このアプローチは，Zhang (2007)で使用されているブートストラップアプローチと異なるか？</li>
+</ol>
+<!-- Leuz (2007) identifies studies other than Zhang (2007) that find evidence that SOX was beneficial to firms?  --><ol start="4" type="1">
+<li>Leuz (2007)は，SOXが企業にとって有益であるという証拠を見つけたZhang (2007)以外の研究を特定しているか？ <!-- How can these sets of results be reconciled?  --> これらの結果をどのように調整できるか？ <!-- What steps would you look to undertake to evaluate the conflicting claims of the two papers? --> 2つの論文の相反する主張を評価するために，どのような手順を踏むか？</li>
+</ol>
+<!-- #### 13.3.1.2 Khan et al. (2017)  --></section><section id="khan-et-al.-2017" class="level4" data-number="6.3.1.2"><h4 data-number="6.3.1.2" class="anchored" data-anchor-id="khan-et-al.-2017">
+<span class="header-section-number">6.3.1.2</span> Khan et al.&nbsp;(2017)</h4>
+<!-- What is the research question examined in Khan et al. (2017)?  -->
+<ol type="1">
+<li>Khan et al.&nbsp;(2017)で検討されている研究課題は何か？ <!-- (Hint: Read the title.) --> （ヒント：タイトルを読んでください。）</li>
+</ol>
+<!-- Khan et al. (2017, p. 210) argue that “an ideal research design to evaluate the benefits of accounting standards is to compare a voluntary disclosure regime, in which firms disclose information required by a particular standard, with a mandatory disclosure regime, in which firms are required to disclose that same information.”  --><ol start="2" type="1">
+<li>Khan et al.&nbsp;(2017, p.&nbsp;210)は「会計基準の利点を評価するための理想的な研究デザインは，企業が特定の基準によって要求される情報を開示する任意の開示体制と，企業が同じ情報を開示することが義務付けられる強制的な開示体制を比較することである」と主張している。 <!-- Do you agree that this research design would be “ideal” to address the question?  --> この研究デザインがこの問題に対処するために「理想的」であると思うか？ <!-- What is the implied treatment in this ideal design? --> この理想的なデザインで暗示される処置は何か？</li>
+</ol>
+<!-- Compare the Apple event study above with Khan et al. (2017). What are the relative strengths and weaknesses of the two studies?  --><ol start="3" type="1">
+<li>上記のAppleイベントスタディとKhan et al.&nbsp;(2017)を比較して，2つの研究の相対的な強みと弱みは何か？ <!-- Do you think an event-study approach is appropriate for addressing the question “do Apple products add value?”  --> 「Apple製品は価値を追加するか？」という問題に対処するために，イベントスタディアプローチは適切だと考えるか？ <!-- Do you think an event-study approach is appropriate for addressing the research question of Khan et al. (2017)?  --> Khan et al.&nbsp;(2017)の研究問題に対処するために，イベントスタディアプローチは適切だと考えるか？ <!-- Why or why not? --> その理由は何か？</li>
+</ol>
+<!-- Do you think that standard-setters would view “reduction in estimation risk” as a goal of accounting standards?  --><ol start="4" type="1">
+<li>会計基準制定者は，「推定リスクの低減」を会計基準の目標と見なすと思うか？ <!-- Evaluate the quality of the arguments linking improved standards to reduced estimation risk.  --> 改善された基準と推定リスクの低減を結びつける議論の質を評価せよ。 <!-- The null hypothesis for Panel A is that the CAR of affected firms is not different from CAR of unaffected firms.  --> Panel Aの帰無仮説は，影響を受けた企業のCARが影響を受けていない企業のCARと異ならないというものである。 <!-- How appropriate is it to report “most negative” and “most positive” CAR differences only?  --> 「最も負の」CAR差と「最も正の」CAR差のみを報告することは適切か？ <!-- (Hint: If the null hypothesis is true, how many standards might you expect to have “statistically significant” coefficients?) --> （ヒント：帰無仮説が真である場合，「統計的に有意な」係数を持つ基準は何個あると予想できるか？）</li>
+</ol>
+<!-- Interpret the results of Table 5, Panel B of Khan et al. (2017). --><ol start="5" type="1">
+<li>Khan et al.&nbsp;(2017)の表5のパネルBの結果を解釈せよ。</li>
+</ol>
+<!-- #### 13.3.1.3 Larcker et al. (2011) “LOT” --></section><section id="larcker-et-al.-2011-lot" class="level4" data-number="6.3.1.3"><h4 data-number="6.3.1.3" class="anchored" data-anchor-id="larcker-et-al.-2011-lot">
+<span class="header-section-number">6.3.1.3</span> Larcker et al.&nbsp;(2011) “LOT”</h4>
+<!-- 1. How do LOT and FFJR differ in terms of the role of market efficiency in their research designs? -->
+<ol type="1">
+<li>LOTとFFJRは，研究デザインにおける市場効率の役割についてどのように異なるか？</li>
+</ol>
+<!-- 2. Consider Table 1 of LOT. What are the differences between the event study design in LOT from that in FFJR?  --><ol start="2" type="1">
+<li>LOTの表1を考えてみよ。LOTのイベントスタディデザインとFFJRのデザインの違いは何か？ <!-- What are implications of these differences? --> これらの違いの意味は何か？</li>
+</ol>
+<!-- 3. How do you think Table 1 was developed?  --><ol start="3" type="1">
+<li>Table 1はどのように作成されたと考えるか？ <!-- Do you see potential problems in the process underlying Table 1?  --> Table 1の基礎となるプロセスに潜在的な問題があると思うか？ <!-- Can you suggest alternative approaches to developing Table 1? --> Table 1を作成するための代替アプローチを提案できるか？</li>
+</ol>
+<!-- 4. Consider proxy access, as some of the core results of the paper relate to proxy access.  --><ol start="4" type="1">
+<li>プロキシアクセスを考えてみよ，論文の中心的な結果のいくつかはプロキシアクセスに関連している。 <!-- If you were a shareholder in a company, what concerns might you have about proxy access?  --> もし会社の株主であるとしたら，プロキシアクセスについてどのような懸念があるか？ <!-- Why might this decrease the value of your shares?  --> なぜこれがあなたの株式の価値を減少させる可能性があるか？ <!-- Think about this is concrete terms; be specific about the kinds of circumstances where value will be reduced. --> 具体的な事例について考えてみよ；価値が低下する状況について具体的に述べよ。 <!-- How well do the variables NLargeBlock and NSmallCoalitions measure the exposure of firms to the issues you identified in the previous question?  --> 前の質問で特定した問題に企業がどのようにさらされているかを測定するために，変数NLargeBlockとNSmallCoalitionsはどの程度適しているか？ <!-- (As part of this, consider the timing of variable measurement relative to the timing of possible value-reducing outcomes.) --> （これに関連して，可能な価値低下の結果のタイミングと変数測定のタイミングを考慮してください。）</li>
+</ol>
+<!-- 5. LOT makes use of a number of **Monte Carlo simulations**. How do these compare with the bootstrapping analyses conducted by Zhang (2007)?  --><ol start="5" type="1">
+<li>LOTはいくつかの<strong>モンテカルロシミュレーション</strong>を使用している。これらは，Zhang (2007)によるブートストラップ解析とどのように比較されるか？ <!-- Are the simulations addressing the same underlying issues as Zhang (2007) bootstrapping approach? --> シミュレーションは，Zhang (2007)のブートストラップアプローチと同じ基本的な問題に対処しているか？</li>
+</ol>
+
+
+</section></section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "コピーしました");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "コピーしました");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+          // default icon
+          link.classList.add("external");
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script><nav class="page-navigation"><div class="nav-page nav-page-previous">
+      <a href="./chap12_Beaver1968.html" class="pagination-link" aria-label="Beaver (1968)">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Beaver (1968)</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./chap15_accruals.html" class="pagination-link" aria-label="アクルーアル">
+        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">アクルーアル</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer"><div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Copyright 2024, Soichi Matsuura</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+<li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/ma2ura">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/matsuura_rits">
+      <i class="bi bi-twitter" role="img" aria-label="Twitter">
+</i> 
+    </a>
+  </li>  
+</ul>
+</div>
+  </div>
+</footer>
+
+
+</body></html>

@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.40">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Ian Gow and Tongqing Ding">
+
+<title>Empirical Research in Accounting</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./chap01_Introduction.html" rel="next">
+<link href="./img/favicon.ico" rel="icon">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-1092c56c6cadf2eb47b1bc8063ab382a.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-1092c56c6cadf2eb47b1bc8063ab382a.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-88c88708faf0c485c0387dba1f6eb15f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-2e8bc3580cc84ea2920b26bb0544913d.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "一致なし",
+    "search-matching-documents-text": "一致した文書",
+    "search-copy-link-title": "検索へのリンクをコピー",
+    "search-hide-matches-text": "追加の検索結果を非表示",
+    "search-more-match-text": "追加の検索結果",
+    "search-more-matches-text": "追加の検索結果",
+    "search-clear-button-title": "消去",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "取消",
+    "search-submit-button-title": "検索",
+    "search-label": "サーチ"
+  }
+}</script>
+
+
+<meta name="twitter:title" content="Empirical Research in Accounting">
+<meta name="twitter:description" content="Tools and Methods">
+<meta name="twitter:image" content="img/ivan.jpg">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="サイドバーを切り替える" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">序論</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="サイドバーを切り替える" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="サーチ" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Empirical Research in Accounting</a> 
+        <div class="sidebar-tools-main">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="ダークモードの切り替え"><i class="bi"></i></a>
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="リーダーモードの切り替え">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="サーチ"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">序論</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">基礎</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="セクションを切り替え">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chap01_Introduction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">はじめに</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chap09_import.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">データを読み込む</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">資本市場研究</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="セクションを切り替え">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chap10_FFJR.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">FFJR</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chap11_BB1968.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Ball and Brown (1968)</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chap12_Beaver1968.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Beaver (1968)</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chap13_Event.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">イベント・スタディ</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chap15_accruals.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">アクルーアル</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chap16_em.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">利益マネジメント</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">因果推論</span></span>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">追加的なトピック</span></span>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+ <span class="menu-text">付録</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="セクションを切り替え">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./appA_LinearAlgebra.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">線形代数</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./appB_SQL.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">SQL入門</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./appC_Computing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">研究のためのコンピュータ概論</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">目次</h2>
+   
+  <ul>
+  <li><a href="#序論" id="toc-序論" class="nav-link active" data-scroll-target="#序論">序論</a>
+  <ul class="collapse">
+  <li><a href="#本書の特徴" id="toc-本書の特徴" class="nav-link" data-scroll-target="#本書の特徴">本書の特徴</a></li>
+  <li><a href="#教育的な観点から論文の選択" id="toc-教育的な観点から論文の選択" class="nav-link" data-scroll-target="#教育的な観点から論文の選択">教育的な観点から論文の選択</a></li>
+  <li><a href="#データ解析スキルの組み込み" id="toc-データ解析スキルの組み込み" class="nav-link" data-scroll-target="#データ解析スキルの組み込み">データ解析スキルの組み込み</a></li>
+  <li><a href="#研究デザインと方法に対する強い重点" id="toc-研究デザインと方法に対する強い重点" class="nav-link" data-scroll-target="#研究デザインと方法に対する強い重点">研究デザインと方法に対する強い重点</a></li>
+  <li><a href="#前提条件" id="toc-前提条件" class="nav-link" data-scroll-target="#前提条件">前提条件</a></li>
+  <li><a href="#読者へのガイド" id="toc-読者へのガイド" class="nav-link" data-scroll-target="#読者へのガイド">読者へのガイド</a></li>
+  <li><a href="#謝辞" id="toc-謝辞" class="nav-link" data-scroll-target="#謝辞">謝辞</a></li>
+  <li><a href="#スタイルに関するいくつかの注意" id="toc-スタイルに関するいくつかの注意" class="nav-link" data-scroll-target="#スタイルに関するいくつかの注意">スタイルに関するいくつかの注意</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Empirical Research in Accounting</h1>
+<p class="subtitle lead">Tools and Methods</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">作者</div>
+    <div class="quarto-title-meta-contents">
+             <p>Ian Gow and Tongqing Ding </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+
+<section id="序論" class="level1 unnumbered">
+<h1 class="unnumbered">序論</h1><p><img src="img/ivan.jpg" title="Empirical Research in Accounting" class="quarto-cover-image img-fluid"></p>
+<!-- This book provides a course on financial accounting research that begins at an upper-undergraduate ("honours") or introductory PhD level.  -->
+<p>本書は、学部上級（「honours」）あるいは博士課程の入門レベルからスタートする財務会計研究の講義を提供している。 <!-- One goal of the course, like most PhD courses, is to prepare PhD students to take further research courses and to go on to do their own research.  --> この講義の目的は、ほとんどの博士課程の講義と同じように、博士課程の学生がより上級の講義を取るために準備することや、自ら研究をすすめることができるようにすることである。 <!-- Another goal of the course is to provide students with a set of skills that is useful in other domains, such as consulting or finance.  --> もう一つの目的は、コンサルティングやファイナンスといった他の領域で有用なスキルをもつ生徒を育てることである。 <!-- This second goal stems from the origins of parts of this course in a joint honours-PhD course at the University of Melbourne, where the honours students are undergraduates completing an additional year of study with a focus on research.  --> この2つ目の目的は、メルボルン大学の優秀学生と博士課程のジョイント講義の一部が起源である。 ここで優秀学生(honours students)は、研究を中心とした追加の1年間の学習を完了する学部生である。 <!-- While some honours students progress to PhD studies, most elect to take jobs in industry, such as consulting, auditing, or public service. --> 優秀学生の一部は博士課程に進むが、ほとんどはコンサルティング、監査、公共サービスなどの業界での仕事を選択する。</p>
+<section id="本書の特徴" class="level2">
+<h2 class="anchored" data-anchor-id="本書の特徴">本書の特徴</h2>
+<!-- Some features of this book mean that a course based on it will be distinguished from a more traditional PhD-level course in a number of respects that we discuss here. -->
+<p>本書の特徴のいくつかは、本書に基づいた講義が、従来の博士課程レベルの講義とは異なる点で区別されることを意味している。</p>
+<!-- ## Pedagogically driven selection of papers -->
+</section>
+<section id="教育的な観点から論文の選択" class="level2">
+<h2 class="anchored" data-anchor-id="教育的な観点から論文の選択">教育的な観点から論文の選択</h2>
+<!-- Many syllabuses for PhD courses in accounting focus on recent papers with a view to giving students a sense of the current themes and trends in research to help students spot gaps in the literature that they can fill with their own research.  -->
+<p>会計を専攻する博士課程の講義の多くは、学生が自分自身の研究で埋めることができる文献の空白を見つけるのを助けるために、最新の論文に焦点を当てている。 <!-- We view such courses as complementary to this course, but take a different approach. --> このような講義は本書と補完的なものと考えているが、異なるアプローチを取っている。 <!-- Aiming to provide a more fundamental understanding of accounting research, the selection of papers in this course is driven more by pedagogical goals than an attempt to represent the current state of play in accounting research.  --> 会計研究のより基本的な理解を提供することを目指して、この講義で選ばれた論文は、会計研究の現状を確認しようとするのではなく、教育的な目的を重視して選択されている。 <!-- In some cases, this means covering older papers (e.g., Ball and Brown, 1968), but in other cases we use a recent paper that features a core idea or approach. --> 場合によっては、古い論文（例：Ball and Brown, 1968）を取り上げることもあるが、他の場合には、中心的なアイデアやアプローチを特徴とする最近の論文を使用している。</p>
+<!-- ## Incorporation of data analysis skills -->
+</section>
+<section id="データ解析スキルの組み込み" class="level2">
+<h2 class="anchored" data-anchor-id="データ解析スキルの組み込み">データ解析スキルの組み込み</h2>
+<!-- A second feature that distinguishes this course from most PhD courses in accounting is an emphasis on data analysis skills, which are woven into the course throughout.  -->
+<p>本書を特徴づける2番目の特徴は、ほとんどの博士課程コースとは違って、データ解析スキルに重点を置いていることである。 <!-- While it might have been possible to make this a course focused exclusively on such skills, it is our view that these skills are best learned through applying them to real research questions. --> 本書をデータ解析スキルに特化させることも可能であったが、これらのスキルは実際の研究課題に適用することで最もよく学ぶことができると考えている。 <!-- Conversely, we believe that being able to pull data, run simulations, and get more involved with critical elements of the research process engenders a better understanding of research. --> 逆に、データを取得し、シミュレーションを実行し、研究プロセスの重要な要素により深く関わることができるようになることは、研究に対する理解を深めると考えている。 <!-- We build data analysis and computing skills into the course at each step in a systematic way.  --> データ解析とコンピューティングスキルを体系的に講義の各段階に組み込んでいる。 <!-- In practice, research computing skills are the bread and butter of a researcher's toolkit but are generally neglected in PhD programs' formal curricula.  --> 実際には、研究コンピューティングスキルは研究者のツールキットの中心的な部分を占めているが、一般的には博士課程のカリキュラムでは無視されがちである。 <!-- The prevailing ethos seems to be that research computing skills are acquired informally from other students, through research assistantships and collaboration with faculty members, and so on. --> 一般的な考え方は、研究コンピューティングスキルは他の学生から、研究助手や教員との協力を通じて、などの形で非公式に獲得されるというものである。</p>
+<!-- In some doctoral programs, this approach may work to a degree.  -->
+<p>博士課程プログラムによっては、このアプローチがある程度は機能するかもしれない。 <!-- But in many doctoral pro-grams, such informal learning fails to prepare students adequately.  --> しかし、多くの博士課程プログラムでは、このような非公式な学習では学生を十分に準備することができない。 <!-- For example, if students' collaboration with faculty members is informal and related to collaboration on papers where the students do the data analysis with limited or no hands-on guidance from the faculty member, then the opportunity for clear and comprehensive guidance is limited. --> 例えば、学生が教員との協力が非公式であり、学生がデータ解析を行う際に教員からの指導が限られているかない場合、明確で包括的な指導の機会は限られる。</p>
+<!-- ## Greater emphasis on research design and methods -->
+</section>
+<section id="研究デザインと方法に対する強い重点" class="level2">
+<h2 class="anchored" data-anchor-id="研究デザインと方法に対する強い重点">研究デザインと方法に対する強い重点</h2>
+<!-- Accounting research is overwhelmingly an empirical discipline seeking to draw causal inferences and, as such, significant research training should be focused on research design issues. -->
+<p>会計研究は圧倒的に因果推論を行う実証的な学問であり、そのため、重要な研究トレーニングは研究デザインの問題に焦点を当てるべきである。 <!-- Part III of the book examines causal inference in depth, including natural experiments, regression discontinuity designs, instrumental variables, and fixed effects.  --> 本書の第III部では、自然実験、回帰不連続デザイン、操作変数、固定効果など、因果推論について詳しく調べている。 <!-- However, we will see that there are flaws in the common belief that it is these techniques that offer hope for warranted causal inference, rather than the settings in which they can be deployed.  --> しかし、これらの技術が保証された因果推論の可能性を提供するという一般的な信念には欠陥があることがわかるだろう。 <!-- Throughout the course, we will offer a broader set of tools for making inferences about real-world phenomena. --> 講義全体を通じて、実世界の現象について推論を行うためのより広いツールセットを提供する。 <!-- In this course, we strive to give students the skills that are needed to conduct the analyses that we cover.  --> この講義では、カバーする分析を実施するために必要なスキルを学生に提供することを目指している。 <!-- We believe that understanding of statistical and econometric techniques by accounting researchers is more likely to be enhanced by hands-on simulation analysis than by analysis of consistency and asymptotic variance of estimators.  --> 会計研究者による統計的および計量経済学的手法の理解は、一貫性や推定量の漸近分散の分析よりも、実際のシミュレーション分析によってより高い可能性で向上すると考えている。 <!-- By building in the data analysis skills needed to perform such simulations, we hope that this course provides a platform for accounting researchers to think more carefully about the properties of their estimators.  --> このようなシミュレーションを実行するために必要なデータ解析スキルを組み込むことで、この講義が会計研究者が推定量の特性についてより慎重に考えるためのプラットフォームを提供することを期待している。 <!-- A core commitment we make in this book is that every analysis we present can be conducted by the reader using the code found herein. --> 本書で行う分析は、本書に記載されているコードを使用して読者が実行できることを前提としている。</p>
+<!-- ## Prerequisites -->
+</section>
+<section id="前提条件" class="level2">
+<h2 class="anchored" data-anchor-id="前提条件">前提条件</h2>
+<!-- We presume prior knowledge of some topics and access to certain computing resources.  -->
+<p>いくつかのトピックについての事前知識と、特定のコンピューティングリソースへのアクセスを前提としている。 <!-- We have endeavoured to keep these requirements to a minimum. --> これらの要件を最小限に抑えるよう努めている。</p>
+<!-- 1. Knowledge of accounting and business.  -->
+<ol type="1">
+<li>会計とビジネスに関する知識。 <!-- In terms of accounting, we assume a solid understanding of the content of an introductory financial accounting course and enough understanding of business to make sense of accounting. --> 会計に関しては、入門的な財務会計コースの内容についての理解と、会計を理解するためのビジネスに関する十分な理解を前提としている。</li>
+</ol>
+<!-- 2. Prior exposure to statistics and econometrics.  -->
+<ol start="2" type="1">
+<li>統計学と計量経済学の事前学習 <!-- Some familiarity with the elements of statistical inference and ordinary least-squares (OLS) regression will be helpful.  --> 統計推論の要素や最小二乗（OLS）回帰についての基本的な知識があると有用である。 <!-- While we do provide some introductory material on elements of these in Chapters 3-5, this is selective and it may help to use a textbook to brush up on these topics as you work through the book. --> 第3章から第5章ではこれらの要素についての入門的な資料を提供しているが、これは選択的なものであり、本書を読み進める際にこれらのトピックを復習するために教科書を使用すると役立つかもしれない。</li>
+</ol>
+<!-- 3. Access to academic journals.  -->
+<ol start="3" type="1">
+<li>学術誌へのアクセス <!-- The course makes extensive use of papers in academic journals.  --> 講義では、学術誌の論文を広範に使用している。 <!-- If you are a faculty member, researcher, or student at an academic institution, then you should be able to access the papers we use through your library.  --> 学術機関の教員、研究者、学生であれば、所属する図書館を通じて使用する論文にアクセスできるはずである。 <!-- Some universities provide a service (perhaps for a fee) for alumni access to academic journals.  --> 一部の大学は、卒業生が学術誌にアクセスするためのサービス（おそらく有料）を提供している。 <!-- Unfortunately, if you cannot access the papers, it will be difficult to make full use of this course book beyond Part I. --> 残念ながら、論文にアクセスできない場合、第I部以降の本書を十分に活用することは難しいだろう。</li>
+</ol>
+<!-- ## A guide for readers -->
+</section>
+<section id="読者へのガイド" class="level2">
+<h2 class="anchored" data-anchor-id="読者へのガイド">読者へのガイド</h2>
+<!-- The book is written so as to be fairly accessible to a novice reading independently (subject to the prerequisites outlined above).  -->
+<p>本書は、上記の前提条件を満たしている読者にとっては、比較的独学で読むことができるように書かれている。 <!-- We recommend that such readers work through the first few chapters in order, including running the code, completing the exercises, and thinking about the discussion questions.  --> このような読者には、最初の数章を順番に読み進め、コードを実行し、演習を完了し、議論の質問について考えることをお勧めする。 <!-- That said, some elements of the exercises and discussion questions are subtle and having an instructor or someone to discuss these with will help you to get the full value from this material. --> ただし、演習や議論の質問の一部は微妙であり、これらについて議論するためのインストラクターや他の人がいると、この教材から最大の価値を得るのに役立つだろう。 <!-- We hope that this book will be useful to a variety of readers, learners, and instructors beyond the novices.  --> 本書が初心者以外のさまざまな読者、学習者、インストラクターにとって有用であることを願っている。 <!-- Below we discuss possible approaches for some hypothetical readers. --> 以下では、いくつかの仮想的な読者に対するアプローチについて議論する。</p>
+<!-- • I am interested in learning more about issues related to research design and causal inference.  -->
+<ul>
+<li>研究デザインと因果推論に関連する問題についてもっと学びたい。 <!-- You might find you can dive into Chapters 2 and 4, then move to Chapter 17 and subsequent chapters. --> 第2章と第4章に飛び込んで、その後第17章以降の章に進むことができるかもしれない。 <!-- - I am interested in learning more about issues related to research design and causal inference, but I don't really want to learn R.  --></li>
+<li>研究デザインと因果推論に関連する問題についてもっと学びたいが、Rを学ぶ気はあまりない。 <!-- The plan for the hypothetical reader in the previous bullet point likely works.  --> 前の項目の仮想的な読者の計画がおそらく適している。 <!-- Even if you aren't interested in learning R, we think that running the code helps solidify understanding and that what the code is doing is sufficiently clear that copy-pasting the code into your own computer should be enough to get the gist of what is going on. --> Rを学ぶことに興味がなくても、コードを実行することが理解を固めるのに役立つと考えており、コードが何をしているかが十分に明確であるため、コードを自分のコンピュータにコピーして貼り付けるだけで、何が起こっているかの要点を把握できるはずである。 <!-- - I have heard about R and would like to learn more about it.  --></li>
+<li>Rについて聞いたことがあり、もっと詳しく知りたい。 <!-- Chapters 2 and 3 cover some of the basics.  --> 第2章と第3章では、基本的な内容をカバーしている。 <!-- But if you're already proficient in something like SAS or Stata, you may find it pretty easy to skip those chapters (after meeting the prerequisites above) --> ただし、SASやStataなどの他のソフトウェアに精通している場合、これらの章をスキップするのはかなり簡単かもしれない（上記の前提条件を満たした後）。</li>
+</ul>
+</section>
+<section id="謝辞" class="level2">
+<h2 class="anchored" data-anchor-id="謝辞">謝辞</h2>
+<p>省略</p>
+<!-- ## Some notes on style -->
+</section>
+<section id="スタイルに関するいくつかの注意" class="level2">
+<h2 class="anchored" data-anchor-id="スタイルに関するいくつかの注意">スタイルに関するいくつかの注意</h2>
+<!-- We follow British (hence Australian) conventions for the most part.  -->
+<p>本書は、ほぼイギリス（したがってオーストラリア）の慣習に従っている。 <!-- Reflecting the enduring influence of a Pocket Oxford Dictionary one of us received at age seven, we tend to use "-ize" spellings instead of "-ise" spellings (in any case, these are more familiar to American readers). ---> 7歳のときに受け取ったPocket Oxford Dictionaryの持続的な影響を反映して、私たちは「-ize」の綴りを使うことが多い（いずれにせよ、これはアメリカの読者にとってより馴染み深い）。 <!-- Also we likely use the Oxford comma more often than not.  --> また、おそらくオックスフォードカンマをよく使っている。 <!-- One benefit of our choice is that we do not have to follow the prescription of American English that commas and full stops (periods) always go inside quotes and can instead put them where they naturally belong (i.e., where speakers of languages other than American English put them) even if this produces sentences that may look odd to some American readers.  --> 私たちの選択の利点の一つは、アメリカ英語の規則に従う必要がないことである。つまり、コンマやピリオドを常に引用符の内側に置かなければならないという規則に従う必要がなく、代わりに（アメリカ英語以外の言語を話す人々がそれらを置く場所）自然な場所に置くことができる。これにより、一部のアメリカの読者には奇妙に見えるかもしれないが、それでも構わない。 <!-- (It's hard to disagree with Hadley Wickham - the lead author of the Tidyverse on this point: "That is literally the stupidest rule in American English and I refuse to follow it?") --> （この点についてTidyverseの主要作者であるHadley Wickhamの意見に異論を唱えるのは難しい。 「それはアメリカ英語で最も愚かなルールであり、私はそれに従うことを拒否する」と彼は述べている。） <!-- For code, we largely follow the Tidyverse style guide for R code, except that we often put the first item after the assignment operator (<-) on a new line. --> コードについては、RコードのTidyverseスタイルガイドに基づいているが、代入演算子（<code>&lt;-</code>）の後の最初の項目を新しい行に置くことが多い。</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "コピーしました");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "コピーしました");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+          // default icon
+          link.classList.add("external");
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./chap01_Introduction.html" class="pagination-link" aria-label="はじめに">
+        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">はじめに</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Copyright 2024, Soichi Matsuura</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/ma2ura">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/matsuura_rits">
+      <i class="bi bi-twitter" role="img" aria-label="Twitter">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

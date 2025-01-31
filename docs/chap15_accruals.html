@@ -1,0 +1,1753 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.40">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>7&nbsp; アクルーアル – Empirical Research in Accounting</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./chap16_em.html" rel="next">
+<link href="./chap13_Event.html" rel="prev">
+<link href="./img/favicon.ico" rel="icon">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-1092c56c6cadf2eb47b1bc8063ab382a.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-1092c56c6cadf2eb47b1bc8063ab382a.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-88c88708faf0c485c0387dba1f6eb15f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-2e8bc3580cc84ea2920b26bb0544913d.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark"><script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "一致なし",
+    "search-matching-documents-text": "一致した文書",
+    "search-copy-link-title": "検索へのリンクをコピー",
+    "search-hide-matches-text": "追加の検索結果を非表示",
+    "search-more-match-text": "追加の検索結果",
+    "search-more-matches-text": "追加の検索結果",
+    "search-clear-button-title": "消去",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "取消",
+    "search-submit-button-title": "検索",
+    "search-label": "サーチ"
+  }
+}</script><link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
+<script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script><script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script><script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script><script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+<meta name="twitter:title" content="7&nbsp; アクルーアル – Empirical Research in Accounting">
+<meta name="twitter:description" content="">
+<meta name="twitter:card" content="summary">
+</head>
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="サイドバーを切り替える" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./chap10_FFJR.html">資本市場研究</a></li><li class="breadcrumb-item"><a href="./chap15_accruals.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">アクルーアル</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="サイドバーを切り替える" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="サーチ" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Empirical Research in Accounting</a> 
+        <div class="sidebar-tools-main">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="ダークモードの切り替え"><i class="bi"></i></a>
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="リーダーモードの切り替え">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="サーチ"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">序論</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">基礎</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="セクションを切り替え">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chap01_Introduction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">はじめに</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chap09_import.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">データを読み込む</span></span></a>
+  </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">資本市場研究</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="セクションを切り替え">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chap10_FFJR.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">FFJR</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chap11_BB1968.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Ball and Brown (1968)</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chap12_Beaver1968.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Beaver (1968)</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chap13_Event.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">イベント・スタディ</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chap15_accruals.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">アクルーアル</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chap16_em.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">利益マネジメント</span></span></a>
+  </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">因果推論</span></span>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">追加的なトピック</span></span>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+ <span class="menu-text">付録</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="セクションを切り替え">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./appA_LinearAlgebra.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">線形代数</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./appB_SQL.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">SQL入門</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./appC_Computing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">研究のためのコンピュータ概論</span></span></a>
+  </div>
+</li>
+      </ul>
+</li>
+    </ul>
+</div>
+</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">目次</h2>
+   
+  <ul>
+<li>
+<a href="#sloan-1996" id="toc-sloan-1996" class="nav-link active" data-scroll-target="#sloan-1996"><span class="header-section-number">7.1</span> Sloan (1996)</a>
+  <ul class="collapse">
+<li><a href="#%E3%83%87%E3%82%A3%E3%82%B9%E3%82%AB%E3%83%83%E3%82%B7%E3%83%A7%E3%83%B3%E5%95%8F%E9%A1%8C" id="toc-ディスカッション問題" class="nav-link" data-scroll-target="#%E3%83%87%E3%82%A3%E3%82%B9%E3%82%AB%E3%83%83%E3%82%B7%E3%83%A7%E3%83%B3%E5%95%8F%E9%A1%8C"><span class="header-section-number">7.1.1</span> ディスカッション問題</a></li>
+  </ul>
+</li>
+  <li>
+<a href="#%E3%82%A2%E3%82%AF%E3%83%AB%E3%83%BC%E3%82%A2%E3%83%AB%E3%81%AE%E6%B8%AC%E5%AE%9A" id="toc-アクルーアルの測定" class="nav-link" data-scroll-target="#%E3%82%A2%E3%82%AF%E3%83%AB%E3%83%BC%E3%82%A2%E3%83%AB%E3%81%AE%E6%B8%AC%E5%AE%9A"><span class="header-section-number">7.2</span> アクルーアルの測定</a>
+  <ul class="collapse">
+<li><a href="#%E8%AD%B0%E8%AB%96%E3%81%99%E3%82%8B%E5%95%8F%E9%A1%8C" id="toc-議論する問題" class="nav-link" data-scroll-target="#%E8%AD%B0%E8%AB%96%E3%81%99%E3%82%8B%E5%95%8F%E9%A1%8C"><span class="header-section-number">7.2.1</span> 議論する問題</a></li>
+  </ul>
+</li>
+  <li>
+<a href="#%E3%82%B7%E3%83%9F%E3%83%A5%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E5%88%86%E6%9E%90" id="toc-シミュレーション分析" class="nav-link" data-scroll-target="#%E3%82%B7%E3%83%9F%E3%83%A5%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E5%88%86%E6%9E%90"><span class="header-section-number">7.3</span> シミュレーション分析</a>
+  <ul class="collapse">
+<li><a href="#%E3%83%99%E3%82%AF%E3%83%88%E3%83%AB" id="toc-ベクトル" class="nav-link" data-scroll-target="#%E3%83%99%E3%82%AF%E3%83%88%E3%83%AB"><span class="header-section-number">7.3.1</span> ベクトル</a></li>
+  <li><a href="#%E3%82%B7%E3%83%9F%E3%83%A5%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E9%96%A2%E6%95%B0" id="toc-シミュレーション関数" class="nav-link" data-scroll-target="#%E3%82%B7%E3%83%9F%E3%83%A5%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E9%96%A2%E6%95%B0"><span class="header-section-number">7.3.2</span> シミュレーション関数</a></li>
+  <li><a href="#%E7%B7%B4%E7%BF%92%E5%95%8F%E9%A1%8C" id="toc-練習問題" class="nav-link" data-scroll-target="#%E7%B7%B4%E7%BF%92%E5%95%8F%E9%A1%8C"><span class="header-section-number">7.3.3</span> 練習問題</a></li>
+  </ul>
+</li>
+  <li>
+<a href="#replicating-sloan-1996" id="toc-replicating-sloan-1996" class="nav-link" data-scroll-target="#replicating-sloan-1996"><span class="header-section-number">7.4</span> Replicating Sloan (1996)</a>
+  <ul class="collapse">
+<li><a href="#sloan-1996%E3%81%AE%E8%A1%A82" id="toc-sloan-1996の表2" class="nav-link" data-scroll-target="#sloan-1996%E3%81%AE%E8%A1%A82"><span class="header-section-number">7.4.1</span> Sloan (1996)の表2</a></li>
+  <li><a href="#sloan-1996%E3%81%AE%E8%A1%A83" id="toc-sloan-1996の表3" class="nav-link" data-scroll-target="#sloan-1996%E3%81%AE%E8%A1%A83"><span class="header-section-number">7.4.2</span> Sloan (1996)の表3</a></li>
+  <li><a href="#pricing-of-earnings-components" id="toc-pricing-of-earnings-components" class="nav-link" data-scroll-target="#pricing-of-earnings-components"><span class="header-section-number">7.4.3</span> Pricing of earnings components</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">7.4.4</span> Exercises</a></li>
+  </ul>
+</li>
+  <li>
+<a href="#%E3%82%A2%E3%82%AF%E3%83%AB%E3%83%BC%E3%82%A2%E3%83%AB%E3%82%A2%E3%83%8E%E3%83%9E%E3%83%AA%E3%83%BC" id="toc-アクルーアルアノマリー" class="nav-link" data-scroll-target="#%E3%82%A2%E3%82%AF%E3%83%AB%E3%83%BC%E3%82%A2%E3%83%AB%E3%82%A2%E3%83%8E%E3%83%9E%E3%83%AA%E3%83%BC"><span class="header-section-number">7.5</span> アクルーアル・アノマリー</a>
+  <ul class="collapse">
+<li><a href="#%E3%83%87%E3%82%A3%E3%82%B9%E3%82%AB%E3%83%83%E3%82%B7%E3%83%A7%E3%83%B3%E5%95%8F%E9%A1%8C2" id="toc-ディスカッション問題2" class="nav-link" data-scroll-target="#%E3%83%87%E3%82%A3%E3%82%B9%E3%82%AB%E3%83%83%E3%82%B7%E3%83%A7%E3%83%B3%E5%95%8F%E9%A1%8C2"><span class="header-section-number">7.5.1</span> ディスカッション問題2</a></li>
+  </ul>
+</li>
+  </ul></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./chap10_FFJR.html">資本市場研究</a></li><li class="breadcrumb-item"><a href="./chap15_accruals.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">アクルーアル</span></a></li></ol></nav><div class="quarto-title">
+<h1 class="title">
+<span class="chapter-number">7</span>&nbsp; <span class="chapter-title">アクルーアル</span>
+</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header><!-- In this chapter, we use Sloan (1996) to provide a focus for a study of accrual processes.  --><p>本章では、アクルーアルのプロセスの研究への焦点を提供するために、Sloan (1996) を利用する。 <!-- We use simulation analysis to understand better accounting processes, with a particular focus on accruals, which for this chapter we define as the portion of earnings in excess of operating cash flows.1  --> <strong>アクルーアル</strong>へに注目することで、会計プロセスより理解するためにシミュレーション分析を用いる。 この章では、アクルーアルを営業キャッシュフローを超える利益の部分と定義する。<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> <!-- We finish up the chapter with an examination of the so-called accrual anomaly. --> 最後に、いわゆる<strong>アクルーアル・アノマリー</strong>(accrual anomaly)の検討を行う。</p>
+<div class="callout callout-style-simple callout-tip">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<!-- The code in this chapter uses the packages listed below.  -->
+<p>この章のコードは、以下のパッケージを使用する。 <!-- For instructions on how to set up your computer to use the code found in this book, see Section 1.2.  --> この書籍のコードを使用するためのコンピュータのセットアップ方法については、1.2節を参照してください。 <!-- Quarto templates for the exercises below are available on GitHub. --> 以下の練習問題のQuartoテンプレートは、GitHubで入手できます。</p>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">pacman</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/pacman/man/p_load.html">p_load</a></span><span class="op">(</span><span class="va">tidyverse</span>, <span class="va">DBI</span>, <span class="va">farr</span>, <span class="va">modelsummary</span>, <span class="va">dbplyr</span>, <span class="va">car</span>, <span class="va">furrr</span><span class="op">)</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="sloan-1996" class="level2" data-number="7.1"><h2 data-number="7.1" class="anchored" data-anchor-id="sloan-1996">
+<span class="header-section-number">7.1</span> Sloan (1996)</h2>
+<!-- Sloan (1996) points out that a number of practitioners provide investment advice predicated on identifying firms whose earnings depend on accruals rather than cash flows.  -->
+<p>Sloan (1996) は、いくつかの実務家がキャッシュフローではなくアクルーアルに依存する企業を特定することに基づいて投資アドバイスを提供していることを指摘している。 <!-- Such investment advice is based on a claimed tendency for capital markets to “fixate” on earnings and to fail to recognize differences in the properties of cash flow and accrual components of earnings.  --> このような投資アドバイスは、資本市場が利益に「固執」し、キャッシュフローとアクルーアルの成分の特性の違いを認識しない傾向に基づいていると主張されている。 <!-- In some respects, Sloan (1996) provides a rigorous evaluation of such investment advice and the premises underlying it. --> ある意味で、Sloan (1996) はそのような投資アドバイスとそれに基づく前提を厳密に評価している。</p>
+<!-- ### Discussion questions -->
+<section id="ディスカッション問題" class="level3" data-number="7.1.1"><h3 data-number="7.1.1" class="anchored" data-anchor-id="ディスカッション問題">
+<span class="header-section-number">7.1.1</span> ディスカッション問題</h3>
+<!-- The following discussion questions provide an approach to reading Sloan (1996).  -->
+<p>以下のディスカッション質問は、Sloan (1996) を読むためのアプローチを提供します。</p>
+<!-- 1. Read the material preceding the formal statement of H1.  -->
+<ol type="1">
+<li>
+<span class="math inline">H_1</span> のフォーマルな記述の前にこの資料を読みなさい。 <!-- What reasons for differential persistence of earnings components does Sloan (1996) offer?  --> Sloan (1996) は、利益の構成要素の差異の持続性に関してどのような理由を提供しているのか？ <!-- How important is it for these reasons to be correct in light of the empirical support for H1 provided in Table 3?  --> これらの理由が正しいことが、表3で提供されているH1の実証的な支持にとってどれほど重要か？ <!-- How important is the empirical support for H1 to H2(i)? --> H1の実証的な支持がH2(i)にとってどれほど重要か？</li>
+</ol>
+<!-- 2. Which hypothesis (if any) does Table 4 test? How would you interpret the results of Table 4 in words? --><ol start="2" type="1">
+<li>表4はどの仮説をテストしているのか？ 表4の結果を言葉でどのように解釈しているか？</li>
+</ol>
+<!-- 3. Which hypothesis (if any) does Table 5 test? How would you interpret the results of Table 5 in words? --><ol start="3" type="1">
+<li>表5はどの仮説をテストしているのか？ 表5の結果を言葉でどのように解釈しているか？</li>
+</ol>
+<!-- 4. Which hypothesis (if any) does Table 6 test? How would you interpret the results of Table 6 in words?  --><ol start="4" type="1">
+<li>表6はどの仮説をテストしているのか？ 表6の結果を言葉でどのように解釈しているか？ <!-- There are similarities between the results of Table 6 of Sloan (1996) and the results in Bernard and Thomas (1989).  --> Sloan (1996) の表6の結果と Bernard and Thomas (1989) の結果には類似点がある。 <!-- Both involve forming portfolios of firms based on deciles of some variable (accruals in Sloan, 1996; earnings surprise in Bernard and Thomas, 1989) and examining how those portfolios perform subsequently.  --> 両論文は、ある変数(1996年のSloanのアクルーアル、1989年のBernard and Thomasの利益サプライズ)の十分位数に基づいて企業のポートフォリオを形成し、その後のポートフォリオのパフォーマンスを調査することを含んでいる。 <!-- Apart from the measure used to form portfolios, what are the significant differences between the analyses in the two papers that you can think of looking at Table 6? --> ポートフォリオを形成するために使用される尺度以外に、表6を見て考えられる2つの論文の分析の重要な違いは何か？</li>
+</ol>
+<!-- 5. With which hypothesis (if any) is Figure 2 related? What does Figure 2 show according to Sloan (1996)? --><ol start="5" type="1">
+<li>Figure 2 は(あれば)どの仮説と関連していますか？ Sloan (1996) によると、Figure 2 は何を示していますか？</li>
+</ol>
+<!-- 6. With which hypothesis (if any) is Figure 3 related? What does Figure 3 show according to Sloan (1996)? --><ol start="6" type="1">
+<li>Figure 3 は(あれば)どの仮説と関連していますか？ Sloan (1996) によると、Figure 3 は何を示していますか？</li>
+</ol>
+<!-- ## Measuring accruals --></section></section><section id="アクルーアルの測定" class="level2" data-number="7.2"><h2 data-number="7.2" class="anchored" data-anchor-id="アクルーアルの測定">
+<span class="header-section-number">7.2</span> アクルーアルの測定</h2>
+<!-- Hribar and Collins (2002) include a definition of accruals similar to that used in Sloan (1996).  -->
+<p>Hribar and Collins (2002) は、Sloan (1996) で使用されているものに類似したアクルーアルの定義を含んでいる。 <!-- Referring to prior research, they state (2002, p. 10): --> 先行研究を参照して、彼らは次のように述べている(2002, p.&nbsp;10)。</p>
+<!-- > Specifically, accruals ( $ACC_{bs}$ ) are typically calculated (firm and time subscripts omitted for convenience): -->
+<blockquote class="blockquote">
+<p>具体的には、アクルーアル(<span class="math inline">ACC_{bs}</span>)は通常次のように計算される(便宜上、企業と時間の添字は省略されている)。 <span class="math display">
+ACC_{bs} = (\Delta CA - \Delta CL - \Delta Cash + \Delta STDEBT - DEP)
+</span></p>
+<!-- > where -->
+<p>ここで</p>
+<!-- > - $\Delta CA$ = the change in current assets during period $t$  (Compustat #4) -->
+<ul>
+<li>
+<span class="math inline">\Delta CA</span> = 期間 <span class="math inline">t</span> 中の流動資産の変化(Compustat #4) <!-- > - $\Delta CL$ = the change in current liabilities during period $t$  (Compustat #5) -->
+</li>
+<li>
+<span class="math inline">\Delta CL</span> = 期間 <span class="math inline">t</span> 中の流動負債の変化(Compustat #5) <!-- > - $Delta Cash$ = the change in cash and cash equivalents during period $t$  (Compustat #1); -->
+</li>
+<li>
+<span class="math inline">\Delta Cash</span> = 期間 <span class="math inline">t</span> 中の現金及び現金同等物の変化(Compustat #1) <!-- > - $\Delta STDEBT$ = the [change in] current maturities of long-term debt and other short-term debt included in current liabilities during period $t$ (Compustat #34); -->
+</li>
+<li>
+<span class="math inline">\Delta STDEBT</span> = 期間 <span class="math inline">t</span> 中の流動負債に含まれる長期債務の短期債務の変化(Compustat #34) <!-- > - and $\Delta DEP$ = depreciation and amortization expense during period $t$ (Compustat #14). -->
+</li>
+<li>そして <span class="math inline">\Delta DEP</span> = 期間 <span class="math inline">t</span> 中の減価償却費と無形資産償却費(Compustat #14)。</li>
+</ul>
+<!-- > All variables are deflated by lagged total assets ( $TA_{t-1}$ ) to control for scale differences. --><p>すべての変数は、規模の違いを調整するために遅れた総資産( <span class="math inline">TA_{t-1}</span> )で割っている。</p>
+</blockquote>
+<!-- The first thing you may ask is “what does (say) ‘Compustat #4’ mean?”.  -->
+<p>最初に尋ねるべきことは、「(例えば) ‘Compustat #4’ とは何か？」ということだろう。 <!-- Prior to 2006, Compustat data items were referred to using numbers such as Compustat #4 or data4.  --> 2006年以前、Compustatのデータ項目は、Compustat #4やdata4などの数字を使って参照されていた。 <!-- So older papers may refer to such items.  --> そのため、古い論文ではそのような項目が参照されることがある。 <!-- Fortunately, Wharton Research Data Services (WRDS) provides translation tables from these items to the current variables and relevant translations are provided in Table 15.1. --> 幸いなことに、Wharton Research Data Services (WRDS) はこれらの項目から現在の変数への変換テーブルを提供しており、関連する変換は表15.1に示されている。</p>
+<table class="caption-top table">
+<caption>Table 15.1: Translation of key pre-2006 Compustat items</caption>
+<thead><tr class="header">
+<th style="text-align: center;">Old item</th>
+<th style="text-align: center;">Current item</th>
+<th style="text-align: center;">Item description</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">#1</td>
+<td style="text-align: center;">che</td>
+<td style="text-align: center;">Cash and Short-Term Investments</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">#4</td>
+<td style="text-align: center;">act</td>
+<td style="text-align: center;">Current Assets—Total</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">#5</td>
+<td style="text-align: center;">lct</td>
+<td style="text-align: center;">Current Liabilities—Total</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">#14</td>
+<td style="text-align: center;">dp</td>
+<td style="text-align: center;">Depreciation and Amortization</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">#34</td>
+<td style="text-align: center;">dlc</td>
+<td style="text-align: center;">Debt in Current Liabilities—Total</td>
+</tr>
+</tbody>
+</table>
+<!-- Hribar and Collins (2002) point out that calculating current accruals by subtracting the change in current liabilities from the change in noncash current assets is incorrect “because other non-operating events (e.g., mergers, divestitures) impact the current asset and liability accounts with no earnings impact.” --><p>Hribar and Collins (2002) は、流動資産の変化から流動負債の変化を引いて現在のアクルーアルを計算することは間違っていると指摘している。「他の非営業イベント(例えば、合併、売却)が現在の資産と負債の勘定に影響を与えるが、利益への影響はない」と述べている。</p>
+<!-- ### Discussion questions -->
+<section id="議論する問題" class="level3" data-number="7.2.1"><h3 data-number="7.2.1" class="anchored" data-anchor-id="議論する問題">
+<span class="header-section-number">7.2.1</span> 議論する問題</h3>
+<!-- 1. In the equation above, why is $|Delta Cash$ subtracted? -->
+<ol type="1">
+<li>上記の式では、なぜ <span class="math inline">\Delta Cash</span> が引かれているのか？</li>
+</ol>
+<!-- 2. In the equation above, why is $\Delta STDEBT$ added? --><ol start="2" type="1">
+<li>上記の式では、なぜ <span class="math inline">\Delta STDEBT</span> が加算されているのか？</li>
+</ol>
+<!-- 3. Is it true that mergers and divestitures have “no earnings impact”? Is the absence of earnings impact important to the estimation issue? Are there transactions that have no earnings impact, but do affect cash flow from operations? --><ol start="3" type="1">
+<li>合併や売却が「利益への影響がない」というのは本当だろうか？ 利益への影響の欠如は推定問題にとって重要だろうか？ 利益への影響がないが、営業キャッシュフローに影響を与える取引はあるだろうか？</li>
+</ol>
+<!-- 4. Are there any differences between Hribar and Collins (2002) (above) and Sloan (1996) in their definitions of accruals? Which definition makes more sense to you? Why? --><ol start="4" type="1">
+<li>Hribar and Collins (2002) (上記) と Sloan (1996) のアクルーアルの定義にはどのような違いがあるか？ どちらの定義がより理にかなっていると思いますか？ なぜですか？</li>
+</ol>
+<!-- ## Simulation analysis --></section></section><section id="シミュレーション分析" class="level2" data-number="7.3"><h2 data-number="7.3" class="anchored" data-anchor-id="シミュレーション分析">
+<span class="header-section-number">7.3</span> シミュレーション分析</h2>
+<!-- We now consider some simulation analysis. -->
+<p>ここでは、いくつかのシミュレーション分析を考える。 <!-- One reason for this analysis is to better understand the basis for H1 of Sloan (1996). --> Sloan (1996) のH1の根拠をよりよく理解するための分析の一つの理由である。</p>
+<!-- A second reason for conducting simulation analysis here is to illustrate the power it offers. -->
+<p>ここでシミュレーション分析を行う第二の理由は、その提供する力を示すことである。 <!-- In many contexts, derivation of the properties of estimators or understanding how phenomena interact is very complex. --> 多くの文脈では、推定量の性質を導出したり、現象がどのように相互作用するかを理解することは非常に複雑である。 <!-- While many researchers rely on intuition to guide their analyses, such intuition can be unreliable. --> 多くの研究者は、自分の分析を導くために直感に頼るが、そのような直感は信頼性に欠けることがある。 <!-- As an example, the idea that the “FM-NW” method provides standard errors robust to both time-series and cross-sectional dependence has strong intuitive appeal, but we saw in Chapter 5 that this intuition is simply wrong. --> 例えば、「FM-NW」法が時系列依存性と断面依存性の両方に対して頑健な標準誤差を提供するという考えは、強い直感的な魅力があるが、第5章でその直感が単純に間違っていることを見た。</p>
+<!-- ### Vectors -->
+<section id="ベクトル" class="level3" data-number="7.3.1"><h3 data-number="7.3.1" class="anchored" data-anchor-id="ベクトル">
+<span class="header-section-number">7.3.1</span> ベクトル</h3>
+<!-- In our simulation analysis, we make more extensive use of base R functionality than we have in prior chapters. -->
+<p>シミュレーション分析では、これまでの章よりも、基本的なRの機能をより広範に使用する。 <!-- Chapter 28 of R for Data Science - "A field guide to base R" - provides material that might be helpful if code in the next section is unclear. --> R for Data Science の第28章「基本Rのフィールドガイド」は、次のセクションのコードがわかりにくい場合に役立つかもしれません。 <!-- Here we are simulating the cash flows and accounting for a simple firm that buys goods for cash and sells them on account after adding a mark-up. --> ここでは、現金フローをシミュレーションし、現金で商品を購入し、マークアップを加えて売却する単純な企業の会計を考慮している。</p>
+<!-- ### Simulation function -->
+</section><section id="シミュレーション関数" class="level3" data-number="7.3.2"><h3 data-number="7.3.2" class="anchored" data-anchor-id="シミュレーション関数">
+<span class="header-section-number">7.3.2</span> シミュレーション関数</h3>
+<!-- As we have seen before, it is often a good coding practice to use functions liberally in analysis.2  -->
+<p>前に見たように、分析では関数を自由に使用することが良いコーディングの習慣である。<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> <!-- In this case, we embed the core of the simulation in a function. --> この場合、シミュレーションの中核を関数に埋め込む。</p>
+<!-- The simulation function get_data() below generates a time-series of data for a single "firm" and accepts two arguments. -->
+<p>以下のシミュレーション関数 <code>get_data()</code> は、単一の「企業」のデータの時系列を生成し、2つの引数を受け入れる。 <!-- The first argument to get_data() is add_perc, which has a default value of 0.03. --> <code>get_data()</code> の最初の引数は <code>add_perc</code> で、デフォルト値は<code>0.03</code>である。 <!-- The value of add_perc drives the amount of allowance for doubtful debts. --> <code>add_perc</code> の値は、貸倒引当金の額を決定する。 <!-- The second argument is n_years, which has a default value of 20. --> 2番目の引数は <code>n_years</code> で、デフォルト値は<code>20</code>である。 <!-- The value of n_years drives the number of years of data generated by the simulation. --> <code>n_years</code> の値は、シミュレーションで生成されるデータの年数を決定する。</p>
+<!-- The simulation generates various cash flows and the financial statements to represent them. -->
+<p>シミュレーションは、さまざまなキャッシュフローとそれを表す財務諸表を生成する。 <!-- The main driver of the model is sales, which follows an autoregressive process. --> モデルの主要なドライバーは売上であり、自己回帰プロセスに従う。 <!-- Denoting sales in period $t$ as $S_t$, we have --> <span class="math inline">t</span> 期の売上を <span class="math inline">S_t</span> と表すと、次のようになる。</p>
+<p><span class="math display">
+S_t - \bar S = \rho (S_{t-1} - \bar S) + \varepsilon _t
+</span></p>
+<!-- where -->
+<p>ここで， <span class="math inline">\rho \in (0,1)</span> と <span class="math inline">\varepsilon _t \sim N(0, \sigma^2)</span> である。</p>
+<!-- Sales then drives both cost of goods sold, which are assumed to require cash outlays in the period of sale, and accounts receivable, as all sales are assumed to be on account. -->
+<p>売上は、売上時に現金支出が必要とされると仮定される売買費用と、すべての売上が勘定に記載されると仮定される売掛金を推進する。 <!-- The model also addresses collections, write-offs, and dividends. --> モデルは、回収、債権放棄、配当にも対応している。 <!-- There are no inventories in our model. --> 当社のモデルには在庫はありません。</p>
+<!-- In the simulation function, we use “base R” functionality to a fair degree. -->
+<p>シミュレーション関数では、「基本R」の機能をかなり使用している。 <!-- Rather than using mutate() to generate variables, we refer to variables using $ notation, which returns the variable as a vector. --> 変数を生成するために <code>mutate()</code> を使用する代わりに、変数をベクトルとして返す <code>$</code> 表記を使用して変数を参照する。 <!-- For example df |> select(ni) returns a data frame with a single column. --> 例えば、<code>df |&gt; select(ni)</code> は、単一の列を持つデータフレームを返す。 <!-- In contrast, df$ni gets the same underlying data, but as a vector. --> 対照的に、<code>df$ni</code> は、同じ基礎データを取得するが、ベクトルとして取得する。 <!-- To calculate shareholders’ equity (se), we set the initial ( $t=0$ ) value to beg_se. --> 株主資本（se）を計算するために、初期値（ <span class="math inline">t=0</span> ）を <code>beg_se</code> に設定する。 <!-- Then we calculate the ending balance of shareholders’ equity as beginning shareholders’ equity plus net income minus dividends. --> 次に、株主資本の期末残高を、初期株主資本に純利益を加え、配当を引いたものとして計算する。</p>
+<div class="cell">
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">get_data</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">add_perc</span> <span class="op">=</span> <span class="fl">0.03</span>, <span class="va">n_years</span> <span class="op">=</span> <span class="fl">20</span><span class="op">)</span> <span class="op">{</span></span>
+<span></span>
+<span>    <span class="co"># パラメータの設定</span></span>
+<span>    <span class="va">add_true</span>   <span class="op">&lt;-</span> <span class="fl">0.03</span></span>
+<span>    <span class="va">gross_margin</span> <span class="op">&lt;-</span> <span class="fl">0.8</span></span>
+<span>    <span class="va">beg_cash</span>   <span class="op">&lt;-</span> <span class="va">beg_se</span> <span class="op">&lt;-</span> <span class="fl">1500</span></span>
+<span>    <span class="va">div_payout</span> <span class="op">&lt;-</span> <span class="fl">1</span></span>
+<span>    <span class="va">mean_sale</span>  <span class="op">&lt;-</span> <span class="fl">1000</span></span>
+<span>    <span class="va">sd_sale</span>    <span class="op">&lt;-</span> <span class="fl">100</span></span>
+<span>    <span class="va">rho</span>        <span class="op">&lt;-</span> <span class="fl">0.9</span></span>
+<span></span>
+<span>    <span class="co"># Generate sales as an AR(1) process around mean_sale</span></span>
+<span>    <span class="va">sale_err</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="va">n_years</span>, sd <span class="op">=</span> <span class="va">sd_sale</span><span class="op">)</span> <span class="co"># 売上の誤差を作成</span></span>
+<span>    <span class="va">sales</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/vector.html">vector</a></span><span class="op">(</span><span class="st">"double"</span>, <span class="va">n_years</span><span class="op">)</span> <span class="co"># 売上を格納するベクトルを作成</span></span>
+<span>    <span class="va">sales</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="va">mean_sale</span> <span class="op">+</span> <span class="va">sale_err</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span> <span class="co"># 平均売上高に誤差を加える</span></span>
+<span>    <span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">2</span><span class="op">:</span><span class="va">n_years</span><span class="op">)</span> <span class="op">{</span>              <span class="co"># AR(1) 仮定に基づいて売上を生成</span></span>
+<span>      <span class="va">sales</span><span class="op">[</span><span class="va">i</span><span class="op">]</span> <span class="op">=</span> <span class="va">mean_sale</span> <span class="op">+</span> <span class="va">rho</span> <span class="op">*</span> <span class="op">(</span> <span class="va">sales</span><span class="op">[</span><span class="va">i</span><span class="op">-</span><span class="fl">1</span><span class="op">]</span> <span class="op">-</span> <span class="va">mean_sale</span> <span class="op">)</span> <span class="op">+</span> <span class="va">sale_err</span><span class="op">[</span><span class="va">i</span><span class="op">]</span></span>
+<span>    <span class="op">}</span></span>
+<span></span>
+<span>    <span class="co"># データを結合してdata.frameを作成</span></span>
+<span>    <span class="va">df</span> <span class="op">&lt;-</span> <span class="fu">tibble</span><span class="op">(</span>year <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="va">n_years</span>,</span>
+<span>                 add_perc <span class="op">=</span> <span class="va">add_perc</span>,</span>
+<span>                 <span class="va">sales</span>,</span>
+<span>                 <span class="co"># 初期値は欠損値で</span></span>
+<span>                 writeoffs <span class="op">=</span> <span class="cn">NA</span>, collect <span class="op">=</span> <span class="cn">NA</span>,</span>
+<span>                 div <span class="op">=</span> <span class="cn">NA</span>, se <span class="op">=</span> <span class="cn">NA</span>, ni <span class="op">=</span> <span class="cn">NA</span>,</span>
+<span>                 bde <span class="op">=</span> <span class="cn">NA</span>, cash <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span></span>
+<span></span>
+<span>    <span class="co"># COGSは売上高の一定割合と仮定</span></span>
+<span>    <span class="va">df</span><span class="op">$</span><span class="va">cogs</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="fl">1</span> <span class="op">-</span> <span class="va">gross_margin</span><span class="op">)</span> <span class="op">*</span> <span class="va">df</span><span class="op">$</span><span class="va">sales</span></span>
+<span></span>
+<span>    <span class="co"># 売上は全て掛売上で，回収・貸倒損失は翌期</span></span>
+<span>    <span class="va">df</span><span class="op">$</span><span class="va">ar</span> <span class="op">&lt;-</span> <span class="va">df</span><span class="op">$</span><span class="va">sales</span></span>
+<span></span>
+<span>    <span class="co"># 貸倒引当金addを設定</span></span>
+<span>    <span class="va">df</span><span class="op">$</span><span class="va">add</span> <span class="op">&lt;-</span> <span class="va">add_perc</span> <span class="op">*</span> <span class="va">df</span><span class="op">$</span><span class="va">sales</span></span>
+<span></span>
+<span>    <span class="co"># 前期の値を設定</span></span>
+<span>    <span class="va">df</span><span class="op">$</span><span class="va">writeoffs</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fl">0</span></span>
+<span>    <span class="va">df</span><span class="op">$</span><span class="va">collect</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fl">0</span></span>
+<span>    <span class="va">df</span><span class="op">$</span><span class="va">bde</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="va">df</span><span class="op">$</span><span class="va">add</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span></span>
+<span>    <span class="va">df</span><span class="op">$</span><span class="va">ni</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="va">df</span><span class="op">$</span><span class="va">sales</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span> <span class="op">-</span> <span class="va">df</span><span class="op">$</span><span class="va">cogs</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span> <span class="op">-</span> <span class="va">df</span><span class="op">$</span><span class="va">bde</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span></span>
+<span>    <span class="va">df</span><span class="op">$</span><span class="va">div</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="va">df</span><span class="op">$</span><span class="va">ni</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span> <span class="op">*</span> <span class="va">div_payout</span></span>
+<span>    <span class="va">df</span><span class="op">$</span><span class="va">cash</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="va">beg_cash</span> <span class="op">+</span> <span class="va">df</span><span class="op">$</span><span class="va">collect</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span> <span class="op">-</span> <span class="va">df</span><span class="op">$</span><span class="va">cogs</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span> <span class="op">-</span> <span class="va">df</span><span class="op">$</span><span class="va">div</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span></span>
+<span>    <span class="va">df</span><span class="op">$</span><span class="va">se</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="va">beg_se</span> <span class="op">+</span> <span class="va">df</span><span class="op">$</span><span class="va">ni</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span> <span class="op">-</span> <span class="va">df</span><span class="op">$</span><span class="va">div</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span></span>
+<span></span>
+<span>    <span class="co"># 2年目からループ設定</span></span>
+<span>    <span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">2</span><span class="op">:</span><span class="va">n_years</span><span class="op">)</span> <span class="op">{</span></span>
+<span>      <span class="va">df</span><span class="op">$</span><span class="va">writeoffs</span><span class="op">[</span><span class="va">i</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="va">add_true</span> <span class="op">*</span> <span class="va">df</span><span class="op">$</span><span class="va">ar</span><span class="op">[</span><span class="va">i</span><span class="op">-</span><span class="fl">1</span><span class="op">]</span></span>
+<span>      <span class="va">df</span><span class="op">$</span><span class="va">collect</span><span class="op">[</span><span class="va">i</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="fl">1</span> <span class="op">-</span> <span class="va">add_true</span><span class="op">)</span> <span class="op">*</span> <span class="va">df</span><span class="op">$</span><span class="va">ar</span><span class="op">[</span><span class="va">i</span><span class="op">-</span><span class="fl">1</span><span class="op">]</span></span>
+<span>      <span class="va">df</span><span class="op">$</span><span class="va">bde</span><span class="op">[</span><span class="va">i</span><span class="op">]</span> <span class="op">=</span> <span class="va">df</span><span class="op">$</span><span class="va">add</span><span class="op">[</span><span class="va">i</span><span class="op">]</span> <span class="op">-</span> <span class="va">df</span><span class="op">$</span><span class="va">add</span><span class="op">[</span><span class="va">i</span><span class="op">-</span><span class="fl">1</span><span class="op">]</span> <span class="op">+</span> <span class="va">df</span><span class="op">$</span><span class="va">writeoffs</span><span class="op">[</span><span class="va">i</span><span class="op">]</span></span>
+<span>      <span class="va">df</span><span class="op">$</span><span class="va">ni</span><span class="op">[</span><span class="va">i</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="va">df</span><span class="op">$</span><span class="va">sales</span><span class="op">[</span><span class="va">i</span><span class="op">]</span> <span class="op">-</span> <span class="va">df</span><span class="op">$</span><span class="va">cogs</span><span class="op">[</span><span class="va">i</span><span class="op">]</span> <span class="op">-</span> <span class="va">df</span><span class="op">$</span><span class="va">bde</span><span class="op">[</span><span class="va">i</span><span class="op">]</span></span>
+<span>      <span class="va">df</span><span class="op">$</span><span class="va">div</span><span class="op">[</span><span class="va">i</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="va">df</span><span class="op">$</span><span class="va">ni</span><span class="op">[</span><span class="va">i</span><span class="op">]</span> <span class="op">*</span> <span class="va">div_payout</span></span>
+<span>      <span class="va">df</span><span class="op">$</span><span class="va">cash</span><span class="op">[</span><span class="va">i</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="va">df</span><span class="op">$</span><span class="va">cash</span><span class="op">[</span><span class="va">i</span><span class="op">-</span><span class="fl">1</span><span class="op">]</span> <span class="op">+</span> <span class="va">df</span><span class="op">$</span><span class="va">collect</span><span class="op">[</span><span class="va">i</span><span class="op">]</span> <span class="op">-</span> <span class="va">df</span><span class="op">$</span><span class="va">cogs</span><span class="op">[</span><span class="va">i</span><span class="op">]</span> <span class="op">-</span> <span class="va">df</span><span class="op">$</span><span class="va">div</span><span class="op">[</span><span class="va">i</span><span class="op">]</span></span>
+<span>      <span class="va">df</span><span class="op">$</span><span class="va">se</span><span class="op">[</span><span class="va">i</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="va">df</span><span class="op">$</span><span class="va">se</span><span class="op">[</span><span class="va">i</span><span class="op">-</span><span class="fl">1</span><span class="op">]</span> <span class="op">+</span> <span class="va">df</span><span class="op">$</span><span class="va">ni</span><span class="op">[</span><span class="va">i</span><span class="op">]</span> <span class="op">-</span> <span class="va">df</span><span class="op">$</span><span class="va">ni</span><span class="op">[</span><span class="va">i</span><span class="op">]</span></span>
+<span>    <span class="op">}</span></span>
+<span></span>
+<span>    <span class="va">df</span></span>
+<span><span class="op">}</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<!-- To understand a function like this, it can be helpful to set values for the arguments (e.g., add_perc <- 0.03; n_years <- 20) and step through the lines of code one by one, intermittently inspecting the content of variables such as df as you do so.3 -->
+<p>このような関数を理解するためには、引数の値を設定することが役立つ（例：<code>add_perc &lt;- 0.03; n_years &lt;- 20</code>）し、コードの各行を一つずつ進めながら、その際に <code>df</code> などの変数の内容を確認することが役立つ。<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p>
+<!-- Let’s generate 1000 years of data. -->
+<p>1000年分のデータを生成しよう。</p>
+<div class="cell">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">2021</span><span class="op">)</span></span>
+<span><span class="va">df_1000</span> <span class="op">&lt;-</span> <span class="fu">get_data</span><span class="op">(</span>n_years <span class="op">=</span> <span class="fl">1000</span><span class="op">)</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The first 20 years are shown in Figure 15.1.</p>
+<div class="cell">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df_1000</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">year</span> <span class="op">&lt;=</span> <span class="fl">20</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_line</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>y <span class="op">=</span> <span class="va">sales</span><span class="op">)</span>, colour <span class="op">=</span> <span class="st">"red"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_line</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">sales</span><span class="op">)</span><span class="op">)</span>, colour <span class="op">=</span> <span class="st">"blue"</span><span class="op">)</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<!-- Now, let’s generate 5,000 random values for the add_perc parameter that we can use to generate simulated data. -->
+<p>次に、シミュレーションデータを生成するために使用できる <code>add_perc</code> パラメータの5,000個のランダム値を生成しよう。</p>
+<div class="cell">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">add_percs</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">runif</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">5000</span>, min <span class="op">=</span> <span class="fl">0.01</span>, max <span class="op">=</span> <span class="fl">0.05</span><span class="op">)</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<!-- We will generate simulated data for each value add_percs and store these data in a list called res_list. -->
+<p><code>add_percs</code> の各値に対してシミュレーションデータを生成し、これらのデータを <code>res_list</code> というリストに格納する。</p>
+<div class="cell">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">2021</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">res_list</span> <span class="op">&lt;-</span></span>
+<span>  <span class="fu">map</span><span class="op">(</span><span class="va">add_percs</span>, <span class="va">get_data</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">system_time</span><span class="op">(</span><span class="op">)</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<!-- While production of res_list takes just a few seconds, because each iteration of get_data() is independent of the others, we could use the future package and plan(multisession) to do it even more quickly. -->
+<p><code>res_list</code> の生成にはわずか数秒しかかからないが、<code>get_data()</code> の各反復が他の反復と独立しているため、さらに高速に行うために <code>future</code> パッケージと <code>plan(multisession)</code> を使用することができる。</p>
+<div class="cell">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">plan</span><span class="op">(</span><span class="va">multisession</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">res_list</span> <span class="op">&lt;-</span></span>
+<span>  <span class="fu">future_map</span><span class="op">(</span><span class="va">add_percs</span>, <span class="va">get_data</span>,</span>
+<span>             .options <span class="op">=</span> <span class="fu">furrr_options</span><span class="op">(</span>seed <span class="op">=</span> <span class="fl">2021</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">system_time</span><span class="op">(</span><span class="op">)</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<!-- We then make two data frames.  -->
+<p>次に、2つのデータフレームを作成する。 <!-- The first data frame (res_df) stores all the data in a single data frame using the field id to distinguish one simulation run from another.  --> 最初のデータフレーム（<code>res_df</code>）は、<code>id</code> フィールドを使用して、1つのシミュレーション実行を他の実行と区別するためにすべてのデータを1つのデータフレームに格納する。 <!-- These runs might be considered as “firms” with each run being independent of the other. --> これらの実行は、それぞれが他の実行と独立していると考えられるかもしれない。</p>
+<div class="cell">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">res_df</span> <span class="op">&lt;-</span> <span class="fu">list_rbind</span><span class="op">(</span><span class="va">res_list</span>, names_to <span class="op">=</span> <span class="st">"id"</span><span class="op">)</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<!-- To make it easier to compile results, we create get_coefs(), which calculates persistence as the coefficient in a regression of income on its lagged value - a specification similar to that in Sloan (1996) - and returns that value. -->
+<p>結果をまとめやすくするために、<code>get_coefs()</code> を作成し、収益をその遅延値に回帰した際の係数として持続性を計算し、その値を返す。 これはSloan (1996) と似た仕様の関数である。</p>
+<div class="cell">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">get_coefs</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">df</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">fm</span> <span class="op">&lt;-</span></span>
+<span>    <span class="va">df</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu">arrange</span><span class="op">(</span><span class="va">year</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu">mutate</span><span class="op">(</span>lag_ni <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/lag.html">lag</a></span><span class="op">(</span><span class="va">ni</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">ni</span> <span class="op">~</span> <span class="va">lag_ni</span>, data <span class="op">=</span> <span class="va">_</span><span class="op">)</span></span>
+<span></span>
+<span>  <span class="fu">tibble</span><span class="op">(</span>add_perc <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">df</span><span class="op">$</span><span class="va">add_perc</span><span class="op">)</span>,</span>
+<span>         persistence <span class="op">=</span> <span class="va">fm</span><span class="op">$</span><span class="va">coefficients</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span><span class="op">)</span></span>
+<span><span class="op">}</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<!-- We apply get_coefs() to res_list and store the results in the second data frame, results. -->
+<p><code>get_coefs()</code> を <code>res_list</code> に適用し、その結果を2番目のデータフレーム <code>results</code> に格納する。</p>
+<div class="cell">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">results</span> <span class="op">&lt;-</span></span>
+<span>  <span class="va">res_list</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">map</span><span class="op">(</span><span class="va">get_coefs</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">list_rbind</span><span class="op">(</span>names_to <span class="op">=</span> <span class="st">"id"</span><span class="op">)</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<!-- We plot the estimated persistence value against the assumed value for add_perc in Figure 15.2. -->
+<p>推定された<em>持続性</em>の値を <code>add_perc</code> の仮定値に対してプロットする。</p>
+<div class="cell">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">results</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">add_perc</span>, y <span class="op">=</span> <span class="va">persistence</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<!-- ### Exercises -->
+</section><section id="練習問題" class="level3" data-number="7.3.3"><h3 data-number="7.3.3" class="anchored" data-anchor-id="練習問題">
+<span class="header-section-number">7.3.3</span> 練習問題</h3>
+<!-- When generating simulated financial statement data, it is generally important to ensure that the generated data meet some basic requirements.  -->
+<ol type="1">
+<li>シミュレーションされた財務諸表データを生成する際には、一般的に生成されたデータがいくつかの基本的な要件を満たしていることを確認することが重要となる。 <!-- What is one fundamental relation that we expect to hold for these data? Does it hold for the data in df_1000? --> これらのデータについて成立すると期待される基本的な関係は何か？<code>df_1000</code>のデータについては成立しているか？</li>
+</ol>
+<!-- Calculate values for cash flows from operating activities and cash flows from financing activities.  --><ol start="2" type="1">
+<li>営業活動によるキャッシュフローと財務活動によるキャッシュフローの値を計算せよ。 <!-- (Treat payment of dividends as a financing activity. Hint: You may find it easier to use the direct method to calculate cash flows from operating activities.)
+Does the cash flow statement articulate as it should? -->
+</li>
+</ol>
+<!-- 3. How evident are the details of the underlying process generating sales from Figure 15.1? Does looking at more data help? (Obviously, having a thousand years of data on a firm with a stationary process is not common.) --><ol start="3" type="1">
+<li>図15.1から売上を生成する基礎プロセスの詳細はどの程度明確か？ より多くのデータを見ることが有用か？ (明らかに、定常プロセスを持つ企業の1000年分のデータを持つことは一般的ではない。)</li>
+</ol>
+<!-- 4. What is the “correct” value of `add_perc` that should be used? --><ol start="4" type="1">
+<li>用いられるべき「正しい」<code>add_perc</code> の値は何か？ <!-- Using the plot from results above, what is the relation between values of departing from that value and persistence?  --> 上記の結果からのプロットを使用して、その値からの離れた値と持続性の関係は何か？ <!-- Does this agree with your intuition?  --> これはあなたの直感と一致しているか？ <!-- What’s going on?  --> 何が起こっているのか？ <!-- What aspects of the `add_perc` - related accounting seem unrealistic?  --> <code>add_perc</code> に関連する会計のどの側面が非現実的に見えるか？ <!-- (Hint: It may help to use variant of the following code set.seed(2021); get_data(0.03) for various values in place of 0.03 and to examine how the earnings process is affected.) --> (ヒント: <span class="math inline">0.03</span> の代わりにさまざまな値を使用して <code>set.seed(2021); get_data(0.03)</code> の変形を使用し、利益プロセスがどのように影響を受けるかを調べると役立つかもしれない。)</li>
+</ol>
+<!-- 5. Does the simulation analysis speak to the underlying rationale for H1 of Sloan (1996)?  --><ol start="5" type="1">
+<li>シミュレーション分析は、Sloan (1996) のH1の根拠についての基本的な理由に言及していますか？ <!-- If so, why?  --> もしそうならなぜか？ <!-- If not, what might be missing from the analysis?  --> そうでない場合、分析に欠けている要素は何か？ <!-- How might we modify the simulation to incorporate the missing elements? --> どのようにしてシミュレーションを変更して、欠落している要素を組み込むことができるか？</li>
+</ol></section></section><section id="replicating-sloan-1996" class="level2" data-number="7.4"><h2 data-number="7.4" class="anchored" data-anchor-id="replicating-sloan-1996">
+<span class="header-section-number">7.4</span> Replicating Sloan (1996)</h2>
+<!-- To better understand some elements of the empirical analysis of Sloan (1996), we conduct a replication analysis. -->
+<p>Sloan (1996) の実証分析のいくつかの要素をよりよく理解するために、分析の再現を行う。</p>
+<!-- We start by collating the data. -->
+<p>まず、データをまとめる。 <!-- We first connect to the tables we will use in our analysis. --> 最初に、分析で使用するテーブルに接続する。</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist">
+<li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" aria-current="page">PostgreSQL</a></li>
+<li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">parquet</a></li>
+</ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<div class="cell">
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">db</span> <span class="op">&lt;-</span> <span class="fu">dbConnect</span><span class="op">(</span><span class="fu">RPostgres</span><span class="fu">::</span><span class="fu"><a href="https://rpostgres.r-dbi.org/reference/Postgres.html">Postgres</a></span><span class="op">(</span><span class="op">)</span>, bigint <span class="op">=</span> <span class="st">"integer"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">funda</span> <span class="op">&lt;-</span> <span class="fu">tbl</span><span class="op">(</span><span class="va">db</span>, <span class="fu">Id</span><span class="op">(</span>schema <span class="op">=</span> <span class="st">"comp"</span>, table <span class="op">=</span> <span class="st">"funda"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">company</span> <span class="op">&lt;-</span> <span class="fu">tbl</span><span class="op">(</span><span class="va">db</span>, <span class="fu">Id</span><span class="op">(</span>schema <span class="op">=</span> <span class="st">"comp"</span>, table <span class="op">=</span> <span class="st">"company"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">ccmxpf_lnkhist</span> <span class="op">&lt;-</span> <span class="fu">tbl</span><span class="op">(</span><span class="va">db</span>, <span class="fu">Id</span><span class="op">(</span>schema <span class="op">=</span> <span class="st">"crsp"</span>, table <span class="op">=</span> <span class="st">"ccmxpf_lnkhist"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">msf</span> <span class="op">&lt;-</span> <span class="fu">tbl</span><span class="op">(</span><span class="va">db</span>, <span class="fu">Id</span><span class="op">(</span>schema <span class="op">=</span> <span class="st">"crsp"</span>, table <span class="op">=</span> <span class="st">"msf"</span><span class="op">)</span><span class="op">)</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<div class="cell">
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">db</span> <span class="op">&lt;-</span> <span class="fu">dbConnect</span><span class="op">(</span><span class="fu">duckdb</span><span class="fu">::</span><span class="fu"><a href="https://r.duckdb.org/reference/duckdb.html">duckdb</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">funda</span> <span class="op">&lt;-</span> <span class="fu">load_parquet</span><span class="op">(</span><span class="va">db</span>, schema <span class="op">=</span> <span class="st">"comp"</span>, table <span class="op">=</span> <span class="st">"funda"</span><span class="op">)</span></span>
+<span><span class="va">company</span> <span class="op">&lt;-</span> <span class="fu">load_parquet</span><span class="op">(</span><span class="va">db</span>, schema <span class="op">=</span> <span class="st">"comp"</span>, table <span class="op">=</span> <span class="st">"company"</span><span class="op">)</span></span>
+<span><span class="va">ccmxpf_lnkhist</span> <span class="op">&lt;-</span> <span class="fu">load_parquet</span><span class="op">(</span><span class="va">db</span>, schema <span class="op">=</span> <span class="st">"crsp"</span>, table <span class="op">=</span> <span class="st">"ccmxpf_lnkhist"</span><span class="op">)</span></span>
+<span><span class="va">msf</span> <span class="op">&lt;-</span> <span class="fu">load_parquet</span><span class="op">(</span><span class="va">db</span>, schema <span class="op">=</span> <span class="st">"crsp"</span>, table <span class="op">=</span> <span class="st">"msf"</span><span class="op">)</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
+<!-- We then make a subset of comp.funda, add SIC data from comp.company, and call the result funda_mod. -->
+<p>次に、<code>comp.funda</code>のサブセットを作成し、<code>comp.company</code>からSICデータを追加して、その結果を <code>funda_mod</code> と呼ぶ。</p>
+<!-- We construct SIC codes using sich, which provides the “historical” SIC code (sich), where available, but we use the “header” SIC code (sic) found on comp.company when sich is unavailable.4  -->
+<p>利用可能な場合は「歴史的」SICコード（sich）を提供する <code>sich</code> を使用して SICコードを構築しますが、<code>sich</code> が利用できない場合は <code>comp.company</code> で見つかる「ヘッダー」SICコード（<code>sic</code>）を使用します。<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> <!-- For some reason, sic is a character variable on comp.company and sich is an integer on comp.funda. --> 何らかの理由で、<code>comp.company</code> では <code>sic</code> が文字変数であり、<code>comp.funda</code> では <code>sich</code> が整数です。 <!-- So, we convert sic to an integer before merging the two tables here. --> したがって、ここで2つのテーブルをマージする前に <code>sic</code> を整数に変換します。</p>
+<div class="cell">
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">sics</span> <span class="op">&lt;-</span></span>
+<span>  <span class="va">company</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">select</span><span class="op">(</span><span class="va">gvkey</span>, <span class="va">sic</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">mutate</span><span class="op">(</span>sic <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/integer.html">as.integer</a></span><span class="op">(</span><span class="va">sic</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">funda_mod</span> <span class="op">&lt;-</span></span>
+<span>  <span class="va">funda</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">indfmt</span> <span class="op">==</span> <span class="st">"INDL"</span>, <span class="va">datafmt</span> <span class="op">==</span> <span class="st">"STD"</span>,</span>
+<span>         <span class="va">consol</span> <span class="op">==</span> <span class="st">"C"</span>, <span class="va">popsrc</span> <span class="op">==</span> <span class="st">"D"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">left_join</span><span class="op">(</span><span class="va">sics</span>, by <span class="op">=</span> <span class="st">"gvkey"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">mutate</span><span class="op">(</span>sic <span class="op">=</span> <span class="fu">coalesce</span><span class="op">(</span><span class="va">sich</span>, <span class="va">sic</span><span class="op">)</span><span class="op">)</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<!-- We next apply the same sample selection criteria as Sloan (1996). -->
+<p>次に、Sloan (1996) と同じサンプル選択基準を適用する。 <!-- We focus on NYSE and AMEX firm-years (i.e., ones with exchg equal to 11 and 12, respectively) and years between 1962 and 1991. --> NYSE と AMEX の企業年（つまり、それぞれ exchg が 11 と 12 に等しいもの）および 1962 年から 1991 年の間の年に焦点を当てる。</p>
+<!-- Sloan (1996, p.1) suggests that “the financial statement data required to compute operating accruals are not available … on Compustat for banks, life insurance or property and casualty companies.”  -->
+<p>Sloan (1996, p.1) は、「銀行、生命保険、損害保険会社については、運転アクルーアルを計算するために必要な財務諸表データがCompustatにはない」と述べている。 <!-- However, it is not clear if these firms are explicitly excluded (e.g., by filtering on SIC codes) or implicitly excluded by simply requiring that data for calculating accruals be available. --> ただし、これらの企業が明示的に除外されているか（例：SICコードでフィルタリングされているか）、単にアクルーアルを計算するためのデータが利用可能であることを要求しているかどうかは明確ではない。 <!-- As such, we retain these firms and merely create a related indicator variable (finance). --> そのため、これらの企業を保持し、関連する指標変数（<code>finance</code>）を作成する。</p>
+<!-- The next step is to create variables to reflect changes in key variables. -->
+<p>次のステップは、主要な変数の変化を反映する変数を作成することです。 <!-- We can use lag() to do this.5 --> これには <code><a href="https://rdrr.io/r/stats/lag.html">lag()</a></code> を使用できます。<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></p>
+<div class="cell">
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">acc_data_raw</span> <span class="op">&lt;-</span></span>
+<span>  <span class="va">funda_mod</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">at</span><span class="op">)</span>,</span>
+<span>         <span class="va">pddur</span> <span class="op">==</span> <span class="fl">12</span>,</span>
+<span>         <span class="va">exchg</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">11L</span>, <span class="fl">12L</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">mutate</span><span class="op">(</span>finance <span class="op">=</span> <span class="fu">between</span><span class="op">(</span><span class="va">sic</span>, <span class="fl">6000</span>, <span class="fl">6999</span><span class="op">)</span>,</span>
+<span>         <span class="fu">across</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">che</span>, <span class="va">dlc</span>, <span class="va">txp</span><span class="op">)</span>, \<span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu">coalesce</span><span class="op">(</span><span class="va">x</span>, <span class="fl">0</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">gvkey</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">window_order</span><span class="op">(</span><span class="va">datadate</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">mutate</span><span class="op">(</span>avg_at <span class="op">=</span> <span class="op">(</span><span class="va">at</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/stats/lag.html">lag</a></span><span class="op">(</span><span class="va">at</span><span class="op">)</span><span class="op">)</span> <span class="op">/</span> <span class="fl">2</span>,</span>
+<span>         d_ca <span class="op">=</span> <span class="va">act</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lag.html">lag</a></span><span class="op">(</span><span class="va">act</span><span class="op">)</span>,</span>
+<span>         d_cash <span class="op">=</span> <span class="va">che</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lag.html">lag</a></span><span class="op">(</span><span class="va">che</span><span class="op">)</span>,</span>
+<span>         d_cl <span class="op">=</span> <span class="va">lct</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lag.html">lag</a></span><span class="op">(</span><span class="va">lct</span><span class="op">)</span>,</span>
+<span>         d_std <span class="op">=</span> <span class="va">dlc</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lag.html">lag</a></span><span class="op">(</span><span class="va">dlc</span><span class="op">)</span>,</span>
+<span>         d_tp <span class="op">=</span> <span class="va">txp</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lag.html">lag</a></span><span class="op">(</span><span class="va">txp</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">select</span><span class="op">(</span><span class="va">gvkey</span>, <span class="va">datadate</span>, <span class="va">fyear</span>, <span class="va">avg_at</span>, <span class="va">at</span>, <span class="va">oiadp</span>, <span class="va">dp</span>, <span class="va">finance</span>,</span>
+<span>         <span class="fu">starts_with</span><span class="op">(</span><span class="st">"d_"</span><span class="op">)</span>, <span class="va">sic</span>, <span class="va">pddur</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">mutate</span><span class="op">(</span>acc_raw <span class="op">=</span>  <span class="op">(</span><span class="va">d_ca</span> <span class="op">-</span> <span class="va">d_cash</span><span class="op">)</span> <span class="op">-</span> <span class="op">(</span><span class="va">d_cl</span> <span class="op">-</span> <span class="va">d_std</span> <span class="op">-</span> <span class="va">d_tp</span><span class="op">)</span> <span class="op">-</span> <span class="va">dp</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">ungroup</span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="fu">between</span><span class="op">(</span><span class="va">fyear</span>, <span class="fl">1962</span>, <span class="fl">1991</span><span class="op">)</span>,</span>
+<span>         <span class="va">avg_at</span> <span class="op">&gt;</span> <span class="fl">0</span><span class="op">)</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<!-- The final step in our data preparation calculates the core variables earn, acc, and cfo according to the definitions found in Sloan (1996), creates a variable to store the leading value of earn (using the lead() function, which is a window function that complements the lag() function we used above), creates deciles for acc, earn, cfo, and lead_earn, creates a two-digit SIC code, and finally filters out finance firms and observations without values for acc. -->
+<p>データの準備の最終ステップでは、Sloan (1996) で見つかる定義に従って、earn、acc、cfoのコア変数を計算し、earnの先行値を格納する変数を作成する（上記で使用した <code><a href="https://rdrr.io/r/stats/lag.html">lag()</a></code> 関数を補完するウィンドウ関数である <code>lead()</code> 関数を使用）、acc、earn、cfo、lead_earnのデシルを作成し、2桁のSICコードを作成し、最後に、金融企業とaccの値がない観測をフィルタリングする。</p>
+<div class="cell">
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">acc_data</span> <span class="op">&lt;-</span></span>
+<span>  <span class="va">acc_data_raw</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">mutate</span><span class="op">(</span>earn <span class="op">=</span> <span class="va">oiadp</span> <span class="op">/</span> <span class="va">avg_at</span>,</span>
+<span>         acc <span class="op">=</span> <span class="va">acc_raw</span> <span class="op">/</span> <span class="va">avg_at</span>,</span>
+<span>         cfo <span class="op">=</span> <span class="va">earn</span> <span class="op">-</span> <span class="va">acc</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">gvkey</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">window_order</span><span class="op">(</span><span class="va">datadate</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">mutate</span><span class="op">(</span>lead_earn <span class="op">=</span> <span class="fu">lead</span><span class="op">(</span><span class="va">earn</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">ungroup</span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">collect</span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">mutate</span><span class="op">(</span>acc_decile <span class="op">=</span> <span class="fu">ntile</span><span class="op">(</span><span class="va">acc</span>, <span class="fl">10</span><span class="op">)</span>,</span>
+<span>         earn_decile <span class="op">=</span> <span class="fu">ntile</span><span class="op">(</span><span class="va">earn</span>, <span class="fl">10</span><span class="op">)</span>,</span>
+<span>         cfo_decile <span class="op">=</span> <span class="fu">ntile</span><span class="op">(</span><span class="va">cfo</span>, <span class="fl">10</span><span class="op">)</span>,</span>
+<span>         lead_earn_decile <span class="op">=</span> <span class="fu">ntile</span><span class="op">(</span><span class="va">lead_earn</span>, <span class="fl">10</span><span class="op">)</span>,</span>
+<span>         sic2 <span class="op">=</span> <span class="fu">str_sub</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/character.html">as.character</a></span><span class="op">(</span><span class="va">sic</span><span class="op">)</span>, <span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span><span class="va">finance</span>, <span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">acc</span><span class="op">)</span><span class="op">)</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<!-- The next step is to collect data on stock returns for each firm-year. -->
+<p>次のステップは、各企業年の株価収益データを収集することである。 <!-- We use ccm_link, which we saw in Chapter 7, to link GVKEYs (Compustat) to PERMNOs (CRSP). --> <code>GVKEY</code>（Compustat）を<code>PERMNO</code>（CRSP）にリンクするために、第7章で見た <code>ccm_link</code> を使用する。</p>
+<div class="cell">
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">ccm_link</span> <span class="op">&lt;-</span></span>
+<span>  <span class="va">ccmxpf_lnkhist</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">linktype</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"LC"</span>, <span class="st">"LU"</span>, <span class="st">"LS"</span><span class="op">)</span>,</span>
+<span>           <span class="va">linkprim</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"C"</span>, <span class="st">"P"</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu">rename</span><span class="op">(</span>permno <span class="op">=</span> <span class="va">lpermno</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu">mutate</span><span class="op">(</span>linkenddt <span class="op">=</span> <span class="fu">coalesce</span><span class="op">(</span><span class="va">linkenddt</span>, <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">linkenddt</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">select</span><span class="op">(</span><span class="va">gvkey</span>, <span class="va">permno</span>, <span class="va">linkdt</span>, <span class="va">linkenddt</span><span class="op">)</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<!-- Following Sloan (1996), we link (`gvkey`, `datadate`) combinations with permnos and a date range for the twelve-month period beginning four months after the end of the fiscal period. -->
+<p>Sloan (1996) に従い、（<code>gvkey</code>、<code>datadate</code>）の組み合わせを<code>permno</code>とリンクし、決算期間の終了後4か月から始まる12か月間の期間を指定する。</p>
+<div class="cell">
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">crsp_link</span> <span class="op">&lt;-</span></span>
+<span>  <span class="va">acc_data_raw</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">select</span><span class="op">(</span><span class="va">gvkey</span>, <span class="va">datadate</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">inner_join</span><span class="op">(</span><span class="va">ccm_link</span>,</span>
+<span>             <span class="fu">join_by</span><span class="op">(</span><span class="va">gvkey</span>, <span class="fu">between</span><span class="op">(</span><span class="va">datadate</span>, <span class="va">linkdt</span>, <span class="va">linkenddt</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">select</span><span class="op">(</span><span class="va">gvkey</span>, <span class="va">datadate</span>, <span class="va">permno</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">mutate</span><span class="op">(</span>start_month <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/as.Date.html">as.Date</a></span><span class="op">(</span><span class="fu">floor_date</span><span class="op">(</span><span class="va">datadate</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/weekday.POSIXt.html">months</a></span><span class="op">(</span><span class="fl">4L</span><span class="op">)</span>, <span class="st">"month"</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>         end_month <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/as.Date.html">as.Date</a></span><span class="op">(</span><span class="fu">floor_date</span><span class="op">(</span><span class="va">datadate</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/weekday.POSIXt.html">months</a></span><span class="op">(</span><span class="fl">16L</span><span class="op">)</span> <span class="op">-</span> <span class="fu">days</span><span class="op">(</span><span class="fl">1L</span><span class="op">)</span>,</span>
+<span>                                        <span class="st">"month"</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>         month <span class="op">=</span> <span class="fu">floor_date</span><span class="op">(</span><span class="va">datadate</span>, <span class="st">'month'</span><span class="op">)</span><span class="op">)</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<!-- We then calculate compounded returns over this window for each (gvkey, datadate, permno) combination. -->
+<p>次に、このウィンドウに対して各（<code>gvkey</code>、<code>datadate</code>、<code>permno</code>）の組み合わせに対して複利収益を計算する。</p>
+<div class="cell">
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">crsp_data</span> <span class="op">&lt;-</span></span>
+<span>  <span class="va">msf</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">inner_join</span><span class="op">(</span><span class="va">crsp_link</span>,</span>
+<span>             by <span class="op">=</span> <span class="fu">join_by</span><span class="op">(</span><span class="va">permno</span>, <span class="fu">between</span><span class="op">(</span><span class="va">date</span>, <span class="va">start_month</span>, <span class="va">end_month</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">gvkey</span>, <span class="va">permno</span>, <span class="va">datadate</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">summarize</span><span class="op">(</span>ret <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">exp</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="fl">1</span> <span class="op">+</span> <span class="va">ret</span><span class="op">)</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">-</span> <span class="fl">1</span>,</span>
+<span>            n_months <span class="op">=</span> <span class="fu">n</span><span class="op">(</span><span class="op">)</span>,</span>
+<span>            .groups <span class="op">=</span> <span class="st">"drop"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">collect</span><span class="op">(</span><span class="op">)</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<!-- Table 4 of Sloan (1996, p. 304) uses abnormal returns, which are “computed by taking the raw buy-hold return … and subtracting the buy-hold return of a size-matched, value-weighted portfolio of firms. -->
+<p>Sloan (1996, p.304) の表4では、異常収益が使用されており、「生の買いホールドリターンを取り、市場価値加重ポートフォリオの買いホールドリターンを引くことによって計算される。 <!-- The size portfolios are based on market value of equity deciles of NYSE and AMEX firms.”  --> サイズポートフォリオは、NYSEおよびAMEX企業の株式の時価総額デシルに基づいている。 <!-- We obtained the returns of individual firms above, but need to collect data on size portfolios, both the returns for each portfolio and the market capitalization cut-offs. --> 上記で個々の企業の収益を取得したが、サイズポートフォリオのデータ、各ポートフォリオの収益と時価総額のカットオフを収集する必要がある。</p>
+<!-- Data for size portfolios come from Ken French’s website, as we saw in Chapter 11. -->
+<p>サイズポートフォリオのデータは、第11章で見たように、Ken Frenchのウェブサイトから取得される。 <!-- Code like that used in Chapter 11 is included in the farr package in two functions: get_size_rets_monthly() and get_me_breakpoints(). --> 第11章で使用されたコードのようなコードは、<code>farr</code>パッケージに2つの関数 <code>get_size_rets_monthly()</code> と <code>get_me_breakpoints()</code> として含まれている。</p>
+<div class="cell">
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">size_rets</span> <span class="op">&lt;-</span> <span class="fu">get_size_rets_monthly</span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="va">size_rets</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<!-- The table returned by get_size_rets_monthly() has four columns, including two measures of returns: one based on equal-weighted portfolios (ew_ret) and one based on value-weighted portfolios (vw_ret). -->
+<p>get_size_rets_monthly() によって返されるテーブルには、等加重ポートフォリオ（<code>ew_ret</code>）と価値加重ポートフォリオ（<code>vw_ret</code>）に基づく2つの収益の測定値を含む4つの列がある。 <!-- Like Sloan (1996), we use vw_ret. --> Sloan (1996) と同様に、<code>vw_ret</code> を使用する。</p>
+<div class="cell">
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">me_breakpoints</span> <span class="op">&lt;-</span> <span class="fu">get_me_breakpoints</span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="va">me_breakpoints</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<!-- The table returned by get_me_breakpoints() identifies the size decile (decile) to which firms with market capitalization between me_min and me_max in a given month should be assigned. -->
+<p>get_me_breakpoints() によって返されるテーブルは、特定の月において me_min と me_max の間の時価総額を持つ企業が割り当てられるサイズデシル（<code>decile</code>）を識別する。</p>
+<!-- To join CRSP with crsp_link, we construct the variable month for each value of date on crsp.msf. -->
+<p>CRSPをcrsp_linkと結合するために、crsp.msfのdateの各値に対して変数monthを構築する。 <!-- This prevents non-matches due to non-alignment of datadate values with date values on crsp.msf. --> これにより、<code>datadate</code>の値が<code>crsp.msf</code>の<code>date</code>の値と整合しないことによる非一致を防ぐ。</p>
+<div class="cell">
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">crsp_dates</span> <span class="op">&lt;-</span></span>
+<span>  <span class="va">msf</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">distinct</span><span class="op">(</span><span class="va">date</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">mutate</span><span class="op">(</span>month <span class="op">=</span> <span class="fu">floor_date</span><span class="op">(</span><span class="va">date</span>, <span class="st">'month'</span><span class="op">)</span><span class="op">)</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<!-- The following code assigns firm-years (i.e., (permno, datadate) combinations) to size deciles according to market capitalization and size cut-offs applicable during the month of datadate. -->
+<p>次のコードは、datadateの月に適用される時価総額とサイズのカットオフに従って、企業年（つまり、（<code>permno</code>、<code>datadate</code>）の組み合わせ）をサイズデシルに割り当てる。</p>
+<div class="cell">
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">me_values</span> <span class="op">&lt;-</span></span>
+<span>  <span class="va">crsp_link</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">inner_join</span><span class="op">(</span><span class="va">crsp_dates</span>, by <span class="op">=</span> <span class="st">"month"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">inner_join</span><span class="op">(</span><span class="va">msf</span>, by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"permno"</span>, <span class="st">"date"</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">mutate</span><span class="op">(</span>mktcap <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span><span class="op">(</span><span class="va">prc</span><span class="op">)</span> <span class="op">*</span> <span class="va">shrout</span> <span class="op">/</span> <span class="fl">1000</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">select</span><span class="op">(</span><span class="va">permno</span>, <span class="va">datadate</span>, <span class="va">month</span>, <span class="va">mktcap</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">collect</span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">me_decile_assignments</span> <span class="op">&lt;-</span></span>
+<span>  <span class="va">me_breakpoints</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">inner_join</span><span class="op">(</span><span class="va">me_values</span>,</span>
+<span>             <span class="fu">join_by</span><span class="op">(</span><span class="va">month</span>, <span class="va">me_min</span> <span class="op">&lt;=</span> <span class="va">mktcap</span>, <span class="va">me_max</span> <span class="op">&gt;</span> <span class="va">mktcap</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">select</span><span class="op">(</span><span class="va">permno</span>, <span class="va">datadate</span>, <span class="va">decile</span><span class="op">)</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<!-- For each datadate and size decile, the following code calculates the cumulative returns over the twelve-month period beginning four months after datadate. -->
+<p>各<code>datadate</code>とサイズデシルについて、以下のコードは、<code>datadate</code>の4か月後から始まる12か月間の累積収益を計算する。</p>
+<div class="cell">
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">cum_size_rets</span> <span class="op">&lt;-</span></span>
+<span>  <span class="va">me_decile_assignments</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">select</span><span class="op">(</span><span class="va">datadate</span>, <span class="va">decile</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">distinct</span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">mutate</span><span class="op">(</span>start_month <span class="op">=</span> <span class="va">datadate</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/weekday.POSIXt.html">months</a></span><span class="op">(</span><span class="fl">4</span><span class="op">)</span>,</span>
+<span>         end_month <span class="op">=</span>  <span class="va">datadate</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/weekday.POSIXt.html">months</a></span><span class="op">(</span><span class="fl">16</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">inner_join</span><span class="op">(</span><span class="va">size_rets</span>,</span>
+<span>             <span class="fu">join_by</span><span class="op">(</span><span class="va">decile</span>, <span class="va">start_month</span> <span class="op">&lt;=</span> <span class="va">month</span>, <span class="va">end_month</span> <span class="op">&gt;=</span> <span class="va">month</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">datadate</span>, <span class="va">decile</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">summarize</span><span class="op">(</span>ew_ret <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">exp</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="fl">1</span> <span class="op">+</span> <span class="va">ew_ret</span><span class="op">)</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">-</span> <span class="fl">1</span>,</span>
+<span>            vw_ret <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">exp</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="fl">1</span> <span class="op">+</span> <span class="va">vw_ret</span><span class="op">)</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">-</span> <span class="fl">1</span>,</span>
+<span>            n_size_months <span class="op">=</span> <span class="fu">n</span><span class="op">(</span><span class="op">)</span>,</span>
+<span>            .groups <span class="op">=</span> <span class="st">"drop"</span><span class="op">)</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<!-- Now we have the data we need to calculate size-adjusted returns. -->
+<p>これで、サイズ調整収益を計算するために必要なデータが揃った。 <!-- We simply combine crsp_data with me_decile_assignments and then with cum_size_rets and calculate size_adj_ret as a simple difference. --> 単純な差として <code>size_adj_ret</code> を計算するために、<code>crsp_data</code> と <code>me_decile_assignments</code>、そして <code>cum_size_rets</code> を組み合わせるだけである。</p>
+<div class="cell">
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">size_adj_rets</span> <span class="op">&lt;-</span></span>
+<span>  <span class="va">crsp_data</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">inner_join</span><span class="op">(</span><span class="va">me_decile_assignments</span>, by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"permno"</span>, <span class="st">"datadate"</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">inner_join</span><span class="op">(</span><span class="va">cum_size_rets</span>, by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"datadate"</span>, <span class="st">"decile"</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">mutate</span><span class="op">(</span>size_adj_ret <span class="op">=</span> <span class="va">ret</span> <span class="op">-</span> <span class="va">vw_ret</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">select</span><span class="op">(</span><span class="va">gvkey</span>, <span class="va">datadate</span>, <span class="va">size_adj_ret</span>, <span class="va">n_months</span>, <span class="va">n_size_months</span><span class="op">)</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<!-- For our regression analysis, we simply join our processed data from Compustat (acc_data) with our new data on size-adjusted returns (size_adj_rets). -->
+<p>本稿の回帰分析では、Compustatの処理されたデータ（<code>acc_data</code>）をサイズ調整収益（<code>size_adj_rets</code>）の新しいデータと結合するだけである。</p>
+<div class="cell">
+<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">reg_data</span> <span class="op">&lt;-</span></span>
+<span>  <span class="va">acc_data</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">inner_join</span><span class="op">(</span><span class="va">size_adj_rets</span>, by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"gvkey"</span>, <span class="st">"datadate"</span><span class="op">)</span><span class="op">)</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<!-- Before running regression analyses, it is important to examine our data. -->
+<p>回帰分析を実行する前に、データを調査することが重要である。 <!-- One useful benchmark is the set of descriptive statistics reported in Table 1 of Sloan (1996). --> 有用な基準の1つは、Sloan (1996) の Table 1 に報告されている記述統計である。 <!-- Some degree of assurance is provided by the similar of the values seen in Table 15.2 with those reported in Sloan (1996). --> Table 15.2 で見られる値が Sloan (1996) で報告されている値と類似していることにより、ある程度の保証が提供される。</p>
+<div class="cell">
+<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">reg_data</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">acc_decile</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">summarize</span><span class="op">(</span><span class="fu">across</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">acc</span>, <span class="va">earn</span>, <span class="va">cfo</span><span class="op">)</span>, \<span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">x</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<!--------- ここまで15.3 --------->
+<section id="sloan-1996の表2" class="level3" data-number="7.4.1"><h3 data-number="7.4.1" class="anchored" data-anchor-id="sloan-1996の表2">
+<span class="header-section-number">7.4.1</span> Sloan (1996)の表2</h3>
+<!-- Having done a very basic check of our data, we can create analogues of some of the regression analyses found in Sloan (1996). -->
+<p>データの非常に基本的なチェックを行った後、Sloan (1996) に見られるいくつかの回帰分析の類似物を作成することができる。</p>
+<!-- The output shown in Table 15.3 parallels the “pooled” results in Table 2 of Sloan (1996). -->
+<p>Table 15.3 に示されている出力は、Sloan (1996) の Table 2 にある「プールされた」結果に対応している。</p>
+<div class="cell">
+<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">fms</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">lead_earn</span> <span class="op">~</span> <span class="va">earn</span>, data <span class="op">=</span> <span class="va">reg_data</span><span class="op">)</span>,</span>
+<span>            <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">lead_earn_decile</span> <span class="op">~</span> <span class="va">earn_decile</span>, data <span class="op">=</span> <span class="va">reg_data</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">modelsummary</span><span class="op">(</span><span class="va">fms</span>,</span>
+<span>             estimate <span class="op">=</span> <span class="st">"{estimate}{stars}"</span>,</span>
+<span>             gof_map <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"nobs"</span>, <span class="st">"r.squared"</span><span class="op">)</span>,</span>
+<span>             stars <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'*'</span> <span class="op">=</span> <span class="fl">.1</span>, <span class="st">'**'</span> <span class="op">=</span> <span class="fl">0.05</span>, <span class="st">'***'</span> <span class="op">=</span> <span class="fl">.01</span><span class="op">)</span><span class="op">)</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<!-- To produce “industry level” analysis like that in Table 2 of Sloan (1996), we create run_table_ind(), a small function to produce regression coefficients by industry. -->
+<p>Sloan (1996) の Table 2 のような「業界レベル」の分析を生成するために、業界ごとに回帰係数を生成する小さな関数 <code>run_table_ind()</code> を作成する。 <!-- As seen in Chapter 14, we use !! to distinguish the value sic2 supplied to the function from the variable sic2 found in reg_data.6 --> 第14章で見たように、関数に供給される <code>sic2</code> の値を <code>reg_data</code> で見つかる変数 <code>sic2</code> と区別するために <code>!!</code> を使用する。<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a></p>
+<div class="cell">
+<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">run_table_ind</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">sic2</span>, <span class="va">lhs</span> <span class="op">=</span> <span class="st">"lead_earn"</span>, <span class="va">rhs</span> <span class="op">=</span> <span class="st">"earn"</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">df</span> <span class="op">&lt;-</span></span>
+<span>    <span class="va">reg_data</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">sic2</span> <span class="op">==</span> <span class="op">!</span><span class="op">!</span><span class="va">sic2</span><span class="op">)</span></span>
+<span></span>
+<span>  <span class="va">fm</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/formula.html">as.formula</a></span><span class="op">(</span><span class="fu">str_c</span><span class="op">(</span><span class="va">lhs</span>, <span class="st">" ~ "</span>, <span class="va">rhs</span><span class="op">)</span><span class="op">)</span>, data <span class="op">=</span> <span class="va">df</span><span class="op">)</span></span>
+<span></span>
+<span>  <span class="va">coefs</span> <span class="op">&lt;-</span> <span class="fu">as_tibble</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/t.html">t</a></span><span class="op">(</span><span class="va">fm</span><span class="op">$</span><span class="va">coefficients</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">coefs</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/t.html">t</a></span><span class="op">(</span><span class="va">fm</span><span class="op">$</span><span class="va">coefficients</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="fu">bind_cols</span><span class="op">(</span>sic2 <span class="op">=</span> <span class="va">sic2</span>, <span class="va">coefs</span><span class="op">)</span></span>
+<span><span class="op">}</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<!-- The function stats_for_table() compiles descriptive statistics. -->
+<p>関数 <code>stats_for_table()</code> は記述統計をまとめる。</p>
+<div class="cell">
+<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">stats_for_table</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">qs</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/quantile.html">quantile</a></span><span class="op">(</span><span class="va">x</span>, probs <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.25</span>, <span class="fl">0.50</span>, <span class="fl">0.75</span><span class="op">)</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span></span>
+<span>  <span class="fu">tibble</span><span class="op">(</span>mean <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">x</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
+<span>         q1 <span class="op">=</span> <span class="va">qs</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>, median <span class="op">=</span> <span class="va">qs</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span>, q3 <span class="op">=</span> <span class="va">qs</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span><span class="op">)</span></span>
+<span><span class="op">}</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<!-- Finally, summ_for_table() calls run_table_ind() and stats_for_table() and produces a summary table. -->
+<p>最後に、<code>summ_for_table()</code> は <code>run_table_ind()</code> と <code>stats_for_table()</code> を呼び出し、サマリーテーブルを生成する。</p>
+<div class="cell">
+<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">summ_for_table</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">lhs</span> <span class="op">=</span> <span class="st">"lead_earn"</span>, <span class="va">rhs</span> <span class="op">=</span> <span class="st">"earn"</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">reg_data</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu">distinct</span><span class="op">(</span><span class="va">sic2</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu">pull</span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu">map</span><span class="op">(</span><span class="va">run_table_ind</span>, lhs <span class="op">=</span> <span class="va">lhs</span>, rhs <span class="op">=</span> <span class="va">rhs</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu">list_rbind</span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu">select</span><span class="op">(</span><span class="op">-</span><span class="va">sic2</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu">map</span><span class="op">(</span><span class="va">stats_for_table</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu">list_rbind</span><span class="op">(</span>names_to <span class="op">=</span> <span class="st">"term"</span><span class="op">)</span></span>
+<span><span class="op">}</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<!-- Tables 15.4 and 15.5 parallel the “industry level” results reported in Table 2 of Sloan (1996). -->
+<p>Table 15.4 と Table 15.5 は、Sloan (1996) の Table 2 に報告されている「業界レベル」の結果に対応している。</p>
+<div class="cell">
+<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">summ_for_table</span><span class="op">(</span>lhs <span class="op">=</span> <span class="st">"lead_earn"</span>, rhs <span class="op">=</span> <span class="st">"earn"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">summ_for_table</span><span class="op">(</span>lhs <span class="op">=</span> <span class="st">"lead_earn_decile"</span>, rhs <span class="op">=</span> <span class="st">"earn_decile"</span><span class="op">)</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<!-- Our results thus far might be described as “qualitatively similar” to those in Table 2 of Sloan (1996). -->
+<p>これまでの結果は、Sloan (1996) の Table 2 と「質的に類似している」と言えるかもしれない。 <!-- The main difference may be in the magnitude of the pooled coefficient on earn in the regression with lead_earn as the dependent variable. --> 従属変数が <code>lead_earn</code> である回帰分析における <code>earn</code> のプールされた係数の大きさが異なる点が主な違いであるかもしれない。 <!-- Table 2 of Sloan (1996) reports a coefficient of 0.841, notably higher than the mean coefficient from the industry-level regressions (0.773). --> Sloan (1996) のTable 2では、 <span class="math inline">0.841</span> という係数が報告されており、これは業界レベルの回帰分析の平均係数（ <span class="math inline">0.773</span> ）よりも著しく高い。 <!-- In contrast, the mean coefficients in our pooled and industry-level analyses are much closer to each other. --> 一方、本稿のプールされた分析と業界レベルの分析の平均係数はお互いに非常に近い。</p>
+<!-- 15.4.2 Table of Sloan (1996) -->
+</section><section id="sloan-1996の表3" class="level3" data-number="7.4.2"><h3 data-number="7.4.2" class="anchored" data-anchor-id="sloan-1996の表3">
+<span class="header-section-number">7.4.2</span> Sloan (1996)の表3</h3>
+<!-- In Table 3, Sloan (1996) decomposes the right-hand side variables from Table 15.3 into accrual and cash-flow components. -->
+<p>Sloan (1996) では、Table 15.3 の右辺の変数を貸借対照表とキャッシュフローのコンポーネントに分解している。 <!-- We replicate these analyses in Table 15.6. --> これらの分析を Table 15.6 で再現する。</p>
+<div class="cell">
+<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">fms</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">lead_earn</span> <span class="op">~</span> <span class="va">acc</span> <span class="op">+</span> <span class="va">cfo</span>, data <span class="op">=</span> <span class="va">reg_data</span><span class="op">)</span>,</span>
+<span>            <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">lead_earn_decile</span> <span class="op">~</span> <span class="va">acc_decile</span> <span class="op">+</span> <span class="va">cfo_decile</span>, data <span class="op">=</span> <span class="va">reg_data</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">modelsummary</span><span class="op">(</span><span class="va">fms</span>,</span>
+<span>             estimate <span class="op">=</span> <span class="st">"{estimate}{stars}"</span>,</span>
+<span>             gof_map <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"nobs"</span>, <span class="st">"r.squared"</span><span class="op">)</span>,</span>
+<span>             stars <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'*'</span> <span class="op">=</span> <span class="fl">.1</span>, <span class="st">'**'</span> <span class="op">=</span> <span class="fl">0.05</span>, <span class="st">'***'</span> <span class="op">=</span> <span class="fl">.01</span><span class="op">)</span><span class="op">)</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<!-- Tables 15.7 and 15.8 parallel the “industry level” results reported in Table 3 of Sloan (1996). -->
+<p>Table 15.7 と Table 15.8 は、Sloan (1996) の Table 3 に報告されている「業界レベル」の結果に対応している。 <!-- Again we have “qualitatively similar” results to those found in Sloan (1996). --> 再び、Sloan (1996) で見られる結果と「質的に類似した」結果が得られている。</p>
+<div class="cell">
+<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">summ_for_table</span><span class="op">(</span>lhs <span class="op">=</span> <span class="st">"lead_earn"</span>, rhs <span class="op">=</span> <span class="st">"acc + cfo"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">summ_for_table</span><span class="op">(</span>lhs <span class="op">=</span> <span class="st">"lead_earn_decile"</span>, rhs <span class="op">=</span> <span class="st">"acc_decile + cfo_decile"</span><span class="op">)</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<!-- 15.4.3 Pricing of Earnings components -->
+</section><section id="pricing-of-earnings-components" class="level3" data-number="7.4.3"><h3 data-number="7.4.3" class="anchored" data-anchor-id="pricing-of-earnings-components">
+<span class="header-section-number">7.4.3</span> Pricing of earnings components</h3>
+<!-- An element of the analysis reported in Table 5 of Sloan (1996) regresses abnormal returns on contemporaneous earnings and components of lagged earnings and we do likewise. -->
+<p>Sloan (1996) の Table 5 に報告されている分析の要素は、異常リターンを同時期の収益および遅れた収益のコンポーネントに回帰させることであり、私たちも同様に行う。</p>
+<div class="cell">
+<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">mms</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">size_adj_ret</span> <span class="op">~</span> <span class="va">lead_earn</span> <span class="op">+</span> <span class="va">acc</span> <span class="op">+</span> <span class="va">cfo</span>,</span>
+<span>               data <span class="op">=</span> <span class="va">reg_data</span><span class="op">)</span>,</span>
+<span>            <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">size_adj_ret</span> <span class="op">~</span> <span class="va">lead_earn_decile</span> <span class="op">+</span> <span class="va">acc_decile</span> <span class="op">+</span> <span class="va">cfo_decile</span>,</span>
+<span>               data <span class="op">=</span> <span class="va">reg_data</span><span class="op">)</span><span class="op">)</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<!-- Table 15.9 provides results from this regression. -->
+<p>Table 15.9 は、この回帰分析の結果を示している。</p>
+<div class="cell">
+<div class="sourceCode" id="cb36"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">modelsummary</span><span class="op">(</span><span class="va">mms</span>,</span>
+<span>             estimate <span class="op">=</span> <span class="st">"{estimate}{stars}"</span>,</span>
+<span>             gof_map <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"nobs"</span>, <span class="st">"r.squared"</span><span class="op">)</span>,</span>
+<span>             stars <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'*'</span> <span class="op">=</span> <span class="fl">.1</span>, <span class="st">'**'</span> <span class="op">=</span> <span class="fl">0.05</span>, <span class="st">'***'</span> <span class="op">=</span> <span class="fl">.01</span><span class="op">)</span><span class="op">)</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<!-- In the notation of Sloan (1996), the coefficient on acc can be expressed as $-\beta \gamma ^*_1$ , which is minus one times the product of $\beta$ , the coefficient on `lead_earn` (i.e., earnings roughly contemporaneous with `size_adj_ret`), and $\gamma ^*_1$ , the implied market coefficient on accruals. -->
+<p>Sloan (1996) の表記法では、<code>acc</code> の係数は <span class="math inline">- \beta \gamma_1^*</span> と表すことができ、これは <span class="math inline">\beta</span> （<code>lead_earn</code> に対する係数、つまり <code>size_adj_ret</code> とほぼ同時期の収益）と <span class="math inline">\gamma ^*_1</span> （帳簿価額の暗黙の市場係数）の積をマイナスにしたものである。</p>
+<!-- With estimates of $\hat{\beta} = 2.538$ and $\hat{\beta \gamma _1^*} = 1.961$ , we have an implied estimate of $\hat{\gamma}_1^* = 0.7726$ . -->
+<p><span class="math inline">\hat{\beta} = 2.538</span> および <span class="math inline">\hat{\beta \gamma _1^*} = 1.961</span> の推定値から、暗黙の推定値 <span class="math inline">\hat{\gamma}_1^* = 0.7726</span> を得る。 <!-- This estimate $\hat{\gamma }_1^* = 0.7726$ is higher than the estimate of $\hat{\gamma }_1 = 0.6399$ . --> この推定値 <span class="math inline">\hat{\gamma }_1^* = 0.7726</span> は、<span class="math inline">\hat{\gamma }_1 = 0.6399</span> の推定値よりも高い。 <!-- But can we conclude that the difference between these two coefficients is statistically significant? --> しかし、これら2つの係数の差が統計的に有意であると結論付けることができるだろうか？</p>
+<!-- One approach to this question would be to evaluate whether $\hat{\beta \gamma _1^*} = 1.961$ as estimated from the market regression is statistically different from the value implied by $\hat{\beta} \times \hat{\gamma}_1 = 2.538 \times 0.6399 = 1.624$ . -->
+<p>この問いに対する1つのアプローチは、市場回帰から推定された <span class="math inline">\hat{\beta \gamma _1^*} = 1.961</span> が、<span class="math inline">\hat{\beta} \times \hat{\gamma}_1 = 2.538 \times 0.6399 = 1.624</span> によって暗示される値と統計的に異なるかどうかを評価することである。</p>
+<!-- However, as pointed out by Mishkin (1983), this procedure “implicitly assumes that there is no uncertainty in the estimate of $\hat{\gamma}_1$ . -->
+<p>しかし、Mishkin (1983) が指摘しているように、この手順は「 <span class="math inline">\hat{\gamma}_1</span> の推定値に不確実性がないという暗黙の前提を含んでいる。 <!-- This results in inconsistent estimates of the standard errors of the parameters and hence test statistics that do not have the assumed F distribution. --> これにより、パラメータの標準誤差の一貫性のない推定値が生じ、したがって、仮定されたF分布を持たない検定統計量が得られる。 <!-- This can lead to inappropriate inference ….”7 --> これは「不適切な推論につながる可能性がある…」 <a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a> 。</p>
+<!-- Given the issue of “inappropriate inference” described above, Mishkin (1983) uses “iterative weighted non-linear least squares” (Sloan, 1996, p.1) to estimate a system of equations and then calculates an F-statistic based on comparison of goodness-of-fit of an unconstrained system of equations with that of a constrained system of equations (i.e., one in which $\gamma$ is constrained equal in both equations). -->
+<p>上記の「不適切な推論」の問題を考慮すると、Mishkin (1983) は「反復重み付き非線形最小二乗法」（Sloan, 1996, p.1）を使用して方程式系を推定し、制約のない方程式系と制約のある方程式系（つまり、両方の方程式で <span class="math inline">\gamma</span> が等しいと制約された方程式系）の適合度を比較してF統計量を計算する。 <!-- While Sloan (1996) uses this “Mishkin (1983)” test in his analysis reported in Tables 4 and 5, this approach involves significant complexity.8 --> Sloan (1996) は、表4および表5に報告されている分析でこの「Mishkin (1983)」テストを使用しているが、このアプローチは複雑さが大きい。<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a></p>
+<!-- Fortunately, Abel and Mishkin (1983) suggest a simpler approach that they show is asymptotically equivalent to the Mishkin test. -->
+<p>幸いなことに、Abel and Mishkin (1983) は、Mishkinテストと漸近的に等価であることを示すより簡単なアプローチを提案している。 <!-- The intuition for this approach is that if components of lagged earnings (accruals and cash flows) are mispriced in a way that predicts stock returns, then this should be apparent from a regression of stock returns on those lagged earnings components. --> このアプローチの直感は、遅れた収益のコンポーネント（負債計上額とキャッシュフロー）が株価リターンを予測する方法で過大評価されている場合、株価リターンを遅れた収益のコンポーネントに回帰させることでこれが明らかになるはずであるということである。 <!-- Kraft et al. (2007) provide additional discussion of the Mishkin test and the approach used by Abel and Mishkin (1983).9  --> Kraft et al.&nbsp;(2007) は、MishkinテストとAbel and Mishkin (1983)が使用するアプローチについての追加の議論を提供している。<a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a> <!-- In effect, this allows us to skip the “middleman” of contemporaneous earnings in the regression analysis. --> 実際には、このアプローチにより、回帰分析において同時期の収益を経由することなく、遅れた収益のコンポーネントを直接使用することができる。</p>
+<!-- The regression results in Table 15.10 come from applying the approach suggested by Abel and Mishkin (1983). -->
+<p>Table 15.10 の回帰結果は、Abel and Mishkin (1983) が提案したアプローチを適用して得られたものである。</p>
+<div class="cell">
+<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">eff</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">size_adj_ret</span> <span class="op">~</span> <span class="va">acc</span> <span class="op">+</span> <span class="va">cfo</span>, data <span class="op">=</span> <span class="va">reg_data</span><span class="op">)</span>,</span>
+<span>            <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">size_adj_ret</span> <span class="op">~</span> <span class="va">acc_decile</span> <span class="op">+</span> <span class="va">cfo_decile</span>, data <span class="op">=</span> <span class="va">reg_data</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">modelsummary</span><span class="op">(</span><span class="va">eff</span>,</span>
+<span>             estimate <span class="op">=</span> <span class="st">"{estimate}{stars}"</span>,</span>
+<span>             gof_map <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"nobs"</span>, <span class="st">"r.squared"</span><span class="op">)</span>,</span>
+<span>             stars <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'*'</span> <span class="op">=</span> <span class="fl">.1</span>, <span class="st">'**'</span> <span class="op">=</span> <span class="fl">0.05</span>, <span class="st">'***'</span> <span class="op">=</span> <span class="fl">.01</span><span class="op">)</span><span class="op">)</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<!-- From Table 15.10, we see that lagged accruals are negatively associated with abnormal returns. -->
+<p>Table 15.10 から、前期のアクルーアルは異常リターンと負の関連があることがわかる。 <!-- This result is consistent with the market overpricing accruals because it assumes a level of persistence that is too high. --> この結果は、市場が負債計上額を過大評価しているということを示しており、これはあまりに高い持続性を前提としている。</p>
+</section><section id="exercises" class="level3" data-number="7.4.4"><h3 data-number="7.4.4" class="anchored" data-anchor-id="exercises">
+<span class="header-section-number">7.4.4</span> Exercises</h3>
+<ol type="1">
+<li><p>In creating acc_data_raw, we used coalesce() to set the value of certain variables to zero when missing on Compustat. Does this seem appropriate here? Are the issues similar to those observed with regard to R&amp;D in Chapter 8? It may be helpful to find some observations from recent years where this use of the coalesce() function has an effect and think about the issues in context of financial statements for those firm-years.</p></li>
+<li><p>Can you reconcile the results from the Abel and Mishkin (1983) test with those from the previous regressions? (Hint: Pay attention to sample composition; you may need to tweak these regressions.)</p></li>
+<li><p>The equations estimated in Table 5 of Sloan (1996) could be viewed as a structural (causal) model. Can you represent this model using a causal diagram? In light of the apparent econometric equivalence between that structural model and the estimation approach used in Abel and Mishkin (1983), how might the coefficients from the structural model be recovered from the latter approach?</p></li>
+</ol>
+<!-- 4. This critique implies a causal interpretation of the coefficients in Sloan (1996).  --><ol start="4" type="1">
+<li><p>この批判は、Sloan (1996) の係数に因果関係の解釈が含まれていることを示唆している。 <!-- How might the critique of Kraft et al. (2007) be represented on the causal diagrams above?  --> Kraft et al.&nbsp;(2007) の批判は、上記の因果関係図にどのように表現されるだろうか？ <!-- How persuasive do you find the critique of Kraft et al. (2007) to be? --> Kraft et al.&nbsp;(2007) の批判はどの程度説得力があると感じるだろうか？</p></li>
+<li><p>Apart from the different data sources used, another difference between the simulation analysis earlier in this chapter and the regression analysis in Table 3 of Sloan (1996) is the regression model used. Modify the code below to incorporate the appropriate formulas for cash flow from operating activities (cfo) and accruals (acc). Then replicate the pooled analysis of Panel A of Table 3 of Sloan (1996) using the resulting sim_reg_data data frame. What do you observe?</p></li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>sim_reg_data <span class="ot">&lt;-</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>  res_df <span class="sc">|&gt;</span></span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">cfo =</span> [PUT CALC HERE], <span class="at">acc =</span> [PUT CALC HERE]) <span class="sc">|&gt;</span></span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(id) <span class="sc">|&gt;</span></span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(id, year) <span class="sc">|&gt;</span></span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">lag_cfo =</span> <span class="fu">lag</span>(cfo),</span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">lag_acc =</span> <span class="fu">lag</span>(acc)) <span class="sc">|&gt;</span></span>
+<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="6" type="1">
+<li>Which hypothesis does Figure 1 of Sloan (1996) relate to? What aspects of the plot make it easier or more difficult to interpret the results? The following code replicates a version of Figure 1 from Sloan (1996) using our simulated data. On the basis of Figures 15.3–15.5 and the arguments given in Sloan (1996), is H1 true in our simulated data? Given the other analysis above, is H1 true in our simulated data?</li>
+</ol>
+<div class="cell">
+<div class="sourceCode" id="cb39"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">year_of_event</span> <span class="op">&lt;-</span> <span class="fl">10</span></span>
+<span></span>
+<span><span class="va">decile_data</span> <span class="op">&lt;-</span></span>
+<span>  <span class="va">sim_reg_data</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">year</span> <span class="op">==</span> <span class="va">year_of_event</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">mutate</span><span class="op">(</span>cfo_decile <span class="op">=</span> <span class="fu">ntile</span><span class="op">(</span><span class="va">cfo</span>, <span class="fl">10</span><span class="op">)</span>,</span>
+<span>         ni_decile <span class="op">=</span> <span class="fu">ntile</span><span class="op">(</span><span class="va">ni</span>, <span class="fl">10</span><span class="op">)</span>,</span>
+<span>         acc_decile <span class="op">=</span> <span class="fu">ntile</span><span class="op">(</span><span class="va">acc</span>, <span class="fl">10</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">select</span><span class="op">(</span><span class="va">id</span>, <span class="fu">ends_with</span><span class="op">(</span><span class="st">"decile"</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">reg_data_deciles</span> <span class="op">&lt;-</span></span>
+<span>  <span class="va">sim_reg_data</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">inner_join</span><span class="op">(</span><span class="va">decile_data</span>, by <span class="op">=</span> <span class="st">"id"</span><span class="op">)</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<!-- The following code produces Figure 15.3: -->
+<p>次のコードは、図15.3を生成する。</p>
+<div class="cell">
+<div class="sourceCode" id="cb40"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">reg_data_deciles</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">ni_decile</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">10</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">mutate</span><span class="op">(</span>ni_decile <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">as.factor</a></span><span class="op">(</span><span class="va">ni_decile</span><span class="op">)</span>,</span>
+<span>         event_year <span class="op">=</span> <span class="va">year</span> <span class="op">-</span> <span class="va">year_of_event</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">ni_decile</span>, <span class="va">year</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">summarize</span><span class="op">(</span>ni <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">ni</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>, .groups <span class="op">=</span> <span class="st">"drop"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, y <span class="op">=</span> <span class="va">ni</span>, group<span class="op">=</span> <span class="va">ni_decile</span>, color <span class="op">=</span> <span class="va">ni_decile</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_line</span><span class="op">(</span><span class="op">)</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<!-- The following code produces Figure 15.4: -->
+<p>次のコードは、図15.4を生成する。</p>
+<div class="cell">
+<div class="sourceCode" id="cb41"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">reg_data_deciles</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">cfo_decile</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">10</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">mutate</span><span class="op">(</span>cfo_decile <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">as.factor</a></span><span class="op">(</span><span class="va">cfo_decile</span><span class="op">)</span>,</span>
+<span>         event_year <span class="op">=</span> <span class="va">year</span> <span class="op">-</span> <span class="va">year_of_event</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">cfo_decile</span>, <span class="va">year</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">summarize</span><span class="op">(</span>ni <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">ni</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>, .groups <span class="op">=</span> <span class="st">"drop"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, y <span class="op">=</span> <span class="va">ni</span>, group <span class="op">=</span> <span class="va">cfo_decile</span>, color <span class="op">=</span> <span class="va">cfo_decile</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_line</span><span class="op">(</span><span class="op">)</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<!-- The following code produces Figure 15.5: -->
+<p>次のコードは、図15.5を生成する。</p>
+<div class="cell">
+<div class="sourceCode" id="cb42"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">reg_data_deciles</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">acc_decile</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">10</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">mutate</span><span class="op">(</span>acc_decile <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">as.factor</a></span><span class="op">(</span><span class="va">acc_decile</span><span class="op">)</span>,</span>
+<span>         event_year <span class="op">=</span> <span class="va">year</span> <span class="op">-</span> <span class="va">year_of_event</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">acc_decile</span>, <span class="va">year</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">summarize</span><span class="op">(</span>ni <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">ni</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>, .groups <span class="op">=</span> <span class="st">"drop"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, y <span class="op">=</span> <span class="va">ni</span>, group <span class="op">=</span> <span class="va">acc_decile</span>, color <span class="op">=</span> <span class="va">acc_decile</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_line</span><span class="op">(</span><span class="op">)</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<!-- ##  Accrual anomaly -->
+</section></section><section id="アクルーアルアノマリー" class="level2" data-number="7.5"><h2 data-number="7.5" class="anchored" data-anchor-id="アクルーアルアノマリー">
+<span class="header-section-number">7.5</span> アクルーアル・アノマリー</h2>
+<!-- Table 6 of Sloan (1996) provides evidence that the market’s apparent mispricing of accruals implies trading strategies that give rise to abnormal returns. -->
+<p>Sloan (1996) の Table 6 は、市場がアクルーアルを誤って価格設定していることから、異常リターンを生む取引戦略を示している。 <!-- Such strategies are generally termed anomalies because they seem inconsistent with the efficient markets hypothesis (see Section 10.1). --> このような戦略は一般的にアノマリーと呼ばれ、効率的市場仮説と矛盾しているように見える（10.1節を参照）。 <!-- Fama and French (2008, p. 1653) define anomalies as "patterns in average stock returns that … are not explained by the Capital Asset Pricing Model (CAPM)." --> Fama and French (2008, p.&nbsp;1653) は、アノマリーを「平均株価リターンのパターンであり、…資本資産価格モデル(CAPM)で説明されない」と定義している。 <!-- Implicit in the Fama and French (2008) seems to be the notion that the CAPM is the true model of market risk and a general version of the definition of Fama and French (2008) would replace the CAPM with the posited true model of market risk. --> Fama and French (2008) には、CAPMが市場リスクの真のモデルであるという概念が含まれているように思われ、Fama and French (2008) の定義の一般的なバージョンでは、CAPMを仮定された市場リスクの真のモデルに置き換えることになる。 <!-- Dechow et al. (2011, p. 23) argue that “the accrual anomaly is not really an anomaly at all. --> Dechow et al.&nbsp;(2011, p.&nbsp;23) は、「アクルーアル異常は実際には全く異常ではない」と主張している。 <!-- In fact, the original research documenting the accrual anomaly predicted that it would be there. --> 実際、アクルーアル異常を文書化した最初の研究は、それが存在すると予測していた。 <!-- The term anomaly is usually reserved for behavior that deviates from existing theories, but when Sloan (1996) first documented the accrual anomaly, he was testing a well-known theory and found that it was supported.” --> アノマリーという用語は、既存の理論から逸脱する行動に通常予約されているが、Sloan (1996) が最初にアクルーアル異常を文書化したとき、彼はよく知られた理論を検証して、それが支持されたことを発見した。</p>
+<!-- While Table 6 provides portfolio returns for years $t+1$, $t+2$, and $t+3$, we only collected returns for year $t+1$ in the steps above. -->
+<p>Table 6 は、年 <span class="math inline">t+1</span> ， <span class="math inline">t+2</span> ，および <span class="math inline">t+3</span> のポートフォリオリターンを提供しているが、上記の手順では年 <span class="math inline">t+1</span> のリターンのみを収集している。 <!-- Therefore, Table 15.11 only replicates the first column of Table 6 of Sloan (1996). --> したがって、Table 15.11 は Sloan (1996) の Table 6 の最初の列のみを再現している。</p>
+<div class="cell">
+<div class="sourceCode" id="cb43"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">fm</span> <span class="op">&lt;-</span></span>
+<span>  <span class="va">reg_data</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">fyear</span>, <span class="va">acc_decile</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">summarize</span><span class="op">(</span>size_adj_ret <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">size_adj_ret</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
+<span>            .groups <span class="op">=</span> <span class="st">"drop"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">mutate</span><span class="op">(</span>acc_decile <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">as.factor</a></span><span class="op">(</span><span class="va">acc_decile</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">size_adj_ret</span> <span class="op">~</span> <span class="va">acc_decile</span> <span class="op">-</span> <span class="fl">1</span>, data <span class="op">=</span> <span class="va">_</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">modelsummary</span><span class="op">(</span><span class="va">fm</span>,</span>
+<span>             estimate <span class="op">=</span> <span class="st">"{estimate}{stars}"</span>,</span>
+<span>             gof_map <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"nobs"</span>, <span class="st">"r.squared"</span><span class="op">)</span>,</span>
+<span>             stars <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'*'</span> <span class="op">=</span> <span class="fl">.1</span>, <span class="st">'**'</span> <span class="op">=</span> <span class="fl">0.05</span>, <span class="st">'***'</span> <span class="op">=</span> <span class="fl">.01</span><span class="op">)</span><span class="op">)</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb44"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">hedge_ret</span> <span class="op">&lt;-</span> <span class="va">fm</span><span class="op">$</span><span class="va">coefficients</span><span class="op">[</span><span class="st">"acc_decile1"</span><span class="op">]</span> <span class="op">-</span> <span class="va">fm</span><span class="op">$</span><span class="va">coefficients</span><span class="op">[</span><span class="st">"acc_decile10"</span><span class="op">]</span></span>
+<span><span class="va">p_val</span> <span class="op">&lt;-</span> <span class="fu">linearHypothesis</span><span class="op">(</span><span class="va">fm</span>, <span class="st">"acc_decile1 = acc_decile10"</span><span class="op">)</span><span class="op">$</span><span class="va">`Pr(&gt;F)`</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<!-- The hedge portfolio return (hedge_ret) is 0.1322 with a p-value of 4.4e-06 (p_val). -->
+<p>ヘッジポートフォリオリターン (hedge_ret) は 0.1322 で、p値は 4.4e-06 (p_val) です。</p>
+<!-- ### Discussion questions -->
+<section id="ディスカッション問題2" class="level3" data-number="7.5.1"><h3 data-number="7.5.1" class="anchored" data-anchor-id="ディスカッション問題2">
+<span class="header-section-number">7.5.1</span> ディスカッション問題2</h3>
+<!-- 1. In estimating the hedge portfolio regression, we included a line summarize(size_adj_ret = mean(size_adj_ret)). -->
+<ol type="1">
+<li><p>ヘッジポートフォリオ回帰を推定する際、size_adj_ret = mean(size_adj_ret) を含めた理由は何ですか？ <!-- Why is this step important? --> なぜこのステップが重要なのですか？</p></li>
+<li><p>Green et al.&nbsp;(2011) say “the simplicity of the accruals strategy and the size of the returns it generates have led some scholars to conclude that the anomaly is illusory. Green et al.&nbsp;(2011)は、「アクルーアル戦略の単純さとそれが生み出すリターンの大きさが、一部の学者たちに、この異常は幻想であると結論付けさせた」と述べている。 <!-- For example, Khan (2008) and Wu et al. (2010) argue that the anomaly can be explained by a mis-specified risk model and the q-theory of time-varying discount rates, respectively; Desai et al. (2004) conclude that the anomaly is deceptive because it is subsumed by a different strategy; Kraft et al. (2006) attribute it to outliers and look-ahead biases; Ng (2005) proposes that the anomaly’s abnormal returns are compensation for high exposure to bankruptcy risk; and Zach (2006) argues that there are firm characteristics correlated with accruals that cause the return pattern.” --> たとえば，Khan (2008) や Wu et al.&nbsp;(2010) は，異常は誤ったリスクモデルや時間変動する割引率のq理論によって説明できると主張している。Desai et al.&nbsp;(2004) は，異常は異なる戦略に包含されているため欺瞞的であると結論付けている。Kraft et al.&nbsp;(2006) は，外れ値や先読みバイアスに帰する。Ng (2005) は，異常リターンは破産リスクへの高い露出の補償であると提案している。Zach (2006) は，アクルーアルと相関する企業特性がリターンパターンを引き起こすと主張している。 <!-- Looking at Sloan (1996), but without necessarily looking at each of the papers above, what evidence in Sloan (1996) seems inconsistent with the claims made by each paper above?  --> Sloan (1996) を見ると、上記の各論文で述べられている主張と矛盾すると思われる Sloan (1996) の証拠は何か？ <!-- Which do you think you would need to look more closely at the paper to understand?  --> 上記の各論文で述べられている主張と矛盾すると思われる Sloan (1996) の証拠は何か？ <!-- What evidence do you think Zach (2006) would need to provide to support the claim of an alternative “cause”? --> Zach (2006) が代替の「原因」を主張するために提供する必要がある証拠は何か？</p></li>
+</ol>
+<!-- 3. Do Green et al. (2011) address the alternative explanations advanced in the quote in Q1 above?  --><p>Green et al.&nbsp;(2011) は、Q1で引用された代替説明に対処しているか？ <!-- Do you think that they need to do so? --> 彼らはそうする必要があると思うか？</p>
+<!-- 4. How persuasive do you find the evidence regarding the role of hedge funds provided by Green et al. (2011)? -->
+<p>Green et al.&nbsp;(2011) が提供するヘッジファンドの役割に関する証拠はどの程度説得力があると思いますか？</p>
+<!-- 5. Xie (2001) (p. 360) says that "for firm-years prior to 1988 when Compustat item #308 is unavailable, I estimate  as follows …". -->
+<ol start="5" type="1">
+<li>Xie (2001, p.360)は、「Compustatのアイテム#308が利用できない1988年以前の企業年度については、次のように推定する…」と述べている。 <!-- Why would item #308 be unavailable prior to 1988? What is the equivalent to #308 in Compustat today? --> なぜアイテム#308が1988年以前に利用できないのか？ Compustatの現在の#308に相当するものは何か？</li>
+</ol>
+<!-- 6. Study the empirical model on p.361 of Xie (2001), which is labelled equation (1). --><p>Xie (2001) の p.361 にラベル付けされた実証モデル(式1)を調べなさい。 <!-- (This is the much-used “Jones model” from Jones (1991), which we examine in Chapter 16.) --> (これは、Jones (1991) の「ジョーンズモデル」であり、第16章で説明する。) <!-- What are the assumptions implicit in this model and the labelling of the residual as “abnormal accruals”? --> このモデルと残差を「異常アクルーアル」とラベル付けする際の暗黙の仮定は何か？ <!-- (Hint: Take each component of the model and identify circumstances where it would be a reasonable model of “normal” accruals.) --> (ヒント: モデルの各構成要素を取り上げ、「通常の」アクルーアルの合理的なモデルとなる状況を特定しなさい。)</p>
+<!-- 7. What is “channel stuffing”? -->
+<p>「チャネルスタッフィング」とは何か？ <!-- (Hint: Wikipedia has a decent entry on this.) --> (ヒント: Wikipediaにはこれについてのまともなエントリがある。) <!-- What effect would channel stuffing have on abnormal accruals? --> チャネルスタッフィングが異常アクルーアルに与える影響は何か？ <!-- (Hint: Think about this conceptually and with regard to equation (1). --> (ヒント: これを概念的に、および式(1)に関して考えてみなさい。) <!-- Do you need more information than is provided in Xie (2001) to answer this?) --> これに答えるために、Xie (2001) で提供されている情報以上の情報が必要か？</p>
+
+
+</section></section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><hr>
+<ol>
+<li id="fn1"><p>This is one definition that can be tightened and vary by context.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>Wickham et al.&nbsp;(2023, p.441) suggest that “a good rule of thumb is to consider writing a function whenever you’ve copied and pasted a block of code more than twice.”<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>Indeed, this is the process often used to create a function like this in the first place.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>Recall from Chapter 12 that a header variable is one where only the most recent value is retained in the database.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>We introduced the lag() function in Chapters 7 and 8.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p>Chapter 19 of Wickham (2019) has more details on this “unquote” operator !!.<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7"><p>Note that Mishkin (1983) is actually critiquing a different econometric procedure whereby residuals from the first regression are included in a version of the second, but the quoted criticism is equally applicable to the procedure we describe here.<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn8"><p>This is apparent from inspection of the Stata .ado file provided by Judson Caskey to implement the Mishkin (1983) approach at https://sites.google.com/site/judsoncaskey/data.<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn9"><p>Note that Kraft et al.(2007) appear to assume that the OLS test used by Mishkin (1983) is the same as the test proposed in Abel and Mishkin (1983), but differences in these tests do not affect the substance of the discussion of Abel and Mishkin (1983).<a href="#fnref9" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "コピーしました");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "コピーしました");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+          // default icon
+          link.classList.add("external");
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script><nav class="page-navigation"><div class="nav-page nav-page-previous">
+      <a href="./chap13_Event.html" class="pagination-link" aria-label="イベント・スタディ">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">イベント・スタディ</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./chap16_em.html" class="pagination-link" aria-label="利益マネジメント">
+        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">利益マネジメント</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer"><div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Copyright 2024, Soichi Matsuura</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+<li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/ma2ura">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/matsuura_rits">
+      <i class="bi bi-twitter" role="img" aria-label="Twitter">
+</i> 
+    </a>
+  </li>  
+</ul>
+</div>
+  </div>
+</footer>
+
+
+</body></html>

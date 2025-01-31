@@ -1,0 +1,1666 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.40">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>8&nbsp; 利益マネジメント – Empirical Research in Accounting</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./appA_LinearAlgebra.html" rel="next">
+<link href="./chap15_accruals.html" rel="prev">
+<link href="./img/favicon.ico" rel="icon">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-1092c56c6cadf2eb47b1bc8063ab382a.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-1092c56c6cadf2eb47b1bc8063ab382a.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-88c88708faf0c485c0387dba1f6eb15f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-2e8bc3580cc84ea2920b26bb0544913d.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark"><script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "一致なし",
+    "search-matching-documents-text": "一致した文書",
+    "search-copy-link-title": "検索へのリンクをコピー",
+    "search-hide-matches-text": "追加の検索結果を非表示",
+    "search-more-match-text": "追加の検索結果",
+    "search-more-matches-text": "追加の検索結果",
+    "search-clear-button-title": "消去",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "取消",
+    "search-submit-button-title": "検索",
+    "search-label": "サーチ"
+  }
+}</script><link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
+<script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script><script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script><script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script><script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+<meta name="twitter:title" content="8&nbsp; 利益マネジメント – Empirical Research in Accounting">
+<meta name="twitter:description" content="">
+<meta name="twitter:card" content="summary">
+</head>
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="サイドバーを切り替える" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./chap10_FFJR.html">資本市場研究</a></li><li class="breadcrumb-item"><a href="./chap16_em.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">利益マネジメント</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="サイドバーを切り替える" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="サーチ" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Empirical Research in Accounting</a> 
+        <div class="sidebar-tools-main">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="ダークモードの切り替え"><i class="bi"></i></a>
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="リーダーモードの切り替え">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="サーチ"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">序論</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">基礎</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="セクションを切り替え">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chap01_Introduction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">はじめに</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chap09_import.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">データを読み込む</span></span></a>
+  </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">資本市場研究</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="セクションを切り替え">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chap10_FFJR.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">FFJR</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chap11_BB1968.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Ball and Brown (1968)</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chap12_Beaver1968.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Beaver (1968)</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chap13_Event.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">イベント・スタディ</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chap15_accruals.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">アクルーアル</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chap16_em.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">利益マネジメント</span></span></a>
+  </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">因果推論</span></span>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">追加的なトピック</span></span>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+ <span class="menu-text">付録</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="セクションを切り替え">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./appA_LinearAlgebra.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">線形代数</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./appB_SQL.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">SQL入門</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./appC_Computing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">研究のためのコンピュータ概論</span></span></a>
+  </div>
+</li>
+      </ul>
+</li>
+    </ul>
+</div>
+</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">目次</h2>
+   
+  <ul>
+<li>
+<a href="#%E5%88%A9%E7%9B%8A%E3%83%9E%E3%83%8D%E3%82%B8%E3%83%A1%E3%83%B3%E3%83%88%E3%82%92%E6%B8%AC%E5%AE%9A%E3%81%99%E3%82%8B" id="toc-利益マネジメントを測定する" class="nav-link active" data-scroll-target="#%E5%88%A9%E7%9B%8A%E3%83%9E%E3%83%8D%E3%82%B8%E3%83%A1%E3%83%B3%E3%83%88%E3%82%92%E6%B8%AC%E5%AE%9A%E3%81%99%E3%82%8B"><span class="header-section-number">8.1</span> 利益マネジメントを測定する</a>
+  <ul class="collapse">
+<li><a href="#discussion-questions" id="toc-discussion-questions" class="nav-link" data-scroll-target="#discussion-questions"><span class="header-section-number">8.1.1</span> Discussion questions</a></li>
+  </ul>
+</li>
+  <li><a href="#%E5%88%A9%E7%9B%8A%E3%83%9E%E3%83%8D%E3%82%B8%E3%83%A1%E3%83%B3%E3%83%88%E5%B0%BA%E5%BA%A6%E3%81%AE%E8%A9%95%E4%BE%A1" id="toc-利益マネジメント尺度の評価" class="nav-link" data-scroll-target="#%E5%88%A9%E7%9B%8A%E3%83%9E%E3%83%8D%E3%82%B8%E3%83%A1%E3%83%B3%E3%83%88%E5%B0%BA%E5%BA%A6%E3%81%AE%E8%A9%95%E4%BE%A1"><span class="header-section-number">8.2</span> 利益マネジメント尺度の評価</a></li>
+  <li><a href="#results-under-the-null-hypothesis-random-firms" id="toc-results-under-the-null-hypothesis-random-firms" class="nav-link" data-scroll-target="#results-under-the-null-hypothesis-random-firms"><span class="header-section-number">8.3</span> Results under the null hypothesis: Random firms</a></li>
+  <li><a href="#%E5%B8%B0%E7%84%A1%E4%BB%AE%E8%AA%AC%E4%B8%8B%E3%81%AE%E7%B5%90%E6%9E%9C%E6%A5%B5%E7%AB%AF%E3%81%AA%E3%83%91%E3%83%95%E3%82%A9%E3%83%BC%E3%83%9E%E3%83%B3%E3%82%B9" id="toc-帰無仮説下の結果極端なパフォーマンス" class="nav-link" data-scroll-target="#%E5%B8%B0%E7%84%A1%E4%BB%AE%E8%AA%AC%E4%B8%8B%E3%81%AE%E7%B5%90%E6%9E%9C%E6%A5%B5%E7%AB%AF%E3%81%AA%E3%83%91%E3%83%95%E3%82%A9%E3%83%BC%E3%83%9E%E3%83%B3%E3%82%B9"><span class="header-section-number">8.4</span> 帰無仮説下の結果：極端なパフォーマンス</a></li>
+  <li><a href="#%E8%AD%B0%E8%AB%96%E3%81%AE%E8%B3%AA%E5%95%8F%E3%81%A8%E6%BC%94%E7%BF%92" id="toc-議論の質問と演習" class="nav-link" data-scroll-target="#%E8%AD%B0%E8%AB%96%E3%81%AE%E8%B3%AA%E5%95%8F%E3%81%A8%E6%BC%94%E7%BF%92"><span class="header-section-number">8.5</span> 議論の質問と演習</a></li>
+  <li><a href="#power-of-tests-of-earnings-management" id="toc-power-of-tests-of-earnings-management" class="nav-link" data-scroll-target="#power-of-tests-of-earnings-management"><span class="header-section-number">8.6</span> Power of tests of earnings management</a></li>
+  <li><a href="#discussion-questions-1" id="toc-discussion-questions-1" class="nav-link" data-scroll-target="#discussion-questions-1"><span class="header-section-number">8.7</span> Discussion questions</a></li>
+  </ul></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./chap10_FFJR.html">資本市場研究</a></li><li class="breadcrumb-item"><a href="./chap16_em.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">利益マネジメント</span></a></li></ol></nav><div class="quarto-title">
+<h1 class="title">
+<span class="chapter-number">8</span>&nbsp; <span class="chapter-title">利益マネジメント</span>
+</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header><!-- A significant body of accounting research focuses on earnings management.  --><p>利益マネジメントに焦点を当てた会計研究が数多く存在する。 <!-- One definition of earnings management might be "intervention by managers in the accounting process with a view to achieving
+financial reporting outcomes that benefit managers." --> 利益マネジメントの定義の1つは、「経営者にベネフィットをもたらす財務報告結果を達成することを目的とした，経営者による会計プロセスへの介入」というものである。</p>
+<!-- A classic form of earnings management is channel stuffing, which is a way for a company to report higher sales (and perhaps higher profits) in a period by pushing more products through a distribution channel than is needed to meet underlying demand.  -->
+<p>古典的な利益マネジメントの形態の1つに<strong>チャネル・スタッフィング</strong>(channel stuffing)がある。 これは、実際の需要を超える製品を流通チャネルを押し込むことで、企業がある期間の売上高（場合によっては利益）をより高く見せる手法である。 <!-- A classic case of channel stuffing involved the Contact Lens Division ("CLD") of Bausch and Lomb ("B&L"). --> チャネル・スタッフィングの古典的な事例として、ボシュロム（B&amp;L）のコンタクトレンズ部門（CLD）が関与したものがある。 <!-- According to the SEC, "B&L materially overstated its net income for 1993 by improperly recognizing revenue from the sale of contact lenses.  --> 米国証券取引委員会(SEC)によると、「ボシュロムはコンタクトレンズの売上高を不適切に認識することにより、1993年の純利益を実質的に過大に報告した。 <!-- These overstatements of revenue ... arose from sales of significant amounts of contact lenses to the CLD's distributors less than two weeks before B&L's 1993 fiscal year-end in connection with a marketing program that effectively resulted in consignment sales."  --> これらの売上高の過大報告は、ボシュロムの1993年度末までの2週間以内にCLDの販売代理店に大量のコンタクトレンズを販売し、事実上委託販売となったマーケティングプログラムに関連して発生した。 <!-- In the case, the sales were not appropriately recognized as revenue during fiscal 1993 because "certain employees of the CLD granted unauthorized rights of return to certain distributors and shipped contact lenses after the fiscal year-end." --> この事例では，「コンタクトレンズ部門の従業員が特定の代理店に対して無許可の返品権を与え、期末後にコンタクトレンズを出荷した」ため、1993年の売上高が適切に認識されなかった。</p>
+<!-- While B&L's channel stuffing was clearly earnings management (and in violation of generally accepted accounting principles, or GAAP), firms may engage in less extreme practices that are motivated by a desire to deliver higher sales in the current period, but do not involve any violation of GAAP or direct manipulation of the accounting process, yet would be generally regarded as earnings management.  -->
+<p>ボシュロムのチャネル・スタッフィングは明らかに利益マネジメントであり（一般に公正妥当と認められる会計原則, GAAPに違反している）、企業は当期により高い売上高を達成したいという動機から、より極端でない会計慣行に従事する場合がある。これらはGAAPや会計処理の直接的な操作には違反しないものの，一般的には利益マネジメントと見なされるだろう。 <!-- In such cases, earnings management is achieved by so-called real activities (i.e., those affecting business realities such as when products are delivered) and this form of earnings management is called real earnings management. --> このような場合、利益マネジメントは、いわゆる実際の活動（つまり、製品が配送されるときなどのビジネスの現実に影響を与えるもの）によって達成され、この形態の利益マネジメントは<strong>実体的利益マネジメント</strong>(real earnings management)と呼ばれる。 <!-- Thus, not all forms of earnings management involve direct manipulation of the accounting process. --> したがって、利益マネジメントのすべての形態が会計プロセスの直接的な操作を含むわけではない。</p>
+<!-- But once we allow for real earnings management, it can be difficult to distinguish, even in principle, actions taken to increase firm value that happen to benefit managers because of their financial reporting effects from actions that might fit more conventional notions of earnings management. -->
+<p>しかし、実体的利益マネジメントを許容すると、原則として、会社価値を高めるために行われた行動と、財務報告の影響によって経営者に利益をもたらす行動を区別することは困難になるかもしれない。</p>
+<!-- Another difficulty discussed by Beaver (1998) is the existence of alternative views of earnings management. -->
+<p>Beaver (1998)が議論したもう1つの困難は、利益マネジメントの代替的な見方が存在することである。 <!-- While actions by managers to “manipulate the financial reporting system in ways that enhance management’s well-being to the [detriment] of capital suppliers and others” (Beaver, 1998, p. 84) clearly meet the definition above, it is possible that earnings management allows managers “to reveal … private information to investors.” --> 「経営者が資本提供者やその他の人々にとって不利益となる方法で財務報告システムを操作する」(Beaver、1998年, p.84)という定義を満たす行動は明らかであるが、利益マネジメントによって経営者が「投資家に向けて…私的情報(private information)を明らかにする」ことが可能である。</p>
+<!-- We also note that Beaver (1998, p. 83) views earnings management as just one form a wide class of "discretionary behaviour", which also includes voluntary disclosures, such as earnings forecasts. -->
+<p>また本書では、Beaver (1998, p.83)が利益マネジメントを利益予測などの自発的開示を含む広範な「裁量的行動」の1つの形態と見なしていることにも注意する。</p>
+<div class="callout callout-style-simple callout-tip">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<!-- The code in this chapter uses the packages listed below. -->
+<p>本章のコードは以下のパッケージを使用する。 <!-- Rather than invoking several Tidyverse packages separately, we load the tidyverse package.  --> tidyverseパッケージを個別に呼び出す代わりに、tidyverseパッケージを読み込む。 <!-- For instructions on how to set up your computer to use the code found in this book, see Section 1.2. --> この本のコードを使用するためのコンピュータの設定方法については、1.2節を参照せよ。 <!-- Quarto templates for the exercises below are available on GitHub. --> 以下の演習問題のQuartoテンプレートはGitHubで入手できる。</p>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">pacman</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/pacman/man/p_load.html">p_load</a></span><span class="op">(</span><span class="va">tidyverse</span>, <span class="va">DBI</span>, <span class="va">farr</span>, <span class="va">broom</span>, <span class="va">furrr</span><span class="op">)</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="利益マネジメントを測定する" class="level2" data-number="8.1"><h2 data-number="8.1" class="anchored" data-anchor-id="利益マネジメントを測定する">
+<span class="header-section-number">8.1</span> 利益マネジメントを測定する</h2>
+<!-- Even putting aside definitional issues, a challenge for researchers seeking to understand earnings management - the prevalence of the mechanisms through which it is achieved, and the effects that it has - is detecting and measuring it.  -->
+<p>定義上の問題を置いておいても、利益マネジメントを理解しようとする研究者にとっての課題は、それを検出し、測定することである。 <!-- In this section, we use discussion questions to explore two early papers (Jones, 1991; McNichols and Wilson, 1988) that illustrate some key issues and approaches that researchers have used to address these. --> この節では、2つの初期の論文（Jones, 1991; McNichols and Wilson, 1988）を用いて、研究者がこれらの問題に取り組むために使用してきたいくつかの主要な問題やアプローチを探るために、ディスカッション問題を用いる。</p>
+<section id="discussion-questions" class="level3" data-number="8.1.1"><h3 data-number="8.1.1" class="anchored" data-anchor-id="discussion-questions">
+<span class="header-section-number">8.1.1</span> Discussion questions</h3>
+<!-- 1. Jones (1991) focuses on a small number of firms. Why does Jones (1991) have such a small sample? What are the disadvantages of a small sample? Are there advantages of a smaller sample or narrower focus? -->
+<ol type="1">
+<li>Jones (1991)は少数の企業に焦点を当てている。なぜJones (1991)はそのように小さなサンプルを持っているのか？小さなサンプルの欠点は何か？小さなサンプルや狭い焦点の利点はあるか？</li>
+</ol>
+<!-- 2. What are the primary conclusions of Jones (1991)?  --><ol start="2" type="1">
+<li>Jones (1991)の主な結論は何か？ <!-- Which table presents the main results of Jones (1991)?  --> Jones (1991)の主な結果を示しているのはどの表か？ <!-- Describe the empirical test used in that table. Can you suggest an alternative approach?  --> その表で使用されている実証テストを説明してください。代替手法を提案できますか？ <!-- What do you see as the primary challenges to the conclusions of Jones (1991)? --> Jones (1991)の結論に対する主な課題は何だと思いますか？</li>
+</ol>
+<!-- 3. Can you think of refinements to the broad research question? What tests might you use to examine these? --><ol start="3" type="1">
+<li>広範な研究問題についてどのような改良案が思い浮かびますか？これらを検討するためにどのようなテストを使用するか？</li>
+</ol>
+<!-- 4. McNichols and Wilson (1988) state at the outset that their paper “examines whether managers manipulate earnings.”  --><ol start="4" type="1">
+<li>McNichols and Wilson (1988)は、論文の冒頭で「経営者が利益を操作しているかどうかを検証する」と述べています。 <!-- Is this a good statement of the main research question of McNichols and Wilson (1988)?  --> これは、McNichols and Wilson (1988)の主要な研究課題をよく表しているか？ <!-- If not, suggest an alternative summary of the research questions of McNichols and Wilson (1988). --> そうでない場合、McNichols and Wilson (1988)の研究問題の代替の要約を提案しなさい。</li>
+</ol>
+<!-- 5. What do McNichols and Wilson (1988) mean by "nondiscretionary accruals?" --><ol start="5" type="1">
+<li>McNichols and Wilson (1988)のいう「非裁量的アクルーアル」とは何を意味しているのか？ <!-- How "operationalizable" is this concept?[^1] --> この概念はどれだけ「操作可能」か？<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>
+</li>
+</ol>
+<!-- 6. McNichols and Wilson (1988) say “if were observable, accrual-based tests of earnings management would be expressed in terms of the following regression: --><ol start="6" type="1">
+<li>McNichols and Wilson (1988)は、「観測可能であれば、利益マネジメントのアクルーアルに基づくテストは、次の回帰式で表される」と述べている。</li>
+</ol>
+<p><span class="math display">
+DA = \alpha + \beta PART + \varepsilon
+</span></p>
+<!-- where $PART$ is a dummy variable that partitions the data into two groups for which earnings management predictions are specified”.  -->
+<p>ここで、　<span class="math inline">PART</span>　はデータを2つのグループに分割し、利益マネジメントの予測が指定されたダミー変数である」と述べている。 <!-- Healy (1985) points out that bonus plans can give managers incentives to increase earnings or decrease earnings depending on the situation.  --> Healy (1985)は、ボーナス制度が、状況に応じて経営者に利益を増やすか減らすかのインセンティブを与えることを指摘している。 <!-- How is this problematic for the formulation of McNichols and Wilson (1988) above?  --> これは、上記のMcNichols and Wilson (1988)の定式化にとって問題となるのはなぜか？ <!-- How might a researcher address this? --> 研究者はどのように対処すべきだろうか？</p>
+<!-- 7. What are the benefits and costs of focusing on a single item (bad debt expense) in a study of earnings management? -->
+<ol start="7" type="1">
+<li>利益マネジメントの研究で1つの項目（貸倒引当金）に焦点を当てる利点と欠点は何か？</li>
+</ol>
+<!-- 8. The main results of McNichols and Wilson (1988) are in Tables 6 and 7.  --><ol start="8" type="1">
+<li>McNichols and Wilson (1988)の主な結果は、表6と表7にある。 <!-- How persuasive do you find the evidence of earnings management found in the “residual provision” columns of those tables? --> これらの表の「残存規定」列に見られる利益マネジメントの証拠はどれほど説得力があるのか？</li>
+</ol>
+<!-- 9. How well does the framework apply to Jones (1991)? Does the framework require modification for this paper? In which periods would be set to one in Jones (1991)? --><ol start="9" type="1">
+<li>このフレームワークはJones (1991)に適用されていますか？この論文にはフレームワークの修正が必要か？ Jones (1991)ではどの期間が1に設定されるのか？</li>
+</ol>
+<!-- ## Evaluating measures of earnings management --></section></section><section id="利益マネジメント尺度の評価" class="level2" data-number="8.2"><h2 data-number="8.2" class="anchored" data-anchor-id="利益マネジメント尺度の評価">
+<span class="header-section-number">8.2</span> 利益マネジメント尺度の評価</h2>
+<!-- A natural question that arises is how well measures of earnings management such as that used in Jones (1991) perform. -->
+<p>自然な疑問として、Jones (1991)で使用されているような利益マネジメントの尺度がどれほどうまく機能するかということが挙げられる。 <!-- An ideal measure would detect earnings management when it is present, but not detect earnings management when it is absent. --> 理想的な尺度は、利益マネジメントが存在するときにはそれを検出し、利益マネジメントが存在しないときにはそれを検出しない。 <!-- This leads to two questions. --> これにより、2つの疑問が生じる。 <!-- First, how well does a given measure detect earnings management when it is present? --> 第1に、利益マネジメントが存在するときに、どのようにして特定の尺度が利益マネジメントを検出するか？ <!-- Second, how does a given measure behave when earnings management is not present? --> 第2に、利益マネジメントが存在しないときに、特定の尺度がどのように振る舞うか？</p>
+<!-- Dechow et al. (1995) evaluate five earnings management measures from prior research on these terms. -->
+<p>Dechow et al.&nbsp;(1995) は、これらの条件に基づいて、先行研究からの5つの利益マネジメント尺度を評価している。 <!-- Each of these measures uses an estimation period to create a model of non-discretionary accruals which is then applied to measure discretionary accruals for a test period as the difference between total accruals and estimated non-discretionary accruals. --> これらの尺度のそれぞれは、推定期間を使用して非裁量的アクルーアルのモデルを作成し、その後、推定された非裁量的アクルーアルとの差として、テスト期間の裁量的アクルーアルを測定する。 <!-- Assuming that the estimation period runs from $t=1$ to $t = T$, these measures are defined, for firm $i$ in year $\tau$, as follows: --> 推定期間が<span class="math inline">t=1</span>から<span class="math inline">t=T</span>までであると仮定すると、これらの尺度は、企業<span class="math inline">i</span>の年度<span class="math inline">\tau</span>について以下のように定義される。</p>
+<!-- - The Healy Model (Healy, 1985) measures non-discretionary accruals as mean total accruals during the estimation period -->
+<ul>
+<li>Healyモデル（Healy、1985）は、推定期間中の平均総アクルーアルを非裁量的アクルーアルとして測定する。</li>
+</ul>
+<p><span class="math display">
+NDA_{i, tau} = \frac{\sum _{t=1}^{T} TA_{i,t}}{T}
+</span></p>
+<!-- where $TA_{i,t}$ is (both here and below) total accruals scaled by lagged total assets. -->
+<p>ここで、<span class="math inline">TA_{i,t}</span>は（以下も同様）遅延総資産でスケーリングされた総アクルーアルである。</p>
+<!-- The DeAngelo Model (DeAngelo, 1986) uses last period’s total accruals as the measure of nondiscretionary accruals. -->
+<ul>
+<li>DeAngeloモデル（DeAngelo、1986）は、前期の総アクルーアルを非裁量的アクルーアルの尺度として使用する。</li>
+</ul>
+<p><span class="math display">
+NDA_{i, tau} = TA_{i,t}
+</span></p>
+<!-- The Jones Model (Jones, 1991) “attempts to control for the effect of changes in a firm’s economic circumstances on nondiscretionary accruals” using the following model: -->
+<ul>
+<li>Jonesモデル（Jones、1991）は、「企業の経済状況の変化が非裁量的アクルーアルに与える影響を制御しようとする」次のモデルを使用する。</li>
+</ul>
+<p><span class="math display">
+NDA_{i, tau} = \alpha_1 (1/AT_{i, \tau -1} ) + \alpha_2 \Delta REV_{i,\tau} + \alpha_3 PPE_{i, \tau}
+</span></p>
+<p>ここで <span class="math inline">AT_{i, \tau -1}</span> は企業 <span class="math inline">i</span> の <span class="math inline">\tau -1</span> 時点の総資産、<span class="math inline">\Delta REV _{i, \tau}</span> は <span class="math inline">\tau</span> 年度の売上高から <span class="math inline">\tau - 1</span> 年度の売上を引いたものを <span class="math inline">AT_{i, \tau - 1}</span> で基準化したもの、 <span class="math inline">PPE _{i, \tau}</span> は <span class="math inline">i</span> 企業の <span class="math inline">\tau</span> 年度における有形固定資産を <span class="math inline">AT_{i, \tau-1}</span> で基準化したものである。</p>
+<!-- - **Modified Jones Model**. Dechow et al. (1995) consider a modified version of the Jones Model "designed to eliminate the conjectured tendency of the Jones Model to measure discretionary accruals with error when discretion is exercised over revenues" (1995, p. 199).  -->
+<ul>
+<li>
+<strong>修正Jonesモデル</strong> : Dechow et al.&nbsp;(1995)は、Jonesモデルの修正バージョンを考慮しており、「Jonesモデルが収益に対して裁量を行うときに裁量的アクルーアルを誤って測定するという推測される傾向を排除するために設計された」 (1995, p.199)。 <!-- In this model, non-discretionary accruals are estimated during the event period as:  --> このモデルでは、イベント期間中の非裁量的アクルーアルは次のように推定される。</li>
+</ul>
+<p><span class="math display">
+NDA_{i, \tau} = \alpha_1 (1/AT_{i, \tau -1} ) +
+    \alpha_2 ( \Delta REV_{i,\tau} - \Delta REC_{i,\tau} ) +
+    \alpha_3 PPE_{i, \tau}
+</span></p>
+<p>ここで <span class="math inline">\Delta REC_{i,\tau}</span> は、企業 <span class="math inline">i</span> の <span class="math inline">\tau</span> 年度の売掛金から <span class="math inline">\tau - 1</span> 年度の売掛金を引いたものを <span class="math inline">AT_{i, \tau - 1}</span> で基準化したものである。</p>
+<!-- - **The Industry Model** "relaxes the assumption that non-discretionary accruals are constant over time. The Industry Model assumes that variation in the determinants of non-discretionary accruals are common across firms in the same industry" (1995, p. 199).  -->
+<ul>
+<li>
+<strong>産業モデル</strong> : 「非裁量的アクルーアルが時間とともに一定であるという仮定を緩和する。産業モデルは、非裁量的アクルーアルの決定要因の変動が、同じ業界の企業間で共通であると仮定している」 (1995)、p.199）。 <!-- In this model, non-discretionary accruals are calculated as: --> このモデルでは、非裁量的アクルーアルは次のように計算される。</li>
+</ul>
+<p><span class="math display">
+NDA_{i, \tau} = \gamma _1 + \gamma _2 \text{median} (TA_{I, \tau)})
+</span></p>
+<p>ここで <span class="math inline">TA_{I,\tau}</span> は産業 <span class="math inline">I \ (\forall j \in I)</span> における全企業の <span class="math inline">TA_{j, \tau }</span> の値である。</p>
+<!-- In each of the models above, the parameters (i.e., $(\alpha _1, \alpha _2, \alpha _3$) or ($\gamma _1, \gamma _2$) are estimated on a firm-specific basis during the estimation period. -->
+<p>上記の各モデルでは、パラメータ（すなわち、<span class="math inline">(\alpha _1, \alpha _2, \alpha _3</span>)または(<span class="math inline">\gamma _1, \gamma _2</span>)）は、推定期間中に企業ごとに推定される。</p>
+<!-- Dechow et al. (1995) conduct analyses on four distinct samples, with each designed to test a different question.  -->
+<p>Dechow et al.&nbsp;(1995) は、異なる質問をテストするために設計された4つの異なるサンプルで分析を行う。 <!-- Drawing on the framework from McNichols and Wilson (1988), an indicator variable $PART$ is set to one for a subset of firm-years in each sample: --> McNichols and Wilson (1988)のフレームワークを活用し、各サンプルの一部の企業年度に対して指標変数<span class="math inline">PART</span>を1に設定する。</p>
+<!-- 1. Randomly selected samples of 1000 firm-years. -->
+<ol type="1">
+<li>1000企業年度のランダムに選択されたサンプル <!-- 2. Samples of 1000 firm-years randomly selected from firm-years experiencing extreme financial performance. -->
+</li>
+<li>極端な財務業績を経験している企業年度からランダムに選択された1000企業年度のサンプル <!-- 3. Samples of 1000 firm-years randomly selected to which a fixed and known amount of accrual manipulation is introduced. -->
+</li>
+<li>1000企業年度のサンプルで、固定された既知のアクルーアル操作が導入される <!-- 4. Samples based on SEC enforcement actions. -->
+</li>
+<li>SECの執行措置に基づくサンプル</li>
+</ol>
+<!-- Here we conduct a replication of sorts of Dechow et al. (1995). --><p>ここでは、Dechow et al.&nbsp;(1995) のある種の複製を行う。 <!-- We consider the first three samples, but omit the fourth sample. --> 最初の3つのサンプルを考慮するが、4番目のサンプルは省略する。 Data for our analysis come from two tables on Compustat: comp.funda and comp.company.2 本稿の分析のためのデータは、Compustatの2つのテーブル、<code>comp.funda</code>と<code>comp.company</code>から取得される。<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
+<div class="cell">
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">db</span> <span class="op">&lt;-</span> <span class="fu">dbConnect</span><span class="op">(</span><span class="fu">RPostgres</span><span class="fu">::</span><span class="fu"><a href="https://rpostgres.r-dbi.org/reference/Postgres.html">Postgres</a></span><span class="op">(</span><span class="op">)</span>, bigint <span class="op">=</span> <span class="st">"integer"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">funda</span> <span class="op">&lt;-</span> <span class="fu">tbl</span><span class="op">(</span><span class="va">db</span>, <span class="fu">Id</span><span class="op">(</span>schema <span class="op">=</span> <span class="st">"comp"</span>, table <span class="op">=</span> <span class="st">"funda"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">company</span> <span class="op">&lt;-</span> <span class="fu">tbl</span><span class="op">(</span><span class="va">db</span>, <span class="fu">Id</span><span class="op">(</span>schema <span class="op">=</span> <span class="st">"comp"</span>, table <span class="op">=</span> <span class="st">"company"</span><span class="op">)</span><span class="op">)</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<!-- For financial statement data, we construct funda_mod in exactly the same way as we did in Chapter 15. -->
+<p>財務諸表データについては、第15章と同様に<code>funda_mod</code>を構築する。</p>
+<div class="cell">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">sics</span> <span class="op">&lt;-</span></span>
+<span>  <span class="va">company</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">select</span><span class="op">(</span><span class="va">gvkey</span>, <span class="va">sic</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">mutate</span><span class="op">(</span>sic <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/integer.html">as.integer</a></span><span class="op">(</span><span class="va">sic</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">funda_mod</span> <span class="op">&lt;-</span></span>
+<span>  <span class="va">funda</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">indfmt</span> <span class="op">==</span> <span class="st">"INDL"</span>, <span class="va">datafmt</span> <span class="op">==</span> <span class="st">"STD"</span>,</span>
+<span>         <span class="va">consol</span> <span class="op">==</span> <span class="st">"C"</span>, <span class="va">popsrc</span> <span class="op">==</span> <span class="st">"D"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">left_join</span><span class="op">(</span><span class="va">sics</span>, by <span class="op">=</span> <span class="st">"gvkey"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">mutate</span><span class="op">(</span>sic <span class="op">=</span> <span class="fu">coalesce</span><span class="op">(</span><span class="va">sich</span>, <span class="va">sic</span><span class="op">)</span><span class="op">)</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<!-- Sloan (1996, p. 293) suggests that the data needed to calculate accruals are not available for “banks, life insurance or property and casualty companies”, so we exclude these firms (those with SIC codes starting with 6).  -->
+<p>Sloan (1996, p.293) は、「銀行、生命保険、損害保険会社」のデータを計算するためのデータが利用できないと述べているため、これらの企業（SICコードが6で始まる企業）を除外する。 <!-- Following Dechow et al. (1995), we restrict the sample to the years 1950–1991.--> Dechow et al.&nbsp;(1995) に従い、サンプルを1950年から1991年までの年に制限する。<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> <!-- We also limit our sample to firm-years with non-missing assets and with twelve months in the fiscal period (pddur == 12). --> また、資産が欠損していない企業年度と、会計期間が12か月の企業年度に制限する(<code>pddur == 12</code>)。</p>
+<div class="cell">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">acc_data_raw</span> <span class="op">&lt;-</span></span>
+<span>  <span class="va">funda_mod</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">at</span><span class="op">)</span>, <span class="co"># ATの欠損値を除外</span></span>
+<span>         <span class="va">pddur</span> <span class="op">==</span> <span class="fl">12</span>, <span class="co"># 会計期間が12か月の企業年度</span></span>
+<span>         <span class="op">!</span><span class="fu">between</span><span class="op">(</span><span class="va">sic</span>, <span class="fl">6000</span>, <span class="fl">6999</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="co"># SICコードが6で始まる企業を除外</span></span>
+<span>  <span class="fu">mutate</span><span class="op">(</span> <span class="co"># che, dlc, sale, rectの欠損値を0で埋める</span></span>
+<span>    <span class="fu">across</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">che</span>, <span class="va">dlc</span>, <span class="va">sale</span>, <span class="va">rect</span><span class="op">)</span>, \<span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu">coalesce</span><span class="op">(</span><span class="va">x</span>, <span class="fl">0</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">select</span><span class="op">(</span><span class="va">gvkey</span>, <span class="va">datadate</span>, <span class="va">fyear</span>, <span class="va">at</span>, <span class="va">ib</span>, <span class="va">dp</span>, <span class="va">rect</span>,</span>
+<span>    <span class="va">ppegt</span>, <span class="va">ni</span>, <span class="va">sale</span>, <span class="va">act</span>, <span class="va">che</span>, <span class="va">lct</span>, <span class="va">dlc</span>, <span class="va">sic</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="co"># 変数を選択</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="fu">between</span><span class="op">(</span><span class="va">fyear</span>, <span class="fl">1950</span>, <span class="fl">1991</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="co"># 1950年から1991年までの年に制限</span></span>
+<span>  <span class="fu">arrange</span><span class="op">(</span><span class="va">gvkey</span>, <span class="va">fyear</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="co"># gvkeyとfyearで並び替え</span></span>
+<span>  <span class="fu">collect</span><span class="op">(</span><span class="op">)</span> <span class="co"># データを収集</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<!-- Like Sloan (1996) and Jones (1991), Dechow et al. (1995) measure accruals using a balance-sheet approach.  -->
+<p>Sloan (1996)やJones (1991)と同様に、Dechow et al.&nbsp;(1995) は、貸借対照表アプローチを使用してアクルーアルを測定する。 <!-- The following function takes a data frame with the necessary Compustat variables, and calculates accruals for each firm-year, returning the resulting data set. --> 次の関数は、必要なCompustat変数を持つデータフレームを取り、各企業年度の総アクルーアルを計算し、結果のデータセットを返す。</p>
+<div class="cell">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">calc_accruals</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">df</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">df</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu">group_by</span><span class="op">(</span><span class="va">gvkey</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="co"># gvkeyでグループ化</span></span>
+<span>    <span class="fu">arrange</span><span class="op">(</span><span class="va">datadate</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="co"># datadateで並び替え</span></span>
+<span>    <span class="fu">mutate</span><span class="op">(</span>lag_at <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/lag.html">lag</a></span><span class="op">(</span><span class="va">at</span><span class="op">)</span>,</span>
+<span>           d_ca <span class="op">=</span> <span class="va">act</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lag.html">lag</a></span><span class="op">(</span><span class="va">act</span><span class="op">)</span>, <span class="co"># 流動資産変化</span></span>
+<span>           d_cash <span class="op">=</span> <span class="va">che</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lag.html">lag</a></span><span class="op">(</span><span class="va">che</span><span class="op">)</span>, <span class="co"># 現金変化額</span></span>
+<span>           d_cl <span class="op">=</span> <span class="va">lct</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lag.html">lag</a></span><span class="op">(</span><span class="va">lct</span><span class="op">)</span>, <span class="co"># 流動負債変化</span></span>
+<span>           d_std <span class="op">=</span> <span class="va">dlc</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lag.html">lag</a></span><span class="op">(</span><span class="va">dlc</span><span class="op">)</span>, <span class="co"># 短期借入金変化</span></span>
+<span>           d_rev <span class="op">=</span> <span class="va">sale</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lag.html">lag</a></span><span class="op">(</span><span class="va">sale</span><span class="op">)</span>, <span class="co"># 売上高変化</span></span>
+<span>           d_rec <span class="op">=</span> <span class="va">rect</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lag.html">lag</a></span><span class="op">(</span><span class="va">rect</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="co"># る売掛金変化</span></span>
+<span>    <span class="fu">ungroup</span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="co"># グループ化を解除</span></span>
+<span>    <span class="fu">mutate</span><span class="op">(</span>　<span class="co"># 総アクルーアルを計算</span></span>
+<span>      acc_raw <span class="op">=</span>  <span class="op">(</span><span class="va">d_ca</span> <span class="op">-</span> <span class="va">d_cash</span> <span class="op">-</span> <span class="va">d_cl</span> <span class="op">+</span> <span class="va">d_std</span><span class="op">)</span> <span class="op">-</span> <span class="va">dp</span></span>
+<span>      <span class="op">)</span></span>
+<span><span class="op">}</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<!-- Like Jones (1991), Dechow et al. (1995) split firm-level data into an estimation period and a test firm-year and estimate earnings management models on a firm-specific basis.  -->
+<p>Jones (1991)と同様に、Dechow et al.&nbsp;(1995) は、企業レベルのデータを推定期間とテスト企業年度に分割し、企業ごとに利益マネジメントモデルを推定する。 <!-- Dechow et al. (1995) require at least 10 years in the estimation period and each sample firm will have one test firm-year by construction.  --> Dechow et al.&nbsp;(1995) は、推定期間に少なくとも10年が必要であり、各サンプル企業は構築により1つのテスト企業年度を持つ。 <!-- To give effect to this, we construct a sample of candidate firm-years comprising firms with at least 11 years with required data. --> これを実現するために、少なくとも11年間のデータを持つ企業からなる候補企業年度のサンプルを構築する。</p>
+<div class="cell">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">test_sample</span> <span class="op">&lt;-</span></span>
+<span>  <span class="va">acc_data_raw</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">calc_accruals</span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="co"># 関数を適用</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="co"># 条件を満たすデータを抽出</span></span>
+<span>    <span class="va">lag_at</span> <span class="op">&gt;</span> <span class="fl">0</span>, <span class="va">sale</span> <span class="op">&gt;</span> <span class="fl">0</span>, <span class="va">ppegt</span> <span class="op">&gt;</span> <span class="fl">0</span>, <span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">acc_raw</span><span class="op">)</span>,</span>
+<span>    <span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">d_rev</span><span class="op">)</span>, <span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">d_rec</span><span class="op">)</span>, <span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">ppegt</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">gvkey</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="co"># gvkeyでグループ化</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="fu">n</span><span class="op">(</span><span class="op">)</span> <span class="op">&gt;=</span> <span class="fl">11</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="co"># 11観測値以上のデータを持つ企業年を抽出</span></span>
+<span>  <span class="fu">ungroup</span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="co"># グループ化を解除</span></span>
+<span>  <span class="fu">arrange</span><span class="op">(</span><span class="va">gvkey</span>, <span class="va">fyear</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="co"># gvkeyとfyearで並び替え</span></span>
+<span>  <span class="fu">select</span><span class="op">(</span><span class="va">gvkey</span>, <span class="va">fyear</span><span class="op">)</span> <span class="co"># 変数を選択</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<!-- Most of our analysis will focus on a single random sample of 1000 firms.  -->
+<p>ほとんどの分析は、1000社のランダムサンプルに焦点を当てる。 <!-- For each of these 1000 firms, we select a single fiscal year for which we set part to TRUE.  --> これらの1000社の各企業について、partをTRUEに設定する1つの会計年度を選択する。 <!-- Because we use the lagged value of accruals for the DeAngelo Model, we constrain the random choice to be any year but the first year. --> DeAngeloモデルでは総アクルーアルの前期の値を使用するため、ランダム選択を最初の年以外の任意の年に制限する。</p>
+<div class="cell">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">2022</span><span class="op">)</span> <span class="co"># 乱数のシードを設定</span></span>
+<span></span>
+<span><span class="va">sample_1_firm_years</span> <span class="op">&lt;-</span></span>
+<span>  <span class="va">test_sample</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">mutate</span><span class="op">(</span> <span class="co"># ランダムに1つの会計年度を選択</span></span>
+<span>    rand <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span> <span class="co"># 正規分布から乱数を生成</span></span>
+<span>      n <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="fu">pick</span><span class="op">(</span><span class="fu">everything</span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="co"># 行数分の乱数を生成</span></span>
+<span>      <span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">gvkey</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">rand</span> <span class="op">==</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">min</a></span><span class="op">(</span><span class="va">rand</span><span class="op">)</span>,  <span class="co"># 最小の乱数を持つ行を抽出</span></span>
+<span>         <span class="va">fyear</span> <span class="op">&gt;</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">min</a></span><span class="op">(</span><span class="va">fyear</span><span class="op">)</span> <span class="co"># 最初の年以外の行を抽出</span></span>
+<span>         <span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">ungroup</span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="co"># グループ化を解除</span></span>
+<span>  <span class="fu">top_n</span><span class="op">(</span><span class="fl">1000</span>, wt <span class="op">=</span> <span class="va">rand</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="co"># 乱数の値が最小の1000行を抽出</span></span>
+<span>  <span class="fu">select</span><span class="op">(</span><span class="va">gvkey</span>, <span class="va">fyear</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="co"># 変数を選択</span></span>
+<span>  <span class="fu">mutate</span><span class="op">(</span>part <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="co"># partをTRUEに設定</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<!-- To create sample_1, we use two joins.  -->
+<p><code>sample_1</code>を作成するために、2つの結合を使用する。 <!-- The first join — a semi_join() — is by gvkey and ensures that we draw those firm-years in test_sample that have been selected in sample_1_firm_years.  --> 最初の結合は、<code>gvkey</code>による<code>semi_join()</code>であり、<code>sample_1_firm_years</code>で選択された企業年度を持つ<code>test_sample</code>の企業年度を抽出する。 <!-- The second join — a left_join() — is by gvkey and fyear and has the effect of adding the part indicator from sample_1_firm_years to the data for the applicable firm-years.  --> 2番目の結合は、<code>gvkey</code>と<code>fyear</code>による<code>left_join()</code>であり、<code>sample_1_firm_years</code>からのpart指標を該当する企業年度のデータに追加する。 <!-- Most firm-years will not be found in sample_1_firm_years and the final step uses coalesce() to set part to FALSE for firm-years missing from sample_1_firm_years. --> ほとんどの企業年度は<code>sample_1_firm_years</code>には見つからないため、最終ステップでは、<code>sample_1_firm_years</code>に欠落している企業年度に対して<code>part</code>を<code>FALSE</code>に設定するために<code>coalesce()</code>を使用する。</p>
+<div class="cell">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">sample_1</span> <span class="op">&lt;-</span></span>
+<span>  <span class="va">test_sample</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">semi_join</span><span class="op">(</span><span class="va">sample_1_firm_years</span>, by <span class="op">=</span> <span class="st">"gvkey"</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="co"># セミ結合</span></span>
+<span>  <span class="fu">left_join</span><span class="op">(</span><span class="va">sample_1_firm_years</span>, by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"gvkey"</span>, <span class="st">"fyear"</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="co"># 左結合</span></span>
+<span>  <span class="fu">mutate</span><span class="op">(</span>part <span class="op">=</span> <span class="fu">coalesce</span><span class="op">(</span><span class="va">part</span>, <span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<!-- We combine the data on part for our sample firm-years with the Compustat data in acc_data_raw to form merged_sample_1.4 -->
+<p>サンプル企業年度のpartデータをCompustatデータの<code>acc_data_raw</code>と組み合わせて<code>merged_sample_1</code>を作成する。<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></p>
+<div class="cell">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">merged_sample_1</span> <span class="op">&lt;-</span></span>
+<span>  <span class="va">sample_1</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">inner_join</span><span class="op">(</span><span class="va">acc_data_raw</span>, by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"gvkey"</span>, <span class="st">"fyear"</span><span class="op">)</span><span class="op">)</span> <span class="co"># 内部結合</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<!-- If we were conducting a simple study of observed earnings management, it would be natural to calculate our measures of earnings management and then proceed to our analyses.  -->
+<p>観察された利益マネジメントの単純な研究を行う場合、利益マネジメントの尺度を計算してから分析に進むのが自然である。 <!-- However, in our analysis here we will — like Dechow et al. (1995) — be manipulating accounting measures ourselves and doing so will require us to recalculate earnings management measures and inputs to these, such as measures of total accruals.  --> しかし、ここでの分析では、Dechow et al.&nbsp;(1995) のように、自分で会計尺度を操作することになるため、利益マネジメントの尺度や総アクルーアルの尺度などの入力を再計算する必要がある。 <!-- To facilitate this process, we embed the calculations for all five earnings management measures in the function get_nda() below. --> このプロセスを容易にするために、以下の関数<code>get_nda()</code>に5つの利益マネジメント尺度の計算を埋め込む。<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a> <!-- Note that we use reframe() in place of summarize() because the former does not assume that the result will be a single row for each group. --> <code>summarize()</code>の代わりに<code>reframe()</code>を使用していることに注意する。<code>reframe()</code>は、結果が各グループごとに1行であるとは限らないためである。</p>
+<div class="cell">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># ジョーンズモデル</span></span>
+<span><span class="va">fit_jones</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">df</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">fm</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">acc_at</span> <span class="op">~</span> <span class="va">one_at</span> <span class="op">+</span> <span class="va">d_rev_at</span> <span class="op">+</span> <span class="va">ppe_at</span> <span class="op">-</span> <span class="fl">1</span>,</span>
+<span>           data <span class="op">=</span> <span class="va">df</span>, model <span class="op">=</span> <span class="cn">FALSE</span>, subset <span class="op">=</span> <span class="op">!</span><span class="va">part</span><span class="op">)</span></span>
+<span></span>
+<span>  <span class="va">df</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu">mutate</span><span class="op">(</span>nda_jones <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">fm</span>, newdata <span class="op">=</span> <span class="va">df</span><span class="op">)</span>,</span>
+<span>           da_jones <span class="op">=</span> <span class="va">acc_at</span> <span class="op">-</span> <span class="va">nda_jones</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu">select</span><span class="op">(</span><span class="va">fyear</span>, <span class="va">nda_jones</span>, <span class="va">da_jones</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="co"># 修正ジョーンズモデル</span></span>
+<span><span class="va">fit_mod_jones</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">df</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">fm</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">acc_at</span> <span class="op">~</span> <span class="va">one_at</span> <span class="op">+</span> <span class="va">d_rev_alt_at</span> <span class="op">+</span> <span class="va">ppe_at</span> <span class="op">-</span> <span class="fl">1</span>,</span>
+<span>           data <span class="op">=</span> <span class="va">df</span>, model <span class="op">=</span> <span class="cn">FALSE</span>, subset <span class="op">=</span> <span class="op">!</span><span class="va">part</span><span class="op">)</span></span>
+<span>  <span class="va">df</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu">mutate</span><span class="op">(</span>nda_mod_jones <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">fm</span>, newdata <span class="op">=</span> <span class="va">df</span><span class="op">)</span>,</span>
+<span>           da_mod_jones <span class="op">=</span> <span class="va">acc_at</span> <span class="op">-</span> <span class="va">nda_mod_jones</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu">select</span><span class="op">(</span><span class="va">fyear</span>, <span class="va">nda_mod_jones</span>, <span class="va">da_mod_jones</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="co"># 非裁量的アクルーアルを計算</span></span>
+<span><span class="va">get_nda</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">df</span><span class="op">)</span> <span class="op">{</span></span>
+<span></span>
+<span>  <span class="va">df_mod</span> <span class="op">&lt;-</span></span>
+<span>    <span class="va">df</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu">calc_accruals</span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="co"># 総アクルーアルを計算</span></span>
+<span>    <span class="fu">mutate</span><span class="op">(</span>sic2 <span class="op">=</span> <span class="fu">str_sub</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/character.html">as.character</a></span><span class="op">(</span><span class="va">sic</span><span class="op">)</span>, <span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span>,</span>
+<span>           acc_at <span class="op">=</span> <span class="va">acc_raw</span> <span class="op">/</span> <span class="va">lag_at</span>,</span>
+<span>           one_at <span class="op">=</span> <span class="fl">1</span> <span class="op">/</span> <span class="va">lag_at</span>,</span>
+<span>           d_rev_at <span class="op">=</span> <span class="va">d_rev</span> <span class="op">/</span> <span class="va">lag_at</span>,</span>
+<span>           d_rev_alt_at <span class="op">=</span> <span class="op">(</span><span class="va">d_rev</span> <span class="op">-</span> <span class="va">d_rec</span><span class="op">)</span> <span class="op">/</span> <span class="va">lag_at</span>,</span>
+<span>           ppe_at <span class="op">=</span> <span class="va">ppegt</span> <span class="op">/</span> <span class="va">lag_at</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu">group_by</span><span class="op">(</span><span class="va">sic2</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="co"># sic2でグループ化</span></span>
+<span>    <span class="fu">mutate</span><span class="op">(</span></span>
+<span>      acc_ind <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="fu">if_else</span><span class="op">(</span><span class="va">part</span>, <span class="cn">NA</span>, <span class="va">acc_at</span><span class="op">)</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu">ungroup</span><span class="op">(</span><span class="op">)</span></span>
+<span>  <span class="co"># ヒーリーのモデル</span></span>
+<span>  <span class="va">da_healy</span> <span class="op">&lt;-</span></span>
+<span>    <span class="va">df_mod</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu">group_by</span><span class="op">(</span><span class="va">gvkey</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu">arrange</span><span class="op">(</span><span class="va">fyear</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu">mutate</span><span class="op">(</span>nda_healy <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="fu">if_else</span><span class="op">(</span><span class="va">part</span>, <span class="cn">NA</span>, <span class="va">acc_at</span><span class="op">)</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
+<span>           da_healy <span class="op">=</span> <span class="va">acc_at</span> <span class="op">-</span> <span class="va">nda_healy</span>,</span>
+<span>           nda_deangelo <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/lag.html">lag</a></span><span class="op">(</span><span class="va">acc_at</span><span class="op">)</span>,</span>
+<span>           da_deangelo <span class="op">=</span> <span class="va">acc_at</span> <span class="op">-</span> <span class="va">nda_deangelo</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu">ungroup</span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu">select</span><span class="op">(</span><span class="va">gvkey</span>, <span class="va">fyear</span>, <span class="va">part</span>, <span class="va">nda_healy</span>, <span class="va">da_healy</span>, <span class="va">nda_deangelo</span>,</span>
+<span>           <span class="va">da_deangelo</span><span class="op">)</span></span>
+<span>  <span class="co"># ジョーンズモデル</span></span>
+<span>  <span class="va">df_jones</span> <span class="op">&lt;-</span></span>
+<span>    <span class="va">df_mod</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu">nest_by</span><span class="op">(</span><span class="va">gvkey</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu">reframe</span><span class="op">(</span><span class="fu">fit_jones</span><span class="op">(</span><span class="va">data</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="co"># 修正ジョーンズモデル</span></span>
+<span>  <span class="va">df_mod_jones</span> <span class="op">&lt;-</span></span>
+<span>    <span class="va">df_mod</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu">nest_by</span><span class="op">(</span><span class="va">gvkey</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu">reframe</span><span class="op">(</span><span class="fu">fit_mod_jones</span><span class="op">(</span><span class="va">data</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span>  <span class="co"># 産業モデル</span></span>
+<span>  <span class="va">fit_industry</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">df</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="va">fm</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">acc_at</span> <span class="op">~</span> <span class="va">acc_ind</span>, data <span class="op">=</span> <span class="va">df</span>, model <span class="op">=</span> <span class="cn">FALSE</span>, subset <span class="op">=</span> <span class="op">!</span><span class="va">part</span><span class="op">)</span></span>
+<span></span>
+<span>    <span class="va">df</span> <span class="op">|&gt;</span></span>
+<span>      <span class="fu">mutate</span><span class="op">(</span>nda_industry <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/warning.html">suppressWarnings</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">fm</span>, newdata <span class="op">=</span> <span class="va">df</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>             da_industry <span class="op">=</span> <span class="va">acc_at</span> <span class="op">-</span> <span class="va">nda_industry</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>      <span class="fu">select</span><span class="op">(</span><span class="va">fyear</span>, <span class="va">nda_industry</span>, <span class="va">da_industry</span><span class="op">)</span></span>
+<span>  <span class="op">}</span></span>
+<span>  <span class="co"># 産業モデルのnda</span></span>
+<span>  <span class="va">df_industry</span> <span class="op">&lt;-</span></span>
+<span>    <span class="va">df_mod</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu">nest_by</span><span class="op">(</span><span class="va">gvkey</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu">reframe</span><span class="op">(</span><span class="fu">fit_industry</span><span class="op">(</span><span class="va">data</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span>  <span class="va">da_healy</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu">left_join</span><span class="op">(</span><span class="va">df_jones</span>, by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"gvkey"</span>, <span class="st">"fyear"</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu">left_join</span><span class="op">(</span><span class="va">df_mod_jones</span>, by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"gvkey"</span>, <span class="st">"fyear"</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu">left_join</span><span class="op">(</span><span class="va">df_industry</span>, by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"gvkey"</span>, <span class="st">"fyear"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="op">}</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<!-- Applying get_nda() to our main sample (merged_sample_1) to create reg_data for further analysis requires just one line: -->
+<p><code>get_nda()</code>をメインサンプル（<code>merged_sample_1</code>）に適用してさらなる分析のための<code>reg_data</code>を作成するには、1行だけで済む。</p>
+<div class="cell">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">reg_data</span> <span class="op">&lt;-</span> <span class="fu">get_nda</span><span class="op">(</span><span class="va">merged_sample_1</span><span class="op">)</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section><section id="results-under-the-null-hypothesis-random-firms" class="level2" data-number="8.3"><h2 data-number="8.3" class="anchored" data-anchor-id="results-under-the-null-hypothesis-random-firms">
+<span class="header-section-number">8.3</span> Results under the null hypothesis: Random firms</h2>
+<p>Table 1 of Dechow et al.&nbsp;(1995) presents results from regressions of discretionary accruals on <span class="math inline">PART</span> for each of the five models. For each model, three rows are provided. The first row provides summary statistics for the estimated coefficients on <span class="math inline">PART</span> from firm-specific regressions for the 1000 firms in the sample. The second and third rows provide summary statistics on the estimated standard errors of the coefficients on <span class="math inline">PART</span> and t-statistic testing the null hypothesis that the coefficients on <span class="math inline">PART</span> are equal to zero.</p>
+<p>To facilitate creating a similar table, we make two functions. The first function - <code>fit_model()</code> - takes a data frame and, for each firm, regresses the measure of discretionary accruals corresponding to measure on the part variable, returning the fitted models. As we did in Chapter 14, we use <code>!!</code> to distinguish the measure supplied to the function from measure found in df.<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a></p>
+<div class="cell">
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">fit_model</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">df</span>, <span class="va">measure</span> <span class="op">=</span> <span class="st">"healy"</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">df</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu">nest_by</span><span class="op">(</span><span class="va">gvkey</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu">summarize</span><span class="op">(</span>model <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/formula.html">as.formula</a></span><span class="op">(</span><span class="fu">str_c</span><span class="op">(</span><span class="st">"da_"</span>, <span class="va">measure</span>, <span class="st">" ~ part"</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>                              model <span class="op">=</span> <span class="cn">FALSE</span>, data <span class="op">=</span> <span class="va">data</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>              .groups <span class="op">=</span> <span class="st">"drop"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu">mutate</span><span class="op">(</span>measure <span class="op">=</span> <span class="op">!</span><span class="op">!</span><span class="va">measure</span><span class="op">)</span></span>
+<span><span class="op">}</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The second function - <code>multi_fit()</code> - runs <code>fit_model()</code> for all five models, returning the results as a data frame.</p>
+<div class="cell">
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">multi_fit</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">df</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">models</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"healy"</span>, <span class="st">"deangelo"</span>, <span class="st">"jones"</span>, <span class="st">"mod_jones"</span>, <span class="st">"industry"</span><span class="op">)</span></span>
+<span>  <span class="va">models</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu">map</span><span class="op">(</span>\<span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu">fit_model</span><span class="op">(</span><span class="va">df</span>, <span class="va">x</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu">list_rbind</span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="op">}</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>With these functions in hand, estimating firm-specific regressions for the five models requires a single line of code.</p>
+<div class="cell">
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">results</span> <span class="op">&lt;-</span> <span class="fu">multi_fit</span><span class="op">(</span><span class="va">reg_data</span><span class="op">)</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The returned results comprise three columns: gvkey, model, and type, with model being the fitted model for the firm and model indicated by gvkey and type. Note that model is a list column and contains the values returned by lm(). We can interrogate the values stored in model to extract whatever details about the regression we need.</p>
+<div class="cell">
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">results</span><span class="op">)</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We will use tidy() to extract the coefficients, standard error, t-statistics, and p-values in each fitted model as a data frame. For Table 16.1 (our version of Table 1 of Dechow et al.&nbsp;(1995)), we are only interested in the coefficient on part (i.e., the one labelled partTRUE) and thus can discard the other row (this will be the constant of each regression) and the column term in the function get_stats() that will be applied to each model.</p>
+<div class="cell">
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">get_stats</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">fm</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">fm</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu">tidy</span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">term</span> <span class="op">==</span> <span class="st">"partTRUE"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu">select</span><span class="op">(</span><span class="op">-</span><span class="va">term</span><span class="op">)</span></span>
+<span><span class="op">}</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The function table_1_stats() calculates the statistics presented in the columns of Table 1 of Dechow et al.&nbsp;(1995).</p>
+<div class="cell">
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">table_1_stats</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="fu">tibble</span><span class="op">(</span>mean <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">x</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
+<span>         sd <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">x</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
+<span>         q1 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/quantile.html">quantile</a></span><span class="op">(</span><span class="va">x</span>, p <span class="op">=</span> <span class="fl">0.25</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
+<span>         median <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="va">x</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
+<span>         q3 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/quantile.html">quantile</a></span><span class="op">(</span><span class="va">x</span>, p <span class="op">=</span> <span class="fl">0.75</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="op">}</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>To produce Table 16.1, our version of Table 1 of Dechow et al.&nbsp;(1995), we use map() from the purrr library to apply get_stats() to each model, then unnest_wider() and pivot_longer() (both from the tidyr package) to arrange the statistics in a way that can be summarized to create a table.</p>
+<div class="cell">
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">results</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">mutate</span><span class="op">(</span>stats <span class="op">=</span> <span class="fu">map</span><span class="op">(</span><span class="va">model</span>, <span class="va">get_stats</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">unnest_wider</span><span class="op">(</span><span class="va">stats</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">pivot_longer</span><span class="op">(</span><span class="va">estimate</span><span class="op">:</span><span class="va">statistic</span>, names_to <span class="op">=</span> <span class="st">"stat"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">measure</span>, <span class="va">stat</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">summarize</span><span class="op">(</span><span class="fu">table_1_stats</span><span class="op">(</span><span class="va">value</span><span class="op">)</span>, .groups <span class="op">=</span> <span class="st">"drop"</span><span class="op">)</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Table 2 of Dechow et al.&nbsp;(1995) presents rejection rates for the null hypothesis of no earnings management in the <span class="math inline">PART</span> year for the five measures. Given that Sample 1 comprises 1000 firms selected at random with the year in each case also being selected at random, we expect the rejection rates to equal the size of the test being used (i.e., either 5% or 1%). To help produce a version of Table 2 of Dechow et al.&nbsp;(1995), we create h_test(), which extracts statistics from fitted models and returns data on rejection rates for different hypotheses and different size tests.</p>
+<div class="cell">
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span> <span class="va">h_test</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">fm</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">coefs</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/coef.html">coef</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">fm</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span>  <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span><span class="op">(</span><span class="va">coefs</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">==</span><span class="fl">2</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="va">t_stat</span> <span class="op">&lt;-</span> <span class="va">coefs</span><span class="op">[</span><span class="fl">2</span> ,<span class="fl">3</span><span class="op">]</span></span>
+<span>    <span class="va">df</span> <span class="op">&lt;-</span> <span class="va">fm</span><span class="op">$</span><span class="va">df.residual</span></span>
+<span></span>
+<span>    <span class="fu">tibble</span><span class="op">(</span>neg_p01 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/TDist.html">pt</a></span><span class="op">(</span><span class="va">t_stat</span>, <span class="va">df</span>, lower <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">&lt;</span> <span class="fl">0.01</span>,</span>
+<span>           neg_p05 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/TDist.html">pt</a></span><span class="op">(</span><span class="va">t_stat</span>, <span class="va">df</span>, lower <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">&lt;</span> <span class="fl">0.05</span>,</span>
+<span>           pos_p01 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/TDist.html">pt</a></span><span class="op">(</span><span class="va">t_stat</span>, <span class="va">df</span>, lower <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">&lt;</span> <span class="fl">0.01</span>,</span>
+<span>           pos_p05 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/TDist.html">pt</a></span><span class="op">(</span><span class="va">t_stat</span>, <span class="va">df</span>, lower <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">&lt;</span> <span class="fl">0.05</span><span class="op">)</span></span>
+<span>  <span class="op">}</span> <span class="kw">else</span> <span class="op">{</span></span>
+<span>    <span class="fu">tibble</span><span class="op">(</span>neg_p01 <span class="op">=</span> <span class="cn">NA</span>, neg_p05 <span class="op">=</span> <span class="cn">NA</span>, pos_p01 <span class="op">=</span> <span class="cn">NA</span>, pos_p05 <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span></span>
+<span>  <span class="op">}</span></span>
+<span><span class="op">}</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We then map this function to the models in results and store the results in test_results.</p>
+<div class="cell">
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">test_results</span> <span class="op">&lt;-</span></span>
+<span>  <span class="va">results</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">mutate</span><span class="op">(</span><span class="fu">map_dfr</span><span class="op">(</span><span class="va">model</span>, <span class="va">h_test</span><span class="op">)</span><span class="op">)</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Using, test_results, Table 16.2 provides our analogue of Table 2 of Dechow et al.&nbsp;(1995).</p>
+<div class="cell">
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">test_results</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">measure</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">summarize</span><span class="op">(</span><span class="fu">across</span><span class="op">(</span><span class="fu">matches</span><span class="op">(</span><span class="st">"p0"</span><span class="op">)</span>,</span>
+<span>                   \<span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">x</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Dechow et al.&nbsp;(1995) indicate cases where the Type I error rate is statistically significantly different from the size of the test using a “two-tailed binomial test”. This may be confusing at an initial reading, as the statistics presented in Table 2 of Dechow et al.&nbsp;(1995) are—like those in Table 16.2—based on one-sided tests. But note that whether we are conducting one-sided tests or two-sided tests of the null hypothesis, we should expect rejection rates to equal the size of the test (e.g., 5% or 1%) if we have constructed the tests correctly. For example, if we run 1000 tests with a true null and set the size of the test at 5%, then rejecting the null hypothesis 10 times (1%) or 90 times (9%) will lead to rejection of the null (meta-)hypothesis that our test of our null hypothesis is properly sized, as the following p-values confirm. The function binom.test() provides the p-value that we need here.</p>
+<div class="cell">
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/binom.test.html">binom.test</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">10</span>, n <span class="op">=</span> <span class="fl">1000</span>, p <span class="op">=</span> <span class="fl">0.05</span><span class="op">)</span><span class="op">$</span><span class="va">p.value</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/binom.test.html">binom.test</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">90</span>, n <span class="op">=</span> <span class="fl">1000</span>, p <span class="op">=</span> <span class="fl">0.05</span><span class="op">)</span><span class="op">$</span><span class="va">p.value</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We embed binom.test() in a small function (binom_test()) that will be convenient in our analysis. Without an a priori reason to expect over-rejection or under-rejection, it makes sense to consider two-sided test statistics against a null hypothesis that the rejection rate equals the size of the test. Such statistics are returned by binom.test() by default.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>binom_test <span class="ot">&lt;-</span> <span class="co">#| function(x, p) {</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> x[<span class="sc">!</span><span class="fu">is.na</span>(x)]</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">binom.test</span>(<span class="fu">sum</span>(x), <span class="fu">length</span>(x), <span class="at">p =</span> p)<span class="sc">$</span>p.value</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="er">}</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We apply binom_test() to the test results above, adjusting the p argument based on the size of the test used in each case and report the results in Table 16.3.</p>
+<div class="cell">
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">test_results</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">measure</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">summarize</span><span class="op">(</span>neg_p01 <span class="op">=</span> <span class="fu">binom_test</span><span class="op">(</span><span class="va">neg_p01</span>, p <span class="op">=</span> <span class="fl">0.01</span><span class="op">)</span>,</span>
+<span>            neg_p05 <span class="op">=</span> <span class="fu">binom_test</span><span class="op">(</span><span class="va">neg_p05</span>, p <span class="op">=</span> <span class="fl">0.05</span><span class="op">)</span>,</span>
+<span>            pos_p01 <span class="op">=</span> <span class="fu">binom_test</span><span class="op">(</span><span class="va">pos_p01</span>, p <span class="op">=</span> <span class="fl">0.01</span><span class="op">)</span>,</span>
+<span>            pos_p05 <span class="op">=</span> <span class="fu">binom_test</span><span class="op">(</span><span class="va">pos_p05</span>, p <span class="op">=</span> <span class="fl">0.05</span><span class="op">)</span><span class="op">)</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Turning to the Jones Model and the Modified Jones Model, it is quite clear that we are over-rejecting the (true) null hypothesis. One possible explanation for this over-rejection is provided by footnote 11 of Dechow et al.&nbsp;(1995, p.&nbsp;204):</p>
+<blockquote class="blockquote">
+<p>The computation of the standard error of <span class="math inline">\hat{b}_j</span> requires special attention because the measures of discretionary accruals in the event period (estimation period) are prediction errors (fitted residuals) from a first-pass estimation process. An adjustment must therefore be made to reflect the fact that the standard errors of the prediction errors are greater than the standard errors of the fitted residuals. Likewise, the degrees of freedom in the t-test must reflect the degrees of freedom used up in the first-pass estimation. This can be accomplished by … estimating a single-stage regression that includes both <span class="math inline">PART</span> and the determinants of nondiscretionary accruals.</p>
+</blockquote>
+<p>The invocation of a single-stage regression might remind some readers of the Frisch-Waugh-Lovell theorem, which we discussed in Section 3.3. But an important element of the single-stage regression approach suggested by the Frisch-Waugh-Lovell theorem is that the first- and second-stage regressions that are shown by the theorem to be equivalent have the same observations in both stages. In contrast, the first stages of the Jones Model and Modified Jones Model approaches used by Dechow et al.&nbsp;(1995) use only the estimation sample (i.e., they exclude the test firm-year of primary interest). But this is not an issue here because the single-stage regression invoked by Dechow et al.&nbsp;(1995) is actually that attributed to Salkever (1976).</p>
+<p>Salkever (1976) demonstrates that the estimated value of discretionary accruals in the test year can be obtained by running a single regression including both the estimation and test periods and a dummy variable for the test year. The prediction error for the test observation (i.e., the estimated discretionary accruals for the test firm-year) will be equal to the coefficient on the <span class="math inline">PART</span> variable and the correct standard error for this prediction will be the standard error of that coefficient.</p>
+<p>Because the Salkever (1976) approach is infrequently used in accounting research, but seems quite relevant in a number of settings, we spend some time exploring it in the discussion questions below. (Note that in the following, to keep things manageable, we pull a single GVKEY value at random from our sample. You may need to modify this code to ensure that you are drawing the GVKEY of a firm in your sample, which may differ from ours.)</p>
+<p>To keep things simple, we pull one firm from our sample.</p>
+<div class="cell">
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df_test</span> <span class="op">&lt;-</span></span>
+<span>  <span class="va">merged_sample_1</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">gvkey</span> <span class="op">==</span> <span class="st">"001304"</span><span class="op">)</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<!-- We then create the variables needed to run the Jones Model. -->
+<p>次に、Jonesモデルを実行するために必要な変数を作成する。</p>
+<div class="cell">
+<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df_mod</span> <span class="op">&lt;-</span><span class="co">#|</span></span>
+<span>  <span class="va">df_test</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">calc_accruals</span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">mutate</span><span class="op">(</span>acc_at <span class="op">=</span> <span class="va">acc_raw</span> <span class="op">/</span> <span class="va">lag_at</span>,</span>
+<span>         one_at <span class="op">=</span> <span class="fl">1</span> <span class="op">/</span> <span class="va">lag_at</span>,</span>
+<span>         d_rev_at <span class="op">=</span> <span class="va">d_rev</span> <span class="op">/</span> <span class="va">lag_at</span>,</span>
+<span>         d_rev_alt_at <span class="op">=</span> <span class="op">(</span><span class="va">d_rev</span> <span class="op">-</span> <span class="va">d_rec</span><span class="op">)</span> <span class="op">/</span> <span class="va">lag_at</span>,</span>
+<span>         ppe_at <span class="op">=</span> <span class="va">ppegt</span> <span class="op">/</span> <span class="va">lag_at</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">ungroup</span><span class="op">(</span><span class="op">)</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<!-- We then fit a (differently) modified Jones Model on the estimation sample, which we store in fm1a.7 -->
+<p>次に、推定サンプルに（異なる）修正Jonesモデルを適合し、<code>fm1a</code>に格納する。<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a></p>
+<div class="cell">
+<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">fm1a</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">acc_at</span> <span class="op">~</span> <span class="va">one_at</span> <span class="op">+</span> <span class="va">d_rev_at</span> <span class="op">+</span> <span class="va">ppe_at</span>,</span>
+<span>          data <span class="op">=</span> <span class="va">df_mod</span>, subset <span class="op">=</span> <span class="op">!</span><span class="va">part</span><span class="op">)</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<!-- We can then calculate non-discretionary accruals for the full sample using predict().  -->
+<p>次に、<code><a href="https://rdrr.io/r/stats/predict.html">predict()</a></code>を使用して全サンプルの非裁量的アクルーアルを計算することができる。 <!-- Again we use pick(everything()) for the reasons discussed in Chapter 13. --> 13章で議論した理由から、再び<code>pick(everything())</code>を使用する。</p>
+<div class="cell">
+<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">res1</span> <span class="op">&lt;-</span></span>
+<span>  <span class="va">df_mod</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">mutate</span><span class="op">(</span>nda_jones <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">fm1a</span>, newdata <span class="op">=</span> <span class="fu">pick</span><span class="op">(</span><span class="fu">everything</span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">select</span><span class="op">(</span><span class="va">fyear</span>, <span class="va">part</span>, <span class="va">acc_at</span>, <span class="va">nda_jones</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">mutate</span><span class="op">(</span>da_jones <span class="op">=</span> <span class="va">acc_at</span> <span class="op">-</span> <span class="va">nda_jones</span><span class="op">)</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<!-- Finally, we can estimate the regression of discretionary accruals on the $PART$ variable and store the results in `fm2a`. -->
+<p>最後に、総アクルーアルを <span class="math inline">PART</span> 変数に対して回帰し、その結果を<code>fm2a</code>に格納する。</p>
+<div class="cell">
+<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">fm2a</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">da_jones</span> <span class="op">~</span> <span class="va">part</span>, data <span class="op">=</span> <span class="va">res1</span><span class="op">)</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<!-- To implement the approach suggested by Salkever (1976) - and used by Dechow et al. (1995) - we run a single regression on the entire sample with the addition of the $PART$ indicator and store the result in `fm2`. -->
+<p>Salkerver (1976) が提案したアプローチを実装するために、Dechow et al.&nbsp;(1995) が使用したように、サンプル全体に <span class="math inline">PART</span> 指標を追加して単一の回帰を実行し、その結果を<code>fm2</code>に格納する。</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>fm2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(acc_<span class="co">#| at ~ one_at + d_rev_at + ppe_at + part,</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">data =</span> df_mod)</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<!-- ## Results under the null hypothesis: Extreme performance -->
+</section><section id="帰無仮説下の結果極端なパフォーマンス" class="level2" data-number="8.4"><h2 data-number="8.4" class="anchored" data-anchor-id="帰無仮説下の結果極端なパフォーマンス">
+<span class="header-section-number">8.4</span> 帰無仮説下の結果：極端なパフォーマンス</h2>
+<!-- Table 3 of Dechow et al. (1995) presents results from regressions using the second set of samples (“samples of 1000 firm-years randomly selected from firm-years experiencing extreme financial performance”).  -->
+<p>Dechow et al.&nbsp;(1995)のTable 3は、第2のサンプル（「極端な財務パフォーマンスを経験している企業年度からランダムに選択された1000企業年度のサンプル」）を使用した回帰の結果を示している。 <!-- Table 3 is analogous to Table 2, for which we provided parallel results in Table 16.2. --> Table 3はTable 2に類似しており、Table 16.2で平行な結果を提供した。 <!-- We leave reproduction of a parallel analysis to that reported in Table 3 of Dechow et al. (1995) as an exercise for the reader and merely provide code producing a sample that can be used for that purpose. --> Dechow et al.&nbsp;(1995)のTable 3で報告された平行な分析の再現は、読者にとっての演習として残し、その目的に使用できるサンプルを生成するコードのみを提供する。 <!-- The following code proceeds in four steps.  --> 次のコードは、4つのステップで進行する。 <!-- First, we create earn_deciles, which contains a variable earn_dec that sorts firm-years into earnings deciles for all firms meeting the sample criteria (i.e., those in test_sample). --> 最初に、<code>earn_deciles</code>を作成する。これには、サンプル基準を満たすすべての企業（つまり、<code>test_sample</code>に含まれる企業）を利益十分位に並べる変数<code>earn_dec</code>が含まれている。</p>
+<div class="cell">
+<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">earn_deciles</span> <span class="op">&lt;-</span></span>
+<span>  <span class="va">acc_data_raw</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">semi_join</span><span class="op">(</span><span class="va">test_sample</span>, by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"gvkey"</span>, <span class="st">"fyear"</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">gvkey</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">arrange</span><span class="op">(</span><span class="va">fyear</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">mutate</span><span class="op">(</span>earn <span class="op">=</span> <span class="va">ib</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/stats/lag.html">lag</a></span><span class="op">(</span><span class="va">at</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">ungroup</span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">mutate</span><span class="op">(</span>earn_dec <span class="op">=</span> <span class="fu">ntile</span><span class="op">(</span><span class="va">earn</span>, <span class="fl">10</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">select</span><span class="op">(</span><span class="va">gvkey</span>, <span class="va">fyear</span>, <span class="va">earn_dec</span><span class="op">)</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<!-- Second, we create sample_2_firm_years, which selects firm-years from the top earnings decile (subject to the constraint that the year is not the first year for the firm, as a prior year is required for the DeAngelo Model). -->
+<p>第2に、<code>sample_2_firm_years</code>を作成する。これは、最上位の利益十分位から企業年度を選択する（DeAngeloモデルには前年が必要なため、企業の最初の年ではないことが制約として設定されている）。 <!-- When a firm has more than one firm-year in the top earnings decile, one of those firm-years is selected at random. --> 企業が最上位の利益十分位に複数の企業年度を持っている場合、そのうちの1つの企業年度がランダムに選択される。</p>
+<div class="cell">
+<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">sample_2_firm_years</span> <span class="op">&lt;-</span></span>
+<span>  <span class="va">earn_deciles</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">earn_dec</span> <span class="op">==</span> <span class="fl">10</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">select</span><span class="op">(</span><span class="va">gvkey</span>, <span class="va">fyear</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">mutate</span><span class="op">(</span>rand <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="fu">pick</span><span class="op">(</span><span class="fu">everything</span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">gvkey</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">rand</span> <span class="op">==</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">min</a></span><span class="op">(</span><span class="va">rand</span><span class="op">)</span>, <span class="va">fyear</span> <span class="op">&gt;</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">min</a></span><span class="op">(</span><span class="va">fyear</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">ungroup</span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">top_n</span><span class="op">(</span><span class="fl">1000</span>, wt <span class="op">=</span> <span class="va">rand</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">select</span><span class="op">(</span><span class="va">gvkey</span>, <span class="va">fyear</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">mutate</span><span class="op">(</span>part <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<!-- Third, we create sample_2 by pulling firm-years from test_sample for firms found in sample_2_firm_years and then pulling in the firm-years where part is TRUE based on the value of part from sample_2_firm_years and then setting the value of part to FALSE when it is missing (i.e., not found on sample_2_firm_years). -->
+<p>第3に、<code>sample_2</code>を作成する。これは、<code>sample_2_firm_years</code>に見つかる企業の企業年度を<code>test_sample</code>から引き出し、<code>sample_2_firm_years</code>の<code>part</code>の値に基づいて<code>part</code>が<code>TRUE</code>の企業年度を引き出し、<code>part</code>が欠落している場合（つまり、<code>sample_2_firm_years</code>に見つからない場合）は<code>part</code>の値を<code>FALSE</code>に設定する。</p>
+<div class="cell">
+<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">sample_2</span> <span class="op">&lt;-</span></span>
+<span>  <span class="va">test_sample</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">semi_join</span><span class="op">(</span><span class="va">sample_2_firm_years</span>, by <span class="op">=</span> <span class="st">"gvkey"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">left_join</span><span class="op">(</span><span class="va">sample_2_firm_years</span>, by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"gvkey"</span>, <span class="st">"fyear"</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">mutate</span><span class="op">(</span>part <span class="op">=</span> <span class="fu">coalesce</span><span class="op">(</span><span class="va">part</span>, <span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<!-- Finally, we create merged_sample_2 — the analogue of merged_sample_1 — by merging sample_2 with the underlying accounting data in acc_data_raw. ???-->
+<p>最後に、<code>merged_sample_2</code>を作成する。これは、<code>merged_sample_1</code>のアナログであり、<code>sample_2</code>を<code>acc_data_raw</code>の基礎となる会計データとマージすることで作成される。</p>
+<div class="cell">
+<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">merged_sample_2</span> <span class="op">&lt;-</span></span>
+<span>  <span class="va">sample_2</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">inner_join</span><span class="op">(</span><span class="va">acc_data_raw</span>, by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"gvkey"</span>, <span class="st">"fyear"</span><span class="op">)</span><span class="op">)</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<!-- Table 3 of Dechow et al. (1995) actually involves two samples.  -->
+<p>Dechow et al.&nbsp;(1995)のTable 3は、実際には2つのサンプルを含んでいる。 <!-- One sample is similar to the above and a second sample would be based on the above, but with `filter(earn_dec == 1)` being used in the creation of `sample_2_firm_years`. --> 1つのサンプルは上記と似ており、2つ目のサンプルは上記をベースにして、<code>sample_2_firm_years</code>の作成に<code>filter(earn_dec == 1)</code>を使用している。 <!-- Table 4 of Dechow et al. (1995) is similar, but is based on deciles of cash flow from operations, where cash flow from operations is calculated using earnings and accruals, as cash flow statements were not required for most of the sample period in Dechow et al. (1995). --> Dechow et al.&nbsp;(1995)の表4と似ているが、これは営業活動によるキャッシュフローの十分位に基づいている。 Dechow et al.&nbsp;(1995)のほとんどのサンプル期間ではキャッシュフロー計算書が要求されておらず、営業活動によるキャッシュフローは利益とアクルーアルを使用して計算された。</p>
+<!-- ## Discussion questions and exercises -->
+</section><section id="議論の質問と演習" class="level2" data-number="8.5"><h2 data-number="8.5" class="anchored" data-anchor-id="議論の質問と演習">
+<span class="header-section-number">8.5</span> 議論の質問と演習</h2>
+<!-- 1. What interpretation do Dechow et al. (1995) provide for their Table 1 results? -->
+<ol type="1">
+<li>Dechow et al.&nbsp;(1995)は、Table 1の結果に対してどのような解釈を提供しているか。</li>
+</ol>
+<!-- 2. Compare the results in Table 16.1 with those in Table 1 of Dechow et al. (1995). What differences appear to be significant? --><ol start="2" type="1">
+<li>Table 16.1の結果とDechow et al.&nbsp;(1995)のTable 1の結果を比較して、どのような違いが重要であると思われるか。</li>
+</ol>
+<!-- 3. Compare the values in the standard deviation column of Table 1 of Dechow et al. (1995) with other statistics. Do these differences make sense? Or do they suggest anomalies in the underlying data? --><ol start="3" type="1">
+<li>Dechow et al.&nbsp;(1995)のTable 1の標準偏差列の値を他の統計量と比較しよう。 これらの違いは理にかなっていますか？それとも、基礎データに異常があることを示唆しているか？</li>
+</ol>
+<!-- 4. Compare the values in the standard deviation column of the “earnings management” rows of Table 1 of Dechow et al. (1995) with the values in the mean column of the standard error rows.  --><ol start="4" type="1">
+<li>Dechow et al.&nbsp;(1995)の表1の「earnings management」行の標準偏差列の値を、標準誤差行の平均列の値と比較しなさい。 <!-- What is the relationship between these values? What would you expect the relationship between these values to be? Do you observe similar relations in Table 16.1? --> これらの値の関係は何か？これらの値の関係はどのようになると予想されるのか？Table 16.1でも同様の関係を観察できるか？</li>
+</ol>
+<!-- 5. Focusing on the Healy Model, DeAngelo Model, and the Industry Model, compare the rejection rates in Table 16.2 with those presented in Table 2 of Dechow et al. (1995).  --><ol start="5" type="1">
+<li>Healyモデル、DeAngeloモデル、産業モデルに焦点を当て、Table 16.2の棄却率をDechow et al.&nbsp;(1995)のTable 2で提示されたものと比較してください。 <!-- What might explain any differences? Could these be attributed to differences between our results in Table 16.1 and those reported in Table 1 of Dechow et al. (1995)? Or do you expect that these differences have another cause? --> どのような違いが説明されるか？これらはTable 16.1の結果とDechow et al.&nbsp;(1995)のTable 1で報告された結果との違いに起因すると考えられるか？それとも、これらの違いには別の原因があると予想されるか？</li>
+</ol>
+<!-- 6. How do you interpret the results from binom_test() reported in Table 16.3? Does it make sense to interpret each of the columns independent of the others? --><ol start="6" type="1">
+<li>Table 16.3に報告されたbinom_test()の結果をどのように解釈できるか？ 各列を他の列とは独立して解釈するのは意味があるのか？</li>
+</ol>
+<!-- 7. Confirm that the coefficient on $PART$ from the regression in fm2a can be recovered from the regression in fm2. Are the standard errors the same? --><ol start="7" type="1">
+<li>
+<code>fm2a</code>の回帰の <span class="math inline">PART</span> の係数が<code>fm2</code>の回帰から回復できることを確認しなさい。標準誤差は同じか？</li>
+</ol>
+<!-- 8. Modify the code above to check that the same holds for the Modified Jones Model. --><ol start="8" type="1">
+<li>上記のコードを修正して、修正ジョーンズモデルについても同様のことが成立するか確認しなさい。</li>
+</ol>
+<!-- 9. We described the Jones Model above as “a (differently) modified Jones Model”.  --><ol start="9" type="1">
+<li>上で説明したジョーンズモデルを「(異なる)修正ジョーンズモデル」と呼ぶ。 <!-- In what way is the model different from the Jones Model estimated in fit_jones() above? Does the Salkever (1976) equivalence hold if we use the Jones Model from `fit_jones()`?  --> このモデルは、上記の<code>fit_jones()</code>で推定されたジョーンズモデルとどのように異なるか？<code>fit_jones()</code>からのジョーンズモデルを使用した場合、Salkever (1976)の同等性は成立するか？ <!-- If so, why? If not, how might this affect how you would use the Jones Model and the Salkever (1976) approach?  --> 成立する場合、なぜか？成立しない場合、ジョーンズモデルとSalkever (1976)アプローチの使用方法にどのように影響するか？ <!-- (For example, do we expect the “(differently) modified Jones Model” to produce materially different results from the Jones Model?) --> （たとえば、「(異なる)修正ジョーンズモデル」は、ジョーンズモデルと実質的に異なる結果を生じると予想されるか？）</li>
+</ol>
+<!-- 10. Do the issues related to a first and second stage apply to either the Healy Model or the DeAngelo Model or both?  --><ol start="10" type="1">
+<li>一段目と二段目に関連する問題は、HealyモデルまたはDeAngeloモデルのどちらか、または両方に適用されるか？ <!-- If so, could we apply the Salkever (1976) approach to address these issues?  --> もしそうなら、Salkever (1976)アプローチを適用してこれらの問題に対処できるか？ <!-- If not, are there “one-stage” equivalents to the Healy Model and DeAngelo Model approaches as implemented above? --> そうでない場合、上記で実装されたHealyモデルとDeAngeloモデルのアプローチに対する「一段階」の同等物はあるか？</li>
+</ol>
+<!-- 11. Produce an equivalent of Table 3 from Dechow et al. (1995) by adapting the code used above to create merged_sample_2 and Table 16.2. (Challenge version: Implement the approach of Salkever (1976) in doing so.) --><ol start="11" type="1">
+<li>上記で使用したコードを適応して、merged_sample_2とTable 16.2を作成することで、Dechow et al.&nbsp;(1995)のTable 3の同等物を作成しなさい。（チャレンジバージョン：Salkever (1976)のアプローチを実装しなさい。）</li>
+</ol>
+<!-- 12. Produce an equivalent of Table 4 from Dechow et al. (1995) by adapting the code used above to create merged_sample_2 and Table 16.2. --><ol start="12" type="1">
+<li>上記で使用したコードを適応して、merged_sample_2とTable 16.2を作成することで、Dechow et al.&nbsp;(1995)のTable 4の同等物を作成しなさい。</li>
+</ol></section><section id="power-of-tests-of-earnings-management" class="level2" data-number="8.6"><h2 data-number="8.6" class="anchored" data-anchor-id="power-of-tests-of-earnings-management">
+<span class="header-section-number">8.6</span> Power of tests of earnings management</h2>
+<!-- The final analysis of Dechow et al. (1995) that we consider here relates to the third set of samples considered by Dechow et al. (1995, p. 200), namely “samples of 1000 randomly selected firm-years in which a fixed and known amount of accrual manipulation has been artificially introduced.” -->
+<p>ここで考慮するDechow et al.&nbsp;(1995)の最終分析は、Dechow et al.&nbsp;(1995, p.200)が考慮したサンプルの3番目のセットに関連しており、「固定された既知の額のアクルーアル操作が人為的に導入された1000のランダムに選択された企業年度のサンプル」である。 <!-- Figure 4 of Dechow et al. (1995) presents power functions for three different forms of earnings management, the five measures of earnings management, and levels of induced earnings management from zero to 100% of total assets. --> Dechow et al.&nbsp;(1995)の図4は、3つの異なる形式の利益管理、5つの利益管理尺度、および総資産の0から100%までのレベルの誘発された利益マネジメントのパワー関数を示している。 <!-- To implement a “fixed and known amount of accrual manipulation”, we use the function manipulate(), which takes a data set with the required variables from Compustat (e.g., gvkey, fyear, sale, at), an argument for the level of earnings management as a percentage of lagged total assets, and an argument for the type of earnings management, which can be "expense", "revenue" or "margin", as described in Dechow et al. (1995). --> 「固定された既知の額のアクルーアル操作」を実装するために、Compustatから必要な変数を持つデータセット（例：gvkey、fyear、sale、at）を取る関数<code>manipulate()</code>を使用する。この関数は、前年度の総資産の割合としての利益管理のレベルの引数と、Dechow et al.&nbsp;(1995)で説明されているように、利益管理のタイプとして”expense”、“revenue”、または”margin”のいずれかを取る引数を取る。</p>
+<div class="cell">
+<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">manipulate</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">df</span>, <span class="va">level</span> <span class="op">=</span> <span class="fl">0</span>, <span class="va">type</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">df</span> <span class="op">&lt;-</span></span>
+<span>    <span class="va">df</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu">group_by</span><span class="op">(</span><span class="va">gvkey</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu">arrange</span><span class="op">(</span><span class="va">datadate</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu">mutate</span><span class="op">(</span>ni_ratio <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="fu">if_else</span><span class="op">(</span><span class="va">part</span>, <span class="cn">NA</span>, <span class="va">ni</span> <span class="op">/</span> <span class="va">sale</span><span class="op">)</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
+<span>           lag_at <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/lag.html">lag</a></span><span class="op">(</span><span class="va">at</span><span class="op">)</span>,</span>
+<span>           manip_amt <span class="op">=</span> <span class="va">lag_at</span> <span class="op">*</span> <span class="va">level</span>,</span>
+<span>           manip_amt_gross <span class="op">=</span> <span class="va">manip_amt</span> <span class="op">/</span> <span class="va">ni_ratio</span><span class="op">)</span></span>
+<span></span>
+<span>  <span class="kw">if</span> <span class="op">(</span><span class="va">type</span> <span class="op">==</span> <span class="st">"expense"</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="va">df</span> <span class="op">|&gt;</span></span>
+<span>      <span class="fu">mutate</span><span class="op">(</span>lct <span class="op">=</span> <span class="fu">if_else</span><span class="op">(</span><span class="va">part</span>, <span class="va">lct</span> <span class="op">-</span> <span class="va">manip_amt</span>, <span class="va">lct</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>      <span class="fu">ungroup</span><span class="op">(</span><span class="op">)</span></span>
+<span>  <span class="op">}</span> <span class="kw">else</span> <span class="kw">if</span> <span class="op">(</span><span class="va">type</span> <span class="op">==</span> <span class="st">"revenue"</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="va">df</span> <span class="op">|&gt;</span></span>
+<span>      <span class="fu">mutate</span><span class="op">(</span>sale <span class="op">=</span> <span class="fu">case_when</span><span class="op">(</span><span class="va">part</span> <span class="op">~</span> <span class="va">sale</span> <span class="op">+</span> <span class="va">manip_amt</span>,</span>
+<span>                              <span class="fu"><a href="https://rdrr.io/r/stats/lag.html">lag</a></span><span class="op">(</span><span class="va">part</span><span class="op">)</span> <span class="op">~</span> <span class="va">sale</span> <span class="op">-</span> <span class="va">manip_amt</span>,</span>
+<span>                              .default <span class="op">=</span> <span class="va">sale</span><span class="op">)</span>,</span>
+<span>             rect <span class="op">=</span> <span class="fu">if_else</span><span class="op">(</span><span class="va">part</span>, <span class="va">rect</span> <span class="op">+</span> <span class="va">manip_amt</span>, <span class="va">rect</span><span class="op">)</span>,</span>
+<span>             act <span class="op">=</span> <span class="fu">if_else</span><span class="op">(</span><span class="va">part</span>, <span class="va">act</span> <span class="op">+</span> <span class="va">manip_amt</span>, <span class="va">act</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>      <span class="fu">ungroup</span><span class="op">(</span><span class="op">)</span></span>
+<span>  <span class="op">}</span> <span class="kw">else</span> <span class="kw">if</span> <span class="op">(</span><span class="va">type</span> <span class="op">==</span> <span class="st">"margin"</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="va">df</span> <span class="op">|&gt;</span></span>
+<span>      <span class="fu">mutate</span><span class="op">(</span>sale <span class="op">=</span> <span class="fu">case_when</span><span class="op">(</span><span class="va">part</span> <span class="op">&amp;</span> <span class="va">ni_ratio</span> <span class="op">&gt;</span> <span class="fl">0</span> <span class="op">~</span></span>
+<span>                                <span class="va">sale</span> <span class="op">+</span> <span class="va">manip_amt_gross</span>,</span>
+<span>                              <span class="fu"><a href="https://rdrr.io/r/stats/lag.html">lag</a></span><span class="op">(</span><span class="va">part</span><span class="op">)</span> <span class="op">&amp;</span> <span class="va">ni_ratio</span> <span class="op">&gt;</span> <span class="fl">0</span> <span class="op">~</span></span>
+<span>                                <span class="va">sale</span> <span class="op">-</span> <span class="va">manip_amt_gross</span>,</span>
+<span>                              .default <span class="op">=</span> <span class="va">sale</span><span class="op">)</span>,</span>
+<span>             rect <span class="op">=</span> <span class="fu">if_else</span><span class="op">(</span><span class="va">part</span> <span class="op">&amp;</span> <span class="va">ni_ratio</span> <span class="op">&gt;</span> <span class="fl">0</span>,</span>
+<span>                            <span class="va">rect</span> <span class="op">+</span> <span class="va">manip_amt_gross</span>, <span class="va">rect</span><span class="op">)</span>,</span>
+<span>             act <span class="op">=</span> <span class="fu">if_else</span><span class="op">(</span><span class="va">part</span> <span class="op">&amp;</span> <span class="va">ni_ratio</span> <span class="op">&gt;</span> <span class="fl">0</span>,</span>
+<span>                           <span class="va">act</span> <span class="op">+</span> <span class="va">manip_amt_gross</span>, <span class="va">act</span><span class="op">)</span>,</span>
+<span>             lct <span class="op">=</span> <span class="fu">if_else</span><span class="op">(</span><span class="va">part</span> <span class="op">&amp;</span> <span class="va">ni_ratio</span> <span class="op">&gt;</span> <span class="fl">0</span>,</span>
+<span>                           <span class="va">lct</span> <span class="op">+</span> <span class="va">manip_amt_gross</span> <span class="op">-</span> <span class="va">manip_amt</span>, <span class="va">lct</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>      <span class="fu">ungroup</span><span class="op">(</span><span class="op">)</span></span>
+<span>  <span class="op">}</span> <span class="kw">else</span> <span class="op">{</span></span>
+<span>    <span class="va">df</span> <span class="op">|&gt;</span></span>
+<span>      <span class="fu">ungroup</span><span class="op">(</span><span class="op">)</span></span>
+<span>  <span class="op">}</span></span>
+<span><span class="op">}</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<!-- We use the manipulate() function above and apply it to levels of earning management from 0 to 100% of lagged total assets for each of the three types.  -->
+<p>上記の<code>manipulate()</code>関数を使用し、各タイプについて、総資産の前年度比率の0から100%までのレベルの利益管理を適用する。 <!-- The result from the step above is fed to get_nda() from above, the results of which are then fed to multi_fit() to calculate the results of regressing discretionary accruals on the $PART$ variable.  --> 上記のステップの結果は、上記の<code>get_nda()</code>に供給され、その結果は<code>multi_fit()</code>に供給され、総アクルーアルを<span class="math inline">PART</span>変数に回帰した結果を計算する。 <!-- The result of these steps is stored in the data frame named manip_df. --> これらのステップの結果は、<code>manip_df</code>というデータフレームに格納される。</p>
+<div class="callout callout-style-simple callout-important">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<!-- Note that creating `manip_df` takes some time. -->
+<p><code>manip_df</code>の作成には時間がかかるため、 <!-- The exercises below do not require this code to be run. --> 以下の演習では、このコードを実行する必要はない。 <!-- In addition to processing time, this code is quite memory-intensive—requiring more than 10 GB of RAM. --> 処理時間に加えて、このコードはかなりのメモリを消費する。メモリは10GB以上必要となる。 <!-- So, if you have less than about 16 GB of RAM, this code might require modification to run smoothly on your machine. --> したがって、RAMが約16GB未満の場合、このコードをスムーズに実行するには修正が必要かもしれない。</p>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb36"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">plan</span><span class="op">(</span><span class="va">multisession</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">manip_df</span> <span class="op">&lt;-</span></span>
+<span>  <span class="fu">expand_grid</span><span class="op">(</span>level <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span>from <span class="op">=</span> <span class="fl">0</span>, to <span class="op">=</span> <span class="fl">1</span>, by <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span>,</span>
+<span>              manip_type <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"expense"</span>, <span class="st">"revenue"</span>, <span class="st">"margin"</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">mutate</span><span class="op">(</span>data <span class="op">=</span> <span class="fu">future_map2</span><span class="op">(</span><span class="va">level</span>, <span class="va">manip_type</span>,</span>
+<span>                            \<span class="op">(</span><span class="va">x</span>, <span class="va">y</span><span class="op">)</span> <span class="fu">manipulate</span><span class="op">(</span><span class="va">merged_sample_1</span>, <span class="va">x</span>, <span class="va">y</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">mutate</span><span class="op">(</span>accruals <span class="op">=</span> <span class="fu">future_map</span><span class="op">(</span><span class="va">data</span>, <span class="va">get_nda</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">mutate</span><span class="op">(</span>results <span class="op">=</span> <span class="fu">future_map</span><span class="op">(</span><span class="va">accruals</span>, <span class="va">multi_fit</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">select</span><span class="op">(</span><span class="op">-</span><span class="va">data</span>, <span class="op">-</span><span class="va">accruals</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">system_time</span><span class="op">(</span><span class="op">)</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<!-- With results from regressions for various values of level, the three values of `manip_type`, and the five models (`manip_type`) stored in `manip_df`, we can create plots like those presented in Figure 4 of Dechow et al. (1995) using the following code.  -->
+<p>様々なレベル値での回帰の結果、3つの<code>manip_type</code>の値、および5つのモデル（<code>manip_type</code>）の結果が<code>manip_df</code>に格納されているため、以下のコードを使用して、Dechow et al.&nbsp;(1995)の図4に示されているようなプロットを作成できる。 <!-- We first create a function (`h_test_5()`) that takes a fitted model and returns a logical value indicating whether the null hypothesis is rejected at the 5% level. --> まず、適合モデルを受け取り、5%の水準で帰無仮説が棄却されたかどうかを示す論理値を返す関数（<code>h_test_5()</code>）を作成する。</p>
+<div class="cell">
+<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">h_test_5</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">fm</span><span class="op">)</span> <span class="op">{</span></span>
+<span></span>
+<span>  <span class="va">coefs</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/coef.html">coef</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">fm</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span>  <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span><span class="op">(</span><span class="va">coefs</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">==</span><span class="fl">2</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="va">t_stat</span> <span class="op">&lt;-</span> <span class="va">coefs</span><span class="op">[</span><span class="fl">2</span> ,<span class="fl">3</span><span class="op">]</span></span>
+<span>    <span class="va">df</span> <span class="op">&lt;-</span> <span class="va">fm</span><span class="op">$</span><span class="va">df.residual</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/stats/TDist.html">pt</a></span><span class="op">(</span><span class="va">t_stat</span>, <span class="va">df</span>, lower <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">&lt;</span> <span class="fl">0.05</span></span>
+<span>  <span class="op">}</span> <span class="kw">else</span> <span class="op">{</span></span>
+<span>    <span class="cn">NA</span></span>
+<span>  <span class="op">}</span></span>
+<span><span class="op">}</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The code below applies <code>h_test_5()</code> to each row of <code>manip_df</code> to calculate the proportion of firms for which the null is rejected for each value of (level, <code>manip_type</code>, measure).</p>
+<div class="callout callout-style-simple callout-important">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<!-- Note that creating `power_plot_data` takes some time. -->
+<p>この<code>power_plot_data</code>の作成には時間がかかるため、 <!-- The exercises below do not require this code to be run. --> 以下の演習では、このコードを実行する必要はない。 <!-- In addition to processing time, this code is quite memory-intensive—requiring more than 10 GB of RAM. --> 処理時間に加えて、このコードはかなりのメモリを消費し、メモリは10GB以上必要となる。 <!-- So, if you have less than about 16 GB of RAM, this code might require modification to run smoothly on your machine. --> したがって、RAMが約16GB未満の場合、このコードをスムーズに実行するには修正が必要かもしれない。</p>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb38"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">plan</span><span class="op">(</span><span class="va">multisession</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">power_plot_data</span> <span class="op">&lt;-</span></span>
+<span>  <span class="va">manip_df</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">unnest</span><span class="op">(</span><span class="va">results</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">level</span>, <span class="va">manip_type</span>, <span class="va">measure</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">mutate</span><span class="op">(</span>rej_null <span class="op">=</span> <span class="fu">future_map_lgl</span><span class="op">(</span><span class="va">model</span>, <span class="va">h_test_5</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">summarize</span><span class="op">(</span>prop_reject <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">rej_null</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>, .groups <span class="op">=</span> <span class="st">"drop"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">system_time</span><span class="op">(</span><span class="op">)</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<!-- This data set is easily plotted using facet_grid(), with the results shown in Figure 16.1. -->
+<p>このデータセットは、facet_grid()を使用して簡単にプロットでき、その結果は図16.1に示されている。</p>
+<div class="cell">
+<div class="sourceCode" id="cb39"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">power_plot_data</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">level</span>, y <span class="op">=</span> <span class="va">prop_reject</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_line</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">facet_grid</span><span class="op">(</span><span class="va">measure</span> <span class="op">~</span> <span class="va">manip_type</span><span class="op">)</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section><section id="discussion-questions-1" class="level2" data-number="8.7"><h2 data-number="8.7" class="anchored" data-anchor-id="discussion-questions-1">
+<span class="header-section-number">8.7</span> Discussion questions</h2>
+<!-- 1. How do the results in Figure 16.1 compare with those in Figure 4 of Dechow et al. (1995)? -->
+<ol type="1">
+<li>図16.1の結果は、Dechow et al.&nbsp;(1995)の図4と比較してどうだろうか？</li>
+</ol>
+<!-- 2. According to the SEC’s filing referenced above related to B&L, “B&L recognized, in contravention of GAAP and the Company’s own revenue recognition policies, $42.1 million of revenue, resulting in at least a $17.6 million, or 11%, overstatement of the net income originally reported for its 1993 fiscal year.”  --><ol start="2" type="1">
+<li>B&amp;Lに関連する上記のSECの報告書によると、「B&amp;Lは、GAAPおよび同社独自の収益認識方針に違反して、1993会計年度に報告された純利益の少なくとも11%、つまり$17.6百万ドルの純利益の過大報告をもたらす$42.1百万ドルの収益を認識した。」 <!-- According to a subsequent SEC filing, B&L’s total assets for 1994 were $2,457,731,000 (it seems reasonable to assume that the 1993 value was not radically different from this).  --> 後のSECの報告書によると、B&amp;Lの1994年の総資産は$2,457,731,000ドルであった（1993年の値がこれと大きく異なると仮定するのは合理的でないと思われる）。 <!-- Based on this information (plus any information in the SEC’s filing), which of Dechow et al. (1995)’s three categories did B&L’s earnings management fall into?  --> この情報（およびSECの報告書に含まれる情報）に基づいて、B&amp;Lの収益管理はDechow et al.&nbsp;(1995)の3つのカテゴリのどれに該当するか？ <!-- What is the approximate magnitude relative to the x-axes of the plots in Figure 4 of Dechow et al. (1995) (or the equivalent above)?  --> Dechow et al.&nbsp;(1995)の図4（または上記の図）のx軸に対する大きさはおおよそどれくらいか？ <!-- Based on these data points, what is the approximate estimated probability of the various models detecting earnings management of this magnitude? --> これらのデータポイントに基づいて、この程度の収益管理を検出する各モデルの確率のおおよその推定値はどれくらいか？</li>
+</ol>
+<!-- 3. What do you view as the implications of the power analysis conducted above for research on earnings management?  --><ol start="3" type="1">
+<li>上記で行われたパワー分析の研究に対する意味合いは何だと考えるか？ <!-- Are these implications consistent with the extensive literature on earnings management subsequent to Dechow et al. (1995)?  --> これらの意味合いは、Dechow et al.&nbsp;(1995)以降の利益マネジメントに関する広範な文献と一致しているか？ <!-- If so, explain why. If not, how would you reconcile the inconsistencies? --> そうであれば、その理由を説明してください。そうでない場合、どのようにして矛盾を調整しますか？</li>
+</ol>
+<!-- 4. Does each of the three forms of earnings management implemented in manipulate() above agree precisely with the corresponding description in Dechow et al. (1995, pp. 201–202)?  --><ol start="4" type="1">
+<li>Dechow et al.&nbsp;(1995, pp.201-202)における対応する説明と、上記のmanipulate()で実装された3つの収益管理の形式が正確に一致しているか？ <!-- If not, does one approach seem more correct than the other? --> そうでない場合、どちらのアプローチがより正しいように見えるか？ <!-- (Note that one issue arises with negative or zero net income ratio. How are such cases handled by Dechow et al. (1995) and by manipulate()?) --> (負の収益率やゼロの場合に問題が発生します。Dechow et al.&nbsp;(1995)と<code>manipulate()</code>はそのようなケースをどのように処理していますか？)</li>
+</ol>
+
+
+</section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><hr>
+<ol>
+<li id="fn1"><p>See <a href="https://en.wiktionary.org/wiki/operationalizable#English">(https://en.wiktionary.org/wiki/operationalizable#English)</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>As in Chapter 15, we supplement data on <code>comp.funda</code> with SIC codes from <code>comp.company</code>.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>Because we need lagged values for most analyses, in only collecting data from 1950, we will lose that first year from most analyses. It is unclear whether Dechow et al.&nbsp;(1995) collected data for 1949 to be able to use 1950 firm-years in their analysis, but it is unlikely to have much of an impact (there are few firms in the data for 1950) and it would be easy to tweak if we wanted to include 1950 in our analysis.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>Our sampling approach deviates from that in Dechow et al.&nbsp;(1995), where firm-years are selected (without replacement) subject to the constraint that “a firm-year is not selected if its inclusion in the random sample leaves less than ten unselected observations for the estimation period.” One important difference is that the approach in Dechow et al.&nbsp;(1995) could lead to a firm having two years of earnings management. There seems to be little upside in this, while our approach is much simpler to code and unlikely to impact results in a significant way.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>We put <code>fit_jones()</code> and <code>fit_mod_jones()</code> outside the function for reasons that will become clear if you attempt the exercises.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p>aa<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7"><p>777<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "コピーしました");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "コピーしました");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+          // default icon
+          link.classList.add("external");
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script><nav class="page-navigation"><div class="nav-page nav-page-previous">
+      <a href="./chap15_accruals.html" class="pagination-link" aria-label="アクルーアル">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">アクルーアル</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./appA_LinearAlgebra.html" class="pagination-link" aria-label="線形代数">
+        <span class="nav-page-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">線形代数</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer"><div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Copyright 2024, Soichi Matsuura</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+<li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/ma2ura">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/matsuura_rits">
+      <i class="bi bi-twitter" role="img" aria-label="Twitter">
+</i> 
+    </a>
+  </li>  
+</ul>
+</div>
+  </div>
+</footer>
+
+
+</body></html>
