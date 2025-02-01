@@ -1,11 +1,29 @@
 # 自然実験
 
-In this part of the book, we explore a number of issues related to drawing causal inferences from data. Many treatments of this topic dive directly into methods, such as instrumental variables or regression discontinuity design. Here we have consciously chosen to start with the benchmark setting of randomized experiments and gradually build up to settings where statistical methods may (subject to features of the settings) support credible causal inferences. We believe that carefully thinking about a hypothetical randomized experiment and conjectured causal mechanisms sharpens the thinking needed to successfully bring statistical analyses to bear on problems of causal inference.
+<!-- In this part of the book, we explore a number of issues related to drawing causal inferences from data. -->
+本パートでは、データから因果関係を推論する際に関連するいくつかの問題について探求する。
+<!-- Many treatments of this topic dive directly into methods, such as instrumental variables or regression discontinuity design.  -->
+このトピックに関する多くの論文は、操作変数や回帰不連続デザインなどの方法に直接取り組む。
 
-This chapter introduces the concept of the randomized controlled trial and the related idea of the natural experiment. While much discussion focuses on the value of random assignment for causal inference, we explain that other features of an experiment are also of critical importance. We explore the question of recognition versus disclosure to illustrate that the framing of the research question itself has important implications for any experiment.
+<!-- Here we have consciously chosen to start with the benchmark setting of randomized experiments and gradually build up to settings where statistical methods may (subject to features of the settings) support credible causal inferences.  -->
+ここでは、ランダム化実験のベンチマーク設定から始め、統計的方法が（設定の特徴に応じて）信頼性のある因果関係を支持する可能性がある設定に段階的に移行することを意識的に選択している。
+<!-- We believe that carefully thinking about a hypothetical randomized experiment and conjectured causal mechanisms sharpens the thinking needed to successfully bring statistical analyses to bear on problems of causal inference. -->
+架空のランダム化実験と推測される因果関係のメカニズムについて慎重に考えることは、統計分析を問題の因果関係に関する問題に適用するために必要な思考を研ぎ澄ますのに役立つと考えている。
+
+<!-- This chapter introduces the concept of the randomized controlled trial and the related idea of the natural experiment.  -->
+この章では、ランダム化比較試験の概念とそれに関連する自然実験の概念を紹介する。
+<!-- While much discussion focuses on the value of random assignment for causal inference, we explain that other features of an experiment are also of critical importance.  -->
+多くの議論が因果関係の推論におけるランダム割り当ての価値に焦点を当てている一方で、実験の他の特徴も重要であることを説明する。
+<!-- We explore the question of recognition versus disclosure to illustrate that the framing of the research question itself has important implications for any experiment. -->
+認識と開示の問題を探求し、研究問題のフレーミング自体がどんな実験にも重要な影響を与えることを示す。
 
 :::{.callout-tip}
-The code in this chapter uses the packages listed below. For instructions on how to set up your computer to use the code found in this book, see Section 1.2. Quarto templates for the exercises below are available on GitHub.
+<!-- The code in this chapter uses the packages listed below.  -->
+この章のコードでは、以下のパッケージを使用する。
+<!-- For instructions on how to set up your computer to use the code found in this book, see Section 1.2.  -->
+本書のコードを使用するためにコンピュータを設定する方法については、セクション1.2を参照せよ。
+<!-- Quarto templates for the exercises below are available on GitHub. -->
+以下の演習問題のQuartoテンプレートはGitHubで入手できる。
 :::
 
 ```{r}
@@ -63,70 +81,115 @@ Jackson et al. (2009)が焦点を当てる具体的な方法選択は、加速�
 この環境を念頭に置いて、Michels (2017)で使用されている可能性のある自然実験に移り、この環境がどのような信頼性のある推論を支持するかを考える。
 
 <!-- ### 17.1.1 Randomized controlled trials as a benchmark -->
-### 17.1.1 ベンチマークとしてのランダム化比較試行
+### ベンチマークとしてのランダム化比較試行
 
-A randomized experiment is often implemented in medical sciences as a randomized controlled trial or RCT. 
-Akobeng (2005, p. 
-837) describes an RCT as “a type of study in which participants are randomly assigned to one of two or more clinical interventions. 
-The RCT is the most scientifically rigorous method of hypothesis testing available, and is regarded as the gold standard trial for evaluating the effectiveness of interventions.”
+<!-- A randomized experiment is often implemented in medical sciences as a randomized controlled trial or RCT.  -->
+ランダム化実験は、医学においてランダム化比較試行またはRCTとして実施されることが多い。
+<!-- Akobeng (2005, p.837) describes an RCT as “a type of study in which participants are randomly assigned to one of two or more clinical interventions.  -->
+Akobeng (2005, p.837)は、RCTを「参加者が2つ以上の臨床介入のうちの1つにランダムに割り当てられる研究の一種」と説明している。
+<!-- The RCT is the most scientifically rigorous method of hypothesis testing available, and is regarded as the gold standard trial for evaluating the effectiveness of interventions.” -->
+RCTは、利用可能な仮説検定の中で最も科学的に厳密な方法であり、介入の効果を評価するためのゴールドスタンダードの試験と見なされている。
 
-Note that in its idealized form, an RCT involves more than simply random assignment to treatment. 
-Drawing on Akobeng (2005), we can enumerate the following as features of an ideal RCT:
+<!-- Note that in its idealized form, an RCT involves more than simply random assignment to treatment.  -->
+理想的な形では、RCTは単に処置へのランダム割り当てを含む以上のものである。
+<!-- Drawing on Akobeng (2005), we can enumerate the following as features of an ideal RCT: -->
+Akobeng (2005)に基づいて、理想的なRCTの特徴として以下を挙げることができる。
 
-The treatments to be compared are specified in advance.
-The outcomes of interest are specified in advance.
-Proposed analyses are specified in advance.
-The required number of participants is identified (using power calculations) in advance.
-Participants are recruited after required ethical approvals have been obtained.
-Participants are randomly assigned to treatment groups (we can consider the control as one of the treatments).
-Participants do not know which treatment group they have been assigned to (concealment).
-Those administering treatment (e.g., doctors, nurses, researchers) do not know which treatment group participants have been assigned to (blinding).
-So random assignment treatment is only one of several components of an RCT. 
-Even if we can argue that a candidate natural experiment offers as-if random assignment to treatment, a natural experiment will lack other features of an RCT.
+<!-- 1. The treatments to be compared are specified in advance. -->
+1. 比較する処置が事前に指定されている。
+<!-- 2. The outcomes of interest are specified in advance. -->
+2. 興味のある結果が事前に指定されている。
+<!-- 3. Proposed analyses are specified in advance. -->
+3. 提案された分析が事前に指定されている。
+<!-- 4. The required number of participants is identified (using power calculations) in advance. -->
+4. 必要な参加者数が事前に特定されている（パワー計算を使用）。
+<!-- 5. Participants are recruited after required ethical approvals have been obtained. -->
+5. 必要な倫理承認が得られた後に参加者が募集される。
+<!-- 6. Participants are randomly assigned to treatment groups (we can consider the control as one of the treatments). -->
+6. 参加者は処置群にランダムに割り当てられる（コントロールを処置の1つと考えることができる）。
+<!-- 7. Participants do not know which treatment group they have been assigned to (concealment). -->
+参加者はどの処置群に割り当てられたかを知らない（隠蔽）。
+<!-- 8. Those administering treatment (e.g., doctors, nurses, researchers) do not know which treatment group participants have been assigned to (blinding). -->
+処置を行う者（例：医師、看護師、研究者）は、参加者がどの処置群に割り当てられたかを知らない（ブラインディング）。
 
-First, the treatment is specified not by the researcher, but instead by firms, regulators, or “nature”, which we interpret broadly to include not only nature, but also complex economic forces perhaps not well understood by the researcher. 
-(We will often put the word “nature” in scare quotes to reinforce the broad interpretation the term is given in the context of natural experiments.) This means that a researcher who “discovers” a natural experiment either needs to hope that the treatments that “nature” assigns are of interest to researchers or that other researchers can be persuaded that these treatments are of interest.
+<!-- So random assignment treatment is only one of several components of an RCT.  -->
+したがって、ランダム割当処置は、RCTのいくつかの構成要素の1つに過ぎない。
+<!-- Even if we can argue that a candidate natural experiment offers as-if random assignment to treatment, a natural experiment will lack other features of an RCT. -->
+候補となる自然実験が処置へのあたかもランダムな割り当てを提供すると主張できたとしても、自然実験にはRCTの他の特徴が欠けている。
 
-Second, as a consequence of this, it is not meaningful in general to specify outcomes and analysis procedures in advance of the “experiment” being run. 
-In many cases, the natural experiment is only identified after the experiment has been conducted. 
-As a result, it is difficult to prevent p-hacking, which refers to processes in which researchers, whether consciously or not, consider a variety of outcomes and analytical procedures until “statistically significant” results are obtained. 
-We discuss this limitation of natural experiments in more detail in Chapter 19.
+<!-- First, the treatment is specified not by the researcher, but instead by firms, regulators, or “nature”, which we interpret broadly to include not only nature, but also complex economic forces perhaps not well understood by the researcher.  -->
+第1に、処置は研究者によって指定されるのではなく、企業、規制当局、または「自然」によって指定される。ここで「自然」とは、自然だけでなく、研究者によって十分に理解されていないかもしれない複雑な経済的な力を含む広い解釈を意味する。
+<!-- (We will often put the word “nature” in scare quotes to reinforce the broad interpretation the term is given in the context of natural experiments.)  -->
+（自然実験の文脈で用いられる広い解釈を強調するために、「自然」という言葉を引用符で囲むことがよくある。）
+<!-- This means that a researcher who “discovers” a natural experiment either needs to hope that the treatments that “nature” assigns are of interest to researchers or that other researchers can be persuaded that these treatments are of interest. -->
+これは、自然実験を「発見」する研究者は、自然が割り当てる処置が研究者にとって興味深いものであることを期待するか、他の研究者にこれらの処置が興味深いものであると説得する必要があることを意味する。
 
-Third, in general, natural experiments will not provide concealment of treatment assignment.1
+<!-- Second, as a consequence of this, it is not meaningful in general to specify outcomes and analysis procedures in advance of the “experiment” being run.  -->
+第2に、これにより、一般的には、「実験」が実施される前に結果と分析手順を事前に指定することは意味がない。
+<!-- In many cases, the natural experiment is only identified after the experiment has been conducted.  -->
+多くの場合、自然実験は実験が実施された後に特定される。
+<!-- As a result, it is difficult to prevent p-hacking, which refers to processes in which researchers, whether consciously or not, consider a variety of outcomes and analytical procedures until “statistically significant” results are obtained.  -->
+その結果、p-hackingを防ぐことが難しくなる。p-hackingとは、研究者が意識的であろうと無意識であろうと、さまざまな結果と分析手順を検討し、最終的に「統計的に有意な」結果を得るまでのプロセスを指す。
+<!-- We discuss this limitation of natural experiments in more detail in Chapter 19. -->
+自然実験のこの制限については、第19章で詳しく説明する。
 
-However, we should note that concealment is not always meaningful in business research settings. 
-RCTs are often used to evaluate the drugs or other medical interventions that are expected to operate without conscious action by the participants. 
-In fact, it is because researchers are often most interested in the direct effect of the treatment unconfounded by other actions that the control group involves a placebo treatment as a control. 
-But if the treatment of interest is an accounting standard, an incentive-compensation contract component, or financing constraints, then it’s not meaningful to speak of a direct, unconscious effect: if managers are unaware of features of their compensation contracts, then they are not going to take actions in response to them. 
-In general, it is likely that researchers are interested in the total effects of a treatment.
+<!-- Third, in general, natural experiments will not provide concealment of treatment assignment.1 -->
+第3に、一般的に、自然実験は処置割り当ての隠蔽を提供しない。[^1]
 
-Concealment of the fact of random assignment might be particularly important in settings involving signalling, as the response of the receiver of a signal is predicated on the signal being an endogenous response to the sender’s circumstances. 
-If a signal is known by the receiver to have been randomly assigned, then there is no signalling value. 
-As discussed by Armstrong et al. 
-(2022), signalling has been used to explain patterns in voluntary disclosure, accounting choice, dividend policy, insider stock purchases, corporate social responsibility, and the decision to get an audit.2
+<!-- However, we should note that concealment is not always meaningful in business research settings.  -->
+ただし、隠蔽がビジネス研究の設定で常に意味があるわけではないことに注意する。
+<!-- RCTs are often used to evaluate the drugs or other medical interventions that are expected to operate without conscious action by the participants.  -->
+RCTは、参加者が意識的な行動なしに作用すると予想される薬剤やその他の医療介入を評価するためによく使用される。
+<!-- In fact, it is because researchers are often most interested in the direct effect of the treatment unconfounded by other actions that the control group involves a **placebo** treatment as a control.  -->
+実際、研究者が他の行動によって交絡されていない処置の直接的な効果に最も興味を持つことが多いため、コントロール群には**プラセボ**処置が含まれる。
+<!-- But if the treatment of interest is an accounting standard, an incentive-compensation contract component, or financing constraints, then it’s not meaningful to speak of a direct, unconscious effect: if managers are unaware of features of their compensation contracts, then they are not going to take actions in response to them.  -->
+しかし、興味のある処置が会計基準、インセンティブ報酬契約の構成要素、または資金調達制約である場合、直接的で無意識の効果について話すことは意味がない：マネージャーが自分の報酬契約の特徴に気づいていない場合、それに対応して行動を起こすことはない。
+<!-- In general, it is likely that researchers are interested in the total effects of a treatment. -->
+一般的に、研究者は総処置効果に興味を持っている可能性が高い。
+
+<!-- Concealment of the fact of random assignment might be particularly important in settings involving **signalling**, as the response of the receiver of a signal is predicated on the signal being an endogenous response to the sender’s circumstances.  -->
+ランダム割り当ての事実の隠蔽は、**シグナリング**を含む設定で特に重要かもしれない。なぜなら、シグナルの受信者の反応は、シグナルが送信者の状況に対する内生的な反応であることを前提としているからである。
+<!-- If a signal is known by the receiver to have been randomly assigned, then there is no signalling value.  -->
+シグナルが受信者にランダムに割り当てられたことが知られている場合、シグナリング価値はない。
+<!-- As discussed by Armstrong et al. (2022), signalling has been used to explain patterns in voluntary disclosure, accounting choice, dividend policy, insider stock purchases, corporate social responsibility, and the decision to get an audit.2 -->
+Armstrong et al. (2022)で議論されているように、シグナリングは、任意開示、会計選択、配当政策、インサイダー株式購入、企業の社会的責任、監査を受ける決定などのパターンを説明するために使用されてきた。[^2]
 
 <!-- ### 17.1.2 Identifying the treatment of interest -->
 ### 興味のある処置の特定
 
-Even when using an RCT, it can be difficult to ensure that the treatment applied is the one we are most interested in. 
-For example, suppose we’re interested in studying the effectiveness of KN95 masks in reducing the spread of Covid-19. 
-While a simple perspective might be that all we need to do for an experiment is to divide participants into treatment and control groups, in reality complexities exist.
+<!-- Even when using an RCT, it can be difficult to ensure that the treatment applied is the one we are most interested in.  -->
+ランダム化比較試行を使用していても、適用される処置が最も興味を持っているものであることを確実にすることは難しいことがある。
+<!-- For example, suppose we’re interested in studying the effectiveness of KN95 masks in reducing the spread of Covid-19.  -->
+たとえば、新型コロナウイルスの感染拡大を抑制するためのKN95マスクの効果を研究したいとしよう。
+<!-- While a simple perspective might be that all we need to do for an experiment is to divide participants into treatment and control groups, in reality complexities exist. -->
+実験のために参加者を処置群と対照群に分けるだけで済むという単純な視点があるかもしれないが、実際には複雑さが存在する。
 
-One approach for the treatment group would be to issue all participants in this group with a supply of masks to be used during the study period and have participants go about their daily lives in other respects. 
-This implies that the treatment is “receive KN95 masks” rather than “wear KN95 masks”, even though the latter might be the treatment we are more interested in evaluating.
+<!-- One approach for the treatment group would be to issue all participants in this group with a supply of masks to be used during the study period and have participants go about their daily lives in other respects.  -->
+処置群のアプローチの1つは、このグループのすべての参加者に研究期間中に使用するためのマスクを支給し、他の点では参加者が日常生活を送るようにすることである。
+<!-- This implies that the treatment is “receive KN95 masks” rather than “wear KN95 masks”, even though the latter might be the treatment we are more interested in evaluating. -->
+これは、「KN95マスクを着用する」がより興味を持って評価したい処置であるかもしれないにもかかわらず、「KN95マスクを着用する」ではなく「KN95マスクを受け取る」ということを意味している。
 
-If we are interested in “wear KN95 masks” as the treatment, we might implement mechanisms for measuring whether masks are actually worn in practice. 
-While this might be accomplished by sending out monitors to note whether masks are being worn properly, this would entail significant additional costs and it is unlikely that such data recording would be complete or even feasible (e.g., observing a participant at home or at work). 
-Another approach would be to ask participants to maintain a log of their mask-wearing behaviour and rely on participants to be honest and diligent in doing so.
+<!-- If we are interested in “wear KN95 masks” as the treatment, we might implement mechanisms for measuring whether masks are actually worn in practice.  -->
+「KN95マスクを着用する」を処置として興味がある場合、実際にマスクが着用されているかどうかを測定するメカニズムを実装するかもしれない。
+<!-- While this might be accomplished by sending out monitors to note whether masks are being worn properly, this would entail significant additional costs and it is unlikely that such data recording would be complete or even feasible (e.g., observing a participant at home or at work).  -->
+これは、マスクが適切に着用されているかどうかを記録するためにモニターを送り出すことで達成できるかもしれないが、これにはかなりの追加費用がかかり、そのようなデータ記録が完全であるか、または実現可能であるかどうかは疑わしい（例：参加者を自宅や職場で観察する）。
+<!-- Another approach would be to ask participants to maintain a log of their mask-wearing behaviour and rely on participants to be honest and diligent in doing so. -->
+別のアプローチは、参加者にマスク着用の行動を記録するように依頼し、参加者が正直で熱心に行うことを期待することである。
 
-As the recording of behaviour may itself influence behaviour (e.g., making a log may provide a reminder to wear a mask), this effectively alters the treatment to “receive KN95 masks and keep a log of mask-wearing”, which may not be of interest unless widespread logging of behaviour is considered part of the policy repertoire.
+<!-- As the recording of behaviour may itself influence behaviour (e.g., making a log may provide a reminder to wear a mask), this effectively alters the treatment to “receive KN95 masks and keep a log of mask-wearing”, which may not be of interest unless widespread logging of behaviour is considered part of the policy repertoire. -->
+行動の記録自体が行動に影響を与える可能性があるため（例：記録を作成することでマスク着用を思い出させることができる）、これは事実上処置を「KN95マスクを受け取り、マスク着用の記録を保持する」と変更し、広範な行動の記録が政策のレパートリーの一部と見なされない限り、興味を持たれないかもしれない。
 
-If we can only randomly assign participants to “receive KN95 masks” or not, and we are interested in “wear KN95 masks” as the treatment, an issue we need to consider is the reality that the conscientiousness with which participants wear masks is not random. 
-Fortunately, with the right data, we can conduct an intention-to-treat analysis to evaluate the effect of “wear KN95 masks” even if we only have the ability to assign participants to “receive KN95 masks” as the treatment. 
-This analysis uses instrumental variable techniques, which are the focus of Chapter 20, and further discussion of this approach is found in Chapters 4 and 5 of Dunning (2012).
+<!-- If we can only randomly assign participants to “receive KN95 masks” or not, and we are interested in “wear KN95 masks” as the treatment, an issue we need to consider is the reality that the conscientiousness with which participants wear masks is not random.  -->
+参加者を「KN95マスクを受け取る」かどうかにランダムに割り当てることしかできず、「KN95マスクを着用する」を処置として興味がある場合、考慮する必要がある問題は、参加者がマスクを着用する熱心さがランダムではないという現実である。
+<!-- Fortunately, with the right data, we can conduct an intention-to-treat analysis to evaluate the effect of “wear KN95 masks” even if we only have the ability to assign participants to “receive KN95 masks” as the treatment.  -->
+幸いなことに、適切なデータがあれば、「KN95マスクを着用する」効果を評価するために、参加者を「KN95マスクを受け取る」処置に割り当てる能力しかない場合でも、意図治療分析を実施することができる。
+<!-- This analysis uses instrumental variable techniques, which are the focus of Chapter 20, and further discussion of this approach is found in Chapters 4 and 5 of Dunning (2012). -->
+この分析は、第20章の焦点である因果推定技術を使用しており、このアプローチについてのさらなる議論は、Dunning (2012)の第4章と第5章に見られる。
 
-While it may be tempting to think of the control as simply the “no treatment” group, there are actually significant choices to be made in specifying the treatment depending on the specific treatment effect we wish to estimate. 
-For example, wearing a mask may have an effect on Covid-19 transmission not because the mask physically prevents the transmission of the virus, but because wearing a mask may affect behaviour. 
+<!-- While it may be tempting to think of the control as simply the “no treatment” group, there are actually significant choices to be made in specifying the treatment depending on the specific treatment effect we wish to estimate.  -->
+コントロールを単に「無処置」グループと考えることが誘惑されるかもしれないが、実際には、推定したい特定の処置効果に応じて処置を指定する際に重要な選択肢がある。
+<!-- For example, wearing a mask may have an effect on Covid-19 transmission not because the mask physically prevents the transmission of the virus, but because wearing a mask may affect behaviour.  -->
+たとえば、マスクを着用することがウイルスの伝播を物理的に防ぐからではなく、マスクを着用することが行動に影響を与える可能性があるため、マスクを着用することが新型コロナウイルスの伝播に影響を与えるかもしれない。
 Wearing a mask might cause the wearer to be more cautious in interacting with others or, by making conversations more awkward, masks might reduce social interaction, or masks might cause others to give the wearer a wide berth (though this effect might have been more plausible in the pre-pandemic era). 
 Alternatively, masks might give wearers (and others) a sense of comfort and lead to increased social interaction. 
 And, as discussed above, if “receive KN95 masks and keep a log of mask-wearing” is the treatment, the control might be “receive no KN95 masks and keep a log of mask-wearing” on the assumption that some people will wear their own masks if none are provided.3
