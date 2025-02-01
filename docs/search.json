@@ -800,5 +800,16 @@
       "資本市場研究",
       "<span class='chapter-number'>9</span>  <span class='chapter-title'>自然実験</span>"
     ]
+  },
+  {
+    "objectID": "chap18_Causal_mechanisms.html",
+    "href": "chap18_Causal_mechanisms.html",
+    "title": "10  因果メカニズム",
+    "section": "",
+    "text": "Gow et al. (2016) argue that, while causal inference is the goal of most accounting research, it is extremely difficult to find settings where straightforward application of statistical methods can produce credible estimates of causal effects (and the remaining chapters of this part arguably support this claim). Does this mean accounting researchers must give up making causal statements? Gow et al. (2016) argue that the answer is “no” and suggest an increased focus on causal mechanisms as one path forward.\nIn this chapter, we aim to help the reader understand the idea of causal mechanisms, which can suggest empirical analyses that do not rely on, say, random assignment to treatment, which is very rarely found in accounting research. Unlike the other chapters in this part, this chapter is largely qualitative and contains no empirical analysis.\nAccounting research is not alone in its reliance on observational data with the goal of drawing causal inferences. For this reason, it is natural to look to other fields using observational data to identify causal mechanisms and ultimately to draw causal inferences. Epidemiology and medicine are two fields that are often singled out in this regard. In the next two sections, we briefly provide examples and highlight the features of the examples that enhanced the credibility of the inferences drawn.1 A key implication of this discussion is that accounting researchers need to identify clearly and rigorously the causal mechanism that is producing their results.",
+    "crumbs": [
+      "資本市場研究",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>因果メカニズム</span>"
+    ]
   }
 ]
