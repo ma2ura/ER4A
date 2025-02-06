@@ -368,138 +368,138 @@ FASBは、その根拠について、プライベート・セクターの会計�
 <!-- The primary effect of SFAS 123R was to require recognition of stock-based compensation expense using the grant-date fair value. -->
 SFAS 123Rの主な効果は、付与日の公正価値を使用して株式報酬費用を認識することを要求することであった。
 
-But, even after SFAS 123R was adopted, controversy continued. 
+But, even after SFAS 123R was adopted, controversy continued.
 Several prominent persons, including former US cabinet secretaries and three Nobel laureates, reiterated arguments that recognizing the expense is improper because the value of employee stock options does not represent an expense of the firm (Hagopian, 2006) and filed a petition with the SEC in 2008 alleging that the SEC failed in its duties by permitting the FASB to issue SFAS 123R.
 
 <!-- ### 17.3.2 Accounting for leases -->
 ### リースの会計処理
 
-A lease is an agreement between a lessor who owns an asset and a lessee that grants the lessee the right to use the asset for a period of time in exchange for (typically periodic) payments. 
+<!-- A lease is an agreement between a lessor who owns an asset and a lessee that grants the lessee the right to use the asset for a period of time in exchange for (typically periodic) payments.  -->
 Leasing is a huge business around the globe, and leases are a common way for firms to acquire the right to use assets such as real estate, aircraft, and machinery.
 
-Leasing an asset is often an alternative to buying that asset. 
-If a firm only needs an asset for a short period of time, then leasing the asset may reduce transaction costs and eliminate risks associated with the value of the asset at the end of the lease. 
+Leasing an asset is often an alternative to buying that asset.
+If a firm only needs an asset for a short period of time, then leasing the asset may reduce transaction costs and eliminate risks associated with the value of the asset at the end of the lease.
 Lessors are often firms with specialist expertise in managing the acquisition, leasing, and disposal of assets and understanding how their value changes over their useful lives.
 
-In some circumstances, the economic risk and benefits of asset ownership are borne by the lessee. 
+In some circumstances, the economic risk and benefits of asset ownership are borne by the lessee.
 For example, if a lease includes a bargain purchase option that a rational lessee will almost certainly exercise or if title to the asset simply transfers to the lessee at the end of the lease, then the lessee owns the asset in any relevant economic sense.
 
-However, like any contract, a lease has two sides. 
-Generally lessee acquires economic ownership of an asset in exchange for a stream of payments over time. 
-In many leases, the payments are periodic and fixed. 
+However, like any contract, a lease has two sides.
+Generally lessee acquires economic ownership of an asset in exchange for a stream of payments over time.
+In many leases, the payments are periodic and fixed.
 Anyone who has mortgaged a house or financed a vehicle purchase will likely recognize an obligation for fixed and periodic payments as a loan.
 
 Thus, in some cases, a lease is economically equivalent to the combination of two transactions: first, borrowing money on a loan that requires fixed, periodic repayments and, second, use of the loan proceeds to acquire the leased asset.
 
-SFAS 13 (later relabelled as ASC 840), which was issued by the US Financial Accounting Standards Board in 1976, required leases with features that made them more akin to purchases of assets financed by loans to be accounted for in a manner essentially equivalent to loan-backed asset purchases. 
+SFAS 13 (later relabelled as ASC 840), which was issued by the US Financial Accounting Standards Board in 1976, required leases with features that made them more akin to purchases of assets financed by loans to be accounted for in a manner essentially equivalent to loan-backed asset purchases.
 SFAS 13 specified criteria, such as the transfer of asset ownership at the end of the lease or the presence of a bargain purchase option, that would trigger this capital lease accounting treatment.
 
-Under capital lease accounting, a leased asset and a lease liability would be recognized on the balance sheet. 
-The leased asset would be depreciated (or “amortized” in the language of SFAS 13) “in a manner consistent with the lessee’s normal depreciation policy” over the lease term. 
+Under capital lease accounting, a leased asset and a lease liability would be recognized on the balance sheet.
+The leased asset would be depreciated (or “amortized” in the language of SFAS 13) “in a manner consistent with the lessee’s normal depreciation policy” over the lease term.
 At the same time, “each minimum lease payment shall be allocated between a reduction of the obligation and interest expense so as to produce a constant periodic rate of interest on the remaining balance of the obligation.”
 
-SFAS 13 provided that leases not meeting the criteria for capital lease accounting should be accounted for as operating leases. 
+SFAS 13 provided that leases not meeting the criteria for capital lease accounting should be accounted for as operating leases.
 For such leases, no asset or liability would be recognized and, for most leases, the standard provided that “rental on an operating lease shall be charged to expense over the lease term as it becomes payable.”
 
-In 2004, Jonathan Weil wrote in the Wall Street Journal that “companies are still allowed to keep off their balance sheets billions of dollars of lease obligations that are just as real as financial commitments originating from bank loans and other borrowings.” While SFAS 13 classified leases that were obviously economically equivalent to debt-financed asset purchases, its criteria allowed firms to structure leases so that they were economically very close to such purchases, but which were classified as operating leases for financial reporting purposes. 
+In 2004, Jonathan Weil wrote in the Wall Street Journal that “companies are still allowed to keep off their balance sheets billions of dollars of lease obligations that are just as real as financial commitments originating from bank loans and other borrowings.” While SFAS 13 classified leases that were obviously economically equivalent to debt-financed asset purchases, its criteria allowed firms to structure leases so that they were economically very close to such purchases, but which were classified as operating leases for financial reporting purposes.
 Weil flagged US retail pharmacy chain Walgreen, which “shows no debt on its balance sheet, but it is responsible for $19.3 billion of operating-lease payments mainly on stores over the next 25 years” and stated that the off-balance-sheet operating-lease commitments, as revealed in the footnotes to their financial statements for companies in the Standard & Poor’s 500-stock index totalled US$482 billion.
 
-In 2006, the FASB began work on a new lease accounting standard intended to close “loopholes” like those described by Weil. 
+In 2006, the FASB began work on a new lease accounting standard intended to close “loopholes” like those described by Weil.
 Given the extensive information about operating leases provided under SFAS 13, we can view SFAS 13 as providing disclosure of operating leases, whereas many called for their recognition on the balance sheet.
 
-In 2016, FASB published a new lease accounting standard, ASC 842, and the IASB issued a similar standard, IFRS 16. 
+In 2016, FASB published a new lease accounting standard, ASC 842, and the IASB issued a similar standard, IFRS 16.
 These accounting standards require all leases to be brought onto the balance sheet (except short-term leases).
 
 <!-- ### 17.3.3 Academic research -->
 ### 学術研究
 
-The two examples above serve two purposes. 
-First, they highlight the significance of recognition-versus-disclosure questions in financial reporting. 
-Second, they provide concrete settings for thinking about some subtle issues faced by researchers in studying the topic of recognition versus disclosure. 
+The two examples above serve two purposes.
+First, they highlight the significance of recognition-versus-disclosure questions in financial reporting.
+Second, they provide concrete settings for thinking about some subtle issues faced by researchers in studying the topic of recognition versus disclosure.
 As we shall see, some of these subtleties would exist even if we could run any field experiment we could conceive.
 
-What do “recognition” and “disclosure” mean? Simplistically, the choice between recognition and disclosure is a choice between including a given amount in the financial statements or merely disclosing the amount, typically in the footnotes to the financial statements. 
-However, as pointed out by Bernard and Schipper (1994), the choice is significantly more complicated than this simple binary “in or out” election. 
-FASB’s Statement of Financial Accounting Concepts No 5 (SFAC 5) defines recognition as “the process of formally incorporating an item in the financial statements of an entity as an asset, liability, revenue, expense, or the like. 
+What do “recognition” and “disclosure” mean? Simplistically, the choice between recognition and disclosure is a choice between including a given amount in the financial statements or merely disclosing the amount, typically in the footnotes to the financial statements.
+However, as pointed out by Bernard and Schipper (1994), the choice is significantly more complicated than this simple binary “in or out” election.
+FASB’s Statement of Financial Accounting Concepts No 5 (SFAC 5) defines recognition as “the process of formally incorporating an item in the financial statements of an entity as an asset, liability, revenue, expense, or the like.
 A recognized item is depicted in both words and numbers, with the amount included in the statement totals.”
 
-Paragraph 5.1 of the IASB Conceptual Framework contains a similar definition, but clarifies certain elements of the FASB definition. 
-First, recognition involves the statements of financial position and financial performance; putting an item in the statement of cash flows alone would not seem to constitute recognition. 
-Second, “or the like” is clarified to mean “equity”, as this rounds out the list of elements of financial statements. 
-Third, “numbers” mean monetary amounts, as this is how elements are put in financial statements. 
+Paragraph 5.1 of the IASB Conceptual Framework contains a similar definition, but clarifies certain elements of the FASB definition.
+First, recognition involves the statements of financial position and financial performance; putting an item in the statement of cash flows alone would not seem to constitute recognition.
+Second, “or the like” is clarified to mean “equity”, as this rounds out the list of elements of financial statements.
+Third, “numbers” mean monetary amounts, as this is how elements are put in financial statements.
 Implicit in both definitions is that the monetary amounts can be added up in some meaningful fashion, as financial statement items are included as components of sums.
 
-Bernard and Schipper (1994) note that “recognition does not appear to have a formal definition in the FASB’s official pronouncements” [p. 
-4], and the same appears to be true of the IASB Conceptual Framework. 
-Instead, Bernard and Schipper (1994) suggest that “one could view recognition as a form of disclosure with special characteristics” [p. 
+Bernard and Schipper (1994) note that “recognition does not appear to have a formal definition in the FASB’s official pronouncements” [p.
+4], and the same appears to be true of the IASB Conceptual Framework.
+Instead, Bernard and Schipper (1994) suggest that “one could view recognition as a form of disclosure with special characteristics” [p.
 5].
 
-Can recognition and disclosure be viewed as alternatives? Bernard and Schipper (1994) suggest that if we take the conceptual frameworks as binding constraints on standard-setters, then recognition versus disclosure cannot be viewed as a choice. 
-Either an item meets the recognition criteria and thus must be recognized, or it does not and thus must not be recognized. 
-But it is unclear whether the conceptual frameworks determine standards to this degree. 
+Can recognition and disclosure be viewed as alternatives? Bernard and Schipper (1994) suggest that if we take the conceptual frameworks as binding constraints on standard-setters, then recognition versus disclosure cannot be viewed as a choice.
+Either an item meets the recognition criteria and thus must be recognized, or it does not and thus must not be recognized.
+But it is unclear whether the conceptual frameworks determine standards to this degree.
 Nothing in SFAC 5 changed between SFAS 123 and SFAS 123R, even though the two standards came out on opposite sides with regard to recognition of stock-based compensation expense.8
 
-The case of SFAS 123 above is arguably one of the sharpest instances of recognition versus disclosure. 
-Under SFAS 123, a firm that used the APB 25 approach to measuring the cost of employee stock options was required to provide a pro forma disclosure of the expense in the footnotes to its financial statements.9 In effect, a firm must provide the information that it would have provided had it recognized an expense using the fair-value approach. 
+The case of SFAS 123 above is arguably one of the sharpest instances of recognition versus disclosure.
+Under SFAS 123, a firm that used the APB 25 approach to measuring the cost of employee stock options was required to provide a pro forma disclosure of the expense in the footnotes to its financial statements.9 In effect, a firm must provide the information that it would have provided had it recognized an expense using the fair-value approach.
 While the pro forma financial statements only include the statement of financial performance, there is no aggregate impact of applying the SFAS 123 approach on the statement of financial position, as the debit to expense, which would flow through net income to retained earnings, is offset by an addition to additional paid-in capital.
 
-The case of lease accounting is perhaps more typical of recognition-versus-disclosure settings. 
-First, firms cannot elect to apply operating lease accounting instead of capital lease accounting. 
-If a lease is a capital lease, then capital lease accounting must be applied. 
-If a lease is not a capital lease, then operating lease accounting must be applied. 
+The case of lease accounting is perhaps more typical of recognition-versus-disclosure settings.
+First, firms cannot elect to apply operating lease accounting instead of capital lease accounting.
+If a lease is a capital lease, then capital lease accounting must be applied.
+If a lease is not a capital lease, then operating lease accounting must be applied.
 (That said, under SFAS 13, firms would often structure their leases such that a minor tweak to the lease would cause it to switch from one accounting treatment to the other.)
 
-Second, there was no equivalent requirement under SFAS 13 to the pro forma disclosures provided under SFAS 123. 
-Such pro forma disclosures would need to be extensive, as lease accounting under SFAS 13 affected the statement of financial position, the statement of financial performance, and the statement of cash flows. 
+Second, there was no equivalent requirement under SFAS 13 to the pro forma disclosures provided under SFAS 123.
+Such pro forma disclosures would need to be extensive, as lease accounting under SFAS 13 affected the statement of financial position, the statement of financial performance, and the statement of cash flows.
 Instead, firms were required to disclose rental expense related to operating leases, minimum rental payments in aggregate and for each of the five succeeding fiscal years and a general description of leasing arrangements, such as details about contingent rental payments, renewal or purchase options, and escalation clauses.
 
 Why might recognition versus disclosure matter? Focusing for the moment on the implications of recognition versus disclosure for capital markets, there are two theories at opposites ends of a spectrum.
 
 According to Watts (1992), “the mechanistic hypothesis posits that stock prices react mechanically to the reported earnings number, regardless of how the number is calculated.” (A natural generalization of the mechanistic hypothesis would be to apply it to reported balance sheet numbers and financial ratios based on reported numbers in financial statements.) At the other end of the spectrum is the efficient markets hypothesis (EMH), which in its semi-strong form posits that capital markets efficiently process all publicly available information and impound that information into security prices.
 
-Under the mechanistic hypothesis, if numbers are disclosed in footnotes but not recognized in financial statements, the market will not respond to them. 
+Under the mechanistic hypothesis, if numbers are disclosed in footnotes but not recognized in financial statements, the market will not respond to them.
 In contrast, under the EMH, markets will react to information whether it is recognized or disclosed.
 
-Implicit in the last sentence is the assumption that the information content is unaffected by the recognition-versus-disclosure decision. 
+Implicit in the last sentence is the assumption that the information content is unaffected by the recognition-versus-disclosure decision.
 But this may not be true for a number of reasons.
 
-First, the information content may differ due to the aggregation and conversion of disclosed amounts into monetary amounts that occur as part of the recognition process. 
-In the case of operating leases, future lease payments are discounted and added up to form the liability recognized on the balance sheet. 
-Additionally, assets are depreciated and reported at net carrying value. 
+First, the information content may differ due to the aggregation and conversion of disclosed amounts into monetary amounts that occur as part of the recognition process.
+In the case of operating leases, future lease payments are discounted and added up to form the liability recognized on the balance sheet.
+Additionally, assets are depreciated and reported at net carrying value.
 These calculations are difficult for an outsider to replicate precisely using disclosed information (e.g., due to imprecise information about the timing of rental payments and discount rates), and their results may convey useful information to market participants.
 
-Second, even if the notional information content does differ between recognition and disclosure, the recognition-versus-disclosure decision may affect the information properties of the information due to differences in behaviour across the two conditions. 
-For example, managers may view recognized information as more consequential and thus may exert more effort to produce more accurate numbers (or more effort on earnings management). 
+Second, even if the notional information content does differ between recognition and disclosure, the recognition-versus-disclosure decision may affect the information properties of the information due to differences in behaviour across the two conditions.
+For example, managers may view recognized information as more consequential and thus may exert more effort to produce more accurate numbers (or more effort on earnings management).
 Auditors may also view their obligations to provide assurance for recognized numbers to be greater than that for their merely disclosed equivalents.
 
-Even if the EMH holds, if managers or others do not believe that it holds and instead assume that the mechanistic hypothesis better describes reality, they act accordingly. 
-In the lead-up to SFAS 123R, many firms accelerated the vesting of stock options to avoid reporting expenses. 
-The economic consequences of this action were fairly clear (essentially a wealth transfer from firms to employees), and Choudhary et al. 
-(2009) find that the market reacted accordingly when acceleration decisions were announced. 
-Yet Choudhary et al. 
+Even if the EMH holds, if managers or others do not believe that it holds and instead assume that the mechanistic hypothesis better describes reality, they act accordingly.
+In the lead-up to SFAS 123R, many firms accelerated the vesting of stock options to avoid reporting expenses.
+The economic consequences of this action were fairly clear (essentially a wealth transfer from firms to employees), and Choudhary et al.
+(2009) find that the market reacted accordingly when acceleration decisions were announced.
+Yet Choudhary et al.
 (2009) quote the perspective of one firm (Central Valley Community Bancorp) that is firmly grounded in the mechanistic view:
 
 The Board believes it was in the best interest of the shareholders to accelerate these options, as it will have a positive impact on the earnings of the Company over the previously remaining vested period of approximately 3 years.
 
-Designing experiments to study recognition versus disclosure. 
-Given the various ways in which recognition versus disclosure can matter, a regulator seeking to run field experiments to understand the merits of various policies is confronted with a variety of possible experiments to run. 
-Knowing that recognition matters relative to disclosure is not very useful if it is not coupled with some understanding of why it matters, which is tantamount to understanding the causal mechanism. 
+Designing experiments to study recognition versus disclosure.
+Given the various ways in which recognition versus disclosure can matter, a regulator seeking to run field experiments to understand the merits of various policies is confronted with a variety of possible experiments to run.
+Knowing that recognition matters relative to disclosure is not very useful if it is not coupled with some understanding of why it matters, which is tantamount to understanding the causal mechanism.
 This is important because the appropriate experimental design will vary according to the causal mechanism that is sought to be tested.
 
-The best way to see how experimental design should vary by the conjectured mechanism is to consider some specific cases. 
+The best way to see how experimental design should vary by the conjectured mechanism is to consider some specific cases.
 If we conjecture that recognition matters because of difficulties that investors have in processing disclosed-but-not-recognized footnote information into pro forma financial statement information, we might divide firms into three groups: firms that recognize in financial statements; and firms that do not recognize but disclose pro forma information in the footnotes (à la SFAS 123); firms that disclose information in the footnotes that requires additional processing or detail to calculate pro forma financial information (similar to disclosure of operating leases under SFAS 13).
 
 <!-- ## 17.4 Michels (2017)  -->
 ## Michels (2017)
 
-In this chapter so far, we have covered experiments, including natural experiments, and the broader question of recognition versus disclosure. 
+In this chapter so far, we have covered experiments, including natural experiments, and the broader question of recognition versus disclosure.
 Now we turn to Michels (2017), who studies one aspect of recognition versus disclosure using a plausible natural experiment.
 
-Michels (2017) exploits the difference in disclosure requirements for significant events that occur before financial statements are issued. 
+Michels (2017) exploits the difference in disclosure requirements for significant events that occur before financial statements are issued.
 Because the timing of these events (e.g., fires and natural disasters) relative to balance sheet dates is plausibly random, the assignment to the disclosure and recognition conditions is plausibly random.
 
-The data set michels_2017 from the farr package provides information about the 423 observations in Michels (2017). 
-For 343 of these observations, the natural disaster occurred after the relevant filing for the previous financial period was made, and thus the financial effects are recognized in the current period. 
+The data set michels_2017 from the farr package provides information about the 423 observations in Michels (2017).
+For 343 of these observations, the natural disaster occurred after the relevant filing for the previous financial period was made, and thus the financial effects are recognized in the current period.
 For the remaining 80 cases, the natural disaster occurred before the relevant filing for the previous financial period was made, and thus the financial effects are disclosed in that filing (and recognized in a subsequent filing containing financials for the current period).
 
 <!-- Figure 17.1 depicts the distribution of the number of days between the applicable natural disaster and the next filing date. -->
