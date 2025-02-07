@@ -368,26 +368,39 @@ FASBは、その根拠について、プライベート・セクターの会計�
 <!-- The primary effect of SFAS 123R was to require recognition of stock-based compensation expense using the grant-date fair value. -->
 SFAS 123Rの主な効果は、付与日の公正価値を使用して株式報酬費用を認識することを要求することであった。
 
-But, even after SFAS 123R was adopted, controversy continued.
-Several prominent persons, including former US cabinet secretaries and three Nobel laureates, reiterated arguments that recognizing the expense is improper because the value of employee stock options does not represent an expense of the firm (Hagopian, 2006) and filed a petition with the SEC in 2008 alleging that the SEC failed in its duties by permitting the FASB to issue SFAS 123R.
+<!-- But, even after SFAS 123R was adopted, controversy continued. -->
+しかし、SFAS 123Rが採用された後も、論争は続いた。
+<!-- Several prominent persons, including former US cabinet secretaries and three Nobel laureates, reiterated arguments that recognizing the expense is improper because the value of employee stock options does not represent an expense of the firm (Hagopian, 2006) and filed a petition with the SEC in 2008 alleging that the SEC failed in its duties by permitting the FASB to issue SFAS 123R. -->
+元米国閣僚や3人のノーベル賞受賞者を含む著名な人物が、従業員の株式オプションの価値は企業の費用を表していないため、費用を認識することは不適切であるという主張を繰り返し（Hagopian, 2006）、2008年にSECに申し立てを行い、SECがFASBにSFAS 123Rを発行することを許可することでその職務を怠ったと主張した。
 
 <!-- ### 17.3.2 Accounting for leases -->
 ### リースの会計処理
 
 <!-- A lease is an agreement between a lessor who owns an asset and a lessee that grants the lessee the right to use the asset for a period of time in exchange for (typically periodic) payments.  -->
-Leasing is a huge business around the globe, and leases are a common way for firms to acquire the right to use assets such as real estate, aircraft, and machinery.
+リースとは、資産を所有するレッサーと、レッサーに対して資産を一定期間使用する権利を与えるレッシーとの間の契約であり、その代わりに（通常は定期的な）支払いが行われる。
+<!-- Leasing is a huge business around the globe, and leases are a common way for firms to acquire the right to use assets such as real estate, aircraft, and machinery. -->
+リースは世界中で巨大なビジネスであり、リースは、不動産、航空機、機械などの資産の使用権を取得するための企業の一般的な方法である。
 
-Leasing an asset is often an alternative to buying that asset.
-If a firm only needs an asset for a short period of time, then leasing the asset may reduce transaction costs and eliminate risks associated with the value of the asset at the end of the lease.
-Lessors are often firms with specialist expertise in managing the acquisition, leasing, and disposal of assets and understanding how their value changes over their useful lives.
+<!-- Leasing an asset is often an alternative to buying that asset. -->
+資産をリースすることは、その資産を購入する代替手段であることが多い。
+<!-- If a firm only needs an asset for a short period of time, then leasing the asset may reduce transaction costs and eliminate risks associated with the value of the asset at the end of the lease. -->
+企業が資産を短期間だけ必要とする場合、資産をリースすることで取引コストを削減し、リース終了時の資産の価値に関連するリスクを排除することができる。
+<!-- Lessors are often firms with specialist expertise in managing the acquisition, leasing, and disposal of assets and understanding how their value changes over their useful lives. -->
+レッサーは、資産の取得、リース、処分を管理し、その価値が耐用年数を通じてどのように変化するかを理解する専門知識を持つ企業であることが多い。
 
-In some circumstances, the economic risk and benefits of asset ownership are borne by the lessee.
-For example, if a lease includes a bargain purchase option that a rational lessee will almost certainly exercise or if title to the asset simply transfers to the lessee at the end of the lease, then the lessee owns the asset in any relevant economic sense.
+<!-- In some circumstances, the economic risk and benefits of asset ownership are borne by the lessee. -->
+一部の状況では、資産所有の経済的リスクと利益はリース受益者が負担する。
+<!-- For example, if a lease includes a bargain purchase option that a rational lessee will almost certainly exercise or if title to the asset simply transfers to the lessee at the end of the lease, then the lessee owns the asset in any relevant economic sense. -->
+たとえば、リース契約に割安購入選択権（バーゲン購入オプション）が含まれており、合理的な借手がほぼ確実にそれを行使する場合、またはリース期間の終了時に資産の所有権が借手に移転する場合、借手はあらゆる経済的な意味においてその資産を所有していると言える。
 
-However, like any contract, a lease has two sides.
-Generally lessee acquires economic ownership of an asset in exchange for a stream of payments over time.
-In many leases, the payments are periodic and fixed.
-Anyone who has mortgaged a house or financed a vehicle purchase will likely recognize an obligation for fixed and periodic payments as a loan.
+<!-- However, like any contract, a lease has two sides. -->
+ただし、契約と同様に、リースには2つの側面がある。
+<!-- Generally lessee acquires economic ownership of an asset in exchange for a stream of payments over time. -->
+一般的に、リース受益者は、時間の経過とともに支払われる収入の流れと引き換えに資産の経済的所有権を取得する。
+<!-- In many leases, the payments are periodic and fixed. -->
+多くのリース契約では、支払いは定期的で固定されている。
+<!-- Anyone who has mortgaged a house or financed a vehicle purchase will likely recognize an obligation for fixed and periodic payments as a loan. -->
+家を抵当に入れたり、車の購入を資金調達したりしたことがある人は、固定で定期的な支払いの義務をローンとして認識することができるだろう。
 
 Thus, in some cases, a lease is economically equivalent to the combination of two transactions: first, borrowing money on a loan that requires fixed, periodic repayments and, second, use of the loan proceeds to acquire the leased asset.
 
