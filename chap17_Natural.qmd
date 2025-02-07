@@ -402,17 +402,27 @@ SFAS 123Rの主な効果は、付与日の公正価値を使用して株式報�
 <!-- Anyone who has mortgaged a house or financed a vehicle purchase will likely recognize an obligation for fixed and periodic payments as a loan. -->
 家を抵当に入れたり、車の購入を資金調達したりしたことがある人は、固定で定期的な支払いの義務をローンとして認識することができるだろう。
 
-Thus, in some cases, a lease is economically equivalent to the combination of two transactions: first, borrowing money on a loan that requires fixed, periodic repayments and, second, use of the loan proceeds to acquire the leased asset.
+<!-- Thus, in some cases, a lease is economically equivalent to the combination of two transactions: first, borrowing money on a loan that requires fixed, periodic repayments and, second, use of the loan proceeds to acquire the leased asset. -->
+したがって、一部の場合、リースは2つの取引の組み合わせに経済的に等しい。
+まず、固定で定期的な返済を必要とするローンを借りること、
+そして次に、そのローンの収益を使ってリース資産を取得することである。
 
-SFAS 13 (later relabelled as ASC 840), which was issued by the US Financial Accounting Standards Board in 1976, required leases with features that made them more akin to purchases of assets financed by loans to be accounted for in a manner essentially equivalent to loan-backed asset purchases.
-SFAS 13 specified criteria, such as the transfer of asset ownership at the end of the lease or the presence of a bargain purchase option, that would trigger this capital lease accounting treatment.
+<!-- SFAS 13 (later relabelled as ASC 840), which was issued by the US Financial Accounting Standards Board in 1976, required leases with features that made them more akin to purchases of assets financed by loans to be accounted for in a manner essentially equivalent to loan-backed asset purchases. -->
+1976年に米国財務会計基準委員会によって発行されたSFAS 13（後にASC 840という名称）は、リースが資産の購入によってローンで資金調達されたものに似ている特徴を持つ場合、そのリースを、本質的にローンで資金調達された資産の購入と同等の方法で会計処理することを要求した。
+<!-- SFAS 13 specified criteria, such as the transfer of asset ownership at the end of the lease or the presence of a bargain purchase option, that would trigger this capital lease accounting treatment. -->
+SFAS 13（米国会計基準第13号）は、リース期間終了時の資産所有権の移転やバーゲン購入オプションの存在などの基準を定めており、これらの条件を満たす場合に**キャピタル・リース（資本リース）**の会計処理を適用することを求めていた。
 
-Under capital lease accounting, a leased asset and a lease liability would be recognized on the balance sheet.
-The leased asset would be depreciated (or “amortized” in the language of SFAS 13) “in a manner consistent with the lessee’s normal depreciation policy” over the lease term.
-At the same time, “each minimum lease payment shall be allocated between a reduction of the obligation and interest expense so as to produce a constant periodic rate of interest on the remaining balance of the obligation.”
+<!-- Under capital lease accounting, a leased asset and a lease liability would be recognized on the balance sheet. -->
+キャピタル・リースの会計処理では、リース資産とリース債務が貸借対照表に認識される。
+<!-- The leased asset would be depreciated (or “amortized” in the language of SFAS 13) “in a manner consistent with the lessee’s normal depreciation policy” over the lease term. -->
+リース資産は、リース期間中に「リース受益者の通常の減価償却方針に一致する方法で」償却（または「償却」）される。
+<!-- At the same time, “each minimum lease payment shall be allocated between a reduction of the obligation and interest expense so as to produce a constant periodic rate of interest on the remaining balance of the obligation.” -->
+同時に、「各最低リース支払額は、債務の残高に一定の定期的利息率を生じるように、債務の減少と利息費用の間で配分される」。
 
-SFAS 13 provided that leases not meeting the criteria for capital lease accounting should be accounted for as operating leases.
-For such leases, no asset or liability would be recognized and, for most leases, the standard provided that “rental on an operating lease shall be charged to expense over the lease term as it becomes payable.”
+<!-- SFAS 13 provided that leases not meeting the criteria for capital lease accounting should be accounted for as operating leases. -->
+SFAS 13は、キャピタル・リースの会計処理の基準を満たさないリースは、オペレーティング・リースとして会計処理されるべきであると規定していた。
+<!-- For such leases, no asset or liability would be recognized and, for most leases, the standard provided that “rental on an operating lease shall be charged to expense over the lease term as it becomes payable.” -->
+このようなリースについては、資産や負債は認識されず、ほとんどのリースについて、標準は「オペレーティング・リースの賃料は、支払われるたびにリース期間全体にわたって費用として計上される」と規定していた。
 
 In 2004, Jonathan Weil wrote in the Wall Street Journal that “companies are still allowed to keep off their balance sheets billions of dollars of lease obligations that are just as real as financial commitments originating from bank loans and other borrowings.” While SFAS 13 classified leases that were obviously economically equivalent to debt-financed asset purchases, its criteria allowed firms to structure leases so that they were economically very close to such purchases, but which were classified as operating leases for financial reporting purposes.
 Weil flagged US retail pharmacy chain Walgreen, which “shows no debt on its balance sheet, but it is responsible for $19.3 billion of operating-lease payments mainly on stores over the next 25 years” and stated that the off-balance-sheet operating-lease commitments, as revealed in the footnotes to their financial statements for companies in the Standard & Poor’s 500-stock index totalled US$482 billion.
