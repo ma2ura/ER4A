@@ -424,14 +424,22 @@ SFAS 13は、キャピタル・リースの会計処理の基準を満たさな�
 <!-- For such leases, no asset or liability would be recognized and, for most leases, the standard provided that “rental on an operating lease shall be charged to expense over the lease term as it becomes payable.” -->
 このようなリースについては、資産や負債は認識されず、ほとんどのリースについて、標準は「オペレーティング・リースの賃料は、支払われるたびにリース期間全体にわたって費用として計上される」と規定していた。
 
-In 2004, Jonathan Weil wrote in the Wall Street Journal that “companies are still allowed to keep off their balance sheets billions of dollars of lease obligations that are just as real as financial commitments originating from bank loans and other borrowings.” While SFAS 13 classified leases that were obviously economically equivalent to debt-financed asset purchases, its criteria allowed firms to structure leases so that they were economically very close to such purchases, but which were classified as operating leases for financial reporting purposes.
-Weil flagged US retail pharmacy chain Walgreen, which “shows no debt on its balance sheet, but it is responsible for $19.3 billion of operating-lease payments mainly on stores over the next 25 years” and stated that the off-balance-sheet operating-lease commitments, as revealed in the footnotes to their financial statements for companies in the Standard & Poor’s 500-stock index totalled US$482 billion.
+<!-- In 2004, Jonathan Weil wrote in the Wall Street Journal that “companies are still allowed to keep off their balance sheets billions of dollars of lease obligations that are just as real as financial commitments originating from bank loans and other borrowings.”  -->
+2004年、Jonathan Weilはウォールストリートジャーナルにおいて、「企業は、銀行ローンやその他の借入から発生する財務的な義務と同じくらい実際のリース債務を貸借対照表から除外することが許可されている」と述べた。
+<!-- While SFAS 13 classified leases that were obviously economically equivalent to debt-financed asset purchases, its criteria allowed firms to structure leases so that they were economically very close to such purchases, but which were classified as operating leases for financial reporting purposes. -->
+SFAS 13は、明らかに債務で資産購入されたものと経済的に同等であるリースを分類していたが、その基準により、企業はリースを構築することができ、それらは経済的にはそのような購入に非常に近いが、財務報告目的ではオペレーティング・リースとして分類されていた。
+<!-- Weil flagged US retail pharmacy chain Walgreen, which “shows no debt on its balance sheet, but it is responsible for $19.3 billion of operating-lease payments mainly on stores over the next 25 years” and stated that the off-balance-sheet operating-lease commitments, as revealed in the footnotes to their financial statements for companies in the Standard & Poor’s 500-stock index totalled US$482 billion. -->
+Weilは、米国の小売薬局チェーンWalgreenを指摘し、「貸借対照表には債務がないが、今後25年間で主に店舗に対して193億ドルのオペレーティング・リース支払いを負担している」と述べ、S&P500株価指数の企業の財務諸表の注記に明示されている貸借対照表外のオペレーティング・リースのコミットメントは4820億ドルに上ると述べた。
 
-In 2006, the FASB began work on a new lease accounting standard intended to close “loopholes” like those described by Weil.
-Given the extensive information about operating leases provided under SFAS 13, we can view SFAS 13 as providing disclosure of operating leases, whereas many called for their recognition on the balance sheet.
+<!-- In 2006, the FASB began work on a new lease accounting standard intended to close “loopholes” like those described by Weil. -->
+2006年、FASBは、Weilが説明したような「抜け穴」を埋めることを意図した新しいリース会計基準の作業を開始した。
+<!-- Given the extensive information about operating leases provided under SFAS 13, we can view SFAS 13 as providing disclosure of operating leases, whereas many called for their recognition on the balance sheet. -->
+SFAS 13によって提供されたオペレーティング・リースに関する詳細な情報を考慮すると、SFAS 13はオペレーティング・リースの開示を提供していると見なすことができるが、多くの人々は貸借対照表に認識することを求めていた。
 
-In 2016, FASB published a new lease accounting standard, ASC 842, and the IASB issued a similar standard, IFRS 16.
-These accounting standards require all leases to be brought onto the balance sheet (except short-term leases).
+<!-- In 2016, FASB published a new lease accounting standard, ASC 842, and the IASB issued a similar standard, IFRS 16. -->
+2016年、FASBは新しいリース会計基準であるASC 842を公表し、IASBは類似の基準であるIFRS 16を発行した。
+<!-- These accounting standards require all leases to be brought onto the balance sheet (except short-term leases). -->
+これらの会計基準は、すべてのリースを貸借対照表に持ち込むことを要求している（短期リースを除く）。
 
 <!-- ### 17.3.3 Academic research -->
 ### 学術研究
