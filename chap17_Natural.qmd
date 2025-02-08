@@ -444,101 +444,166 @@ SFAS 13によって提供されたオペレーティング・リースに関す�
 <!-- ### 17.3.3 Academic research -->
 ### 学術研究
 
-The two examples above serve two purposes.
-First, they highlight the significance of recognition-versus-disclosure questions in financial reporting.
-Second, they provide concrete settings for thinking about some subtle issues faced by researchers in studying the topic of recognition versus disclosure.
-As we shall see, some of these subtleties would exist even if we could run any field experiment we could conceive.
+<!-- The two examples above serve two purposes. -->
+上記の2つの例は、2つの目的を果たしている。
+<!-- First, they highlight the significance of recognition-versus-disclosure questions in financial reporting. -->
+第1に，財務報告における認識と開示の問題の重要性を強調している。
+<!-- Second, they provide concrete settings for thinking about some subtle issues faced by researchers in studying the topic of recognition versus disclosure. -->
+第2に，研究者が認識と開示のトピックを研究する際に直面するいくつかの微妙な問題について考えるための具体的な設定を提供している。
+<!-- As we shall see, some of these subtleties would exist even if we could run any field experiment we could conceive. -->
+以下で見ていくように、これらの微妙な点のいくつかは、私たちが考えられるどんなフィールド実験でも実施できる場合でも存在するだろう。
 
-What do “recognition” and “disclosure” mean? Simplistically, the choice between recognition and disclosure is a choice between including a given amount in the financial statements or merely disclosing the amount, typically in the footnotes to the financial statements.
-However, as pointed out by Bernard and Schipper (1994), the choice is significantly more complicated than this simple binary “in or out” election.
-FASB’s Statement of Financial Accounting Concepts No 5 (SFAC 5) defines recognition as “the process of formally incorporating an item in the financial statements of an entity as an asset, liability, revenue, expense, or the like.
-A recognized item is depicted in both words and numbers, with the amount included in the statement totals.”
+<!-- What do “recognition” and “disclosure” mean?  -->
+「認識」と「開示」とは何を意味するのか？
+<!-- Simplistically, the choice between recognition and disclosure is a choice between including a given amount in the financial statements or merely disclosing the amount, typically in the footnotes to the financial statements. -->
+単純化すると、認識と開示の選択は、特定の金額を財務諸表に含めるか、通常は財務諸表の注記に開示するかの選択である。
+<!-- However, as pointed out by Bernard and Schipper (1994), the choice is significantly more complicated than this simple binary “in or out” election. -->
+しかし、Bernard and Schipper (1994)が指摘しているように、この単純な2択の「含むか含まないか」よりも、選択肢ははるかに複雑である。
+<!-- FASB’s Statement of Financial Accounting Concepts No 5 (SFAC 5) defines recognition as “the process of formally incorporating an item in the financial statements of an entity as an asset, liability, revenue, expense, or the like. -->
+FASBの財務会計概念第5号（SFAC 5）は、認識を「企業の財務諸表に資産、負債、収益、費用などとして項目を正式に取り込むプロセス」と定義している。
+<!-- A recognized item is depicted in both words and numbers, with the amount included in the statement totals.” -->
+認識された項目は、言葉と数字の両方で描かれ、その金額は財務諸表の合計に含まれる」とされている。
 
-Paragraph 5.1 of the IASB Conceptual Framework contains a similar definition, but clarifies certain elements of the FASB definition.
-First, recognition involves the statements of financial position and financial performance; putting an item in the statement of cash flows alone would not seem to constitute recognition.
-Second, “or the like” is clarified to mean “equity”, as this rounds out the list of elements of financial statements.
-Third, “numbers” mean monetary amounts, as this is how elements are put in financial statements.
-Implicit in both definitions is that the monetary amounts can be added up in some meaningful fashion, as financial statement items are included as components of sums.
+<!-- Paragraph 5.1 of the IASB Conceptual Framework contains a similar definition, but clarifies certain elements of the FASB definition. -->
+IASBの概念フレームワークの5.1節には、同様の定義が含まれているが、FASBの定義の一部を明確にしている。
+<!-- First, recognition involves the statements of financial position and financial performance; putting an item in the statement of cash flows alone would not seem to constitute recognition. -->
+第1に、認識は財務状態と財務業績の報告に関わるものであり、キャッシュフロー計算書に項目を記載するだけでは認識とは見なされない。
+<!-- Second, “or the like” is clarified to mean “equity”, as this rounds out the list of elements of financial statements. -->
+第2に、「など」とは「資本」を意味し、これにより財務諸表の要素のリストが完成する。
+<!-- Third, “numbers” mean monetary amounts, as this is how elements are put in financial statements. -->
+第3に、「数値」とは金額を意味し、これが財務諸表に要素を記載する方法である。
+<!-- Implicit in both definitions is that the monetary amounts can be added up in some meaningful fashion, as financial statement items are included as components of sums. -->
+両定義には、金額が何らかの意味のある方法で合計されることが暗黙のうちに含まれており、財務諸表の項目は合計の構成要素として含まれる。
 
-Bernard and Schipper (1994) note that “recognition does not appear to have a formal definition in the FASB’s official pronouncements” [p.
-4], and the same appears to be true of the IASB Conceptual Framework.
-Instead, Bernard and Schipper (1994) suggest that “one could view recognition as a form of disclosure with special characteristics” [p.
-5].
+<!-- Bernard and Schipper (1994) note that “recognition does not appear to have a formal definition in the FASB’s official pronouncements” [p.4], and the same appears to be true of the IASB Conceptual Framework. -->
+Bernard and Schipper (1994)は、「FASBの公式の発表には、認識についての形式的な定義が見当たらないようである」(p.4)と述べており、IASBの概念フレームワークについても同様のことが言える。
+<!-- Instead, Bernard and Schipper (1994) suggest that “one could view recognition as a form of disclosure with special characteristics” [p.5]. -->
+代わりに、Bernard and Schipper (1994)は、「認識を特別な特性を持つ開示の形態と見なすことができる」(p.5)と提案している。
 
-Can recognition and disclosure be viewed as alternatives? Bernard and Schipper (1994) suggest that if we take the conceptual frameworks as binding constraints on standard-setters, then recognition versus disclosure cannot be viewed as a choice.
-Either an item meets the recognition criteria and thus must be recognized, or it does not and thus must not be recognized.
-But it is unclear whether the conceptual frameworks determine standards to this degree.
-Nothing in SFAC 5 changed between SFAS 123 and SFAS 123R, even though the two standards came out on opposite sides with regard to recognition of stock-based compensation expense.8
+<!-- Can recognition and disclosure be viewed as alternatives? Bernard and Schipper (1994) suggest that if we take the conceptual frameworks as binding constraints on standard-setters, then recognition versus disclosure cannot be viewed as a choice. -->
+認識と開示は選択肢として見ることができるか？ Bernard and Schipper (1994)は、概念フレームワークを基準設定者に対する拘束条件として受け入れると、認識と開示の選択肢として見ることはできないと提案している。
+<!-- Either an item meets the recognition criteria and thus must be recognized, or it does not and thus must not be recognized. -->
+項目が認識基準を満たす場合、それは認識されなければならず、満たさない場合は認識されてはならない。
+<!-- But it is unclear whether the conceptual frameworks determine standards to this degree. -->
+しかし、概念フレームワークがこの程度まで基準を決定するかどうかは不明である。
+<!-- Nothing in SFAC 5 changed between SFAS 123 and SFAS 123R, even though the two standards came out on opposite sides with regard to recognition of stock-based compensation expense.8 -->
+SFAC 5には、株式報酬費用の認識に関して対立する2つの基準が出されたにもかかわらず、SFAS 123とSFAS 123Rの間で変更はなかった。
 
-The case of SFAS 123 above is arguably one of the sharpest instances of recognition versus disclosure.
-Under SFAS 123, a firm that used the APB 25 approach to measuring the cost of employee stock options was required to provide a pro forma disclosure of the expense in the footnotes to its financial statements.9 In effect, a firm must provide the information that it would have provided had it recognized an expense using the fair-value approach.
-While the pro forma financial statements only include the statement of financial performance, there is no aggregate impact of applying the SFAS 123 approach on the statement of financial position, as the debit to expense, which would flow through net income to retained earnings, is offset by an addition to additional paid-in capital.
+<!-- The case of SFAS 123 above is arguably one of the sharpest instances of recognition versus disclosure. -->
+上記のSFAS 123のケースは、認識と開示の最も鮮明な例の1つであると言える。
+<!-- Under SFAS 123, a firm that used the APB 25 approach to measuring the cost of employee stock options was required to provide a pro forma disclosure of the expense in the footnotes to its financial statements.9 -->
+SFAS 123では、従業員の株式オプションの費用を測定するためにAPB 25アプローチを使用した企業は、財務諸表の注記に費用のプロフォーマ開示を提供することが求められた。
+<!-- In effect, a firm must provide the information that it would have provided had it recognized an expense using the fair-value approach. -->
+実際には、企業は、公正価値アプローチを使用して費用を認識した場合に提供する情報を提供する必要があった。
+<!-- While the pro forma financial statements only include the statement of financial performance, there is no aggregate impact of applying the SFAS 123 approach on the statement of financial position, as the debit to expense, which would flow through net income to retained earnings, is offset by an addition to additional paid-in capital. -->
+プロフォーマ財務諸表には財務業績計算書のみが含まれているが、財務状態計算書にSFAS 123アプローチを適用した場合の総合的な影響はない。なぜなら、費用への借方は、純利益を通じて保有利益に流れるが、追加の資本剰余金に加算されるためである。
 
-The case of lease accounting is perhaps more typical of recognition-versus-disclosure settings.
-First, firms cannot elect to apply operating lease accounting instead of capital lease accounting.
-If a lease is a capital lease, then capital lease accounting must be applied.
-If a lease is not a capital lease, then operating lease accounting must be applied.
-(That said, under SFAS 13, firms would often structure their leases such that a minor tweak to the lease would cause it to switch from one accounting treatment to the other.)
+<!-- The case of lease accounting is perhaps more typical of recognition-versus-disclosure settings. -->
+リース会計のケースは、認識と開示の設定においてより典型的かもしれない。
+<!-- First, firms cannot elect to apply operating lease accounting instead of capital lease accounting. -->
+第1に、企業は、キャピタル・リースの会計処理の代わりにオペレーティング・リースの会計処理を選択することはできない。
+<!-- If a lease is a capital lease, then capital lease accounting must be applied. -->
+リースがキャピタル・リースでない場合、オペレーティング・リースの会計処理を適用する必要がある。
+<!-- If a lease is not a capital lease, then operating lease accounting must be applied. -->
+リースがキャピタル・リースでない場合、オペレーティング・リースの会計処理を適用する必要がある。
+<!-- (That said, under SFAS 13, firms would often structure their leases such that a minor tweak to the lease would cause it to switch from one accounting treatment to the other.) -->
+（ただし、SFAS 13では、企業はしばしばリースを構築し、リースにわずかな修正を加えることで、リースが1つの会計処理から他の会計処理に切り替わるようにした。）
 
-Second, there was no equivalent requirement under SFAS 13 to the pro forma disclosures provided under SFAS 123.
-Such pro forma disclosures would need to be extensive, as lease accounting under SFAS 13 affected the statement of financial position, the statement of financial performance, and the statement of cash flows.
-Instead, firms were required to disclose rental expense related to operating leases, minimum rental payments in aggregate and for each of the five succeeding fiscal years and a general description of leasing arrangements, such as details about contingent rental payments, renewal or purchase options, and escalation clauses.
+<!-- Second, there was no equivalent requirement under SFAS 13 to the pro forma disclosures provided under SFAS 123. -->
+第2に、SFAS 13には、SFAS 123で提供されたプロフォーマ開示に相当する要件はなかった。
+<!-- Such pro forma disclosures would need to be extensive, as lease accounting under SFAS 13 affected the statement of financial position, the statement of financial performance, and the statement of cash flows. -->
+このようなプロフォーマ開示は、SFAS 13におけるリース会計が財務状態計算書、財務業績計算書、キャッシュフロー計算書に影響を与えるため、広範囲にわたる必要がある。
+<!-- Instead, firms were required to disclose rental expense related to operating leases, minimum rental payments in aggregate and for each of the five succeeding fiscal years and a general description of leasing arrangements, such as details about contingent rental payments, renewal or purchase options, and escalation clauses. -->
+代わりに、企業は、オペレーティング・リースに関連する賃料費用、最低賃料支払額の合計および次の5つの会計年度ごとのそれぞれについて、リース契約の一般的な説明（例：懸念賃料支払い、更新または購入オプション、価格調整条項などの詳細）を開示することが求められていた。
 
-Why might recognition versus disclosure matter? Focusing for the moment on the implications of recognition versus disclosure for capital markets, there are two theories at opposites ends of a spectrum.
+<!-- Why might recognition versus disclosure matter?  -->
+なぜ認識と開示が重要なのか？
+<!-- Focusing for the moment on the implications of recognition versus disclosure for capital markets, there are two theories at opposites ends of a spectrum. -->
+一旦、認識と開示の資本市場への影響に焦点を当てると、スペクトラムの両端にある2つの理論がある。
 
-According to Watts (1992), “the mechanistic hypothesis posits that stock prices react mechanically to the reported earnings number, regardless of how the number is calculated.” (A natural generalization of the mechanistic hypothesis would be to apply it to reported balance sheet numbers and financial ratios based on reported numbers in financial statements.) At the other end of the spectrum is the efficient markets hypothesis (EMH), which in its semi-strong form posits that capital markets efficiently process all publicly available information and impound that information into security prices.
+<!-- According to Watts (1992), “the mechanistic hypothesis posits that stock prices react mechanically to the reported earnings number, regardless of how the number is calculated.”  -->
+Watts (1992)によると、「機械論的仮説(mechanistic hypothesis)は、報告された利益数値がどのように計算されているかに関係なく、株価が機械的に反応すると仮定している」。
+<!-- (A natural generalization of the mechanistic hypothesis would be to apply it to reported balance sheet numbers and financial ratios based on reported numbers in financial statements.)  -->
+（機械論的仮説の自然な一般化は、財務諸表に記載された数値と、財務諸表に記載された数値に基づく財務比率に適用することである。）
+<!-- At the other end of the spectrum is the efficient markets hypothesis (EMH), which in its semi-strong form posits that capital markets efficiently process all publicly available information and impound that information into security prices. -->
+スペクトラムの反寇には、効率的市場仮説（EMH）があり、その準強い形式では、資本市場は公開されているすべての情報を効率的に処理し、その情報を証券価格に反映すると仮定している。
 
-Under the mechanistic hypothesis, if numbers are disclosed in footnotes but not recognized in financial statements, the market will not respond to them.
-In contrast, under the EMH, markets will react to information whether it is recognized or disclosed.
+<!-- Under the mechanistic hypothesis, if numbers are disclosed in footnotes but not recognized in financial statements, the market will not respond to them. -->
+機械論的仮説の下では、数値が注記に開示されているが財務諸表に認識されていない場合、市場はそれに反応しない。
+<!-- In contrast, under the EMH, markets will react to information whether it is recognized or disclosed. -->
+一方、効率的市場仮説の下では、市場は情報に反応するが、それが認識されているか開示されているかにかかわらずである。
 
-Implicit in the last sentence is the assumption that the information content is unaffected by the recognition-versus-disclosure decision.
-But this may not be true for a number of reasons.
+<!-- Implicit in the last sentence is the assumption that the information content is unaffected by the recognition-versus-disclosure decision. -->
+最後の文には、認識と開示の決定によって情報内容が影響を受けないという仮定が含まれている。
+<!-- But this may not be true for a number of reasons. -->
+しかし、これはいくつかの理由で真実でないかもしれない。
 
-First, the information content may differ due to the aggregation and conversion of disclosed amounts into monetary amounts that occur as part of the recognition process.
-In the case of operating leases, future lease payments are discounted and added up to form the liability recognized on the balance sheet.
-Additionally, assets are depreciated and reported at net carrying value.
-These calculations are difficult for an outsider to replicate precisely using disclosed information (e.g., due to imprecise information about the timing of rental payments and discount rates), and their results may convey useful information to market participants.
+<!-- First, the information content may differ due to the aggregation and conversion of disclosed amounts into monetary amounts that occur as part of the recognition process. -->
+第1に、開示された金額が認識プロセスの一部として金額に集約および変換されるため、情報内容が異なる可能性がある。
+<!-- In the case of operating leases, future lease payments are discounted and added up to form the liability recognized on the balance sheet. -->
+オペレーティング・リースの場合、将来のリース支払いは割引され、貸借対照表に認識される負債を形成するために加算される。
+<!-- Additionally, assets are depreciated and reported at net carrying value. -->
+さらに、資産は減価償却され、純持ち高で報告される。
+<!-- These calculations are difficult for an outsider to replicate precisely using disclosed information (e.g., due to imprecise information about the timing of rental payments and discount rates), and their results may convey useful information to market participants. -->
+これらの計算は、外部の者が開示された情報を正確に複製するのが難しい（たとえば、リース支払いのタイミングや割引率に関する不正確な情報があるため）が、その結果は市場参加者に有益な情報を伝えるかもしれない。
 
-Second, even if the notional information content does differ between recognition and disclosure, the recognition-versus-disclosure decision may affect the information properties of the information due to differences in behaviour across the two conditions.
-For example, managers may view recognized information as more consequential and thus may exert more effort to produce more accurate numbers (or more effort on earnings management).
-Auditors may also view their obligations to provide assurance for recognized numbers to be greater than that for their merely disclosed equivalents.
+<!-- Second, even if the notional information content does differ between recognition and disclosure, the recognition-versus-disclosure decision may affect the information properties of the information due to differences in behaviour across the two conditions. -->
+第2に、認識と開示の間の概念的な情報内容が異なる場合でも、認識と開示の決定は、2つの条件間での行動の違いによって情報の特性に影響を与える可能性がある。
+<!-- For example, managers may view recognized information as more consequential and thus may exert more effort to produce more accurate numbers (or more effort on earnings management). -->
+たとえば、経営者は認識された情報をより重要と見なし、より正確な数値を生産するためにより多くの努力を払うか（または利益マネジメントにより多くの努力を払うか）もしれない。
+<!-- Auditors may also view their obligations to provide assurance for recognized numbers to be greater than that for their merely disclosed equivalents. -->
+監査人も、認識された数値に対する保証を提供する義務が、単に開示された数値に対するそれよりも大きいと見なすかもしれない。
 
-Even if the EMH holds, if managers or others do not believe that it holds and instead assume that the mechanistic hypothesis better describes reality, they act accordingly.
-In the lead-up to SFAS 123R, many firms accelerated the vesting of stock options to avoid reporting expenses.
-The economic consequences of this action were fairly clear (essentially a wealth transfer from firms to employees), and Choudhary et al.
-(2009) find that the market reacted accordingly when acceleration decisions were announced.
-Yet Choudhary et al.
-(2009) quote the perspective of one firm (Central Valley Community Bancorp) that is firmly grounded in the mechanistic view:
+<!-- Even if the EMH holds, if managers or others do not believe that it holds and instead assume that the mechanistic hypothesis better describes reality, they act accordingly. -->
+たとえ効率的市場仮説が成立していても、経営者や他の人々がそれが成立していないと信じ、代わりに機械論的仮説が現実をよりよく説明していると仮定した場合、彼らはそれに応じて行動する。
+<!-- In the lead-up to SFAS 123R, many firms accelerated the vesting of stock options to avoid reporting expenses. -->
+SFAS 123Rの導入に先立ち、多くの企業が株式オプションのベストを加速させて費用を報告を回避した。
+<!-- The economic consequences of this action were fairly clear (essentially a wealth transfer from firms to employees), and Choudhary et al. (2009) find that the market reacted accordingly when acceleration decisions were announced. -->
+この行動の経済的結果はかなり明確であった（基本的には企業から従業員への富の移転）が、Choudhary et al. (2009)は、加速決定が発表されたときに市場がそれに応じて反応したことを発見している。
+<!-- Yet Choudhary et al. (2009) quote the perspective of one firm (Central Valley Community Bancorp) that is firmly grounded in the mechanistic view: -->
+しかし、Choudhary et al. (2009)は、機械論的な視点にしっかりと根ざした1つの企業（Central Valley Community Bancorp）の視点を引用している。
 
-The Board believes it was in the best interest of the shareholders to accelerate these options, as it will have a positive impact on the earnings of the Company over the previously remaining vested period of approximately 3 years.
+<!-- > The Board believes it was in the best interest of the shareholders to accelerate these options, as it will have a positive impact on the earnings of the Company over the previously remaining vested period of approximately 3 years. -->
+> 従来の約3年間の残存権利確定期間にわたって企業の利益に対してポジティブな影響を与えると考えられるため，FASBはこれらのオプションを早期行使することが株主の最善の利益になると判断した。
 
-Designing experiments to study recognition versus disclosure.
-Given the various ways in which recognition versus disclosure can matter, a regulator seeking to run field experiments to understand the merits of various policies is confronted with a variety of possible experiments to run.
-Knowing that recognition matters relative to disclosure is not very useful if it is not coupled with some understanding of why it matters, which is tantamount to understanding the causal mechanism.
-This is important because the appropriate experimental design will vary according to the causal mechanism that is sought to be tested.
+<!-- Designing experiments to study recognition versus disclosure. -->
+**認識と開示を研究するための実験の設計**
+<!-- Given the various ways in which recognition versus disclosure can matter, a regulator seeking to run field experiments to understand the merits of various policies is confronted with a variety of possible experiments to run. -->
+認識と開示が重要であるさまざまな方法を考慮すると、さまざまな政策のメリットを理解するためにフィールド実験を実施することを求める規制当局は、実施可能な実験のさまざまな選択肢に直面する。
+<!-- Knowing that recognition matters relative to disclosure is not very useful if it is not coupled with some understanding of why it matters, which is tantamount to understanding the causal mechanism. -->
+認識が開示に対して重要であることを知っても、それがなぜ重要なのかを理解していないと、つまり因果関係のメカニズムを理解していないと、それはあまり役に立たない。
+<!-- This is important because the appropriate experimental design will vary according to the causal mechanism that is sought to be tested. -->
+検証されるべき因果関係のメカニズムに応じて、適切な実験設計が異なるため，これは重要である。
 
-The best way to see how experimental design should vary by the conjectured mechanism is to consider some specific cases.
-If we conjecture that recognition matters because of difficulties that investors have in processing disclosed-but-not-recognized footnote information into pro forma financial statement information, we might divide firms into three groups: firms that recognize in financial statements; and firms that do not recognize but disclose pro forma information in the footnotes (à la SFAS 123); firms that disclose information in the footnotes that requires additional processing or detail to calculate pro forma financial information (similar to disclosure of operating leases under SFAS 13).
+<!-- The best way to see how experimental design should vary by the conjectured mechanism is to consider some specific cases. -->
+実験設計が仮説されるメカニズムによってどのように変化するかを理解する最良の方法は、いくつかの具体的なケースを考慮することである。
+<!-- If we conjecture that recognition matters because of difficulties that investors have in processing disclosed-but-not-recognized footnote information into pro forma financial statement information, we might divide firms into three groups: firms that recognize in financial statements; and firms that do not recognize but disclose pro forma information in the footnotes (à la SFAS 123); firms that disclose information in the footnotes that requires additional processing or detail to calculate pro forma financial information (similar to disclosure of operating leases under SFAS 13). -->
+投資家が開示されたが認識されていない注記情報をプロフォーマ財務諸表情報に変換する際に困難を抱えているために認識が重要であると仮定すると、企業を3つのグループ：財務諸表に認識する企業、財務諸表に認識しないが注記にプロフォーマ情報を開示する企業（SFAS 123のような）、注記に追加の処理や詳細が必要な情報を開示する企業（SFAS 13のオペレーティング・リースの開示に類似）に分けることができる。
 
 <!-- ## 17.4 Michels (2017)  -->
 ## Michels (2017)
 
-In this chapter so far, we have covered experiments, including natural experiments, and the broader question of recognition versus disclosure.
-Now we turn to Michels (2017), who studies one aspect of recognition versus disclosure using a plausible natural experiment.
+<!-- In this chapter so far, we have covered experiments, including natural experiments, and the broader question of recognition versus disclosure. -->
+これまでの章では、自然実験を含む実験と、認識と開示のより広い問題について取り上げてきた。
+<!-- Now we turn to Michels (2017), who studies one aspect of recognition versus disclosure using a plausible natural experiment. -->
+ここで、Michels (2017)に移り、信頼性のある自然実験を用いて認識と開示の1つの側面を研究している。
 
-Michels (2017) exploits the difference in disclosure requirements for significant events that occur before financial statements are issued.
-Because the timing of these events (e.g., fires and natural disasters) relative to balance sheet dates is plausibly random, the assignment to the disclosure and recognition conditions is plausibly random.
+<!-- Michels (2017) exploits the difference in disclosure requirements for significant events that occur before financial statements are issued. -->
+Michels (2017)は、財務諸表が発行される前に発生した重要なイベントに対する開示要件の違いを利用している。
+<!-- Because the timing of these events (e.g., fires and natural disasters) relative to balance sheet dates is plausibly random, the assignment to the disclosure and recognition conditions is plausibly random. -->
+これらのイベント（例：火災や自然災害）の発生時期は、貸借対照表の日付に対してランダムである可能性があるため、開示と認識の条件への割り当てはランダムである可能性がある。
 
-The data set michels_2017 from the farr package provides information about the 423 observations in Michels (2017).
-For 343 of these observations, the natural disaster occurred after the relevant filing for the previous financial period was made, and thus the financial effects are recognized in the current period.
-For the remaining 80 cases, the natural disaster occurred before the relevant filing for the previous financial period was made, and thus the financial effects are disclosed in that filing (and recognized in a subsequent filing containing financials for the current period).
+<!-- The data set michels_2017 from the farr package provides information about the 423 observations in Michels (2017). -->
+`farr`パッケージの`michels_2017`データセットは、Michels (2017)の423の観測値に関する情報を提供している。
+<!-- For 343 of these observations, the natural disaster occurred after the relevant filing for the previous financial period was made, and thus the financial effects are recognized in the current period. -->
+これらの観測値のうち、343の場合、自然災害は前の財務期間の関連する提出後に発生し、そのため、財務効果は現在の期間に認識される。
+<!-- For the remaining 80 cases, the natural disaster occurred before the relevant filing for the previous financial period was made, and thus the financial effects are disclosed in that filing (and recognized in a subsequent filing containing financials for the current period). -->
+残りの80件の場合、自然災害は前の財務期間の関連する提出前に発生し、そのため、財務効果はその提出で開示され（および現在の期間の財務を含む後の提出で認識される）。
 
 <!-- Figure 17.1 depicts the distribution of the number of days between the applicable natural disaster and the next filing date. -->
 図17.1は、該当する自然災害と次の提出日の間の日数の分布を示している。
 
 ```{r}
-#| eval: false
-
 michels_2017 |>
   mutate(days_to_filing = as.integer(date_filed - eventdate)) |>
   ggplot(aes(x = days_to_filing, fill = recognize)) +
@@ -550,8 +615,6 @@ michels_2017 |>
 
 
 ```{r}
-#| eval: false
-
 michels_2017 |>
   mutate(days_to_period_end = as.integer(next_period_end - eventdate)) |>
   ggplot(aes(x = days_to_period_end, fill = recognize)) +
@@ -562,8 +625,6 @@ michels_2017 |>
 明らかに、大規模な自然災害は1つ以上の企業に影響を与える可能性があり、表17.1はMichels (2017)のサンプルにおける最も一般的な災害日に関するデータを提供している。
 
 ```{r}
-#| eval: false
-
 michels_2017 |>
   count(eventdate) |>
   arrange(desc(n)) |>
