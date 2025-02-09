@@ -2,27 +2,29 @@
 
 
 <!-- The (brief!) introduction in Fama et al. (1969) (“FFJR”) confirms that the goal of the paper is to shed light on market efficiency.  -->
-Fama et al. (1969)("FFJR")における（簡潔な！）導入部は、論文の目的が市場効率に光を当てることであることを確認している。
+Fama et al. (1969)（以下、FFJR）の冒頭（簡潔なものではあるが）は、本論文の目的が市場の効率性（market efficiency）を明らかにすることであると確認している。
 <!-- Prior empirical work had inferred “market efficiency from the observed independence of successive price changes.”  -->
-これまでの実証的研究は、「連続する価格変動の独立性から市場効率を推論していた」。
+それまでの実証研究では、「連続する価格変化の独立性」が観察されることから市場の効率性を推測していた。
 <!-- In contrast, FFJR focuses on the “speed of adjustment of prices to specific kinds of new information … [specifically] the information (if any) that is implicit in a stock split.”  -->
-これに対して、FFJRは、「特定の種類の新しい情報に対する価格の調整速度... [具体的には]、（あるなら）株式分割に暗黙の情報」に焦点を当てている。
+これに対し、FFJR は「特定の新しい情報に対する価格調整の速度」に着目している。
+具体的には、「株式分割（stock split）に内在する情報（もし存在するならば）に対する市場の反応」を分析している。
 <!-- We start this chapter with a brief introduction to the efficient markets hypothesis. -->
-この章では、**効率的市場仮説**について簡単に紹介する。
+本章では、まず**効率的市場仮説**(efficient markets hypothesis)の簡単な導入から始める。
 
 <!-- To examine their research question, FFJR conduct one of the earliest event studies.  -->
-彼らの研究課題を検討するために、FFJRは初期のイベント研究の1つを実施している。
+FFJRは最も初期のイベント・スタディ（event study）の一つを実施した研究である。
 <!-- Event studies have a tight connection with notions of efficient markets, especially the “semi-strong” form of the hypothesis offered by Fama (1970), which in turn has important implications for the study of accounting information in capital markets.  -->
-イベント・スタディは、特にFama (1970)によって提供された効率的市場仮説の「セミストロング」フォームと密接に関連しており、これは資本市場における会計情報の研究に重要な影響を与えている。
+イベント・スタディは、効率的市場の概念、とりわけ Fama (1970) による「セミストロング型（semi-strong form）」効率性仮説と密接な関係があり、資本市場における会計情報の研究にも重要な示唆を与える。
 <!-- Thus we use FFJR to provide an initial introduction to event studies, which we revisit in more depth in Chapter 13. -->
-したがって、我々はFFJRを用いて、イベント研究について初めて紹介し、第13章でより詳しく取り上げる。
-
+したがって、本章ではFFJRを用いてイベント・スタディの基本概念を紹介し、第13章でより詳しく取り上げる。
 <!-- We also use this chapter to introduce the reader to important additional data sets on CRSP, such as those related to dividends and stock splits, and to some R functions for efficiently manipulating data and models (e.g., the unnest() function from the tidyr package).  -->
-また、この章では、配当や株式分割に関連するCRSPの重要な追加データセットや、データやモデルを効率的に操作するためのいくつかのR関数（例：`tidyr`パッケージの`unnest()`関数）を紹介する。
+
+また、本章では、CRSP（Center for Research in Security Prices）の重要な追加データセット（配当や株式分割に関連するデータなど）を紹介し、データやモデルを効率的に操作するためのR関数（例えば、`tidyr`パッケージの`unnest()`関数）も取り上げる。
 <!-- To better understand FFJR, we also provide some background on stock splits and dividends.  -->
 FFJRをよりよく理解するために、株式分割と配当に関する背景情報も提供する。
 <!-- We then conduct a replication of FFJR and provide exercises for the reader. We conclude the chapter with a guide to this part of the book. -->
-その後、FFJRの複製を行い、読者向けの演習を提供する。本章の最後には、本書のこの部分へのガイドを示す。
+続いて、FFJRの結果を再現（replication）し、読者向けの演習を用意する。
+本章の最後には、本書のこの部分へのガイドを示す。
 
 :::{.callout-tip}
 <!-- The code in this chapter uses the packages listed below.  -->
