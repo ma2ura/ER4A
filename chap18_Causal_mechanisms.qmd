@@ -7,7 +7,7 @@ In this chapter, we aim to help the reader understand the idea of causal mechani
 Accounting research is not alone in its reliance on observational data with the goal of drawing causal inferences. For this reason, it is natural to look to other fields using observational data to identify causal mechanisms and ultimately to draw causal inferences. Epidemiology and medicine are two fields that are often singled out in this regard. In the next two sections, we briefly provide examples and highlight the features of the examples that enhanced the credibility of the inferences drawn.1 A key implication of this discussion is that accounting researchers need to identify clearly and rigorously the causal mechanism that is producing their results.
 
 <!-- ## 18.1 John Snow and cholera -->
-## 18.1 ジョン・スノーとコレラ
+## ジョン・スノーとコレラ
 
 <!-- A widely cited case of successful causal inference is John Snow’s work on cholera.  -->
 成功した因果推論の広く引用される例として、ジョン・スノーによるコレラに関する研究がある。
@@ -36,11 +36,141 @@ Freedman (2009, p.339)によると、「ジョン・スノーは、ビクトリ�
 <!-- Many copies of the organism are expelled with the dejecta, contaminate water or food, then infect other victims” (Freedman, 2009, p. 342). -->
 その生物の多くのコピーが排泄物とともに排出され、水や食物を汚染し、それによって他の宿主を感染させる。
 
-With a hypothesis at hand, Snow then needed to collect data to prove it. His data collection involved a house-to-house survey in the area surrounding the Broad Street pump operated by Southwark and Vauxhall.
-As part of his data collection, Snow needed to account for anomalous cases (such as the brewery workers who drank beer, not water).
-It is important to note that such qualitative reasoning and diligent data collection were critical elements in establishing (to a modern reader) the “as if” random nature of the treatment assignment mechanism provided by the Broad Street pump.
-Snow’s deliberate methods contrast with a shortcut approach, which would have been to argue that in his data he had a natural experiment.
+<!-- With a hypothesis at hand, Snow then needed to collect data to prove it. -->
+仮説を手に入れたスノーは、それを証明するためのデータを収集する必要があった。
+<!-- His data collection involved a house-to-house survey in the area surrounding the Broad Street pump operated by Southwark and Vauxhall. -->
+彼のデータ収集には、サザーク・ヴォークホール社が運営するブロードストリートポンプ周辺の地域での家庭訪問調査が含まれていた。
+<!-- As part of his data collection, Snow needed to account for anomalous cases (such as the brewery workers who drank beer, not water). -->
+データ収集の一環として、スノーは異常なケース（たとえば、ビールを飲む醸造所の労働者）を考慮に入れる必要があった。
+<!-- It is important to note that such qualitative reasoning and diligent data collection were critical elements in establishing (to a modern reader) the “as if” random nature of the treatment assignment mechanism provided by the Broad Street pump. -->
+こうした質的推論と綿密なデータ収集が、ブロードストリートポンプによって提供された処置割り当てメカニズムの「まるで」ランダムな性質を（現代の読者に）確立する上で重要な要素であることに注意することが重要である。
+<!-- Snow’s deliberate methods contrast with a shortcut approach, which would have been to argue that in his data he had a natural experiment. -->
+スノーの慎重な方法は、彼のデータに自然実験があると主張することができたショートカットアプローチとは対照的である。
 
-Another important feature of this example is that widespread acceptance of Snow’s hypothesis did not occur until compelling evidence of the precise causal mechanism was provided. “However, widespread acceptance was achieved only when Robert Koch isolated the causal agent (Vibrio cholerae, a comma-shaped bacillus) during the Indian epidemic of 1883” (Freedman, 2009, p. 342). Only once persuasive evidence of a plausible mechanism was provided (i.e., direct observation of micro-organisms now known to cause the disease) did Snow’s ideas become widely accepted.
+<!-- Another important feature of this example is that widespread acceptance of Snow’s hypothesis did not occur until compelling evidence of the precise causal mechanism was provided. “However, widespread acceptance was achieved only when Robert Koch isolated the causal agent (Vibrio cholerae, a comma-shaped bacillus) during the Indian epidemic of 1883” (Freedman, 2009, p. 342).  -->
+この例のもう1つの重要な特徴は、スノーの仮説が広く受け入れられるようになったのは、正確な因果メカニズムに関する説得力のある証拠が提供された後だったという点である。
+「しかし、広く受け入れられるようになったのは、1883年のインドでの流行時にロベルト・コッホが原因菌（コンマ状の桿菌であるコレラ菌 Vibrio cholerae）を分離したときだった」（Freedman, 2009, p. 342）。
+<!-- Only once persuasive evidence of a plausible mechanism was provided (i.e., direct observation of micro-organisms now known to cause the disease) did Snow’s ideas become widely accepted. -->
+スノーの考えが広く受け入れられるようになったのは、説得力のある因果メカニズム（すなわち、現在その病気の原因であると知られている微生物の直接観察）が提供された後のことだった。
 
-We expect the same might be true in the accounting discipline if researchers carefully articulate the assumed causal mechanism for their observations. It is, of course, necessary for researchers to show that a proposed mechanism is consistent with observed behaviour in the institutional setting being examined. As discussed below, detailed descriptive studies of institutional phenomena provide an important part of the information used to evaluate a proposed mechanism.
+<!-- We expect the same might be true in the accounting discipline if researchers carefully articulate the assumed causal mechanism for their observations.  -->
+我々は、会計学の分野でも、研究者が注意深く自分たちの観察結果に対する仮定された因果メカニズムを明確に表現すれば、同様のことが起こると予想している。
+<!-- It is, of course, necessary for researchers to show that a proposed mechanism is consistent with observed behaviour in the institutional setting being examined.  -->
+もちろん、研究者は、検討されている制度的環境で観察された行動と一致することを示す必要がある。
+<!-- As discussed below, detailed descriptive studies of institutional phenomena provide an important part of the information used to evaluate a proposed mechanism. -->
+以下で議論するように、制度現象の詳細な記述的研究は、提案されたメカニズムを評価するために使用される情報の重要な部分を提供する。
+
+<!-- ## 18.2 Smoking and heart disease -->
+## 喫煙と心臓病
+
+<!-- A more recent illustration of plausible causal inference is discussed by Gillies (2011).  -->
+より最近の因果推論の妥当性の例が、Gillies (2011)によって議論されている。
+<!-- Gillies (2011) focuses on the paper by Doll and Peto (1976), which studied the mortality rates of male doctors between 1951 and 1971.  -->
+Gillies (2011)は、Doll and Peto (1976)による、1951年から1971年までの間に男性医師の死亡率を調査した論文に焦点を当てている。
+<!-- The data of Doll and Peto (1976) showed “a striking correlation between smoking and lung cancer” (Gillies, 2011, p.111).  -->
+Doll and Peto (1976)のデータは、「喫煙と肺がんとの間に顕著な相関がある」と示していた（Gillies, 2011, p.111）。
+<!-- Gillies (2011) argues that “this correlation was accepted at the time by most researchers (if not quite all!) as establishing a causal link between smoking and lung cancer.”  -->
+Gillies (2011)は、「この相関は、当時、ほとんどの研究者（すべてではないが）によって、喫煙と肺がんとの間の因果関係を確立するものとして受け入れられていた」と主張している。
+<!-- Indeed Doll and Peto themselves say explicitly (p.1535) that “the excess mortality from cancer of the lung in cigarette smokers is caused by cigarette smoking.”  -->
+実際、Doll and Peto自身も「喫煙者の肺がんによる余剰死亡は、喫煙によるものである」(p.1535)と述べている。
+<!-- In contrast, while Doll and Peto (1976) had highly statistically significant evidence of an association between smoking and heart disease, they were cautious about drawing inferences of a direct causal explanation for the association.  -->
+一方、Doll and Peto (1976)は、喫煙と心臓病との間に関連があるという非常に統計的に有意な証拠を持っていたが、その関連に対する直接的な因果関係の説明を推論することには慎重だった。
+<!-- Doll and Peto (1976, p.1528) point out that “to say that these conditions were related to smoking does not necessarily imply that smoking caused … them.  -->
+Doll and Peto (1976, p.1528)は、「これらの状態が喫煙と関連していると言うことは、必ずしも喫煙が…それらを引き起こしたとは限らない。
+<!-- The relation may have been secondary in that smoking was associated with some other factor, such as alcohol consumption or a feature of the personality, that caused the disease.” -->
+関係は、喫煙がアルコール摂取や人格の特徴など、疾病を引き起こす他の要因と関連していた可能性がある」と指摘している。
+
+<!-- Gillies (2011) then discusses extensive research into atherosclerosis between 1979 and 1989 and concludes that “by the end of the 1980s, it was established that the oxidation of LDL was an important step in the process which led to atherosclerotic plaques.”  -->
+Gillies (2011)は、1979年から1989年にかけての動脈硬化に関する広範な研究について議論し、その結果、「1980年代末までに、LDLの酸化が動脈硬化斑の形成につながる過程で重要なステップであることが確立された」と結論付けている。
+<!-- Later research (Morrow et al., 1995, p.1201) provided “compelling evidence that smoking causes oxidative modification of biologic components in humans.”2  -->
+後の研究（Morrow et al., 1995, p.1201）は、「喫煙が人間の生物学的成分の酸化修飾を引き起こすことを示す説得力のある証拠を提供した」と述べている。[^2]
+<!-- Gillies (2011, p.120) points out that this evidence alone did not establish a confirmed mechanism linking smoking with heart disease because the required oxidation needs to occur in the artery wall, not in the bloodstream, and it fell to later research to establish this missing piece.3  -->
+Gillies (2011, p.120)は、この証拠だけでは、喫煙と心臓病を結びつける確認されたメカニズムを確立することができなかったことを指摘している。なぜなら、必要な酸化は血流ではなく動脈壁で起こる必要があり、この欠けている部分を確立するために後の研究が行われた。[^3]
+<!-- Thus, through a process involving multiple studies over two decades, a plausible set of causal mechanisms between smoking and atherosclerosis was established. -->
+したがって、2つの数十年にわたる多くの研究を通じて、喫煙と動脈硬化の間の因果メカニズムの妥当なセットが確立された。
+
+<!-- Gillies (2011) avers that the process by which a causal link between smoking and atherosclerosis was established illustrates the Russo-Williamson thesis.  -->
+Gillies (2011)は、喫煙と動脈硬化の間の因果関係が確立されたプロセスが、Russo-Williamsonの論文を示していると主張している。
+<!-- Russo and Williamson (2007, p.159) suggest that “mechanisms allow us to generalize a causal relation: while an appropriate dependence in the sample data can warrant a causal claim ' $C$ causes $E$ in the sample population,' a plausible mechanism or theoretical connection is required to warrant the more general claim ' $C$ causes $E$ .' -->
+Russo and Williamson (2007, p.159)は、「メカニズムは因果関係を一般化することを可能にする」と述べている。つまり、サンプルデータにおいて適切な依存関係が確認されれば、「$C$ がサンプル集団において $E$ を引き起こす」という因果的主張を正当化することはできるが、より一般的な「$C$ が $E$ を引き起こす」という主張を正当化するためには、妥当なメカニズムや理論的なつながりが必要である。
+<!-- Conversely, mechanisms also impose negative constraints: if there is no plausible mechanism from $C$ to $E$ , then any correlation is likely to be spurious.  -->
+逆に、メカニズムは否定的な制約も課す。つまり、$C$ から $E$ への妥当なメカニズムが存在しない場合、その相関関係は疑似的なものである可能性が高い。
+<!-- Thus mechanisms can be used to differentiate between causal models that are underdetermined by probabilistic evidence alone.”  -->
+したがって、メカニズムは、確率的証拠だけでは十分に決定できない因果モデルを区別するために用いることができる。
+<!-- The Russo-Williamson thesis was arguably also at work in the case of Snow and cholera, where the establishment of a mechanism (i.e., Vibrio cholerae) was essential before the causal explanation offered by Snow was widely accepted.  -->
+Russo-Williamsonの論文は、スノーとコレラの場合にも適用されたと言える。つまり、スノーによって提供された因果説明が広く受け入れられる前に、メカニズム（すなわち、コレラ菌 Vibrio cholerae）の確立が不可欠であった。
+<!-- It also appears in the case of smoking and lung cancer, which was initially conjectured based on correlations, prior to a direct biological explanation being offered.4 -->
+これは、最初に相関に基づいて推測された喫煙と肺がんの場合にも見られる。直接的な生物学的説明が提供される前に推測された。[^4]
+
+<!-- ## 18.3 Causal mechanisms in accounting research -->
+## 会計研究における因果メカニズム
+
+<!-- Gow et al. (2016) suggest that accounting researchers can learn from fields such as epidemiology, medicine, and political science, which grapple with observational data yet eventually draw inferences that are causal.  -->
+Gow et al. (2016)は、会計研究者は、観察データに取り組むが最終的に因果関係を示す分野である、疫学、医学、政治学などの分野から学ぶことができると提案している。
+<!-- While randomized controlled trials are a gold standard of sorts in epidemiology, it is often unfeasible or unethical to use such trials.  -->
+ランダム化比較試験（RCT）は、ある意味で疫学におけるゴールドスタンダードとされているが、そのような試験を実施することが現実的でない場合や倫理的に許容されない場合も多い。
+<!-- For example, in political science, it is impossible to randomly assign countries to treatment conditions such as democracy or socialism.  -->
+例えば、政治学においては、国をランダムに割り当てて民主主義や社会主義といった処置条件を適用することは不可能である。
+<!-- Nevertheless, these fields have often been able to draw plausible causal inferences by establishing clear mechanisms, or causal pathways, from putative causes to putative effects. -->
+それにもかかわらず、これらの分野では、想定される原因から想定される結果への明確なメカニズムや因果経路を確立することによって、妥当な因果推論を導き出すことができる場合が多い。
+
+<!-- One paper that has a fairly compelling identification strategy is Brown et al. (2015), which examines “the influence of mobile communication on local information flow and local investor activity using the enforcement of state-wide distracted driving restrictions.”  -->
+因果識別戦略が比較的説得力のある論文の一つに、Brown et al. (2015) がある。この論文では、「州全体で施行される運転中の携帯電話使用規制を利用して、モバイル通信が地域の情報伝達や地域の投資家活動に与える影響」を分析している。
+<!-- The authors find that “these restrictions … inhibit local information flow and … the market activity of stocks headquartered in enforcement states.”  -->
+著者らは、「これらの規制が…地域の情報流通を妨げ、…規制が施行された州に本社を置く企業の株式市場活動に影響を与える」ことを発見した。
+<!-- Miller and Skinner (2015) (p.229) suggest that “given the authors’ setting and research design, it is difficult to imagine a story under which the types of reverse causality or correlated omitted variables explanations that we normally worry about in disclosure research are at play.”  -->
+Miller and Skinner (2015, p. 229) は、「著者らの研究環境と研究デザインを考慮すると、通常の開示研究で問題となる逆の因果関係や相関する欠落変数による説明が成り立つとは考えにくい」と指摘している。
+<!-- However, notwithstanding the apparent robustness of the research design, the results would be much more compelling if there was more detailed evidence regarding the precise causal mechanism through which the estimated effect occurs, and the authors appear to go to lengths to provide such an account.5  -->
+しかし、研究デザインの明白な頑健性にもかかわらず、推定された効果が発生する正確な因果メカニズムに関するより詳細な証拠が示されれば、結果はさらに説得力を増すであろう。著者らは、そのような説明を提供することに相当な努力を払っているように見受けられる。[^5]
+<!-- For example, evidence of trading activity by local investors while driving prior to, but not after, the implementation of distracted driving restrictions would add considerable support to conclusions in Brown et al. (2015).6 -->
+例えば、運転中の地域投資家の取引活動が、規制導入前には見られたが、導入後には見られなくなったという証拠が示されれば、Brown et al. (2015) の結論を大いに裏付けるものとなるだろう。[^6]
+
+
+<!-- As another example, many published papers have suggested that managers adopt conditional conservatism as a reporting strategy to obtain benefits such as reduced debt costs.  -->
+別の例として、多くの公表された論文は、経営者が負債コストの削減などの利益を得るために、条件付き保守主義を報告戦略として採用することを示唆している。
+<!-- However, as Beyer et al. (2010, p.317) point out, an ex-ante commitment to such a reporting strategy “requires a mechanism that allows managers to credibly commit to withholding good news or to commit to an accounting information system that implements a higher degree of verification for gains than for losses,” yet research has only recently begun to focus on the mechanisms through which such commitments are made (e.g., Erkens et al., 2014).7  -->
+しかし、Beyer et al. (2010, p.317) が指摘するように、そのような報告戦略に事前にコミットするためには、「経営者が良いニュースを意図的に開示しないことを信頼性をもって約束する、または利益に対して損失よりも厳格な検証を課す会計情報システムにコミットすることを可能にするメカニズムが必要である」。しかしながら、そのようなコミットメントがどのように行われるのかについての研究は、最近になってようやく焦点を当てられるようになってきた（例：Erkens et al., 2014）。[^7]
+<!-- It is very clear that we need a much better understanding of the precise causal mechanisms for important accounting research questions.  -->
+重要な会計研究の課題について、正確な因果メカニズムをより深く理解することが極めて重要であることは明白である。
+<!-- A clear discussion of these mechanisms will enable reviewers and readers to see what is being assumed and assess the reasonableness of the posited causal mechanisms. -->
+これらのメカニズムについて明確に議論することで、査読者や読者は何が前提とされているのかを理解し、提示された因果メカニズムの妥当性を評価することができるようになるだろう。
+
+<!-- ## 18.4 Discussion questions -->
+## ディスカッション課題
+
+<!-- ### 18.4.1 Li et al. (2018) -->
+### Li et al. (2018)
+
+1. Let’s think about the causal mechanism in Li et al. (2018).
+
+Suppose you are a manager involved in the process of preparing information about significant customers for your firm’s 10-K. What do you think your main area of expertise would be? If a court upheld or rejected the IDD while you are in this role, would you expect to learn about that in your role? If so, how would you learn this information? If not, how might the court ruling nonetheless have an effect on your decisions regarding what to include in the filing?
+
+Assume that the relevant managers are aware of relevant court rulings on IDD, how would you expect this to affect disclosure decisions? When would this effect occur? How long would it last?
+
+2. Note that PepsiCo is headquartered in the state of New York. Reading the discussion of the PepsiCo Inc. v. Redmond case (Li et al., 2018, pp. 272–3), does this fact have implications for their research design. How might Li et al. (2018) need to do things differently?
+
+3. Look at the plots in Li et al. (2018, p. 284). What do we expect to see here? Try to imagine the plots without the fitted curves and red vertical dashed line. How compelling is this evidence? Why do you think the authors included this? How might one depict the results reported in Table 2 on the figures in Li et al. (2018, p. 284) (pay attention to magnitudes)?
+
+4. In Section 3.2, we ran regressions with two-way fixed effects (i.e., fixed effects for grade and for id, the student identifier). What variables are analogous to grade and for id in regressions (3) and (4) in Table 2 of Li et al. (2018)? Why is there no $POST \times TREAT$ coefficient reported in Table 2? 
+How would you code $POST$ for a firm in a state that never has IDD?
+
+5. Compare Tables 2 and 3 of Li et al. (2018). Which regressions are most comparable across the two tables? What insight does Table 3 provide over Table 2?
+
+<!-- ### 18.4.2 Burks et al. (2018) -->
+### Burks et al. (2018) 
+
+1. Suppose you are a senior executive at a bank. What opportunities might implementation of IBBEA by a state other than your own provide to you? How would you evaluate such opportunities? How long would it take to evaluate them?
+2. Suppose you are a senior executive at a bank in state that is about to implement IBBEA. What actions might you take if you anticipate increased interest in your state by interstate banks? Would the actions you take depend on how out-of-state banks enter?
+
+3. Burks et al. (2018) do not explain what a “deposit cap” is. Rice and Strahan (2010) describe it thus: “IBBEA specifies a statewide deposit concentration limitation of 30% with respect to interstate mergers that constitute an initial entry of a bank into a state.” What might drive differences in the deposit cap for different states? (See Table 1.) Would this restriction affect behaviour of all banks in an IBBEA-implementing state in the same way?
+
+4. “The results are consistent with disclosure significantly increasing upon introduction of the IBBEA (the main effect) … we find that the restriction imposing a deposit cap of less than 30% has a significant mitigating effect on disclosure.” How many states implemented a cap of less than 30%? (See Table 1.) We checked one of these states (Colorado) and it had a cap of 25%. In 1997, the bank with the largest market share had 17.87%. With these facts, what is the practical difference between 25% and 30% in this case?
+
+<!-- ### 18.4.3 Christensen et al. (2017); Glaeser and Guay (2017) -->
+### Christensen et al. (2017); Glaeser and Guay (2017)
+
+1. Christensen et al. (2017) claim to find a causal effect of requiring disclosure in SEC filings on mine safety. Why is it significant that the information was already available on MSHA website? How persuasive do you find the evidence of a causal effect to be? What elements do you find particularly persuasive (or problematic)?
+
+2. What is the causal mechanism through which Christensen et al. (2017) argue (or conjecture) this effect occurs?
+
+3. Glaeser and Guay (2017) suggest that use of securities laws to enforce safety regulations is another mechanism through which the causal effect occurs? Does this undermine the validity of the estimate of the causal effect?
