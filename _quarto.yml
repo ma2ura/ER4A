@@ -38,6 +38,7 @@ book:
         - chap15_accruals.qmd
         - chap16_em.qmd
         - chap17_Natural.qmd
+        - chap18_Causal_mechanisms.qmd
     - part: "因果推論"
     - part: "追加的なトピック"
   appendices:
