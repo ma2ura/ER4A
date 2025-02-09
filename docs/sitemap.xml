@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://so-ichi.com/chap17_Natural.html</loc>
-    <lastmod>2025-02-08T01:16:16.866Z</lastmod>
+    <lastmod>2025-02-08T01:17:46.345Z</lastmod>
   </url>
   <url>
     <loc>https://so-ichi.com/appA_LinearAlgebra.html</loc>
@@ -10,10 +10,14 @@
   </url>
   <url>
     <loc>https://so-ichi.com/chap18_Causal_mechanisms.html</loc>
-    <lastmod>2025-02-01T08:28:42.281Z</lastmod>
+    <lastmod>2025-02-09T03:33:39.032Z</lastmod>
   </url>
   <url>
     <loc>https://so-ichi.com/index.html</loc>
     <lastmod>2025-02-06T06:28:37.049Z</lastmod>
+  </url>
+  <url>
+    <loc>https://so-ichi.com/chap16_em.html</loc>
+    <lastmod>2025-02-06T06:28:36.976Z</lastmod>
   </url>
 </urlset>
