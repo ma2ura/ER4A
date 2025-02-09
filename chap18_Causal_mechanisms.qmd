@@ -1,57 +1,74 @@
 # 因果メカニズム
 
-Gow et al. (2016) argue that, while causal inference is the goal of most accounting research, it is extremely difficult to find settings where straightforward application of statistical methods can produce credible estimates of causal effects (and the remaining chapters of this part arguably support this claim). Does this mean accounting researchers must give up making causal statements? Gow et al. (2016) argue that the answer is “no” and suggest an increased focus on causal mechanisms as one path forward.
+<!-- Gow et al. (2016) argue that, while causal inference is the goal of most accounting research, it is extremely difficult to find settings where straightforward application of statistical methods can produce credible estimates of causal effects (and the remaining chapters of this part arguably support this claim). -->
+Gow et al. (2016) は、会計研究の多くは因果推論を目的としているものの、統計的手法を単純に適用するだけで因果効果の信頼できる推定を得られるような状況を見つけることは非常に困難であると主張している（そして、本書のこの部分の残りの章もこの主張を支持していると考えられる）。
+<!-- Does this mean accounting researchers must give up making causal statements?  -->
+これは、会計研究者が因果関係に関する主張を諦めなければならないことを意味するのか。
 
-In this chapter, we aim to help the reader understand the idea of causal mechanisms, which can suggest empirical analyses that do not rely on, say, random assignment to treatment, which is very rarely found in accounting research. Unlike the other chapters in this part, this chapter is largely qualitative and contains no empirical analysis.
+<!-- Gow et al. (2016) argue that the answer is “no” and suggest an increased focus on causal mechanisms as one path forward. -->
+Gow et al. (2016) は、この問いに対する答えは「否である」と主張し、因果メカニズムに焦点を当てることが、因果推論を進めるための一つの方法であると示唆している。
 
-Accounting research is not alone in its reliance on observational data with the goal of drawing causal inferences. For this reason, it is natural to look to other fields using observational data to identify causal mechanisms and ultimately to draw causal inferences. Epidemiology and medicine are two fields that are often singled out in this regard. In the next two sections, we briefly provide examples and highlight the features of the examples that enhanced the credibility of the inferences drawn.1 A key implication of this discussion is that accounting researchers need to identify clearly and rigorously the causal mechanism that is producing their results.
+<!-- In this chapter, we aim to help the reader understand the idea of causal mechanisms, which can suggest empirical analyses that do not rely on, say, random assignment to treatment, which is very rarely found in accounting research.  -->
+本章では、因果メカニズムの概念を読者に理解してもらうことを目的としている。因果メカニズムを明確にすることで、例えば無作為割り当て（random assignment to treatment）に依存しない実証分析が可能となるが、会計研究では無作為割り当ての機会がほとんどないため、これは特に重要である。
+<!-- Unlike the other chapters in this part, this chapter is largely qualitative and contains no empirical analysis. -->
+本章は、本書のこの部分の他の章とは異なり、主に定性的な議論を中心とし、実証分析を含んでいない。
+
+<!-- Accounting research is not alone in its reliance on observational data with the goal of drawing causal inferences.  -->
+会計研究は、観察データ（observational data）に依存しつつ因果推論を目指している点で、他の分野と共通している。
+<!-- For this reason, it is natural to look to other fields using observational data to identify causal mechanisms and ultimately to draw causal inferences.  -->
+このため、観察データを用いて因果メカニズムを特定し、最終的に因果推論を行う他の分野を参考にするのは自然な発想である。
+<!-- Epidemiology and medicine are two fields that are often singled out in this regard.  -->
+特に、疫学（epidemiology） や 医学（medicine） は、この点でよく引き合いに出される分野である。
+<!-- In the next two sections, we briefly provide examples and highlight the features of the examples that enhanced the credibility of the inferences drawn.[^1]  -->
+次の2つのセクションでは、具体的な例を簡単に紹介し、それらの例がどのように因果推論の信頼性を高める要素を含んでいるかを示す。[^1]
+<!-- A key implication of this discussion is that accounting researchers need to identify clearly and rigorously the causal mechanism that is producing their results. -->
+この議論の重要な含意は、会計研究者は、自身の研究結果を生み出す因果メカニズムを明確かつ厳密に特定する必要があるという点である。
 
 <!-- ## 18.1 John Snow and cholera -->
-## ジョン・スノーとコレラ
+## ジョン・スノウとコレラ
 
 <!-- A widely cited case of successful causal inference is John Snow’s work on cholera.  -->
-成功した因果推論の広く引用される例として、ジョン・スノーによるコレラに関する研究がある。
+ジョン・スノウのコレラ研究は、因果推論の成功例として広く引用されている。
 <!-- As there are many excellent accounts of Snow’s work, we will focus on the barest details.  -->
-スノーの研究に関する多くの優れた説明があるため、ここでは最も基本的な詳細に焦点を当てる。
+スノウの研究には多くの優れた解説が存在するため、ここでは最も基本的な要点に焦点を当てる。
 <!-- As discussed in Freedman (2009, p.339), “John Snow was a physician in Victorian London.  -->
-Freedman (2009, p.339)によると、「ジョン・スノーは、ビクトリア朝のロンドンの医師であった。
+Freedman (2009, p.339) によれば、「ジョン・スノウはヴィクトリア朝時代のロンドンの医師であった。
 <!-- In 1854, he demonstrated that cholera was an infectious disease, which could be prevented by cleaning up the water supply.  -->
-1854年、彼はコレラが感染症であり、水道を清掃することで予防できることを証明した。
+1854年、彼はコレラが感染症であり、水の供給を浄化することで予防可能であることを実証した。
 <!-- The demonstration took advantage of a natural experiment.  -->
-この実証は自然実験を利用して行われた。
+この実証は、自然実験（natural experiment） を利用したものであった。
 <!-- A large area of London was served by two water companies.  -->
-ロンドンの広い地域は2つの水道会社によって供給されていた。
+ロンドンの広範な地域では、2つの水道会社が給水を行っていた。
 <!-- The Southwark and Vauxhall company distributed contaminated water, and households served by it had a death rate ‘between eight and nine times as great as in the houses supplied by the Lambeth company,’ which supplied relatively pure water.”  -->
-サザーク・ヴォークホール社は汚染された水を供給しており、その水を供給された家庭の死亡率は「ラムベス社が供給する比較的純粋な水を供給する家屋の死亡率の8〜9倍」となっていた。
+Southwark and Vauxhall 社は汚染された水を供給しており、この会社の水を使用する家庭の死亡率は、『Lambeth 社（比較的純粋な水を供給していた）の給水地域の死亡率の8～9倍』であった。」
 <!-- But there was much more to Snow’s work than the use of a convenient natural experiment.  -->
-しかし、スノーの研究には、便利な自然実験の利用以上のものがあった。
+しかし、スノウの研究の核心は単なる自然実験の利用にとどまらなかった。
 <!-- First, Snow’s reasoning (much of which was surely done before “the arduous task of data collection” began) was about the mechanism through which cholera spread.  -->
-まず、スノーの推論（おそらく「データ収集の困難な作業」が始まる前に行われたものの大部分）は、コレラがどのようにして広がるかというメカニズムについてであった。
+まず、スノウの推論はコレラの感染メカニズムに関するものであり、これは「困難なデータ収集作業」が始まる前に多くが行われたと考えられる。
 <!-- Existing theory suggested “odors generated by decaying organic material.”  -->
 既存の理論では、「腐敗した有機物によって生成される臭気」とされていた。
+当時の既存の理論では、「腐敗した有機物が発する悪臭（miasma）」がコレラの原因とされていた。
 <!-- Snow reasoned qualitatively that such a mechanism was implausible.  -->
-スノーは、そのようなメカニズムは不合理であると質的に推論した。
-<!-- Instead, drawing on his medical knowledge and the facts at hand, Snow conjectured that “a living organism enters the body, as a contaminant of water or food, multiplies in the body, and creates the symptoms of the disease.  -->
-代わりに、医学的知識と手元の事実に基づいて、スノーは「生物が体内に侵入し、水や食物の汚染物質として、体内で増殖し、病気の症状を引き起こす」と推測した。
-<!-- Many copies of the organism are expelled with the dejecta, contaminate water or food, then infect other victims” (Freedman, 2009, p. 342). -->
-その生物の多くのコピーが排泄物とともに排出され、水や食物を汚染し、それによって他の宿主を感染させる。
+しかし、スノウは定性的な推論を行い、このメカニズムが非現実的であると考えた。
+<!-- Instead, drawing on his medical knowledge and the facts at hand, Snow conjectured that “a living organism enters the body, as a contaminant of water or food, multiplies in the body, and creates the symptoms of the disease. Many copies of the organism are expelled with the dejecta, contaminate water or food, then infect other victims” (Freedman, 2009, p. 342). -->
+代わりに、自身の医学的知識と観察された事実をもとに、「生物（病原体）が水や食物に含まれ、それが体内に侵入し、増殖して症状を引き起こす。そして、多数の病原体が排泄物として体外に排出され、水や食物を汚染し、新たな感染者を生み出す」という仮説を立てた（Freedman, 2009, p. 342）。
 
 <!-- With a hypothesis at hand, Snow then needed to collect data to prove it. -->
-仮説を手に入れたスノーは、それを証明するためのデータを収集する必要があった。
+仮説を手に入れたスノウは、それを証明するためのデータを収集する必要があった。
 <!-- His data collection involved a house-to-house survey in the area surrounding the Broad Street pump operated by Southwark and Vauxhall. -->
 彼のデータ収集には、サザーク・ヴォークホール社が運営するブロードストリートポンプ周辺の地域での家庭訪問調査が含まれていた。
 <!-- As part of his data collection, Snow needed to account for anomalous cases (such as the brewery workers who drank beer, not water). -->
-データ収集の一環として、スノーは異常なケース（たとえば、ビールを飲む醸造所の労働者）を考慮に入れる必要があった。
+データ収集の一環として、スノウは異常なケース（たとえば、ビールを飲む醸造所の労働者）を考慮に入れる必要があった。
 <!-- It is important to note that such qualitative reasoning and diligent data collection were critical elements in establishing (to a modern reader) the “as if” random nature of the treatment assignment mechanism provided by the Broad Street pump. -->
 こうした質的推論と綿密なデータ収集が、ブロードストリートポンプによって提供された処置割り当てメカニズムの「まるで」ランダムな性質を（現代の読者に）確立する上で重要な要素であることに注意することが重要である。
 <!-- Snow’s deliberate methods contrast with a shortcut approach, which would have been to argue that in his data he had a natural experiment. -->
-スノーの慎重な方法は、彼のデータに自然実験があると主張することができたショートカットアプローチとは対照的である。
+スノウの慎重な方法は、彼のデータに自然実験があると主張することができたショートカットアプローチとは対照的である。
 
 <!-- Another important feature of this example is that widespread acceptance of Snow’s hypothesis did not occur until compelling evidence of the precise causal mechanism was provided. “However, widespread acceptance was achieved only when Robert Koch isolated the causal agent (Vibrio cholerae, a comma-shaped bacillus) during the Indian epidemic of 1883” (Freedman, 2009, p. 342).  -->
-この例のもう1つの重要な特徴は、スノーの仮説が広く受け入れられるようになったのは、正確な因果メカニズムに関する説得力のある証拠が提供された後だったという点である。
+この例のもう1つの重要な特徴は、スノウの仮説が広く受け入れられるようになったのは、正確な因果メカニズムに関する説得力のある証拠が提供された後だったという点である。
 「しかし、広く受け入れられるようになったのは、1883年のインドでの流行時にロベルト・コッホが原因菌（コンマ状の桿菌であるコレラ菌 Vibrio cholerae）を分離したときだった」（Freedman, 2009, p. 342）。
 <!-- Only once persuasive evidence of a plausible mechanism was provided (i.e., direct observation of micro-organisms now known to cause the disease) did Snow’s ideas become widely accepted. -->
-スノーの考えが広く受け入れられるようになったのは、説得力のある因果メカニズム（すなわち、現在その病気の原因であると知られている微生物の直接観察）が提供された後のことだった。
+スノウの考えが広く受け入れられるようになったのは、説得力のある因果メカニズム（すなわち、現在その病気の原因であると知られている微生物の直接観察）が提供された後のことだった。
 
 <!-- We expect the same might be true in the accounting discipline if researchers carefully articulate the assumed causal mechanism for their observations.  -->
 我々は、会計学の分野でも、研究者が注意深く自分たちの観察結果に対する仮定された因果メカニズムを明確に表現すれば、同様のことが起こると予想している。
@@ -98,7 +115,7 @@ Russo and Williamson (2007, p.159)は、「メカニズムは因果関係を一�
 <!-- Thus mechanisms can be used to differentiate between causal models that are underdetermined by probabilistic evidence alone.”  -->
 したがって、メカニズムは、確率的証拠だけでは十分に決定できない因果モデルを区別するために用いることができる。
 <!-- The Russo-Williamson thesis was arguably also at work in the case of Snow and cholera, where the establishment of a mechanism (i.e., Vibrio cholerae) was essential before the causal explanation offered by Snow was widely accepted.  -->
-Russo-Williamsonの論文は、スノーとコレラの場合にも適用されたと言える。つまり、スノーによって提供された因果説明が広く受け入れられる前に、メカニズム（すなわち、コレラ菌 Vibrio cholerae）の確立が不可欠であった。
+Russo-Williamsonの論文は、スノウとコレラの場合にも適用されたと言える。つまり、スノウによって提供された因果説明が広く受け入れられる前に、メカニズム（すなわち、コレラ菌 Vibrio cholerae）の確立が不可欠であった。
 <!-- It also appears in the case of smoking and lung cancer, which was initially conjectured based on correlations, prior to a direct biological explanation being offered.4 -->
 これは、最初に相関に基づいて推測された喫煙と肺がんの場合にも見られる。直接的な生物学的説明が提供される前に推測された。[^4]
 
@@ -141,36 +158,76 @@ Miller and Skinner (2015, p. 229) は、「著者らの研究環境と研究デ�
 <!-- ### 18.4.1 Li et al. (2018) -->
 ### Li et al. (2018)
 
-1. Let’s think about the causal mechanism in Li et al. (2018).
+<!-- 1. Let’s think about the causal mechanism in Li et al. (2018). -->
+1. Li et al. (2018) の因果メカニズムについて考えてみよう。
+<!-- Suppose you are a manager involved in the process of preparing information about significant customers for your firm’s 10-K.  -->
+あなたが、会社の10-Kのために重要な顧客に関する情報を準備するプロセスに関与していると仮定しよう。
+<!-- What do you think your main area of expertise would be?  -->
+あなたの主な専門分野は何であると考えるか。
+<!-- If a court upheld or rejected the IDD while you are in this role, would you expect to learn about that in your role?  -->
+この役職にある間に、裁判所がIDDを支持または却下した場合、そのことを知ることになると考えるか。
+<!-- If so, how would you learn this information?  -->
+もしそうであれば、どのようにしてその情報を得るか。
+<!-- If not, how might the court ruling nonetheless have an effect on your decisions regarding what to include in the filing? -->
+もしそうでなければ、裁判所の判決が提出書類の内容に関する決定にどのような影響を与える可能性があるか。
 
-Suppose you are a manager involved in the process of preparing information about significant customers for your firm’s 10-K. What do you think your main area of expertise would be? If a court upheld or rejected the IDD while you are in this role, would you expect to learn about that in your role? If so, how would you learn this information? If not, how might the court ruling nonetheless have an effect on your decisions regarding what to include in the filing?
+<!-- Assume that the relevant managers are aware of relevant court rulings on IDD, how would you expect this to affect disclosure decisions? When would this effect occur?  -->
+関連する管理職がIDDに関する裁判所の判決を把握していると仮定した場合、これが開示の決定にどのような影響を与えると考えられるか。
+この影響はいつ発生するか。
+<!-- How long would it last? -->
+どの程度の期間継続すると考えられるか。
 
-Assume that the relevant managers are aware of relevant court rulings on IDD, how would you expect this to affect disclosure decisions? When would this effect occur? How long would it last?
+<!-- 2. Note that PepsiCo is headquartered in the state of New York.  -->
+2. PepsiCoはニューヨーク州に本社を置いている。
+   <!-- Reading the discussion of the PepsiCo Inc. v. Redmond case (Li et al., 2018, pp. 272–3), does this fact have implications for their research design.  -->
+   この事実は、Li et al. (2018, pp. 272–3) における PepsiCo Inc. v. Redmond 事件の議論において、リサーチ・デザインに影響を与えるか。
+   <!-- How might Li et al. (2018) need to do things differently? --> -->
+   この事実を考慮すると、Li et al. (2018) はどのように研究を進めるべきであったか。
 
-2. Note that PepsiCo is headquartered in the state of New York. Reading the discussion of the PepsiCo Inc. v. Redmond case (Li et al., 2018, pp. 272–3), does this fact have implications for their research design. How might Li et al. (2018) need to do things differently?
+<!-- 3. Look at the plots in Li et al. (2018, p. 284). What do we expect to see here? Try to imagine the plots without the fitted curves and red vertical dashed line. How compelling is this evidence? Why do you think the authors included this? How might one depict the results reported in Table 2 on the figures in Li et al. (2018, p. 284) (pay attention to magnitudes)? -->
+3. Li et al. (2018, p. 284) のプロットを確認せよ。ここでは何が示されることを期待すべきか。
+   フィットした曲線と赤い縦破線を除いた状態を想像した場合、この証拠はどの程度説得力があるか。なぜ著者らはこれらを含めたと考えられるか。
+   また、Li et al. (2018, p. 284) の図にTable 2の結果を反映させる場合、どのように描写すべきか（特に数値の大きさに着目せよ）。
 
-3. Look at the plots in Li et al. (2018, p. 284). What do we expect to see here? Try to imagine the plots without the fitted curves and red vertical dashed line. How compelling is this evidence? Why do you think the authors included this? How might one depict the results reported in Table 2 on the figures in Li et al. (2018, p. 284) (pay attention to magnitudes)?
+<!-- 4. In Section 3.2, we ran regressions with two-way fixed effects (i.e., fixed effects for grade and for id, the student identifier). What variables are analogous to grade and for id in regressions (3) and (4) in Table 2 of Li et al. (2018)? Why is there no $POST \times TREAT$ coefficient reported in Table 2? -->
+<!-- How would you code $POST$ for a firm in a state that never has IDD? -->
+Section 3.2では、二方向固定効果（学年と学生ID）を用いた回帰を実施した。Li et al. (2018) のTable 2の回帰 (3) および (4) において、学年と学生IDに相当する変数は何か。
+Table 2 に $POST \times TREAT$ の係数が報告されていないのはなぜか。
+IDDが一度も導入されなかった州に所在する企業に対して、$POST$ をどのようにコーディングすべきか。
 
-4. In Section 3.2, we ran regressions with two-way fixed effects (i.e., fixed effects for grade and for id, the student identifier). What variables are analogous to grade and for id in regressions (3) and (4) in Table 2 of Li et al. (2018)? Why is there no $POST \times TREAT$ coefficient reported in Table 2? 
-How would you code $POST$ for a firm in a state that never has IDD?
+<!-- 5. Compare Tables 2 and 3 of Li et al. (2018). Which regressions are most comparable across the two tables? What insight does Table 3 provide over Table 2? -->
+Li et al. (2018) のTable 2とTable 3を比較せよ。両者の中で最も比較可能な回帰はどれか。
+また、Table 3 はTable 2に比べてどのような洞察を提供しているか。
 
-5. Compare Tables 2 and 3 of Li et al. (2018). Which regressions are most comparable across the two tables? What insight does Table 3 provide over Table 2?
 
 <!-- ### 18.4.2 Burks et al. (2018) -->
-### Burks et al. (2018) 
+### Burks et al. (2018)
 
-1. Suppose you are a senior executive at a bank. What opportunities might implementation of IBBEA by a state other than your own provide to you? How would you evaluate such opportunities? How long would it take to evaluate them?
-2. Suppose you are a senior executive at a bank in state that is about to implement IBBEA. What actions might you take if you anticipate increased interest in your state by interstate banks? Would the actions you take depend on how out-of-state banks enter?
+<!-- 1. Suppose you are a senior executive at a bank. What opportunities might implementation of IBBEA by a state other than your own provide to you? How would you evaluate such opportunities? How long would it take to evaluate them? -->
+1. 自身の州以外の州がIBBEAを実施した場合、銀行の上級幹部としてどのような機会が生じる可能性があるか。これらの機会をどのように評価するか。評価にはどの程度の時間がかかるか。[^burks01]
 
-3. Burks et al. (2018) do not explain what a “deposit cap” is. Rice and Strahan (2010) describe it thus: “IBBEA specifies a statewide deposit concentration limitation of 30% with respect to interstate mergers that constitute an initial entry of a bank into a state.” What might drive differences in the deposit cap for different states? (See Table 1.) Would this restriction affect behaviour of all banks in an IBBEA-implementing state in the same way?
+[^burks01]: [訳註]IBBEA(Interstate Banking and Branching Efficiency Act of 1994)とは、1994年の州際銀行・支店効率法のことである。この法律は、アメリカにおける州を越えた銀行業務の制限を緩和し、銀行の州際合併や支店展開を促進するために制定された。
 
-4. “The results are consistent with disclosure significantly increasing upon introduction of the IBBEA (the main effect) … we find that the restriction imposing a deposit cap of less than 30% has a significant mitigating effect on disclosure.” How many states implemented a cap of less than 30%? (See Table 1.) We checked one of these states (Colorado) and it had a cap of 25%. In 1997, the bank with the largest market share had 17.87%. With these facts, what is the practical difference between 25% and 30% in this case?
+<!-- 2. Suppose you are a senior executive at a bank in state that is about to implement IBBEA. What actions might you take if you anticipate increased interest in your state by interstate banks? Would the actions you take depend on how out-of-state banks enter? -->
+2. 自身の州がIBBEAを実施しようとしている銀行の上級幹部であるとする。他州の銀行の関心が高まることを予想する場合、どのような行動を取るか。他州の銀行の参入方法によって、取るべき行動は変わるか。
+<!-- 3. Burks et al. (2018) do not explain what a “deposit cap” is. Rice and Strahan (2010) describe it thus: “IBBEA specifies a statewide deposit concentration limitation of 30% with respect to interstate mergers that constitute an initial entry of a bank into a state.” What might drive differences in the deposit cap for different states? (See Table 1.) Would this restriction affect behaviour of all banks in an IBBEA-implementing state in the same way? -->
+3. Burks et al. (2018) は「預金上限（deposit cap）」について説明していない。Rice and Strahan (2010) によると、「IBBEAは、州外銀行が州内に初めて進出する際の州全体の預金集中率の上限を30%に設定している」とある。異なる州における預金上限の違いは何によって生じるか（Table 1を参照）。この制限は、IBBEAを実施する州内のすべての銀行の行動に同じように影響を与えるか。
+
+<!-- 4. “The results are consistent with disclosure significantly increasing upon introduction of the IBBEA (the main effect) … we find that the restriction imposing a deposit cap of less than 30% has a significant mitigating effect on disclosure.” How many states implemented a cap of less than 30%? (See Table 1.) We checked one of these states (Colorado) and it had a cap of 25%. In 1997, the bank with the largest market share had 17.87%. With these facts, what is the practical difference between 25% and 30% in this case? -->
+4. 「結果は、IBBEAの導入により情報開示が有意に増加すること（主効果）と一致する。また、30%未満の預金上限を課す制限が情報開示に対して有意な抑制効果を持つことが判明した。」
+30%未満の上限を実施した州はいくつあるか（Table 1を参照）。このうちコロラド州は25%の上限を設定していた。1997年時点で市場シェア最大の銀行は17.87%であった。
+この事実を考慮すると、25%と30%の違いには実際にどのような意味があるか。
 
 <!-- ### 18.4.3 Christensen et al. (2017); Glaeser and Guay (2017) -->
 ### Christensen et al. (2017); Glaeser and Guay (2017)
 
-1. Christensen et al. (2017) claim to find a causal effect of requiring disclosure in SEC filings on mine safety. Why is it significant that the information was already available on MSHA website? How persuasive do you find the evidence of a causal effect to be? What elements do you find particularly persuasive (or problematic)?
+<!-- 1. Christensen et al. (2017) claim to find a causal effect of requiring disclosure in SEC filings on mine safety. Why is it significant that the information was already available on MSHA website? How persuasive do you find the evidence of a causal effect to be? What elements do you find particularly persuasive (or problematic)? -->
+1. Christensen et al. (2017) は、SEC提出書類での情報開示義務が鉱山安全に因果的影響を及ぼすことを発見したと主張している。
+しかし、この情報はすでにMSHA（鉱山安全衛生局）のウェブサイトで公開されていた。この事実が重要であるのはなぜか。
+因果的影響の証拠をどの程度説得力があると考えるか。特に説得力がある（または問題がある）要素は何か。
 
-2. What is the causal mechanism through which Christensen et al. (2017) argue (or conjecture) this effect occurs?
+<!-- 2. What is the causal mechanism through which Christensen et al. (2017) argue (or conjecture) this effect occurs? -->
+2. Christensen et al. (2017) は、この影響が生じる因果メカニズムをどのように説明（または推測）しているか。
 
-3. Glaeser and Guay (2017) suggest that use of securities laws to enforce safety regulations is another mechanism through which the causal effect occurs? Does this undermine the validity of the estimate of the causal effect?
+<!-- 3. Glaeser and Guay (2017) suggest that use of securities laws to enforce safety regulations is another mechanism through which the causal effect occurs? Does this undermine the validity of the estimate of the causal effect? -->
+3. Glaeser and Guay (2017) は、証券法を安全規制の執行手段として活用することが、因果効果をもたらす別のメカニズムであると示唆している。この指摘は、Christensen et al. (2017) における因果効果の推定の妥当性を損なうか。
