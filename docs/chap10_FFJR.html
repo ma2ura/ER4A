@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.40">
+<meta name="generator" content="quarto-1.6.36">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <title>3&nbsp; FFJR – Empirical Research in Accounting</title>
 <style>
@@ -68,12 +68,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-1092c56c6cadf2eb47b1bc8063ab382a.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-1092c56c6cadf2eb47b1bc8063ab382a.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-9b8c35769f744c2f4ed0637cc337dad3.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-9b8c35769f744c2f4ed0637cc337dad3.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-88c88708faf0c485c0387dba1f6eb15f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-2e8bc3580cc84ea2920b26bb0544913d.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark"><script id="quarto-search-options" type="application/json">{
+<link href="site_libs/bootstrap/bootstrap-2e202cc42da04891ccbfde12644a5e33.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-19051c3445f577572871aeb7f709dfac.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark"><script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -163,7 +163,8 @@ window.Quarto = {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Empirical Research in Accounting</a> 
-        <div class="sidebar-tools-main">
+        <div class="sidebar-tools-main tools-wide">
+    <a href="https://github.com/ma2ura/ER4A/" title="ソースコード" class="quarto-navigation-tool px-1" aria-label="ソースコード"><i class="bi bi-github"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="ダークモードの切り替え"><i class="bi"></i></a>
   <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="リーダーモードの切り替え">
   <div class="quarto-reader-toggle-btn">
@@ -254,6 +255,18 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">利益マネジメント</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chap17_Natural.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">自然実験</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chap18_Causal_mechanisms.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">因果メカニズム</span></span></a>
+  </div>
+</li>
       </ul>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -338,11 +351,10 @@ window.Quarto = {
   
 
 
-</header><!-- The (brief!) introduction in Fama et al. (1969) (“FFJR”) confirms that the goal of the paper is to shed light on market efficiency.  --><p>Fama et al.&nbsp;(1969)(“FFJR”)における（簡潔な！）導入部は、論文の目的が市場効率に光を当てることであることを確認している。 <!-- Prior empirical work had inferred “market efficiency from the observed independence of successive price changes.”  --> これまでの実証的研究は、「連続する価格変動の独立性から市場効率を推論していた」。 <!-- In contrast, FFJR focuses on the “speed of adjustment of prices to specific kinds of new information … [specifically] the information (if any) that is implicit in a stock split.”  --> これに対して、FFJRは、「特定の種類の新しい情報に対する価格の調整速度… [具体的には]、（あるなら）株式分割に暗黙の情報」に焦点を当てている。 <!-- We start this chapter with a brief introduction to the efficient markets hypothesis. --> この章では、<strong>効率的市場仮説</strong>について簡単に紹介する。</p>
+</header><!-- The (brief!) introduction in Fama et al. (1969) (“FFJR”) confirms that the goal of the paper is to shed light on market efficiency.  --><p>Fama et al.&nbsp;(1969)（以下、FFJR）の冒頭（簡潔なものではあるが）は、本論文の目的が市場の効率性（market efficiency）を明らかにすることであると確認している。 <!-- Prior empirical work had inferred “market efficiency from the observed independence of successive price changes.”  --> それまでの実証研究では、「連続する価格変化の独立性」が観察されることから市場の効率性を推測していた。 <!-- In contrast, FFJR focuses on the “speed of adjustment of prices to specific kinds of new information … [specifically] the information (if any) that is implicit in a stock split.”  --> これに対し、FFJR は「特定の新しい情報に対する価格調整の速度」に着目している。 具体的には、「株式分割（stock split）に内在する情報（もし存在するならば）に対する市場の反応」を分析している。 <!-- We start this chapter with a brief introduction to the efficient markets hypothesis. --> 本章では、まず<strong>効率的市場仮説</strong>(efficient markets hypothesis)の簡単な導入から始める。</p>
 <!-- To examine their research question, FFJR conduct one of the earliest event studies.  -->
-<p>彼らの研究課題を検討するために、FFJRは初期のイベント研究の1つを実施している。 <!-- Event studies have a tight connection with notions of efficient markets, especially the “semi-strong” form of the hypothesis offered by Fama (1970), which in turn has important implications for the study of accounting information in capital markets.  --> イベント・スタディは、特にFama (1970)によって提供された効率的市場仮説の「セミストロング」フォームと密接に関連しており、これは資本市場における会計情報の研究に重要な影響を与えている。 <!-- Thus we use FFJR to provide an initial introduction to event studies, which we revisit in more depth in Chapter 13. --> したがって、我々はFFJRを用いて、イベント研究について初めて紹介し、第13章でより詳しく取り上げる。</p>
-<!-- We also use this chapter to introduce the reader to important additional data sets on CRSP, such as those related to dividends and stock splits, and to some R functions for efficiently manipulating data and models (e.g., the unnest() function from the tidyr package).  -->
-<p>また、この章では、配当や株式分割に関連するCRSPの重要な追加データセットや、データやモデルを効率的に操作するためのいくつかのR関数（例：<code>tidyr</code>パッケージの<code>unnest()</code>関数）を紹介する。 <!-- To better understand FFJR, we also provide some background on stock splits and dividends.  --> FFJRをよりよく理解するために、株式分割と配当に関する背景情報も提供する。 <!-- We then conduct a replication of FFJR and provide exercises for the reader. We conclude the chapter with a guide to this part of the book. --> その後、FFJRの複製を行い、読者向けの演習を提供する。本章の最後には、本書のこの部分へのガイドを示す。</p>
+<p>FFJRは最も初期のイベント・スタディ（event study）の一つを実施した研究である。 <!-- Event studies have a tight connection with notions of efficient markets, especially the “semi-strong” form of the hypothesis offered by Fama (1970), which in turn has important implications for the study of accounting information in capital markets.  --> イベント・スタディは、効率的市場の概念、とりわけ Fama (1970) による「セミストロング型（semi-strong form）」効率性仮説と密接な関係があり、資本市場における会計情報の研究にも重要な示唆を与える。 <!-- Thus we use FFJR to provide an initial introduction to event studies, which we revisit in more depth in Chapter 13. --> したがって、本章ではFFJRを用いてイベント・スタディの基本概念を紹介し、第13章でより詳しく取り上げる。 <!-- We also use this chapter to introduce the reader to important additional data sets on CRSP, such as those related to dividends and stock splits, and to some R functions for efficiently manipulating data and models (e.g., the unnest() function from the tidyr package).  --></p>
+<p>また、本章では、CRSP（Center for Research in Security Prices）の重要な追加データセット（配当や株式分割に関連するデータなど）を紹介し、データやモデルを効率的に操作するためのR関数（例えば、<code>tidyr</code>パッケージの<code>unnest()</code>関数）も取り上げる。 <!-- To better understand FFJR, we also provide some background on stock splits and dividends.  --> FFJRをよりよく理解するために、株式分割と配当に関する背景情報も提供する。 <!-- We then conduct a replication of FFJR and provide exercises for the reader. We conclude the chapter with a guide to this part of the book. --> 続いて、FFJRの結果を再現（replication）し、読者向けの演習を用意する。 本章の最後には、本書のこの部分へのガイドを示す。</p>
 <div class="callout callout-style-simple callout-tip">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
@@ -1085,7 +1097,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
+      var filterRegex = new RegExp("https:\/\/so-ichi\.com");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
