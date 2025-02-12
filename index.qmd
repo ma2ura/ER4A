@@ -1,7 +1,7 @@
 # 序論 {.unnumbered}
 
 <!-- This book provides a course on financial accounting research that begins at an upper-undergraduate ("honours") or introductory PhD level.  -->
-本書は、学部上級（「honours」）あるいは博士課程の入門レベルからスタートする財務会計研究の講義を提供している。
+本書は、<span class ="markp">学部上級（「honours」）あるいは博士課程の入門レベル</span>からスタートする財務会計研究の講義を提供している。
 <!-- One goal of the course, like most PhD courses, is to prepare PhD students to take further research courses and to go on to do their own research.  -->
 この講義の目的は、ほとんどの博士課程の講義と同じように、博士課程の学生がより上級の講義を取るために準備することや、自ら研究をすすめることができるようにすることである。
 <!-- Another goal of the course is to provide students with a set of skills that is useful in other domains, such as consulting or finance.  -->
