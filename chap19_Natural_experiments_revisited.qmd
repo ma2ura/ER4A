@@ -1,0 +1,130 @@
+# Natural experiments revisited
+
+
+<!-- In this chapter, we return to the topic of natural experiments.  -->
+この章では、自然実験のトピックを再訪する。
+<!-- We first discuss the notion of registered reports, their purpose, and their limitations.  -->
+まず、登録報告（Registered Reports）の概念、その目的、およびその限界について論じる。
+<!-- We then focus on an experiment (“Reg SHO”) run by the US Securities and Exchange Commission (SEC) and studies that examined the effects of Reg SHO, with a particular focus on one study (Fang et al., 2016) that exploited this regulation to study effects on earnings management. -->
+次に、米国証券取引委員会(SEC)によって実施された実験「Reg SHO」と、それに関する研究を検討する。特に、Fang et al.（2016）の研究に焦点を当て、この規制を利用して利益マネジメント(Earnings Management)への影響を分析した点を詳しく論じる。
+
+<!-- This chapter provides opportunities to sharpen our skills and knowledge in a number of areas.  -->
+この章では、以下のような領域でスキルと知識を磨く機会を提供する。
+<!-- First, we will revisit the topic of earnings management and learn about some developments in its measurement since Dechow et al. (1995), which we covered in Chapter 16.  -->
+第1に、利益マネジメントのテーマを再訪し、Dechow et al. (1995)以来の測定手法の発展について学ぶ。このテーマは第16章ですでに扱っている。
+<!-- Second, we further develop our skills in evaluating claimed natural experiments, using Reg SHO and the much-studied setting of broker-closure shocks.  -->
+第2に、Reg SHOおよび頻繁に研究されている証券会社の閉鎖(broker-closure shocks)の事例を用いて、自然実験とされる評価スキルをさらに発展させる。
+<!-- Third, we explore the popular difference-in-differences approach, both when predicated on random assignment and when based on the so-called parallel trends assumption in the absence of random assignment.  -->
+第3に、差分の差(diffrence-in-differences)手法を探求し、ランダムな割当がある場合と、ランダムな割当がない場合の「平行トレンド仮定」(parallel trends assumption)に基づく場合の両方について考察する。
+<!-- Fourth, we will have an additional opportunity to apply ideas related to causal diagrams and causal mechanisms (covered in Chapters 4 and 18, respectively).  -->
+第4に、第4章および第18章で扱った因果ダイアグラムと因果メカニズムに関連する概念を応用する機会をもつ。
+<!-- Fifth, we will revisit the topic of statistical inference, using this chapter as an opportunity to consider randomization inference.  -->
+第5に、統計的推論のテーマを再訪し、この章をランダム化推論(randomization inference)を考慮する機会として利用する。
+<!-- Sixth, we build on the Frisch-Waugh-Lovell theorem to consider issues associated with the use of two-step regressions, which are common in many areas of accounting research. -->
+第6に、Frisch-Waugh-Lovellの定理を基に、会計研究の多くの分野で一般的な二段階回帰の使用に関連する問題を考察する。
+
+:::{.callout-tip}
+
+The code in this chapter uses the packages listed below. We load tidyverse because we use several packages from the Tidyverse. For instructions on how to set up your computer to use the code found in this book, see Section 1.2. Quarto templates for the exercises below are available on GitHub.
+
+:::
+
+```{r}
+pacman::p_load(tidyverse, DBI, farr, fixest, modelsummary, furrr, broom)
+```
+
+:::{.callout-important}
+<!-- This chapter is longer than others in the book, so we have made it easier to run code from one section without having to run all the code preceding it.  -->
+この章は、本書の他の章よりも長いため、それ以前のすべてのコードを実行する必要なしに、特定のセクションからコードを実行することができるようになっている。
+<!-- Beyond that, the code in each of Sections 19.1–19.3 and 19.5 is independent of code in other parts of this chapter and can be run independently of those other sections.1  -->
+さらに、セクション19.1〜19.3および19.5の各セクションのコードは、この章の他の部分のコードとは独立しており、それらの他のセクションとは独立して実行できます。
+<!-- Code and exercises in Sections 19.7 and 19.8 depend on code in Section 19.6, so you will need to run the code in Section 19.6 before running the code in those sections. -->
+セクション19.7および19.8のコードと演習は、セクション19.6のコードに依存しているため、これらのセクションのコードを実行する前に、セクション19.6のコードを実行する必要があります。
+:::
+
+
+<!-- ## 19.1 A replication crisis? -->
+## 再現危機？
+
+<!-- A Financial Times article by Robert Wigglesworth discusses an alleged “replication crisis” in finance research.  -->
+ロバート・ウィグルズワースによるFinancial Timesの記事は、ファイナンス研究における「再現危機」を取り上げた。
+<!-- Wigglesworth quotes Campbell Harvey, professor of finance at Duke University, who suggests that “at least half of the 400 supposedly market-beating strategies identified in top financial journals over the years are bogus.” -->
+Wigglesworthは、デューク大学のファイナンス教授であるCanmpbell Harveyの発言を引用しており、Harveyは「これまでのトップのファイナンス・ジャーナルで特定された400以上の市場を打ち負かすとされる戦略のうち、少なくとも半分は偽物である」と述べている。
+
+<!-- Wigglesworth identified “the heart of the issue” as what researchers call p-hacking, which is the practice whereby researchers search for “significant” and “positive” results.  -->
+ウィグルズワースは、研究者が「有意な」および「肯定的な」結果を探すという実践であるp-hackingを研究者が行っていると指摘し、「問題の核心」を特定した。
+Here “significant” refers to statistical significance and “positive” refers to results that reject so-called “null hypotheses” and thereby (purportedly) push human knowledge forward. 
+Harvey (2017) cites research suggesting that 90% of published studies report such “significant” and “positive” results. 
+Reporting “positive” results is important not only for getting published, but also for attracting citations, which can drive behaviour of both researchers and journals.
+
+<!-- Simmons et al. (2011, p.1359) describe what they term researcher degrees of freedom.  -->
+Simmons et al. (2011, p.1359)は、彼らが研究者の自由度と呼ぶものを説明している。
+“In the course of collecting and analyzing data, researchers have many decisions to make: Should more data be collected? Should some observations be excluded? Which conditions should be combined and which ones compared? Which control variables should be considered? Should specific measures be combined or transformed or both?” Simmons et al. 
+(2011, p.1364) identify another well-known researcher degree of freedom, namely that of “reporting only experiments that ‘work’”, which is known as the file-drawer problem (because experiments that don’t “work” are put in a file-drawer).
+
+To illustrate the power of researcher degrees of freedom, Simmons et al. 
+(2011) conducted two hypothetical studies based experiments with live subjects. 
+They argue that these studies “demonstrate how unacceptably easy it is to accumulate (and report) statistically significant evidence for a false hypothesis” [p.1359]. 
+Simmons et al. 
+(2011, p.1359) conclude that “flexibility in data collection, analysis, and reporting dramatically increases actual false-positive rates.”
+
+Perhaps in response to concerns similar to those raised by Simmons et al. 
+(2011), the Journal of Accounting Research (JAR) conducted a trial for its annual conference held in May 2017. 
+According to the JAR website, at this conference “authors presented papers developed through a Registration-based Editorial Process (REP). 
+The goal of the conference was to see whether REP could be implemented for accounting research, and to explore how such a process could be best implemented. 
+Papers presented at the conference were subsequently published in May 2018.
+
+According to Bloomfield et al. 
+(2018, p.317), “under REP, authors propose a plan to gather and analyze data to test their predictions. 
+Journals send promising proposals to one or more reviewers and recommend revisions. 
+Authors are given the opportunity to review their proposal in response, often multiple times, before the proposal is either rejected or granted in-principle acceptance … regardless of whether [subsequent] results support their predictions.”
+
+Bloomfield et al. 
+(2018, p.317) contrast REP with the Traditional Editorial Process (“TEP”). 
+Under the TEP, “authors gather their data, analyze it, and write and revise their manuscripts repeatedly before sending them to editors.” Bloomfield et al. 
+(2018, p.317) suggest that “almost all peer-reviewed articles in social science are published under … the TEP.”
+
+The REP is designed to eliminate questionable research practices, including those identified by Simmons et al. 
+(2011). 
+For example, one form of p-hacking is HARKing (from “Hypothesizing After Results are Known”). 
+In its extreme form, HARKing involves searching for a “significant” correlation and then developing a hypothesis to “predict” it. 
+To illustrate, consider the spurious correlations website provided by Tyler Vigen. 
+This site lists a number of evidently spurious correlations, such as the 99.26% correlation between the divorce rate in Maine and margarine consumption or the 99.79% correlation between US spending on science, space, and technology and suicides by hanging, strangulation, and suffocation. 
+The correlations are deemed spurious because normal human beings have strong prior beliefs that no underlying causal relation explains these correlations. 
+Instead, these are regarded as mere coincidence.
+
+However, a creative academic can probably craft a story to “predict” any correlation. 
+Perhaps increasing spending on science raises its perceived importance to society. 
+But drawing attention to science only serves to highlight how the United States has inevitably declined in relative stature in many fields, including science. 
+While many Americans can carry on notwithstanding this decline, others are less sanguine about it and may go to extreme lengths as a result … . 
+This is clearly a silly line of reasoning, but if one added some references to published studies and fancy terminology, it would probably read a lot like the hypothesis development sections of some academic papers.
+
+Bloomfield et al. 
+(2018, p.326) examine “the strength of the papers’ results” from the 2017 JAR conference in their section 4.2 and conclude that “of the 30 predictions made in the … seven proposals, we count 10 as being supported at 
+ by at least one of the 134 statistical tests the authors reported. 
+ The remaining 20 predictions are not supported at 
+ by any of the 84 reported tests. 
+ Overall, our analysis suggests that the papers support the authors’ predictions far less strongly than is typical among papers published in JAR and its peers.”2
+
+19.1.1 Discussion questions
+Simmons et al. 
+(2011) provide a more in-depth examination of issues with the TEP discussed in Bloomfield et al. 
+(2018, pp.318–319). 
+Do you think the two experiments studied by Simmons et al. 
+(2011) are representative of how accounting research works in practice? What differences are likely to exist in empirical accounting research using archival data?
+
+Bloomfield et al. 
+(2018, p.326) say “we exclude Hail et al. 
+(2018) from our tabulation [of results] because it does not state formal hypotheses.” Given the lack of formal hypotheses, do you think it made sense to include the proposal from Hail et al. 
+(2018) in the 2017 JAR conference? Does the REP have relevance to papers without formal hypotheses? Does the absence of formal hypotheses imply that Hail et al. 
+(2018) were not testing hypotheses? Is your answer to the last question consistent with how Hail et al. 
+(2018, p.650) discuss results reported in Table 5 of that paper?
+
+According to the analysis of Bloomfield et al. 
+(2018), there were 218 tests of 30 hypotheses and different hypotheses had different numbers of tests. 
+In the following analysis, we assume 30 hypotheses with each having 7 tests (for a total of 210 tests). 
+Does this analysis suggest an alternative possible interpretation of the results than the “far less strongly than is typical” conclusion offered by Bloomfield et al. 
+(2018). 
+Does choosing a different value for set.seed() alter the tenor of the results from this analysis? How might you make the analysis below more definitive?3
+
+
