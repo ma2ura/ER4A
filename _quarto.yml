@@ -39,6 +39,7 @@ book:
         - chap16_em.qmd
         - chap17_Natural.qmd
         - chap18_Causal_mechanisms.qmd
+        - chap19_Natural_experiments_revisited.qmd
     - part: "因果推論"
     - part: "追加的なトピック"
   appendices:
