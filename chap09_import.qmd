@@ -12,20 +12,35 @@
 
 While this chapter is fairly task-oriented, we think that it serves to reinforce two deeper ideas.
 
-- **Reproducibility**. This is a big idea—certainly bigger than we can cover in a chapter. But what we will do here will emphasize approaches that are completely reproducible, whether by people you don’t know, co-authors, or even yourself at some subsequent date.
-- [**Tidy data**](https://tidyr.tidyverse.org/articles/tidy-data.html). A lot of data we see out there—including the data we work with in this chapter—is essentially tabular and relational in nature. Once you recognize this, many data problems become much more straightforward.
-Even dedicated users of SAS or Stata may find this chapter useful, as R handles tricky data-munging tasks quite easily and the end results are easily exported in formats that other software can read (e.g., `write_dta()` from the `haven` package creates Stata data files).
+<!-- - **Reproducibility**. This is a big idea—certainly bigger than we can cover in a chapter. But what we will do here will emphasize approaches that are completely reproducible, whether by people you don’t know, co-authors, or even yourself at some subsequent date. -->
+- **再現可能性**. これは非常に大きな概念であり、1つの章で完全に扱うことはできない。
+  しかし、本章では、誰でも再現可能なアプローチ に重点を置く。
+  それは、見知らぬ人、共著者、さらには将来の自分自身 であっても再現できる方法である。
+<!-- - [**Tidy data**](https://tidyr.tidyverse.org/articles/tidy-data.html). A lot of data we see out there—including the data we work with in this chapter—is essentially tabular and relational in nature. Once you recognize this, many data problems become much more straightforward. -->
+- **整然データ**(Tidy data)(https://tidyr.tidyverse.org/articles/tidy-data.html)[https://tidyr.tidyverse.org/articles/tidy-data.html]. 私たちが扱うデータの多くは、本章で扱うデータを含め、本質的に表形式(tabular)であり、関係性(relational)をもつ。
+  この特性を理解すれば、多くのデータ処理の問題はより単純で直感的に解決できるようになる。
 
-We also introduce **regular expressions**. 
-Briefly speaking, a regular expression is a sequence of characters that define a pattern which can be used in a kind of search (or search-and-replace) on steroids. 
-Regular expressions are very useful when working with data in many contexts.[^2]
-The chapters on strings and regular expressions in R for Data Science provide excellent introductions that complement material in this chapter. 
-We recommend that you refer to those chapters as you work through this chapter.
+<!-- Even dedicated users of SAS or Stata may find this chapter useful, as R handles tricky data-munging tasks quite easily and the end results are easily exported in formats that other software can read (e.g., `write_dta()` from the `haven` package creates Stata data files). -->
+SASやStataの熱心なユーザーであっても、本章は有用であると感じるかもしれない。
+なぜなら、Rは複雑なデータ加工(data-munging)作業を容易に処理でき、最終的なデータを他のソフトウェアが読み取れる形式で簡単にエクスポートできるからである。例えば、`haven`パッケージの`write_dta()`関数を使用すれば、Stataのデータファイルを作成できる。
 
+<!-- We also introduce **regular expressions**.  -->
+本章では、**正規表現**(regular expressions)についても紹介する。
+<!-- Briefly speaking, a regular expression is a sequence of characters that define a pattern which can be used in a kind of search (or search-and-replace) on steroids.  -->
+簡単に言えば、正規表現とは、一連の文字列パターンを定義し、高度な検索や検索・置換を行うための強力なツールである。
+<!-- Regular expressions are very useful when working with data in many contexts.[^2] -->
+正規表現は、さまざまなデータ処理の場面で非常に有用である。[^2]
+<!-- The chapters on strings and regular expressions in R for Data Science provide excellent introductions that complement material in this chapter.  -->
+『R for Data Science』の文字列処理と正規表現に関する章 は、本章の内容を補完する優れた入門資料となっている。
+<!-- We recommend that you refer to those chapters as you work through this chapter. -->
+本章を進める際には、それらの章を参照することを推奨する。
 
 
 :::{.callout-tip}
-The code in this chapter uses the packages listed below. For instructions on how to set up your computer to use the code found in this book, see Section 1.2. Quarto templates for the exercises below are available on GitHub.
+<!-- The code in this chapter uses the packages listed below. For instructions on how to set up your computer to use the code found in this book, see Section 1.2. Quarto templates for the exercises below are available on GitHub. -->
+本章のコードでは、以下のパッケージを使用する。
+本書のコードを実行するための環境設定については、セクション1.2を参照のこと。
+また、本章の演習用 Quarto テンプレート は GitHub で利用可能である。
 :::
 
 
@@ -33,7 +48,7 @@ The code in this chapter uses the packages listed below. For instructions on how
 #| eval: false
 
 library(dplyr)
-library(tidyr)     
+library(tidyr)
 library(readr)     # read_lines(), read_fwf(), etc.
 library(stringr)   # str_c(), str_detect()
 library(pdftools)  # pdf_text()
@@ -168,7 +183,7 @@ t |>
   read_fwf(col_positions = fwf_widths(
     c(3, 7, NA),
     c("ff_ind", "ff_ind_short_desc", "temp")
-    ), col_types = "icc") 
+    ), col_types = "icc")
 ```
 
 <!-- The next step is to handle the problematic temp column.  -->
@@ -249,7 +264,7 @@ The last issue to address is the column sic_range. We want to split that into th
 `\\s`は「任意のスペース」を表し、`*`は「0個以上」を意味するため、`\\s*`は「0個以上のスペース」を意味し、一致するがキャプチャされない。
 <!-- Finally we have (.*)$.  -->
 最後に、`(.*)$`がある。
-The `.` represents “any character”, so .* means “zero or more of any character”, which are captured as the third variable. 
+The `.` represents “any character”, so .* means “zero or more of any character”, which are captured as the third variable.
 この`.`は「任意の文字」を表し、`.*`は「任意の文字の0個以上」を意味し、これが3番目の変数としてキャプチャされる。
 <!-- The $ just means “the end of the string”; this mirrors the ^ at the start of the regular expression, which means “the start of the string”.  -->
 `$`は「文字列の終わり」を意味し、これは正規表現の先頭にある`^`と対応しており、「文字列の開始」を意味する。
@@ -272,10 +287,10 @@ t |>
   select(-temp) |>
   fill(ff_ind, ff_ind_short_desc, ff_ind_desc) |>
   filter(!is.na(sic_range)) |>
-  extract(sic_range, 
+  extract(sic_range,
           into = c("sic_min", "sic_max", "sic_desc"),
           regex = "^([0-9]+)-([0-9]+)\\s*(.*)$",
-          convert = TRUE) 
+          convert = TRUE)
 ```
 
 Lastly, we can put all of the above into a function. But, as we do so, let’s take a gamble that the same code will work for any of the Fama-French industry classifications if we only change the URL. To do this, we use an argument ind that reflects the industry grouping of interest and inserts that in the URL. Here we use the str_c() function from the stringr package to create the URL using the value supplied as ind.
@@ -300,10 +315,10 @@ get_ff_ind <- function(ind) {
     select(-temp) |>
     fill(ff_ind, ff_ind_short_desc, ff_ind_desc) |>
     filter(!is.na(sic_range)) |>
-    extract(sic_range, 
+    extract(sic_range,
             into = c("sic_min", "sic_max", "sic_desc"),
             regex = "^([0-9]+)-([0-9]+)\\s*(.*)$",
-            convert = TRUE) 
+            convert = TRUE)
 }
 ```
 
@@ -371,7 +386,7 @@ d. The following code snippets might be useful:
 #| eval: false
 
 url <- str_c("
-  https://site.warrington.ufl.edu/ritter/files/", 
+  https://site.warrington.ufl.edu/ritter/files/",
   "money-left-on-the-table.pdf")
 ```
 
@@ -398,7 +413,7 @@ output <- pdf_text(url)[-1]
 ```{r}
 #| eval: false
 
-temp <- 
+temp <-
   output |>
   read_lines()
 ```
@@ -423,7 +438,7 @@ Rather than trying to deal with the column-names-spread-over-two-rows issue with
 #| eval: false
 
 col_names <-  c(
-  "amount_left_on_table", "company", "ipo_date", "offer_price", "first_close_price", 
+  "amount_left_on_table", "company", "ipo_date", "offer_price", "first_close_price",
   "shares_offered", "ticker")
 skip_rows <- 2
 ```
@@ -492,8 +507,8 @@ First, there are empty rows, which we can detect by matching on ^$ (i.e., the st
 ```{r}
 #| eval: false
 
-ritter_data_raw |> 
-  filter(str_detect(temp, "^$")) 
+ritter_data_raw |>
+  filter(str_detect(temp, "^$"))
 ```
 
 Second, there are rows with just spaces and page numbers, which we can match with:
@@ -502,8 +517,8 @@ Second, there are rows with just spaces and page numbers, which we can match wit
 ```{r}
 #| eval: false
 
-ritter_data_raw |> 
-   filter(str_detect(temp, "^\\s+\\d+$")) 
+ritter_data_raw |>
+   filter(str_detect(temp, "^\\s+\\d+$"))
 ```
 
 So we want to filter out these rows too:
@@ -511,11 +526,11 @@ So we want to filter out these rows too:
 ```{r}
 #| eval: false
 
-ritter_data_raw <- 
+ritter_data_raw <-
   output |>
     read_lines(skip = 2, n_max = max_rows) |>
     tibble(temp = _) |>
-    filter(!str_detect(temp, "^$"), 
+    filter(!str_detect(temp, "^$"),
            !str_detect(temp, "^\\s+\\d+$"))
 ```
 
@@ -550,13 +565,13 @@ Fortunately, company is the only column with embedded spaces and it is followed 
 
 regex <- str_c("^\\s*",          # Start string (perhaps followed by spaces)
                "([^\\s]+)\\s+",  # Non-space characters (followed by spaces)
-               "(.+)\\s+",       # Any characters, which may include spaces 
+               "(.+)\\s+",       # Any characters, which may include spaces
                                  #  (followed by spaces)
                "([0-9]{6})\\s+", # Six digits (followed by spaces)
                "([^\\s]+)\\s+",  # Non-space characters (followed by spaces)
                "([^\\s]+)\\s+",  # Non-space characters (followed by spaces)
                "([^\\s]+)\\s+",  # Non-space characters (followed by spaces)
-               "([^\\s]+)",      # Non-space characters 
+               "([^\\s]+)",      # Non-space characters
                "$")              # End of string
 ```
 
@@ -569,7 +584,7 @@ regex <- str_c("^\\s*",          # Start string (perhaps followed by spaces)
 
 ritter_data_raw |>
     # Here we use the regular expression to split the data into columns
-    extract(temp, col_names, regex) 
+    extract(temp, col_names, regex)
 ```
 
 <!-- We are getting close.  -->
@@ -595,10 +610,10 @@ ritter_data <-
   extract(temp, col_names, regex) |>
   # Finally, fix up the data types of the columns
   mutate(across(all_of(c("amount_left_on_table", "first_close_price",
-                         "offer_price", "shares_offered")), 
+                         "offer_price", "shares_offered")),
                 parse_number),
          ipo_date = ymd(ipo_date),
-         company = str_trim(company)) 
+         company = str_trim(company))
 
 ritter_data
 ```

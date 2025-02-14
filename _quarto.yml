@@ -37,10 +37,11 @@ book:
         - chap13_Event.qmd
         - chap15_accruals.qmd
         - chap16_em.qmd
+    - part: "因果推論"
+      chapters:
         - chap17_Natural.qmd
         - chap18_Causal_mechanisms.qmd
         - chap19_Natural_experiments_revisited.qmd
-    - part: "因果推論"
     - part: "追加的なトピック"
   appendices:
     - appA_LinearAlgebra.qmd
@@ -79,7 +80,7 @@ format:
   pdf:
     documentclass: scrreprt
 
-
+bibliography: book.bib
 engine: knitr
 dev: "ragg_png"
 lang: ja
