@@ -72,7 +72,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-1092c56c6cadf2eb47b1bc8063ab382a.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-88c88708faf0c485c0387dba1f6eb15f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-c58e7bee4ee1a6584ec9d1fc0e841892.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="site_libs/bootstrap/bootstrap-dark-2e8bc3580cc84ea2920b26bb0544913d.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark"><script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -163,7 +163,8 @@ window.Quarto = {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Empirical Research in Accounting</a> 
-        <div class="sidebar-tools-main">
+        <div class="sidebar-tools-main tools-wide">
+    <a href="https://github.com/ma2ura/ER4A/" title="ソースコード" class="quarto-navigation-tool px-1" aria-label="ソースコード"><i class="bi bi-github"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="ダークモードの切り替え"><i class="bi"></i></a>
   <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="リーダーモードの切り替え">
   <div class="quarto-reader-toggle-btn">
@@ -257,9 +258,34 @@ window.Quarto = {
       </ul>
 </li>
         <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">因果推論</span></span>
-  </li>
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">因果推論</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="セクションを切り替え">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chap17_Natural.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">自然実験</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chap18_Causal_mechanisms.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">因果メカニズム</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chap19_Natural_experiments_revisited.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">自然実験:再訪</span></span></a>
+  </div>
+</li>
+      </ul>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <span class="sidebar-item-text sidebar-link text-start">
  <span class="menu-text">追加的なトピック</span></span>
@@ -361,7 +387,7 @@ window.Quarto = {
 <section id="概要" class="level2" data-number="6.1"><h2 data-number="6.1" class="anchored" data-anchor-id="概要">
 <span class="header-section-number">6.1</span> 概要</h2>
 <!-- MacKinlay (1997, p. 13) defines an event study as one that, “using financial market data … measures the impact of a specific event on the value of a firm.  -->
-<p>MacKinlay (1997, p.&nbsp;13)によると，<strong>イベント・スタディ</strong>(event study)は，「財務市場データを使用して…特定のイベントが企業の価値に与える影響を測定するものである。 <!-- The usefulness of such a study comes from the fact that, assuming highly efficient markets, the effects of an event will be reflected immediately in security prices.1  --> このような研究の有用性は，非常に効率的な市場を仮定すると，イベントの影響はすぐに証券価格に反映されるという事実に由来する。[^1] <!-- Thus a measure of the event’s economic impact can be constructed using security prices observed over a relatively short time period.” --> したがって，比較的短い期間に観察された証券価格を使用して，イベントの経済的影響を測定することができる。」ものとして定義している。</p>
+<p>MacKinlay (1997, p.&nbsp;13)によると，<strong>イベント・スタディ</strong>(event study)は，「財務市場データを使用して…特定のイベントが企業の価値に与える影響を測定するものである。 <!-- The usefulness of such a study comes from the fact that, assuming highly efficient markets, the effects of an event will be reflected immediately in security prices.1  --> このような研究の有用性は，非常に効率的な市場を仮定すると，イベントの影響はすぐに証券価格に反映されるという事実に由来する。 <!-- Thus a measure of the event’s economic impact can be constructed using security prices observed over a relatively short time period.” --> したがって，比較的短い期間に観察された証券価格を使用して，イベントの経済的影響を測定することができる。」ものとして定義している。</p>
 <!-- MacKinlay (1997, p.14) continues: “In the late 1960s seminal studies by Ray Ball and Philip Brown (1968) and Eugene Fama et al. (1969) introduced the methodology that is essentially the same as that which is in use today.  -->
 <p>MacKinlay (1997, p.14)では，「1960年代後半にRay BallとPhilip Brown（1968）およびEugene Fama et al.&nbsp;(1969)による画期的な研究が行われ，その方法論は基本的に現在使用されているものとほぼ同じである。 <!-- Ball and Brown considered the information content of earnings, and Fama et al. (1969) studied the effects of stock splits after removing the effects of simultaneous dividend increases.” --> Ball and Brown (1968)は利益の情報内容を考慮し， Fama et al.&nbsp;(1969)は同時期の増配の効果を除去した後の株式分割の効果を分析している。」と続けている。</p>
 <!-- Event studies examine the impact of a class of identifiable events on one or more variables of economic interest.  -->
@@ -412,13 +438,6 @@ window.Quarto = {
 <p><code>farr</code>パッケージには，Wikipediaで見つかったデータを元にしたデータフレーム<code>apple_events</code>が含まれています。 <!-- Let’s look at the last few rows of this table: --> この表の最後の数行を見てみましょう。</p>
 <div class="cell">
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">tail</a></span><span class="op">(</span><span class="va">apple_events</span><span class="op">)</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div data-pagedtable="false">
-  <script data-pagedtable-source="" type="application/json">
-{"columns":[{"label":["event"],"name":[1],"type":["chr"],"align":["left"]},{"label":["event_date"],"name":[2],"type":["date"],"align":["right"]},{"label":["end_event_date"],"name":[3],"type":["date"],"align":["right"]}],"data":[{"1":"Apple Special Event","2":"2019-09-10","3":"2019-09-10"},{"1":"Apple Special Event","2":"2019-12-02","3":"2019-12-02"},{"1":"WWDC 2020","2":"2020-06-22","3":"2020-06-26"},{"1":"Apple Special Event","2":"2020-09-15","3":"2020-09-15"},{"1":"Apple Special Event","2":"2020-10-13","3":"2020-10-13"},{"1":"Apple Special Event","2":"2020-11-10","3":"2020-11-10"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
-</div>
-</div>
 </div>
 <!-- We will need return data from CRSP to conduct our event study.  -->
 <p>イベント・スタディを実施するためには，CRSPからリターンデータが必要となる。 <!-- We first need to get Apple’s PERMNO so we can look up returns on CRSP.  --> まず，CRSPでリターンを検索できるようにAppleのPERMNOを取得する必要がある。 <!-- Knowing that Apple’s ticker is AAPL helps. --> AppleのティッカーがAAPLであることを知っていると便利である。</p>
@@ -454,14 +473,14 @@ window.Quarto = {
 </div>
 <div class="cell">
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">apple_permno</span> <span class="op">&lt;-</span></span>
-<span>  <span class="va">stocknames</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="va">stocknames</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">ticker</span> <span class="op">==</span> <span class="st">"AAPL"</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="co"># Apple社</span></span>
 <span>  <span class="fu">select</span><span class="op">(</span><span class="va">permno</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="co"># permno変数を選択</span></span>
 <span>  <span class="fu">distinct</span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="co"># 重複を削除</span></span>
 <span>  <span class="fu">pull</span><span class="op">(</span><span class="op">)</span> <span class="co"># データを取得</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <!-- We then use Apple’s PERMNO (apple_permno equals 14593) to get return data from CRSP.  -->
-<p>次に，AppleのPERMNO（<code>apple_permno</code>は14593）を使用して，CRSPからリターンデータを取得する。 <!-- In this case, we will get daily returns for Apple (ret) from `crsp.dsf` and value-weighted “market” returns (vwretd) from crsp.dsi and calculate market-adjusted returns as `ret - vwretd`.[^2]  --> この場合，Appleの日次リターン(<code>ret0</code>)を<code>crsp.dsf</code>から取得し，時価総額加重「市場」リターン(<code>vwretd</code>)を<code>crsp.dsi</code>から取得し，<strong>市場調整リターン</strong>を<code>ret - vwretd</code>として計算する。 <!-- In this case, we will grab all returns since the start of 2005, which covers all the events on apple_events. --> この場合，2005年初めからのすべてのリターンを取得し，<code>apple_events</code>のすべてのイベントをカバーする。</p>
+<p>次に，AppleのPERMNO（apple_permnoは14593）を使用して，CRSPからリターンデータを取得する。 <!-- In this case, we will get daily returns for Apple (ret) from `crsp.dsf` and value-weighted “market” returns (vwretd) from crsp.dsi and calculate market-adjusted returns as `ret - vwretd`.[^2]  --> この場合，Appleの日次リターン（ret）を<code>crsp.dsf</code>から取得し，時価加重「市場」リターン（vwretd）を<code>crsp.dsi</code>から取得し，市場調整リターンを<code>ret - vwretd</code>として計算する。 <!-- In this case, we will grab all returns since the start of 2005, which covers all the events on apple_events. --> この場合，2005年初めからのすべてのリターンを取得し，<code>apple_events</code>のすべてのイベントをカバーする。</p>
 <div class="cell">
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">apple_rets</span> <span class="op">&lt;-</span></span>
 <span>  <span class="va">dsf</span> <span class="op">|&gt;</span></span>
@@ -512,7 +531,7 @@ window.Quarto = {
 <!-- The line in Figure 13.1 represents cumulative returns since the start of the window.  -->
 <p>図13.1の折れ線は，ウィンドウの開始以来の累積リターンを表している。 <!-- Two “area” plots are added to this line: one for the non-event windows and one for the event windows.  --> この折れ線には，2つの「エリア」プロットが追加されている：1つは非イベントウィンドウ用，もう1つはイベントウィンドウ用である。 <!-- The vast majority of dates are non-event dates, making the event windows difficult to discern in the plot.  --> ほとんどの日付は非イベント日であり，プロットではイベントウィンドウを識別するのが難しい。 <!-- But “zooming in” makes the event windows easier to discern, as seen in Figure 13.2, which focuses on the last quarter of 2020. --> しかし，「ズームイン」することで，イベントウィンドウを識別しやすくなる。図13.2は，2020年第4四半期に焦点を当てている。</p>
 <div class="cell">
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">apple_data</span> <span class="op">|&gt;</span>  </span>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">apple_data</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">arrange</span><span class="op">(</span><span class="va">date</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">mutate</span><span class="op">(</span>cumret <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/cumsum.html">cumprod</a></span><span class="op">(</span><span class="fl">1</span> <span class="op">+</span> <span class="fu">coalesce</span><span class="op">(</span><span class="va">ret</span>, <span class="fl">0</span><span class="op">)</span><span class="op">)</span>,</span>
 <span>         switch <span class="op">=</span> <span class="fu">coalesce</span><span class="op">(</span><span class="va">is_event</span> <span class="op">!=</span> <span class="fu">lead</span><span class="op">(</span><span class="va">is_event</span><span class="op">)</span>, <span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
@@ -544,7 +563,7 @@ window.Quarto = {
 <div class="cell">
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">rets</span> <span class="op">&lt;-</span></span>
 <span>  <span class="va">apple_events</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu">mutate</span><span class="op">(</span>permno <span class="op">=</span> <span class="va">apple_permno</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu">mutate</span><span class="op">(</span>permno <span class="op">=</span> <span class="va">apple_permno</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">get_event_cum_rets</span><span class="op">(</span><span class="va">db</span>,</span>
 <span>                     win_start <span class="op">=</span> <span class="op">-</span><span class="fl">1</span>, win_end <span class="op">=</span> <span class="op">+</span><span class="fl">1</span>,</span>
 <span>                     end_event_date <span class="op">=</span> <span class="st">"end_event_date"</span><span class="op">)</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -589,10 +608,10 @@ window.Quarto = {
 <p>Zhang (2007, p.&nbsp;76)は，「主要なSOXイベント」（以下で定義）に焦点を当てたいくつかの分析を行い，「代替仕様において推定された米国の累積異常リターンは，すべて統計的に有意であり，-3.76%から-8.21%の範囲に及ぶ」と結論付けている。 <!-- Here “all” means for each of value-weighted and equal-weighted returns and using abnormal returns relative to each of the two models.  --> ここでの「すべて」とは，時価加重リターンと等時価加重リターンのそれぞれについて，および2つのモデルに対する異常リターンを使用していることを意味する。 <!-- For convenience, we focus on the model that measures abnormal returns relative to a “market model”, where the market comprises Canadian stocks not listed in the United States, and omit analysis of the second model, which blends returns on several non-US portfolios as a benchmark.  --> 便宜上，米国に上場していないカナダの株式からなる市場を対象とした「市場モデル」に対する異常リターンを測定するモデルに焦点を当て，複数の非米国ポートフォリオのリターンを基準としてブレンドする第2のモデルの分析を省略する。 <!-- To this end, we collect data on returns for the Toronto composite index (gvkeyx == "000193") from Compustat’s index data (comp.idx_daily) over 2001 and 2002 and merge this data set with our local copy of crsp.dsi. --> このために，2001年と2002年のCompustatの指数データ（<code>comp.idx_daily</code>）からトロント総合指数（<code>gvkeyx == "000193"</code>）のリターンデータを収集し，このデータセットをローカルコピーの<code>crsp.dsi</code>とマージする。</p>
 <div class="cell">
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">can_rets</span> <span class="op">&lt;-</span></span>
-<span>  <span class="va">idx_daily</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">gvkeyx</span> <span class="op">==</span> <span class="st">"000193"</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="va">idx_daily</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">gvkeyx</span> <span class="op">==</span> <span class="st">"000193"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">window_order</span><span class="op">(</span><span class="va">datadate</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu">mutate</span><span class="op">(</span>ret_can <span class="op">=</span> <span class="fu">if_else</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/lag.html">lag</a></span><span class="op">(</span><span class="va">prccd</span><span class="op">)</span> <span class="op">&gt;</span> <span class="fl">0</span>, <span class="va">prccd</span><span class="op">/</span><span class="fu"><a href="https://rdrr.io/r/stats/lag.html">lag</a></span><span class="op">(</span><span class="va">prccd</span><span class="op">)</span> <span class="op">-</span> <span class="fl">1</span>, <span class="cn">NA</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu">mutate</span><span class="op">(</span>ret_can <span class="op">=</span> <span class="fu">if_else</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/lag.html">lag</a></span><span class="op">(</span><span class="va">prccd</span><span class="op">)</span> <span class="op">&gt;</span> <span class="fl">0</span>, <span class="va">prccd</span><span class="op">/</span><span class="fu"><a href="https://rdrr.io/r/stats/lag.html">lag</a></span><span class="op">(</span><span class="va">prccd</span><span class="op">)</span> <span class="op">-</span> <span class="fl">1</span>, <span class="cn">NA</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">datadate</span> <span class="op">&gt;=</span> <span class="st">"2000-01-01"</span>, <span class="va">datadate</span> <span class="op">&lt;=</span> <span class="st">"2002-12-31"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">rename</span><span class="op">(</span>date <span class="op">=</span> <span class="va">datadate</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">select</span><span class="op">(</span><span class="va">date</span>, <span class="va">ret_can</span><span class="op">)</span> <span class="op">|&gt;</span></span>
@@ -605,7 +624,7 @@ window.Quarto = {
 <span>  <span class="va">dsi_local</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">inner_join</span><span class="op">(</span><span class="va">can_rets</span>, by <span class="op">=</span> <span class="st">"date"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">date</span> <span class="op">&lt;</span> <span class="st">"2001-12-28"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu">top_n</span><span class="op">(</span><span class="fl">100</span>, wt <span class="op">=</span> <span class="va">date</span><span class="op">)</span> </span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span>  <span class="fu">top_n</span><span class="op">(</span><span class="fl">100</span>, wt <span class="op">=</span> <span class="va">date</span><span class="op">)</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <!-- We then fit models for market returns for both equal-weighted and value-weighted portfolios against Canadian returns. -->
 <p>次に，等時価加重ポートフォリオと時価加重ポートフォリオの市場リターンモデルをカナダのリターンに対して適合させる。</p>
@@ -959,7 +978,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
+      var filterRegex = new RegExp("https:\/\/so-ichi\.com");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }

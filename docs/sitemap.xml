@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://so-ichi.com/chap17_Natural.html</loc>
-    <lastmod>2025-02-08T01:17:46.345Z</lastmod>
+    <lastmod>2025-02-08T08:25:32.149Z</lastmod>
   </url>
   <url>
     <loc>https://so-ichi.com/appA_LinearAlgebra.html</loc>
@@ -14,7 +14,7 @@
   </url>
   <url>
     <loc>https://so-ichi.com/index.html</loc>
-    <lastmod>2025-02-09T03:59:18.278Z</lastmod>
+    <lastmod>2025-02-12T05:47:27.660Z</lastmod>
   </url>
   <url>
     <loc>https://so-ichi.com/chap16_em.html</loc>
@@ -22,10 +22,30 @@
   </url>
   <url>
     <loc>https://so-ichi.com/chap10_FFJR.html</loc>
-    <lastmod>2025-02-09T03:48:37.418Z</lastmod>
+    <lastmod>2025-02-09T05:44:54.883Z</lastmod>
   </url>
   <url>
     <loc>https://so-ichi.com/chap19_Natural_experiments_revisited.html</loc>
-    <lastmod>2025-02-12T05:34:26.018Z</lastmod>
+    <lastmod>2025-02-14T15:12:41.761Z</lastmod>
+  </url>
+  <url>
+    <loc>https://so-ichi.com/chap01_Introduction.html</loc>
+    <lastmod>2025-02-06T06:28:36.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://so-ichi.com/chap09_import.html</loc>
+    <lastmod>2025-02-06T06:28:36.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://so-ichi.com/chap11_BB1968.html</loc>
+    <lastmod>2025-02-08T08:25:32.149Z</lastmod>
+  </url>
+  <url>
+    <loc>https://so-ichi.com/chap12_Beaver1968.html</loc>
+    <lastmod>2025-02-06T06:28:36.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://so-ichi.com/chap13_Event.html</loc>
+    <lastmod>2025-02-06T06:28:36.000Z</lastmod>
   </url>
 </urlset>
