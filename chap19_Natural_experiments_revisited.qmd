@@ -199,31 +199,73 @@ results |>
 
 ## The Reg SHO experiment
 
-To better understand the issues raised by the discussion above in a real research setting, we focus on the Reg SHO experiment, which has been the subject of many studies. In July 2004, the SEC adopted Reg SHO, a regulation governing short-selling activities in equity markets. Reg SHO contained a pilot program in which stocks in the Russell 3000 index were ranked by trading volume within each exchange and every third one was designated as a pilot stock. From 2 May 2005 to 6 August 2007, short sales on pilot stocks were exempted from price tests, including the tick test for exchange-listed stocks and the bid test for NASDAQ National Market stocks.
+<!-- To better understand the issues raised by the discussion above in a real research setting, we focus on the Reg SHO experiment, which has been the subject of many studies.  -->
+上記の議論で取り上げられた問題を実際の研究環境でよりよく理解するために、多くの研究の対象となってきたReg SHO実験に焦点を当てる。
+<!-- In July 2004, the SEC adopted Reg SHO, a regulation governing short-selling activities in equity markets.  -->
+2004年7月、SECは、株式市場における空売り活動を統制する規制であるReg SHOを採択した。
+<!-- Reg SHO contained a pilot program in which stocks in the Russell 3000 index were ranked by trading volume within each exchange and every third one was designated as a pilot stock.  -->
+Reg SHOには、Russell 3000指数の株式が各取引所内で取引量によってランク付けされ、3つおきに1つがパイロット株式として指定されるパイロットプログラムが含まれていた。
+<!-- From 2 May 2005 to 6 August 2007, short sales on pilot stocks were exempted from price tests, including the tick test for exchange-listed stocks and the bid test for NASDAQ National Market stocks. -->
+2005年5月2日から2007年8月6日まで、パイロット株式に対する空売りは、取引所上場株式のチックテストやNASDAQナショナルマーケット株式のビッドテストを含む価格テストの対象外とされた。
 
-In its initial order, the SEC stated that “the Pilot will allow [the SEC] to study trading behavior in the absence of a short sale price test.” The SEC’s plan was to “examine, among other things, the impact of price tests on market quality (including volatility and liquidity), whether any price changes are caused by short selling, costs imposed by a price test, and the use of alternative means to establish short positions.”
+<!-- In its initial order, the SEC stated that “the Pilot will allow [the SEC] to study trading behavior in the absence of a short sale price test.”  -->
+最初の命令で、SECは「パイロットは、[SEC]が空売り価格テストのない状況での取引行動を研究することを可能にする」と述べている。
+<!-- The SEC’s plan was to “examine, among other things, the impact of price tests on market quality (including volatility and liquidity), whether any price changes are caused by short selling, costs imposed by a price test, and the use of alternative means to establish short positions.” -->
+SECの計画は、「価格テストが市場の質（ボラティリティや流動性を含む）に与える影響、価格変動が空売りによって引き起こされるかどうか、価格テストによって課されるコスト、および空売りポジションを確立するための代替手段の使用」などを調査することであった。
 
-19.2.1 The SHO pilot sample
-The assignment mechanism in the Reg SHO experiment is unusually transparent, even by the standards of natural experiments. Nonetheless care is needed to identify the treatment and control firms and we believe it is instructive to walk through the steps needed to do so, as we do in this section. (Readers who find the code details tedious could easily skip ahead to Section 19.2.3 on a first reading. We say “first reading” because there are subtle issues with natural experiments that this section helps to highlight, so it may be worth revisiting this section once you have read the later material.)
+<!-- ### 19.2.1 The SHO pilot sample -->
+### SHOパイロットサンプル
 
-The SEC’s website provides data on the names and tickers of the Reg SHO pilot firms. These data have been parsed and included as the sho_tickers data set in the farr package.
+<!-- The assignment mechanism in the Reg SHO experiment is unusually transparent, even by the standards of natural experiments. -->
+Reg SHO実験における割当メカニズムは、自然実験の基準に照らしても、極めて透明性が高い。
+<!-- Nonetheless care is needed to identify the treatment and control firms and we believe it is instructive to walk through the steps needed to do so, as we do in this section.  -->
+しかしながら、処置群および対照群の企業を特定する際には慎重を要する。本節では、その手順を具体的に示すことが有益であると考える。
+<!-- (Readers who find the code details tedious could easily skip ahead to Section 19.2.3 on a first reading.  -->
+（コードの詳細を煩雑に感じる読者は、初回の読解時には 19.2.3 節 に進むことも可能である。
+<!-- We say “first reading” because there are subtle issues with natural experiments that this section helps to highlight, so it may be worth revisiting this section once you have read the later material.) -->
+ただし、「初回の読解」と述べたのは、自然実験には微妙な論点が含まれており、本節がそれらを明確にする助けとなるためである。後の内容を読んだ後に本節に戻ることも有意義であろう。）
+
+<!-- The SEC’s website provides data on the names and tickers of the Reg SHO pilot firms.  -->
+SECのウェブサイトでは、Reg SHOパイロット企業の名称およびティッカーシンボルに関するデータが提供されている。
+<!-- These data have been parsed and included as the sho_tickers data set in the farr package. -->
+これらのデータは解析され、`farr`パッケージの`sho_tickers`データセットとして組み込まれている。
 
 
 ```{r}
 sho_tickers
 ```
 
-However, these are just the pilot firms and we need to use other sources to obtain the identities of the control firms. It might seem perverse for the SEC to have published lists of treatment stocks, but no information on control stocks.4 One explanation for this choice might be that, because special action (i.e., elimination of price tests) was only required for the treatment stocks (for the control stocks, it was business as usual), no lists of controls were needed for the markets to implement the pilot. Additionally, because the SEC had a list of the control stocks that it would use in its own statistical analysis, it had no reason to publish lists for this purpose. Fortunately, while the SEC did not identify the control stocks, it provides enough information for us to do so, as we do below.
+<!-- However, these are just the pilot firms and we need to use other sources to obtain the identities of the control firms.  -->
+しかし、これらはあくまでパイロット企業に関するものであり、対照群の企業を特定するには別の情報源を利用する必要がある。
+<!-- It might seem perverse for the SEC to have published lists of treatment stocks, but no information on control stocks.4  -->
+SECが処置群の銘柄リストを公表していながら、対照群に関する情報を提供していないことは、一見すると不可解に思われるかもしれない。
+<!-- One explanation for this choice might be that, because special action (i.e., elimination of price tests) was only required for the treatment stocks (for the control stocks, it was business as usual), no lists of controls were needed for the markets to implement the pilot. -->
+ひとつの説明として、特別な措置（すなわち、価格テストの撤廃）が処置群の銘柄に対してのみ適用されたため、対照群の銘柄については市場において通常の取引が継続されることになり、パイロット実験の実施にあたって対照群のリストを作成する必要がなかった可能性がある。
+<!-- Additionally, because the SEC had a list of the control stocks that it would use in its own statistical analysis, it had no reason to publish lists for this purpose.  -->
+さらに、SEC自身が統計分析を行う際に対照群のリストを保有していたため、公表する必要がなかったとも考えられる。
+<!-- Fortunately, while the SEC did not identify the control stocks, it provides enough information for us to do so, as we do below. -->
+幸いなことに、SECは対照群の銘柄を明示的には特定していないものの、それを特定するために十分な情報を提供しており、本節ではその方法を示す。
 
-First, we know that the pilot stocks were selected from the Russell 3000, the component stocks of which are found in the sho_r3000 data set from the farr package.
+
+<!-- First, we know that the pilot stocks were selected from the Russell 3000, the component stocks of which are found in the sho_r3000 data set from the farr package. -->
+まず、パイロット銘柄は Russell 3000 の構成銘柄から選定されたことが分かっている。これらの構成銘柄は、`farr`パッケージの`sho_r3000`データセットに含まれている。
 
 
 ```{r}
 sho_r3000
 ```
 
-While the Russell 3000 contains 3,000 securities, the SEC and Black et al. (2019) tell us that, in constructing the pilot sample, the SEC excluded 32 stocks in the Russell 3000 index that, as of 25 June 2004, were not listed on the Nasdaq National Market, NYSE, or AMEX “because short sales in these securities are currently not subject to a price test.” The SEC also excluded 12 stocks that started trading after 30 April 2004 due to IPOs or spin-offs. And, from Black et al. (2019), we know there were two additional stocks that stopped trading after 25 June 2004 but before the SEC constructed its sample on 28 June 2004. We can get the data for each of these criteria from CRSP, but we need to first merge the Russell 3000 data with CRSP to identify the right PERMNO for each security. For this purpose, we will use data from the five CRSP tables below:
-
+<!-- While the Russell 3000 contains 3,000 securities, the SEC and Black et al. (2019) tell us that, in constructing the pilot sample, the SEC excluded 32 stocks in the Russell 3000 index that, as of 25 June 2004, were not listed on the Nasdaq National Market, NYSE, or AMEX “because short sales in these securities are currently not subject to a price test.”  -->
+Russell 3000には3,000銘柄が含まれているが、SECおよびBlack et al. (2019)によると、パイロットサンプルの構築にあたり、SECは以下の基準で一部の銘柄を除外している。
+まず、2004年6月25日時点でNasdaq National Market, NYSE, AMEX に上場していなかった32銘柄を除外している。
+SECによれば、これらの銘柄は「現時点で空売りに対する価格テストの適用対象外である」ため、パイロットサンプルから除外された。
+<!-- The SEC also excluded 12 stocks that started trading after 30 April 2004 due to IPOs or spin-offs. And, from Black et al. (2019), we know there were two additional stocks that stopped trading after 25 June 2004 but before the SEC constructed its sample on 28 June 2004.  -->
+さらに、2004年4月30日以降に IPO または スピンオフ により新規上場した 12銘柄 も除外された。
+また、Black et al. (2019) によると、2004年6月25日以降、SECがサンプルを構築する2004年6月28日までの間に取引が停止した2銘柄 も除外されている。
+<!-- We can get the data for each of these criteria from CRSP, but we need to first merge the Russell 3000 data with CRSP to identify the right PERMNO for each security.  -->
+これらの基準に該当する銘柄を特定するためには、CRSP のデータを活用する必要がある。ただし、その前にRussell 3000のデータとCRSPを統合し、各銘柄に対応する適切な PERMNO を特定する必要がある。
+<!-- For this purpose, we will use data from the five CRSP tables below: -->
+そのために、以下のCRSPの5つのデータテーブルを用いる。
 
 :::{.panel-tabset}
 
@@ -460,7 +502,7 @@ sho_r3000_permno <-
   sho_r3000_merged |>
   left_join(nmsind_data, by = "permno") |>
   left_join(exchcd_data, by = "permno") |>
-  left_join(ipo_dates, by = "permno") |>
+  left_join(ipo_dates,   by = "permno") |>
   left_join(recent_delistings, by = "permno") |>
   mutate(nasdaq_small = coalesce(nmsind == 3 & exchcd == 3, FALSE), 
          recent_listing = begexchdate > "2004-04-30",
@@ -621,10 +663,11 @@ The SEC researchers conclude “based on the price reaction to the initiation of
 In summary, it seems fair to say that the SEC found that exemption from price tests had relatively limited effect on the market outcomes of interest, with no apparent impact on several outcomes.
 
 
-Alexander and Peterson ([2008, p. 84](references.html#ref-Alexander:2008th)) “examine how price tests affect trader behavior and market quality, which are areas of interest given by the [SEC] in evaluating these tests.” Alexander and Peterson ([2008, p. 86](references.html#ref-Alexander:2008th)) find that NYSE pilot stocks have similar spreads, but smaller trade sizes, more short trades, more short volume, and smaller ask depths. With regard to Nasdaq, Alexander and Peterson ([2008, p. 86](references.html#ref-Alexander:2008th)) find that the removed “bid test is relatively inconsequential.”
+@Alexander:2008th [p.84] “examine how price tests affect trader behavior and market quality, which are areas of interest given by the [SEC] in evaluating these tests.” @Alexander:2008th [p.86] find that NYSE pilot stocks have similar spreads, but smaller trade sizes, more short trades, more short volume, and smaller ask depths. 
+With regard to Nasdaq, @Alexander:2008th [p.86] find that the removed “bid test is relatively inconsequential.”
 
 
-Diether et al. ([2009, p. 37](references.html#ref-Diether:2009vu)) find that “while short-selling activity increases both for NYSE- and Nasdaq-listed Pilot stocks, returns and volatility at the daily level are unaffected.”
+@Diether:2009vu [p.37] find that “while short-selling activity increases both for NYSE- and Nasdaq-listed Pilot stocks, returns and volatility at the daily level are unaffected.”
 
 
 ###  Discussion questions and exercises
@@ -1879,17 +1922,22 @@ In this context, it is perhaps useful to consider causal diagrams to sharpen our
 7. What implications would there have been for publication of FHK in the *Journal of Finance* if they had failed to find an effect of Reg SHO on earnings management?
 
 
-## Causal mechanisms
+<!-- ## Causal mechanisms -->
+## 因果メカニズム
 
 
-Black et al. ([2024](references.html#ref-Black:2022tz)) suggest a number of possible causal channels through which the Reg SHO experiment could have affected the behavior of firms or third parties, including short interest, returns, price efficient, and “manager fear”. On the last of these, Black et al. ([2024, p. 4](references.html#ref-Black:2022tz)) suggest that “even if the Reg SHO experiment did not actually affect short interest or returns, pilot firm managers could have feared being targeted by short sellers and taken pre-emptive actions.”
+<!-- Black et al. ([2024](references.html#ref-Black:2022tz)) suggest a number of possible causal channels through which the Reg SHO experiment could have affected the behavior of firms or third parties, including short interest, returns, price efficient, and “manager fear”.  -->
+Black et al. (2024)は、Reg SHO実験が企業や第三者の行動に影響を与える可能性のあるいくつかの因果関係を示唆している。これには、ショートインタレスト、リターン、価格効率、および「manager fear」が含まれる。
+<!-- On the last of these, Black et al. ([2024, p. 4](references.html#ref-Black:2022tz)) suggest that “even if the Reg SHO experiment did not actually affect short interest or returns, pilot firm managers could have feared being targeted by short sellers and taken pre-emptive actions.” -->
+最後のものに関して、Black et al. (2024, p.4)は、「Reg SHO実験がショートインタレストやリターンに実際に影響を与えなかったとしても、パイロット企業の経営者はショートセラーに狙われることを恐れ、予防的な行動を取る可能性がある」と述べている。
 
 
-Black et al. ([2024, p. 5133](references.html#ref-Black:2022tz)) argue that “if firm managers were fearful that relaxing the price tests would affect them, one might expect them to voice concerns in various ways: speaking with business news reporters; writing to the SEC when it sought public comments, or seeking meetings with SEC officials to express opposition. … We searched the business press during 2003 when the rule was proposed, in 2004 when the experiment was announced, in 2006 when the SEC proposed repeal … We found no evidence of manager opposition.”
+<!-- Black et al. ([2024, p. 5133](references.html#ref-Black:2022tz)) argue that “if firm managers were fearful that relaxing the price tests would affect them, one might expect them to voice concerns in various ways: speaking with business news reporters; writing to the SEC when it sought public comments, or seeking meetings with SEC officials to express opposition. … We searched the business press during 2003 when the rule was proposed, in 2004 when the experiment was announced, in 2006 when the SEC proposed repeal … We found no evidence of manager opposition.” -->
+Black et al. (2024, p.5133) は「もし企業の経営者が、価格テストの緩和が自社に影響を及ぼすことを恐れていたのであれば、さまざまな方法で懸念を表明すると考えられる。例えば、ビジネスニュースの記者に話す、SEC（証券取引委員会）が意見を募集した際に書面で意見を提出する、あるいはSEC当局者との面会を求めて反対意見を伝えるなどである。… 私たちは、規則が提案された2003年、実験が発表された2004年、SECが撤廃を提案した2006年の間に、ビジネス報道を調査した。しかし、経営者による反対の証拠は見つからなかった。」
+と主張している。
 
-
-Black et al. ([2024, p. 5134](references.html#ref-Black:2022tz)) suggest that “FHK rely on the manager fear channel. They conjecture that, in response to a greater threat of short selling, pilot firms’ managers reduced earnings management to preemptively deter short sellers.”
-
+<!-- Black et al. (2024, p. 5134](references.html#ref-Black:2022tz)) suggest that “FHK rely on the manager fear channel. They conjecture that, in response to a greater threat of short selling, pilot firms’ managers reduced earnings management to preemptively deter short sellers.” -->
+Black et al. (2024, p.5134) は次のように示唆している。「FHK は、経営者の恐怖チャネルに依拠している。彼らは、空売りの脅威が高まることに対応して、パイロット企業の経営者が空売り投資家を事前に抑止するために、利益操作を抑制したと推測している。」
 
 ###  Discussion questions
 
@@ -1903,20 +1951,32 @@ Black et al. ([2024, p. 5134](references.html#ref-Black:2022tz)) suggest that �
 3. Do you think evidence of causal mechanisms is more or less important when using a natural experiment (i.e., an experiment outside the control of the researcher that is typically analysed after it has been run) than when conducting a randomized experiment? Explain your reasoning given the various issues raised in this chapter.
 
 
-## Two-step regressions
+<!-- ## Two-step regressions -->
+## 二段階回帰
 
-@Chen:2018wh examine the question of statistical inference when residuals from one regression are used as a dependent variable in a subsequent regression, which they refer to as “the two-step procedure”. For example, discretionary accruals measured using the Jones ([1991](references.html#ref-Jones:1991vx)) model are residuals from a regression of total accruals on changes in sales and PP&E. As we saw in Dechow et al. ([1995](references.html#ref-Dechow:1995wr)), which we covered in [Chapter 16](earnings-mgt.html), many papers examine how Jones ([1991](references.html#ref-Jones:1991vx)) model discretionary accruals relate to various posited incentives for earnings management.
-
-
-@Chen:2018wh [p. 755] show that “the two-step procedure is likely to generate biased coefficients and t-statistics in many studies” and, drawing on the Frisch-Waugh-Lovell theorem (see [Section 3.3](reg-basics.html#sec-fwl)), propose using a single regression in place of the two-step procedure. In the case of the Jones ([1991](references.html#ref-Jones:1991vx)) model, this would entail including the regressors from the first step in same regression as the second step and using total accruals in place of discretionary accruals as the dependent variable.
-
-
-### Discussion questions
-
-
-1. What challenges would exist in implementing the single-regression recommendation of @Chen:2018wh  for a researcher using @Kothari:2005aa performance-matched discretionary accruals?
+<!-- @Chen:2018wh examine the question of statistical inference when residuals from one regression are used as a dependent variable in a subsequent regression, which they refer to as “the two-step procedure”.  -->
+@Chen:2018wh は、1つの回帰の残差が後続の回帰の従属変数として使用される場合の統計推論について検討しており、これを「2段階手続き」と呼んでいる。
+<!-- For example, discretionary accruals measured using the Jones ([1991](references.html#ref-Jones:1991vx)) model are residuals from a regression of total accruals on changes in sales and PP&E.  -->
+たとえば、Jones (1991)モデルを用いた裁量的アクルーアルは、売上高の変化額とPP&Eの変化額に関する回帰の残差である。
+<!-- As we saw in Dechow et al. ([1995](references.html#ref-Dechow:1995wr)), which we covered in [Chapter 16](chap16_em.html), many papers examine how Jones ([1991](references.html#ref-Jones:1991vx)) model discretionary accruals relate to various posited incentives for earnings management. -->
+第16章でカバーしたDechow et al. (1995)で見たように、Jones (1991)モデルの裁量的アクルーアルが、利益マネジメントの様々なインセンティブとどのように関連しているかを多くの論文が検討している。
 
 
-2. Do you believe the issues raised by @Chen:2018wh with regard to two-step procedures also apply if using randomization inference? Why or why not?
+<!-- @Chen:2018wh [p.755] show that “the two-step procedure is likely to generate biased coefficients and t-statistics in many studies” and, drawing on the Frisch-Waugh-Lovell theorem (see [Section 3.3](reg-basics.html#sec-fwl)), propose using a single regression in place of the two-step procedure.  -->
+@Chen:2018wh [p.755]は、「2段階手続きは、多くの研究でバイアスのある係数とt統計量を生成する可能性が高い」と述べており、Frisch-Waugh-Lovellの定理（[Section 3.3](reg-basics.html#sec-fwl)を参照）に基づいて、2段階手続きの代わりに単一の回帰を使用することを提案している。
+<!-- In the case of the Jones ([1991](references.html#ref-Jones:1991vx)) model, this would entail including the regressors from the first step in same regression as the second step and using total accruals in place of discretionary accruals as the dependent variable. -->
+Jones (1991)モデルの場合、これは、第1ステップの回帰変数を第2ステップと同じ回帰式に含め、従属変数として裁量的アクルーアルの代わりに総アクルーアルを使用することを意味する。
 
+
+<!-- ### Discussion questions -->
+### ディスカッション課題
+
+<!-- 1. What challenges would exist in implementing the single-regression recommendation of @Chen:2018wh  for a researcher using @Kothari:2005aa performance-matched discretionary accruals? -->
+1. @Chen:2018wh の単一回帰の推奨事項を使用する研究者が、@Kothari:2005aa のパフォーマンスマッチングされた裁量的アクルーアルを使用する際には、どのような課題があるか。
+
+<!-- 2. Do you believe the issues raised by @Chen:2018wh with regard to two-step procedures also apply if using randomization inference? Why or why not? -->
+2. @Chen:2018wh が2段階手続きに関して提起した問題が、ランダム化推論を使用する場合にも当てはまると考えるのか？その理由は何か？
+
+
+## References
 
