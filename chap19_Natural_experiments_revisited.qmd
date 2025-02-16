@@ -1948,7 +1948,10 @@ Black et al. (2024, p.5134) は次のように示唆している。「FHK は、
 2. Evaluate the response of Fang et al. ([2019](references.html#ref-Fang:2019tt)) to Black et al. ([2024](references.html#ref-Black:2022tz)) as it relates to causal mechanisms?
 
 
-3. Do you think evidence of causal mechanisms is more or less important when using a natural experiment (i.e., an experiment outside the control of the researcher that is typically analysed after it has been run) than when conducting a randomized experiment? Explain your reasoning given the various issues raised in this chapter.
+<!-- 3. Do you think evidence of causal mechanisms is more or less important when using a natural experiment (i.e., an experiment outside the control of the researcher that is typically analysed after it has been run) than when conducting a randomized experiment?  -->
+3. 研究者のコントロール外で実施される自然実験（つまり、通常は実施後に分析される実験）を行う場合、因果メカニズムの証拠は、無作為化実験を行う場合よりも重要だと思うか？
+<!-- Explain your reasoning given the various issues raised in this chapter. -->
+この章で取り上げられたさまざまな問題を考慮して、その理由を説明しなさい。gi
 
 
 <!-- ## Two-step regressions -->
