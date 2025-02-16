@@ -84,5 +84,5 @@ bibliography: book.bib
 bibliographystyle: chicago-author-date.csl
 engine: knitr
 dev: "ragg_png"
-lang: ja
+# lang: ja
 
