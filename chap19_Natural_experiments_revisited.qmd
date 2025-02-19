@@ -300,7 +300,8 @@ ccmxpf_lnkhist <- load_parquet(db, schema = "crsp", table = "ccmxpf_lnkhist")
 :::
 
 
-One thing we note is that some of the tickers from the Russell 3000 sample append the class of stock to the ticker. We can detect these cases by looking for a dot (.) using regular expressions. Because a dot has special meaning in regular expressions (regex), we need to escape it using a backslash (\). (For more on regular expressions, see Chapter 9 and references cited there.) Because a backslash has a special meaning in strings in R, we need to escape the backslash itself to tell R that we mean a literal backslash. In short, we use the regex \\. to detect dots in strings.
+<!-- One thing we note is that some of the tickers from the Russell 3000 sample append the class of stock to the ticker. We can detect these cases by looking for a dot (.) using regular expressions. Because a dot has special meaning in regular expressions (regex), we need to escape it using a backslash (\). (For more on regular expressions, see Chapter 9 and references cited there.) Because a backslash has a special meaning in strings in R, we need to escape the backslash itself to tell R that we mean a literal backslash. In short, we use the regex \\. to detect dots in strings. -->
+ラッセル3000のサンプルに含まれる一部のティッカーは、ティッカーに株式のクラスを付加している。このようなケースを検出するには、正規表現（regex）を使用してドット（`.`）を探す。ただし、ドットは正規表現において特別な意味を持つため、バックスラッシュ（`\`）を使ってエスケープする必要がある。Rの文字列内では、バックスラッシュ自体にも特別な意味があるため、入力通りにバックスラッシュを表現するには、さらにバックスラッシュをエスケープしなければならない。したがって、ドットを検出するには、正規表現として "`\\.`" を使用する。
 
 
 ```{r}
@@ -308,9 +309,14 @@ sho_r3000 |>
   filter(str_detect(russell_ticker, "\\."))
 ```
 
-In these cases, CRSP takes a different approach. For example, where the Russell 3000 sample has AGR.B, CRSP has ticker equal to AGR and shrcls equal to B.
+<!-- In these cases, CRSP takes a different approach.  -->
+このような場合、CRSPは異なるアプローチを取る。
+<!-- For example, where the Russell 3000 sample has AGR.B, CRSP has ticker equal to AGR and shrcls equal to B. -->
+例えば、ラッセル3000のサンプルでは AGR.B となっているが、CRSPではティッカーが AGR、株式クラス（shrcls）が B となっている。
 
-The other issue is that some tickers from the Russell 3000 data have the letter E appended to what CRSP shows as just a four-letter ticker.
+
+<!-- The other issue is that some tickers from the Russell 3000 data have the letter E appended to what CRSP shows as just a four-letter ticker. -->
+もう一つの問題は、ラッセル3000のデータに含まれる一部のティッカーが、CRSPでは4文字のティッカーとして表示されるのに対し、末尾に`E`が付加されているケースがあることである。
 
 
 ```{r}
@@ -319,18 +325,23 @@ sho_r3000 |>
          str_sub(russell_ticker, 5, 5) == "E")
 ```
 
-A curious reader might wonder how we identified these two issues with tickers, and how we know that they are exhaustive of the issues in the data. We explore these questions in the exercises at the end of this section.
+<!-- A curious reader might wonder how we identified these two issues with tickers, and how we know that they are exhaustive of the issues in the data. We explore these questions in the exercises at the end of this section. -->
+好奇心のある読者は、これら2つのティッカーの問題をどのように特定したのか、また、それらがデータ内の問題を網羅しているとどのように判断したのか疑問に思うかもしれない。これらの問いについては、本節の演習で詳しく探求する。
 
-To address these issues, we create two functions: one (`clean_ticker()`) to “clean” each ticker so that it can be matched with CRSP, and one (`get_shrcls()`) to extract the share class (if any) specified in the Russell 3000 data.
+<!-- To address these issues, we create two functions: one (`clean_ticker()`) to “clean” each ticker so that it can be matched with CRSP, and one (`get_shrcls()`) to extract the share class (if any) specified in the Russell 3000 data. -->
+これらの問題に対応するために、2つの関数を作成する。1つは、ティッカーをCRSPと照合できるように“クリーン”にする`clean_ticker()`であり、もう1つは、ラッセル3000データ内で指定されている株式クラス（もしあれば）を抽出する`get_shrcls()`である。
 
-Both functions use a regular expression to match cases where the text ends with either “A” or “B” (`[AB]$` in regex) preceded by the a dot (`\\.` in regex, as discussed above). The expression uses capturing parentheses (i.e., `(` and `)`) to capture the text before the dot from the beginning of the string `(^(.*))` to the dot and to capture the letter “A” or “B” at the end (`([AB])$`).
+<!-- Both functions use a regular expression to match cases where the text ends with either “A” or “B” (`[AB]$` in regex) preceded by the a dot (`\\.` in regex, as discussed above). The expression uses capturing parentheses (i.e., `(` and `)`) to capture the text before the dot from the beginning of the string `(^(.*))` to the dot and to capture the letter “A” or “B” at the end (`([AB])$`). -->
+どちらの関数も、正規表現を用いて、テキストがドット（`\\.`）の後にAまたはBで終わるケースを検出する（正規表現では`[AB]$`）。
+この表現では、キャプチャ用の括弧( `(` と `)` )を使用し、文字列の先頭からドットまでの部分を `(^(.*))` で、末尾のAまたはBを`([AB])$`でキャプチャする。
 
 
 ```{r}
 regex <- "^(.*)\\.([AB])$"
 ```
 
-The `clean_ticker()` function uses `case_when()`, which first handles cases with an E at the end of five-letter tickers, then applies the regex to extract the “clean” ticker (the first captured text) from cases matching `regex`. Finally, the original ticker is returned for all other cases.
+<!-- The `clean_ticker()` function uses `case_when()`, which first handles cases with an E at the end of five-letter tickers, then applies the regex to extract the “clean” ticker (the first captured text) from cases matching `regex`. Finally, the original ticker is returned for all other cases. -->
+`clean_ticker()`関数は、`case_when()`を使用して、5文字のティッカーの末尾にEが付加されているケースを処理し、次に`regex`に一致するケースから“クリーン”なティッカー（最初にキャプチャされたテキスト）を抽出する。最後に、それ以外のケースでは元のティッカーを返す。
 
 
 ```{r}
@@ -341,7 +352,8 @@ clean_ticker <- function(x) {
 }
 ```
 
-The `get_shrcls()` function extracts the second capture group from the regex (the first value returned by `str_match()` is the complete match, the second value is the first capture group, so we use `[, 3]` to get the second capture group).
+<!-- The `get_shrcls()` function extracts the second capture group from the regex (the first value returned by `str_match()` is the complete match, the second value is the first capture group, so we use `[, 3]` to get the second capture group). -->
+`get_shrcls()`関数は、正規表現から2番目のキャプチャグループを抽出する（`str_match()`が返す最初の値は完全な一致、2番目の値は最初のキャプチャグループであるため、2番目のキャプチャグループを取得するために`[, 3]`を使用する）。
 
 
 ```{r}
@@ -350,7 +362,8 @@ get_shrcls <- function(x) {
 }
 ```
 
-We can use `clean_ticker()` and `get_shrcls()` to construct `sho_r3000_tickers`.
+<!-- We can use `clean_ticker()` and `get_shrcls()` to construct `sho_r3000_tickers`. -->
+`clean_ticker()`と`get_shrcls()`を使用して、`sho_r3000_tickers`を構築することができる。
 
 
 ```{r}
@@ -364,7 +377,8 @@ sho_r3000_tickers |>
   filter(russell_ticker != ticker)
 ```
 
-Now that we have “clean” tickers, we can merge with CRSP. The following code proceeds in two steps. First, we create `crsp_sample`, which contains the `permno`, `ticker`, and `shrcls` values applicable on `2004-06-25`, the date on which the Russell 3000 that the SEC used was created.
+<!-- Now that we have “clean” tickers, we can merge with CRSP. The following code proceeds in two steps. First, we create `crsp_sample`, which contains the `permno`, `ticker`, and `shrcls` values applicable on `2004-06-25`, the date on which the Russell 3000 that the SEC used was created. -->
+これで“クリーン”なティッカーを取得したので、CRSPと結合することができる。以下のコードは2つのステップで進行する。まず、SECが使用したRussell 3000が作成された日である`2004-06-25`に適用される`permno`、`ticker`、`shrcls`の値を含む`crsp_sample`を作成する。
 
 ```{r}
 #| eval: false
@@ -378,7 +392,8 @@ crsp_sample <-
 ```
 
 
-Second, we merge `sho_r3000_tickers` with `crsp_sample` using `ticker` and then use `filter()` to retain cases where, if a share class is specified in the SEC-provided ticker, it matches the one row in CRSP with that share class, while retaining all rows where no share class is specified in the SEC-provided ticker.
+<!-- Second, we merge `sho_r3000_tickers` with `crsp_sample` using `ticker` and then use `filter()` to retain cases where, if a share class is specified in the SEC-provided ticker, it matches the one row in CRSP with that share class, while retaining all rows where no share class is specified in the SEC-provided ticker. -->
+次に、`ticker`を使用して`sho_r3000_tickers`と`crsp_sample`を結合し、`filter()`を使用して、SECが提供したティッカーに株式クラスが指定されている場合、その株式クラスに一致するCRSPの1行を保持し、SECが提供したティッカーに株式クラスが指定されていない場合はすべての行を保持する。
 
 
 ```{r}
@@ -390,7 +405,8 @@ sho_r3000_merged <-
   select(russell_ticker, permco, permno)
 ```
 
-Unfortunately, this approach results in some tickers being matched to multiple PERMNO values.
+<!-- Unfortunately, this approach results in some tickers being matched to multiple PERMNO values. -->
+残念ながら、このアプローチでは、いくつかのティッカーが複数のPERMNO値にマッチする結果となる。
 
 
 ```{r}
@@ -401,7 +417,8 @@ sho_r3000_merged |>
   ungroup()
 ```
 
-In each case, these appear to be cases where there are multiple securities (permno values) for the same company (permco value). To choose the security that is the one most likely included in the Russell 3000 index used by the SEC, we will keep the one with the greatest dollar trading volume for the month of June 2004. We collect the data on dollar trading volumes in the data frame trading_vol.
+<!-- In each case, these appear to be cases where there are multiple securities (permno values) for the same company (permco value). To choose the security that is the one most likely included in the Russell 3000 index used by the SEC, we will keep the one with the greatest dollar trading volume for the month of June 2004. We collect the data on dollar trading volumes in the data frame trading_vol. -->
+各ケースでは、同じ企業（`permco`値）に対して複数の証券（`permno`値）が存在するようである。SECが使用したRussell 3000指数に最も含まれていると考えられる証券を選択するために、2004年6月の最も大きな取引量を持つ証券を保持することにする。取引量に関するデータを`trading_vol`データフレームに収集する。
 
 ```{r}
 #| eval: false
@@ -413,7 +430,8 @@ trading_vol <-
   collect()
 ```
 
-We can now make a new version of the table sho_r3000_merged that includes just the permno value with the greatest trading volume for each ticker.
+<!-- We can now make a new version of the table sho_r3000_merged that includes just the permno value with the greatest trading volume for each ticker. -->
+これで、各ティッカーに対して最も取引量の多い`permno`値を含む新しいバージョンの`sho_r3000_merged`テーブルを作成することができる。
 
 
 
@@ -430,9 +448,15 @@ sho_r3000_merged <-
   select(russell_ticker, permno)
 ```
 
-Black et al. (2019) identify 32 stocks that are not listed on the Nasdaq National Market, NYSE, or AMEX firms “using historical exchange code (exchcd) and Nasdaq National Market Indicator (nmsind) from the CRSP monthly stock file” (in practice, these 32 stocks are smaller Nasdaq-listed stocks). However, exchcd and nmsind are not included in the crsp.msf file we use. Black et al. (2019) likely used the CRSP monthly stock file obtained from the web interface provided by WRDS, which often merges in data from other tables.
+<!-- Black et al. (2019) identify 32 stocks that are not listed on the Nasdaq National Market, NYSE, or AMEX firms “using historical exchange code (exchcd) and Nasdaq National Market Indicator (nmsind) from the CRSP monthly stock file” (in practice, these 32 stocks are smaller Nasdaq-listed stocks).  -->
+Black et al. (2019) は、「CRSPの月次株式ファイルからの歴史的な取引所コード（`exchcd`）とNASDAQナショナルマーケットインジケータ（`nmsind`）を使用して、Nasdaq National Market、NYSE、AMEXに上場していない32銘柄を特定した」と述べている（実際には、これらの32銘柄は小規模なNasdaq上場銘柄である）。
+<!-- However, exchcd and nmsind are not included in the crsp.msf file we use. Black et al. (2019) likely used the CRSP monthly stock file obtained from the web interface provided by WRDS, which often merges in data from other tables. -->
+しかし、`exchcd`と`nmsind`は、私たちが使用している`crsp.msf`ファイルには含まれていない。Black et al. (2019) は、おそらくWRDSが提供するWebインターフェースから取得したCRSPの月次株式ファイルを使用しており、このファイルは他のテーブルからのデータを結合することが多い。
 
-Fortunately, we can obtain `nmsind` from the CRSP monthly events file (`crsp.mse`). This file includes information about delisting events, distributions (such as dividends), changes in NASDAQ information (such as `nmsind`), and name changes. We get data on `nmsind` by pulling the latest observation on crsp.mse on or before `2004-06-28` where the event related to NASDAQ status (`event == "NASDIN"`).
+<!-- Fortunately, we can obtain `nmsind` from the CRSP monthly events file (`crsp.mse`).  -->
+幸いなことに、CRSPの月次イベントファイル（`crsp.mse`）から`nmsind`を取得することができる。
+<!-- This file includes information about delisting events, distributions (such as dividends), changes in NASDAQ information (such as `nmsind`), and name changes. We get data on `nmsind` by pulling the latest observation on `crsp.mse` on or before `2004-06-28` where the event related to NASDAQ status (`event == "NASDIN"`). -->
+このファイルには、上場廃止イベント、配当などの配布、NASDAQ情報の変更（`nmsind`など）、名前の変更に関する情報が含まれている。`nmsind`に関するデータは、`2004-06-28`以前の`crsp.mse`の最新の観測値を取得し、NASDAQステータスに関連するイベント（`event == "NASDIN"`）を取得することで取得できる。
 
 
 ```{r}
@@ -447,8 +471,10 @@ nmsind_data <-
   collect()
 ```
 
-We can obtain exchcd from the CRSP stock names file (`crsp.stocknames`), again pulling the value applicable on `2004-06-28`.[^5]
+<!-- We can obtain exchcd from the CRSP stock names file (`crsp.stocknames`), again pulling the value applicable on `2004-06-28`.[^5] -->
+`exchcd`は、CRSPの株式名ファイル（`crsp.stocknames`）から取得することができる。再度、`2004-06-28`に適用される値を取得する。[^5]
 
+[^5]: We exclude non-positive values of `exchcd` as these appear to be rows flagging special temporary trading statuses that create duplicate rows.
 
 ```{r}
 #| eval: false
@@ -462,9 +488,12 @@ exchcd_data <-
   collect()
 ```
 
-According to [its website](https://www.sec.gov/rule-release/34-50104), the SEC “also excluded issuers whose initial public offerings commenced after April 30, 2004.” 
-Following Black et al. (2019), we use CRSP data to identify these firms. 
-Specifically, the table `crsp.dseexchdates` includes the variable `begexchdate`.
+<!-- According to [its website](https://www.sec.gov/rule-release/34-50104), the SEC “also excluded issuers whose initial public offerings commenced after April 30, 2004.”  -->
+SECの[ウェブサイト](https://www.sec.gov/rule-release/34-50104)によると、「2004年4月30日以降に開始された新規株式公開（IPO）を行った発行体も除外した」という。
+<!-- Following Black et al. (2019), we use CRSP data to identify these firms.  -->
+Black et al. (2019) に従い、これらの企業を特定するためにCRSPデータを使用する。
+<!-- Specifically, the table `crsp.dseexchdates` includes the variable `begexchdate`. -->
+具体的には、テーブル`crsp.dseexchdates`には変数`begexchdate`が含まれている。
 
 
 ```{r}
@@ -476,7 +505,8 @@ ipo_dates <-
   collect()
 ```
 
-Finally, it appears that there were stocks listed in the Russell 3000 file likely used by the SEC (created on 2004-06-25) that were delisted prior to 2004-06-28, the date on which the SEC appears to have finalized the sample for its pilot program. We again use crsp.mse to identify these firms.
+<!-- Finally, it appears that there were stocks listed in the Russell 3000 file likely used by the SEC (created on 2004-06-25) that were delisted prior to 2004-06-28, the date on which the SEC appears to have finalized the sample for its pilot program. We again use crsp.mse to identify these firms. -->
+最後に、SECがパイロットプログラムのサンプルを最終的に確定したと思われる2004-06-28より前に上場廃止された銘柄が、SECがおそらく使用したRussell 3000ファイルに含まれていたようである。これらの企業を特定するために、再度`crsp.mse`を使用する。
 
 
 
@@ -492,7 +522,8 @@ recent_delistings <-
   collect()
 ```
 
-Now, we put all these pieces together and create variables nasdaq_small, recent_listing, and delisted corresponding to the three exclusion criteria discussed above.
+<!-- Now, we put all these pieces together and create variables nasdaq_small, recent_listing, and delisted corresponding to the three exclusion criteria discussed above. -->
+これで、これらの要素を組み合わせて、上記で説明した3つの除外基準に対応する変数`nasdaq_small`、`recent_listing`、`delisted`を作成する。
 
 
 ```{r}
@@ -510,7 +541,8 @@ sho_r3000_permno <-
          keep = !nasdaq_small & !recent_listing & !delisted)
 ```
 
-As can be seen in Table 19.1, we have a final sample of 2954 stocks that we can merge with sho_tickers to create the pilot indicator.
+<!-- As can be seen in Table 19.1, we have a final sample of 2954 stocks that we can merge with sho_tickers to create the pilot indicator. -->
+表19.1に示すように、パイロット指標を作成するために結合できる2954銘柄の最終サンプルが得られた。
 
 ```{r}
 #| eval: false
@@ -530,7 +562,8 @@ sho_r3000_sample <-
   select(ticker, permno, pilot)
 ```
 
-As can be seen the number of treatment and control firms in sho_r3000_sample corresponds exactly with the numbers provided in Black et al. (2019, p. 42).
+<!-- As can be seen the number of treatment and control firms in sho_r3000_sample corresponds exactly with the numbers provided in Black et al. (2019, p. 42). -->
+表19.1に示すように、`sho_r3000_sample`の処置群と対照群の企業数は、Black et al. (2019, p. 42)で提供された数値と完全に一致している。
 
 
 ```{r}
@@ -540,10 +573,16 @@ sho_r3000_sample |>
   count(pilot)
 ```
 
-Finally, we will want to link these data with data from Compustat, which means linking these observations with GVKEYs. For this, we use ccm_link (as used and discussed in Chapter 7) to produce sho_r3000_gvkeys, the sample we can use in later analysis.
+<!-- Finally, we will want to link these data with data from Compustat, which means linking these observations with GVKEYs.  -->
+最後に、これらのデータをCompustatのデータとリンクしたいと考えている。つまり、これらの観測値をGVKEYとリンクする必要がある。
+<!-- For this, we use ccm_link (as used and discussed in Chapter 7) to produce sho_r3000_gvkeys, the sample we can use in later analysis. -->
+これには、後の分析で使用できるサンプルである`sho_r3000_gvkeys`を生成するために、`ccm_link`（第7章で使用および議論された）を使用する。
 
 
-Finally, we will want to link these data with data from Compustat, which means linking these observations with GVKEYs. For this, we use `ccm_link` (as used and discussed in [Chapter 7]()) to produce `sho_r3000_gvkeys`, the sample we can use in later analysis.
+<!-- Finally, we will want to link these data with data from Compustat, which means linking these observations with GVKEYs.  -->
+最後に、これらのデータをCompustatのデータとリンクしたいと考えている。つまり、これらの観測値をGVKEYとリンクする必要がある。
+<!-- For this, we use `ccm_link` (as used and discussed in [Chapter 7]()) to produce `sho_r3000_gvkeys`, the sample we can use in later analysis. -->
+これには、後の分析で使用できるサンプルである`sho_r3000_gvkeys`を生成するために、`ccm_link`（第7章で使用および議論された）を使用する。
 
 
 ```{r}
@@ -559,9 +598,10 @@ ccm_link <-
 ```
 
 
-Because we focus on a single “test date”, our final link table includes just two variables: `gvkey` and `permno`.[^6]
+<!-- Because we focus on a single “test date”, our final link table includes just two variables: `gvkey` and `permno`.[^6] -->
+単一の「テスト日」に焦点を当てるため、最終的なリンクテーブルには`gvkey`と`permno`の2つの変数のみが含まれる。[^6]
 
-
+[^6]: In other words, we don’t need date ranges in the `gvkeys` table.
 
 
 ```{r}
@@ -575,7 +615,8 @@ gvkeys <-
 ```
 
 
-Finally, we can add `gvkey` to `sho_r3000_sample` to create `sho_r3000_gvkeys`.
+<!-- Finally, we can add `gvkey` to `sho_r3000_sample` to create `sho_r3000_gvkeys`. -->
+最後に、`sho_r3000_sample`に`gvkey`を追加して`sho_r3000_gvkeys`を作成することができる。
 
 ```{r}
 #| eval: false
@@ -588,7 +629,10 @@ sho_r3000_gvkeys
 
 
 
-To better understand the potential issues with constructing the `pilot` indicator variable, it is useful to compare the approach above with that taken in Fang et al. ([2016](references.html#ref-Fang:2016uy)). To construct `sho_data` as Fang et al. ([2016](references.html#ref-Fang:2016uy)) do, we use `fhk_pilot` from the `farr` package.[7](#fn7) We compare `sho_r3000_sample` and `sho_r3000_gvkeys` with `sho_data` in the exercises below.
+<!-- To better understand the potential issues with constructing the `pilot` indicator variable, it is useful to compare the approach above with that taken in Fang et al. ([2016](references.html#ref-Fang:2016uy)).  -->
+`pilot`指標変数を構築する際の潜在的な問題をよりよく理解するために、上記のアプローチとFang et al. ([2016](references.html#ref-Fang:2016uy))のアプローチを比較することが有益である。
+<!-- To construct `sho_data` as Fang et al. ([2016](references.html#ref-Fang:2016uy)) do, we use `fhk_pilot` from the `farr` package.[7](#fn7) We compare `sho_r3000_sample` and `sho_r3000_gvkeys` with `sho_data` in the exercises below. -->
+Fang et al. ([2016](references.html#ref-Fang:2016uy))のように`sho_data`を構築するために、`farr`パッケージから`fhk_pilot`を使用する。以下の演習で、`sho_r3000_sample`と`sho_r3000_gvkeys`を`sho_data`と比較する。
 
 
 
@@ -609,7 +653,14 @@ sho_data <-
 ###  Exercises
 
 
-1. Before running the following code, can you tell from output above how many rows this query will return? What is this code doing? At what stage would code like this have been used in process of creating the sample above? Why is code like this not included above?
+<!-- 1. Before running the following code, can you tell from output above how many rows this query will return?  -->
+1. 以下のコードを実行する前に、上記の出力からこのクエリが何行を返すかを判断できますか？
+<!-- What is this code doing?  -->
+このコードは何をしているのか？
+<!-- At what stage would code like this have been used in process of creating the sample above?  -->
+このようなコードは、上記のサンプルを作成する過程でどの段階で使用されたか？
+<!-- Why is code like this not included above? -->
+なぜこのようなコードは上記に含まれていないのか？
 
 ```{r}
 #| eval: false
@@ -620,10 +671,16 @@ sho_r3000 |>
 ```
 
 
-2. Focusing on the values of `ticker` and `pilot` in `fhk_pilot`, what differences do you observe between `fhk_pilot` and `sho_r3000_sample`? What do you believe is the underlying cause for these discrepancies?
+<!-- 2. Focusing on the values of `ticker` and `pilot` in `fhk_pilot`, what differences do you observe between `fhk_pilot` and `sho_r3000_sample`? -->
+2. `fhk_pilot`の`ticker`と`pilot`の値に焦点を当てると、`fhk_pilot`と`sho_r3000_sample`の間にどのような違いがあるかを観察しなさい。
+<!-- What do you believe is the underlying cause for these discrepancies? -->
+これらの相違の根本的な原因は何だと思うか？
 
 
-3. What do the following observations represent? Choose a few observations from this output and examine whether these reveal issues in the `sho_r3000_sample` or in `fhk_pilot`.
+<!-- 3. What do the following observations represent?  -->
+3. 以下の観察は何を表しているか？
+<!-- Choose a few observations from this output and examine whether these reveal issues in the `sho_r3000_sample` or in `fhk_pilot`. -->
+この出力からいくつかの観察を選択し、これらが`sho_r3000_sample`または`fhk_pilot`に問題を示しているかどうかを調べなさい。
 
 ```{r}
 #| eval: false
@@ -633,10 +690,24 @@ sho_r3000_sample |>
 ```
 
 
-4. In constructing the `pilot` indicator, FHK omit cases (`gvkey` values) where there is more than one distinct value for the indicator. A question is: Who are these firms? Why is there more than one value for `pilot` for these firms? And does omission of these make sense? (*Hint*: Identify duplicates in `fhk_pilot` and compare `sho_r3000_gvkeys` for these firms.)
+<!-- 4. In constructing the `pilot` indicator, FHK omit cases (`gvkey` values) where there is more than one distinct value for the indicator.  -->
+4. `pilot`指標を構築する際、FHKは、指標の値が複数ある場合（`gvkey`値）にはケースを省略している。
+<!-- A question is: Who are these firms?  -->
+質問は：これらの企業は誰か？
+<!-- Why is there more than one value for `pilot` for these firms?  -->
+これらの企業に対して`pilot`に複数の値があるのはなぜか？
+<!-- And does omission of these make sense?  -->
+そして、これらを省略することは理にかなっているか？
+<!-- (*Hint*: Identify duplicates in `fhk_pilot` and compare `sho_r3000_gvkeys` for these firms.) -->
+（*ヒント*：`fhk_pilot`の重複を特定し、これらの企業について`sho_r3000_gvkeys`を比較する。）
 
 
-5. What issue is implicit in the output from the code below? How could you fix this issue? Would you expect a fix for this issue to significantly affect the regression results? Why or why not?
+<!-- 5. What issue is implicit in the output from the code below?  -->
+5. 以下のコードの出力には何の問題が含まれているか？
+<!-- How could you fix this issue?  -->
+この問題をどのように修正できるか？
+<!-- Would you expect a fix for this issue to significantly affect the regression results? Why or why not? -->
+この問題の修正が回帰結果に大きな影響を与えると予想されるか？その理由は何か？
 
 
 ```{r}
@@ -648,46 +719,72 @@ sho_data |>
 
 
 
-###  Early studies of Reg SHO
+<!-- ###  Early studies of Reg SHO -->
+### Reg SHOの初期の研究
+
+<!-- The first study of the effects of Reg SHO was conducted by the SEC’s own Office of Economic Analysis.  -->
+Reg SHOの影響に関する最初の研究は、SECの経済分析局によって行われた。
+<!-- [The SEC study](https://www.sec.gov/news/studies/2007/regshopilot020607.pdf) examines the “effect of pilot on short selling, liquidity, volatility, market efficiency, and extreme price changes” [p. 86]. -->
+[SECの研究](https://www.sec.gov/news/studies/2007/regshopilot020607.pdf)は、「パイロットがショートセール、流動性、ボラティリティ、市場効率、および極端な価格変動に与える影響」を調査している[p. 86]。
 
 
-The first study of the effects of Reg SHO was conducted by the SEC’s own Office of Economic Analysis. [The SEC study](https://www.sec.gov/news/studies/2007/regshopilot020607.pdf) examines the “effect of pilot on short selling, liquidity, volatility, market efficiency, and extreme price changes” [p. 86].
+<!-- The authors of the 2007 SEC study “find that price restrictions reduce the volume of executed short sales relative to total volume, indicating that price restrictions indeed act as a constraint to short selling. -->
+2007年のSECの調査の著者らは、「価格規制は、総取引量に対する空売りの実行量を減少させることを確認しており、これは価格規制が実際に空売りの制約として機能していることを示している」と述べている。
+<!-- However, in neither market do we find significant differences in short interest across pilot and control stocks.  -->
+しかし、どの市場においても、パイロット銘柄とコントロール銘柄の間で空売り残高に有意な差は見られなかった。
+<!-- … We find no evidence that short sale price restrictions in equities have an impact on option trading or open interest.  -->
+また、株式の空売りに対する価格規制がオプション取引や建玉に影響を与える証拠も見つからなかった。
+<!-- … We find that quoted depths are augmented by price restrictions but realized liquidity is unaffected.  -->
+さらに、気配値の厚み（quoted depth）は価格規制によって増加するものの、実現流動性には影響を与えないことが分かった。
+<!-- Further, we find some evidence that price restrictions dampen short term within-day return volatility, but when measured on average, they seem to have no effect on daily return volatility.” -->
+加えて、価格規制が日中の短期的なリターンの変動を抑える証拠はあるものの、平均的に測定すると、日次リターンの変動性には影響を与えないようであることが示された。
 
 
-The authors of the 2007 SEC study “find that price restrictions reduce the volume of executed short sales relative to total volume, indicating that price restrictions indeed act as a constraint to short selling. However, in neither market do we find significant differences in short interest across pilot and control stocks. … We find no evidence that short sale price restrictions in equities have an impact on option trading or open interest. … We find that quoted depths are augmented by price restrictions but realized liquidity is unaffected. Further, we find some evidence that price restrictions dampen short term within-day return volatility, but when measured on average, they seem to have no effect on daily return volatility.”
+<!-- The SEC researchers conclude “based on the price reaction to the initiation of the pilot, we find limited evidence that the tick test distorts stock prices—on the day the pilot went into effect, Listed Stocks in the pilot sample underperformed Listed Stocks in the control sample by approximately 24 basis points.  -->
+<!-- However, the pilot and control stocks had similar returns over the first six months of the pilot.” -->
+SECの研究者は次のように結論づけている。「パイロット・プログラムの開始に対する価格の反応に基づくと、ティック・テストが株価を歪めるという証拠は限定的である。パイロット・プログラムが発効した当日、パイロット・サンプルに含まれる上場株は、対照サンプルに含まれる上場株と比べて約24ベーシスポイント低いパフォーマンスを示した。しかし、パイロット株と対照株のリターンは、プログラム開始から最初の6か月間で類似していた。」
 
 
-The SEC researchers conclude “based on the price reaction to the initiation of the pilot, we find limited evidence that the tick test distorts stock prices—on the day the pilot went into effect, Listed Stocks in the pilot sample underperformed Listed Stocks in the control sample by approximately 24 basis points. However, the pilot and control stocks had similar returns over the first six months of the pilot.”
+<!-- In summary, it seems fair to say that the SEC found that exemption from price tests had relatively limited effect on the market outcomes of interest, with no apparent impact on several outcomes. -->
+要約すると、SECは価格テストの免除が市場の関心のある結果に対して比較的限定的な影響しか与えず、いくつかの結果には明らかな影響がなかったと判断したと言える。
 
 
-In summary, it seems fair to say that the SEC found that exemption from price tests had relatively limited effect on the market outcomes of interest, with no apparent impact on several outcomes.
+<!-- @Alexander:2008th [p.84] “examine how price tests affect trader behavior and market quality, which are areas of interest given by the [SEC] in evaluating these tests.” @Alexander:2008th [p.86] find that NYSE pilot stocks have similar spreads, but smaller trade sizes, more short trades, more short volume, and smaller ask depths.  -->
+<!-- With regard to Nasdaq, @Alexander:2008th [p.86] find that the removed “bid test is relatively inconsequential.” -->
+@Alexander:2008th [p.84] は、「価格テストがトレーダーの行動や市場の質にどのような影響を与えるかを調査しており、これはSECがこれらのテストを評価する際に関心を持っている領域である」と述べている。@Alexander:2008th [p.86] によれば、NYSEのパイロット株はスプレッドが類似しているものの、取引サイズが小さく、ショート取引が増え、ショート取引量が多く、アスクの深さが小さくなっているとしている。
+Nasdaqに関して、@Alexander:2008th [p.86] は「撤廃されたビッド・テストの影響は比較的軽微である」と指摘している。
+
+<!-- @Diether:2009vu [p.37] find that “while short-selling activity increases both for NYSE- and Nasdaq-listed Pilot stocks, returns and volatility at the daily level are unaffected.” -->
+@Diether:2009vu [p.37] は、「NYSEおよびNasdaqに上場するパイロット株では空売り活動が増加するものの、日次レベルでのリターンやボラティリティには影響がない」と述べている。
 
 
-@Alexander:2008th [p.84] “examine how price tests affect trader behavior and market quality, which are areas of interest given by the [SEC] in evaluating these tests.” @Alexander:2008th [p.86] find that NYSE pilot stocks have similar spreads, but smaller trade sizes, more short trades, more short volume, and smaller ask depths. 
-With regard to Nasdaq, @Alexander:2008th [p.86] find that the removed “bid test is relatively inconsequential.”
+<!-- ###  Discussion questions and exercises -->
+### ディスカッション課題と練習問題
+
+<!-- 1. Earlier we identified one feature of a randomized controlled trial (RCT) as that “proposed analyses are specified in advance”, as in a registered reports process.  -->
+<!-- Why do you think the SEC did not use a registered report for its 2007 paper?  -->
+<!-- Do you think the analyses of the SEC would be more credible if conducted as part of a registered reports process? Why or why not? -->
+1. 先ほど、ランダム化比較試験（RCT）の特徴の一つとして、「提案された分析が事前に指定される」ことを挙げた。これは登録報告（registered reports）のプロセスと同様である。
+SECが2007年の論文で登録報告を使用しなかったのはなぜだと思うか。
+また、SECの分析が登録報告プロセスの一環として実施されていれば、より信頼性が高まったと思うか。その理由も含めて説明せよ。
+
+<!-- 2. Do you have concerns that the results @Alexander:2008th have been p-hacked? What factors increase or reduce your concerns in this regard? -->
+2. @Alexander:2008th の結果がp-hackedされた可能性について懸念があるか。この点に関して懸念を増大させる要因と減少させる要因は何か。
 
 
-@Diether:2009vu [p.37] find that “while short-selling activity increases both for NYSE- and Nasdaq-listed Pilot stocks, returns and volatility at the daily level are unaffected.”
+<!-- 3. Evaluate the hypotheses found in the section of @Diether:2009vu entitled *Testable Hypotheses* with particular sensitivity to concerns about HARKing. What kind of expertise is necessary in evaluating hypotheses in this way? -->
+3. @Diether:2009vu の**検証可能な仮説**というセクションに見られる仮説をHARKingに関する懸念に特に敏感に評価せよ。このような仮説を評価する際にはどのような専門知識が必要か。
 
 
-###  Discussion questions and exercises
+<!-- 4. How might the SEC have conducted Reg SHO as part of a registered reports process open to outside research teams, such as @Alexander:2008th and @Diether:2009vu? How might such a process have been run? What challenges would such a process face? -->
+4. SECは、@Alexander:2008th や@Diether:2009vu のような外部研究チームに公開された登録報告プロセスの一環としてReg SHOを実施することができたか。そのようなプロセスはどのように実施されたか。そのようなプロセスはどのような課題に直面するか。
 
 
-1. Earlier we identified one feature of a randomized controlled trial (RCT) as that “proposed analyses are specified in advance”, as in a registered reports process. Why do you think the SEC did not use a registered report for its 2007 paper? Do you think the analyses of the SEC would be more credible if conducted as part of a registered reports process? Why or why not?
+<!-- ## Analysing natural experiments -->
+## 自然実験の分析
 
-
-2. Do you have concerns that the results Alexander and Peterson ([2008](references.html#ref-Alexander:2008th)) have been p-hacked? What factors increase or reduce your concerns in this regard?
-
-
-3. Evaluate the hypotheses found in the section of Diether et al. ([2009, pp. 41–45](references.html#ref-Diether:2009vu)) entitled *Testable Hypotheses* with particular sensitivity to concerns about HARKing. What kind of expertise is necessary in evaluating hypotheses in this way?
-
-
-4. How might the SEC have conducted Reg SHO as part of a registered reports process open to outside research teams, such as Alexander and Peterson ([2008](references.html#ref-Alexander:2008th)) and Diether et al. ([2009](references.html#ref-Diether:2009vu))? How might such a process have been run? What challenges would such a process face?
-
-
-## Analysing natural experiments
-
-Both Alexander and Peterson ([2008](references.html#ref-Alexander:2008th)) and Diether et al. ([2009](references.html#ref-Diether:2009vu)) use the difference-in-differences estimator (“DiD”) of the causal effect that we saw in [Chapter 3](reg-basics.html). The typical approach to DiD involves estimating a regression of the following form:
+<!-- Both Alexander and Peterson ([2008](references.html#ref-Alexander:2008th)) and Diether et al. ([2009](references.html#ref-Diether:2009vu)) use the difference-in-differences estimator (“DiD”) of the causal effect that we saw in [Chapter 3](reg-basics.html). The typical approach to DiD involves estimating a regression of the following form: -->
+@Alexander:2008th と @Diether:2009vu は、[第3章](reg-basics.html)で見た因果効果の差分の差推定量（"DiD"）を使用している。DiDの典型的なアプローチは、以下の形式の回帰を推定することを含む。
 
 
 $$
@@ -697,41 +794,67 @@ Y_{it} = &\beta_0 + \beta_1 \times POST_t + \beta_2 \times TREAT _i + \\
 \end{aligned}
 $$
 
-In this specification, the estimated treatment effect is given by the fitted coefficient $\hat{\beta} _3$ .
+<!-- In this specification, the estimated treatment effect is given by the fitted coefficient $\hat{\beta} _3$ . -->
+このモデルで、推定された処置効果は、推定された係数 $\hat{\beta} _3$ によって与えられる。
 
-While DiD is clearly popular among researchers in economics and adjacent fields, it is important to note that it is not obvious that it is the best choice in every experimental setting and that credible alternatives exist.
+<!-- While DiD is clearly popular among researchers in economics and adjacent fields, it is important to note that it is not obvious that it is the best choice in every experimental setting and that credible alternatives exist. -->
+DiDは、経済学や関連分野の研究者の間で明らかに人気があるが、すべての実験設定で最良の選択肢であるとは明らかではなく、信頼性のある代替手法が存在することに注意することが重要である。
 
 
-Another approach would be to limit the sample to the post-treatment period and estimate the following regression:
+<!-- Another approach would be to limit the sample to the post-treatment period and estimate the following regression: -->
+別のアプローチは、サンプルを処置後の期間に限定し、以下の回帰を推定することである。
 
 
 $$
 Y_{it} = \beta_0 + \beta_1 \times TREAT_i + \varepsilon_{it}
 $$ 
 
-In this specification, the estimated treatment effect is given by the fitted coefficient $\hat{\beta}_1$ . This approach is common in drug trials, which are typically conducted as RCTs. For example, in the paxlovid trial “participants were randomised 1:1, with half receiving paxlovid and the other half receiving a placebo orally every 12 hours for five days. Of those who were treated within three days of symptom onset, 0.8% (3/389) of patients who received paxlovid were admitted to hospital up to day 28 after randomization, with no deaths. In comparison, 7% (27/385) of patients who received placebo were admitted, with seven deaths.” ([Mahase, 2021, p. 1](references.html#ref-Mahase:2021tz)). For the hospital admission outcome, it would have been possible to incorporate prior hospitalization rates in a difference-in-differences analysis, but this would only make sense if hospitalization rates in one period had a high predictive power for subsequent hospitalization rates.[^8]
+<!-- In this specification, the estimated treatment effect is given by the fitted coefficient $\hat{\beta}_1$ .  -->
+このモデルで、推定された処置効果は、推定された係数 $\hat{\beta}_1$ によって与えられる。
+<!-- This approach is common in drug trials, which are typically conducted as RCTs.  -->
+このアプローチは、通常RCTとして実施される薬物試験で一般的である。
+<!-- For example, in the paxlovid trial “participants were randomised 1:1, with half receiving paxlovid and the other half receiving a placebo orally every 12 hours for five days.  -->
+たとえば、paxlovid試験では、「参加者は1:1で無作為に割り付けられ、半分はpaxlovidを、もう半分は5日間12時間ごとに経口でプラセボを受け取った。」
+<!-- Of those who were treated within three days of symptom onset, 0.8% (3/389) of patients who received paxlovid were admitted to hospital up to day 28 after randomization, with no deaths.  -->
+「症状発現後3日以内に治療を受けた患者のうち、paxlovidを受け取った患者の0.8%（3/389）が入院し、死亡者はいなかった。」
+<!-- In comparison, 7% (27/385) of patients who received placebo were admitted, with seven deaths.” ([Mahase, 2021, p. 1](references.html#ref-Mahase:2021tz)).  -->
+「対照群の患者のうち、7%（27/385）が入院し、7人が死亡した。」([Mahase, 2021, p. 1](references.html#ref-Mahase:2021tz))。
+<!-- For the hospital admission outcome, it would have been possible to incorporate prior hospitalization rates in a difference-in-differences analysis, but this would only make sense if hospitalization rates in one period had a high predictive power for subsequent hospitalization rates.[^8] -->
+病院入院の結果については、差分の差分（difference-in-differences）分析に過去の入院率を組み込むことも可能であった。しかし、これはある期間の入院率がその後の入院率を高い精度で予測できる場合にのみ意味をなす。[^8]
 
 
-Yet another approach would include pre-treatment values of the outcome variable as a control:
 
+<!-- Yet another approach would include pre-treatment values of the outcome variable as a control: -->
+もう1つのアプローチは、処置前の結果変数の値を制御変数として含めることである。
 
 $$
 Y_{it} = \beta_0 + \beta_1 \times TREAT _i + \beta_2 \times Y_{i,t-1} + \varepsilon_{it}
 $$
 
+<!-- To evaluate each of these approaches, we can use simulation analysis. The following analysis is somewhat inspired by Frison and Pocock ([1992](references.html#ref-Frison:1992te)), who use different assumptions about their data more appropriate to their (medical) setting and who focus on mathematical analysis instead of simulations. -->
+これらのアプローチを評価するために、シミュレーション分析を使用することができる。以下の分析は、Frison and Pocock ([1992](references.html#ref-Frison:1992te))に触発されたもので、彼らは（医学的な）設定に適した異なるデータの仮定を使用し、数学的な分析に焦点を当てている。
 
-To evaluate each of these approaches, we can use simulation analysis. The following analysis is somewhat inspired by Frison and Pocock ([1992](references.html#ref-Frison:1992te)), who use different assumptions about their data more appropriate to their (medical) setting and who focus on mathematical analysis instead of simulations.
 
+<!-- @Frison:1992te assume a degree of correlation in measurements of outcome variables for a given unit (e.g., patient) that is independent of the time between observations.  -->
+@Frison:1992te は、観測間の時間に依存しない、ある単位（たとえば、患者）の結果変数の測定値における相関の程度を仮定している。
+<!-- A more plausible model in many business settings would be correlation in outcome measures for a given unit (e.g., firm) that fades as observations become further apart in time.  -->
+多くのビジネス設定では、ある単位（たとえば、企業）の結果変数の測定値における相関が、観測間の時間が経つにつれて薄れるというモデルがより妥当である。
+<!-- Along these lines, we create `get_outcomes()` below to generate data for outcomes in the absence of treatment.  -->
+このような考え方に沿って、以下の`get_outcomes()`を作成して、処置がない場合の結果のデータを生成する。
+<!-- Specifically, we assume that, if there are no treatment or period effects, the outcome in question follows the autoregressive process embedded in `get_outcomes()`, which has the key parameter $\rho$ (`rho`).[^9] -->
+具体的には、処置効果や期間効果がない場合、対象の結果は、`get_outcomes()`に埋め込まれた自己回帰過程に従うと仮定する。この過程には、主要なパラメータ $\rho$ (`rho`) が含まれている。[^9]
 
-Frison and Pocock ([1992](references.html#ref-Frison:1992te)) assume a degree of correlation in measurements of outcome variables for a given unit (e.g., patient) that is independent of the time between observations. A more plausible model in many business settings would be correlation in outcome measures for a given unit (e.g., firm) that fades as observations become further apart in time. Along these lines, we create `get_outcomes()` below to generate data for outcomes in the absence of treatment. Specifically, we assume that, if there are no treatment or period effects, the outcome in question follows the autoregressive process embedded in `get_outcomes()`, which has the key parameter $\rho$ (`rho`).[^9]
-
+[^9]: 999
 
 
 
 ```{r}
 #| eval: false
 
-get_outcomes <- function(rho = 0, periods = 7) {
+get_outcomes <- function(
+  rho = 0, 
+  periods = 7
+  ) {
   e <- rnorm(periods)
   y <- rep(NA, periods)
   y[1] <- e[1]
@@ -743,7 +866,14 @@ get_outcomes <- function(rho = 0, periods = 7) {
 ```
 
 
-The `get_sample()` function below uses `get_outcomes()` for `n` firms for given values of `rho`, `periods` (the number of periods observed for each firm), and `effect` (the underlying size of the effect of treatment on `y`). Here treatment is randomly assigned to half the firms in the sample and the effect is added to `y` when both `treat` and `post` are true. We also add a time-specific effect (`t_effect`) for each period, which is common to all observations (a common justification for the use of DiD is the existence of such period effects). 
+<!-- The `get_sample()` function below uses `get_outcomes()` for `n` firms for given values of `rho`, `periods` (the number of periods observed for each firm), and `effect` (the underlying size of the effect of treatment on `y`).  -->
+次の`get_sample()`関数は、`rho`、`periods`（各企業について観測される期間の数）、および`effect`（`y`に対する処置の効果の基礎となるサイズ）の与えられた値に対して、`n`企業のために`get_outcomes()`を使用する。
+<!-- Here treatment is randomly assigned to half the firms in the sample and the effect is added to `y` when both `treat` and `post` are true.  -->
+ここでは、処置はサンプルの半分の企業にランダムに割り当てられ、`treat`と`post`の両方が真の場合に`y`に効果が追加される。
+<!-- We also add a time-specific effect (`t_effect`) for each period, which is common to all observations (a common justification for the use of DiD is the existence of such period effects).  -->
+また、各期間に対して時間特有の効果（`t_effect`）を追加し、すべての観測に共通である（DiDの使用の一般的な正当化の理由の1つは、このような期間効果が存在することである）。
+
+
 
 
 
@@ -770,13 +900,20 @@ get_sample <- function(n = 100, rho = 0, periods = 7, effect = 0) {
 ```
 
 
-The `est_effect()` function below applies a number of estimators to a given data set and returns the estimated treatment effect for each estimator. The estimators we consider are the following (the labels *POST*, *CHANGE*, and *ANCOVA* come from [Frison and Pocock, 1992](references.html#ref-Frison:1992te)):
+<!-- The `est_effect()` function below applies a number of estimators to a given data set and returns the estimated treatment effect for each estimator.  -->
+以下の`est_effect()`関数は、与えられたデータセットにいくつかの推定量を適用し、各推定量の推定処置効果を返す。
+<!-- The estimators we consider are the following (the labels *POST*, *CHANGE*, and *ANCOVA* come from [Frison and Pocock, 1992](references.html#ref-Frison:1992te)): -->
+考慮する推定量は以下の通りである（ラベル*POST*、*CHANGE*、*ANCOVA*は[Frison and Pocock, 1992](references.html#ref-Frison:1992te)から来ている）。
 
 
-- *DiD*, the difference-in-differences estimator estimated by regressing `y` on the treatment indicator, `treat` interacted with the post-treatment indicator, `post` (with the `[lm()](https://rdrr.io/r/stats/lm.html)` function automatically including the main effects of `treat` and `post`), as in [Equation 19.1](#eq-did).
-- *POST*, which is based on OLS regression of `y` on `treat`, but with the sample restricted to the post-treatment observations, as in [Equation 19.2](#eq-post).
-- *CHANGE*, which is based on OLS regression of the change in the outcome on `treat`. The change in outcome (`y_change`) is calculated as the mean of post-treatment outcome value (`y_post`) minus the mean of the pre-treatment outcome value (`y_pre`) for each unit.
-- *ANCOVA*, which is a regression of `y_post` on `treat` and `y_pre`, as in [Equation 19.3](#eq-ancova).
+<!-- - *DiD*, the difference-in-differences estimator estimated by regressing `y` on the treatment indicator, `treat` interacted with the post-treatment indicator, `post` (with the `[lm()](https://rdrr.io/r/stats/lm.html)` function automatically including the main effects of `treat` and `post`), as in [Equation 19.1](#eq-did). -->
+- *DiD*は、処置指標`treat`と処置後指標`post`を交互作用させたものを回帰することによって推定される差分の差推定量であり、`treat`と`post`の主効果を自動的に含む`[lm()](https://rdrr.io/r/stats/lm.html)`関数によって推定される。[Equation 19.1](#eq-did)のようなものである。
+<!-- - *POST*, which is based on OLS regression of `y` on `treat`, but with the sample restricted to the post-treatment observations, as in [Equation 19.2](#eq-post). -->
+- *POST*は、`y`を`treat`に対してOLS回帰するが、サンプルを処置後の観測に制限したものであり、[Equation 19.2](#eq-post)のようなものである。
+<!-- - *CHANGE*, which is based on OLS regression of the change in the outcome on `treat`. The change in outcome (`y_change`) is calculated as the mean of post-treatment outcome value (`y_post`) minus the mean of the pre-treatment outcome value (`y_pre`) for each unit. -->
+- *CHANGE*は、アウトカムの変化を`treat`に対してOLS回帰するものである。アウトカムの変化（`y_change`）は、各単位について処置後のアウトカム値（`y_post`）の平均から処置前のアウトカム値（`y_pre`）の平均を引いたものである。
+<!-- - *ANCOVA*, which is a regression of `y_post` on `treat` and `y_pre`, as in [Equation 19.3](#eq-ancova). -->
+- *ANCOVA*は、`y_post`を`treat`と`y_pre`に対して回帰するものであり、[Equation 19.3](#eq-ancova)のようなものである。
 
 
 
@@ -951,34 +1088,35 @@ In short, notwithstanding its popularity, it is far from clear that DiD is the b
 Because of the plausibly random assignment mechanism used by the SEC, Reg SHO provides a very credible natural experiment. However, in many claimed natural experiments, it will be “nature” who is assigning treatment. In Michels ([2017](@Michels:2017uc)), it was literally nature doing the assignment through the timing of natural disasters. While natural disasters are clearly not completely random, as hurricanes are more likely to strike certain locations at certain times of year, this is not essential for the natural experiment to provide a setting from which causal inferences can be credibly drawn. What is necessary in Michels ([2017](@Michels:2017uc)) is that treatment assignment is **as-if random** with regard to the timing of the natural disaster before or after the end of the fiscal period and discussion questions in [Chapter 17](natural.html) explored these issues. 
 
 
-More often in claimed natural experiments, it will be economic actors or forces, rather than nature, assigning treatment. While such economic actors and forces are unlikely to act at random, again the critical question is whether treatment assignment is *as-if* random. To better understand the issues, we consider a well-studied setting, that of brokerage closures as studied in Kelly and Ljungqvist ([2012](@Kelly:2012ul)).
+More often in claimed natural experiments, it will be economic actors or forces, rather than nature, assigning treatment. While such economic actors and forces are unlikely to act at random, again the critical question is whether treatment assignment is *as-if* random. To better understand the issues, we consider a well-studied setting, that of brokerage closures as studied in @Kelly:2012ul
 
 
-Kelly and Ljungqvist ([2012, p. 1368](@Kelly:2012ul)) argue that “brokerage closures are a plausibly exogenous source of variation in the extent of analyst coverage, as long as two conditions are satisfied. First, the resulting coverage terminations must correlate with an increase in information asymmetry. … Second, the terminations must only affect price and demand through their effect on information asymmetry.” Interestingly, these are essentially questions 2 and 3 that we ask in evaluating instrumental variables in [Section 20.3](iv.html#sec-iv-reasoning). The analogue with instrumental variables applies because Kelly and Ljungqvist ([2012](references.html#ref-Kelly:2012ul)) are primarily interested in the effects of changes in information asymmetry, not the effects of brokerage closures *per se*. In principle, brokerage closures could function much like an instrumental variable, except that Kelly and Ljungqvist ([2012](references.html#ref-Kelly:2012ul)) estimate **reduced-form** regressions whereby outcomes are related directly to brokerage closures, such as in Table 3 ([Kelly and Ljungqvist, 2012, p. 1391](references.html#ref-Kelly:2012ul)). But the first of the three questions from [Section 20.3](iv.html#sec-iv-reasoning) remains relevant, and this is the critical question for evaluating any natural experiment: **Is treatment assignment (as-if) random?**
+@Kelly:2012ul [p.1368] argue that “brokerage closures are a plausibly exogenous source of variation in the extent of analyst coverage, as long as two conditions are satisfied. First, the resulting coverage terminations must correlate with an increase in information asymmetry. … Second, the terminations must only affect price and demand through their effect on information asymmetry.” Interestingly, these are essentially questions 2 and 3 that we ask in evaluating instrumental variables in [Section 20.3](iv.html#sec-iv-reasoning). The analogue with instrumental variables applies because @Kelly:2012ul are primarily interested in the effects of changes in information asymmetry, not the effects of brokerage closures *per se*. In principle, brokerage closures could function much like an instrumental variable, except that @Kelly:2012ul estimate **reduced-form** regressions whereby outcomes are related directly to brokerage closures, such as in Table 3 @Kelly:2012ul [p.1391]. But the first of the three questions from [Section 20.3](iv.html#sec-iv-reasoning) remains relevant, and this is the critical question for evaluating any natural experiment: **Is treatment assignment (as-if) random?**
 
 
-Like many researchers, Kelly and Ljungqvist ([2012](references.html#ref-Kelly:2012ul)) do not address the (as-if) randomness of treatment assignment directly. Instead, Kelly and Ljungqvist ([2012](references.html#ref-Kelly:2012ul)) focus on whether brokerage closure-related terminations of analyst coverage “constitute a suitably exogenous shock to the investment environment”. Kelly and Ljungqvist ([2012](references.html#ref-Kelly:2012ul)) argue that they do “*unless* brokerage firms quit research because their analysts possessed negative private information about the stocks they covered.” But this reasoning is incomplete. For sure, brokerage firms not quitting research for the reason suggested is a *necessary* condition for a natural experiment (otherwise the issues with using brokerage closures as a natural experiment are quite apparent). But it is not a *sufficient* condition. If the firms encountering brokerage closure-related terminations of analyst coverage had different trends in information asymmetry for other reasons, the lack of private information is inadequate to give us a natural experiment.
+Like many researchers, @Kelly:2012ul do not address the (as-if) randomness of treatment assignment directly. Instead, @Kelly:2012ul focus on whether brokerage closure-related terminations of analyst coverage “constitute a suitably exogenous shock to the investment environment”. @Kelly:2012ul argue that they do “*unless* brokerage firms quit research because their analysts possessed negative private information about the stocks they covered.” But this reasoning is incomplete. For sure, brokerage firms not quitting research for the reason suggested is a *necessary* condition for a natural experiment (otherwise the issues with using brokerage closures as a natural experiment are quite apparent). But it is not a *sufficient* condition. If the firms encountering brokerage closure-related terminations of analyst coverage had different trends in information asymmetry for other reasons, the lack of private information is inadequate to give us a natural experiment.
 
 
 In general, we should be able to evaluate the randomness of treatment assignment much as we would do so with an explicitly randomized experiment. Burt ([2000](references.html#ref-Burt:2000tm)) suggest that “statisticians will compare the homogeneity of the treatment group populations to assess the distribution of the pretreatment demographic characteristics and confounding factors.” With explicit randomization, statistically significant differences in pretreatment variables might prompt checks to ensure that, say, there was not “deliberate alteration of or noncompliance with the random assignment code” or any other anomalies. Otherwise, we might have greater confidence that randomization was implemented effectively, and hence that causal inferences might reliably be drawn from the study.
 
 
-So, a sensible check with a natural experiment would seem to be to compare various pre-treatment variables across treatment groups to gain confidence that “nature” has indeed randomized treatment assignment. In this regard, Table 1 of Kelly and Ljungqvist ([2012](references.html#ref-Kelly:2012ul)) is less than assuring. Arguably, one can only encounter brokerage closure-related terminations of analyst coverage if one has analyst coverage in the first place; so the relevant comparison is arguably between the first and third columns of data. There we see that the typical firm in the terminations sample (column 1) is larger, has higher monthly stock turnover, higher daily return volatility, and more brokers covering the stock than does the typical firm in the universe of covered stocks in 2004 (column 3). So clearly “nature” has not randomly selected firms from the universe of covered stocks in 2004.
+So, a sensible check with a natural experiment would seem to be to compare various pre-treatment variables across treatment groups to gain confidence that “nature” has indeed randomized treatment assignment. In this regard, Table 1 of @Kelly:2012ul is less than assuring. Arguably, one can only encounter brokerage closure-related terminations of analyst coverage if one has analyst coverage in the first place; so the relevant comparison is arguably between the first and third columns of data. There we see that the typical firm in the terminations sample (column 1) is larger, has higher monthly stock turnover, higher daily return volatility, and more brokers covering the stock than does the typical firm in the universe of covered stocks in 2004 (column 3). So clearly “nature” has not randomly selected firms from the universe of covered stocks in 2004.
 
 
 However, we might come to a similar conclusion if we compared the Reg SHO pilot stocks with the universe of traded stocks or some other broad group. Just as it was essential to correctly identify the population that the SEC considered in randomizing treatment assignment, it is important to identify the population that “nature” considered in assigning treatment in evaluating any natural experiment. While the SEC provided a statement detailing how it constructed the sample, “nature” is not going to do the same and researchers need to consider carefully which units were considered for (as if) random assignment to treatment.
 
 
-In this regard, even assuming that the controls used in Table 2 of Kelly and Ljungqvist ([2012, p. 1388](references.html#ref-Kelly:2012ul)) were the ones “nature” herself considered, it seems that the natural experiment did not assign treatment in a sufficiently random way. Table 2 studies four outcomes: bid-ask spreads, the Amihud illiquidity measure, missing- and zero-return days, and measures related to earnings announcements. In each case, there are pre-treatment differences that sometimes exceed the DiD estimates. For example, pre-treatment bid-ask spreads for treatment and control firms are 1.126 and 1.089, a 0.037 difference that is presumably statistically significant given that the smaller DiD estimate of 0.020 has a p-value of 0.011.[10](#fn10) In light of this evidence, it seems that Kelly and Ljungqvist ([2012](references.html#ref-Kelly:2012ul)) need to rely on the parallel trends assumption to draw causal inferences and we evaluate the plausibility of this assumption in the next section.
+In this regard, even assuming that the controls used in Table 2 of@Kelly:2012ul [p.1388] were the ones “nature” herself considered, it seems that the natural experiment did not assign treatment in a sufficiently random way. Table 2 studies four outcomes: bid-ask spreads, the Amihud illiquidity measure, missing- and zero-return days, and measures related to earnings announcements. In each case, there are pre-treatment differences that sometimes exceed the DiD estimates. For example, pre-treatment bid-ask spreads for treatment and control firms are 1.126 and 1.089, a 0.037 difference that is presumably statistically significant given that the smaller DiD estimate of 0.020 has a p-value of 0.011.[10](#fn10) 
+In light of this evidence, it seems that @Kelly:2012ul need to rely on the parallel trends assumption to draw causal inferences and we evaluate the plausibility of this assumption in the next section.
 
 
-It is important to recognize that the shortcomings of broker closures as a natural experiment do not completely undermine the ability of Kelly and Ljungqvist ([2012](references.html#ref-Kelly:2012ul)) to draw causal inferences. There appears to be an unfortunate tendency to believe, on the one hand, that without some kind of natural experiment, one cannot draw causal inferences. On the other hand, there is an apparent tendency to view natural experiments as giving *carte blanche* to researchers to draw all kinds of causal inferences, even when the alleged identification strategies do not, properly understood, support such inferences.
+It is important to recognize that the shortcomings of broker closures as a natural experiment do not completely undermine the ability of @Kelly:2012ul to draw causal inferences. There appears to be an unfortunate tendency to believe, on the one hand, that without some kind of natural experiment, one cannot draw causal inferences. On the other hand, there is an apparent tendency to view natural experiments as giving *carte blanche* to researchers to draw all kinds of causal inferences, even when the alleged identification strategies do not, properly understood, support such inferences.
 
 
-In the case of Kelly and Ljungqvist ([2012](references.html#ref-Kelly:2012ul)), it seems the authors would like to believe that they have a natural experiment that allows them to draw inferences about the effects of broker closures on information asymmetry (Table 2) and, because broker closures only affect stock prices through their effects on information asymmetry, to conclude from the evidence in Table 3 that increases in information asymmetry reduce stock prices. But Table 2 could have been based on a bullet-proof identification strategy without implying that broker closures only affect stock prices through their effects on information asymmetry. There is really no evidence offered for this claim, one that is arguably very difficult to support.
+In the case of @Kelly:2012ul, it seems the authors would like to believe that they have a natural experiment that allows them to draw inferences about the effects of broker closures on information asymmetry (Table 2) and, because broker closures only affect stock prices through their effects on information asymmetry, to conclude from the evidence in Table 3 that increases in information asymmetry reduce stock prices. But Table 2 could have been based on a bullet-proof identification strategy without implying that broker closures only affect stock prices through their effects on information asymmetry. There is really no evidence offered for this claim, one that is arguably very difficult to support.
 
 
-At the same time, it is conceptually possible that Kelly and Ljungqvist ([2012](references.html#ref-Kelly:2012ul)) could provide compelling evidence that the only plausible explanation for the abnormal returns in Table 3 is reductions in information asymmetry, even if the results in Table 2 were irredeemably corrupted (e.g., because of failure of parallel trends). Evidence that firms did not “quit research because their analysts possessed negative private information about the stocks they covered” might support drawing certain inferences from Table 3 even without a credible equivalent of Table 2.
+At the same time, it is conceptually possible that @Kelly:2012ul could provide compelling evidence that the only plausible explanation for the abnormal returns in Table 3 is reductions in information asymmetry, even if the results in Table 2 were irredeemably corrupted (e.g., because of failure of parallel trends). Evidence that firms did not “quit research because their analysts possessed negative private information about the stocks they covered” might support drawing certain inferences from Table 3 even without a credible equivalent of Table 2.
 
 
 ## The parallel trends assumption
@@ -988,13 +1126,13 @@ At the same time, it is conceptually possible that Kelly and Ljungqvist ([2012](
 Examining the studies of the direct effects of Reg SHO discussed in [Section 19.2.3](#sec-sho-early), we see that randomization generally provided balance in pre-treatment outcome values. In such settings, we see that DiD can provide unbiased estimates of causal effects, but that it has little appeal when treatment assignment is random. Indeed, if there is little to distinguish treatment and control observations in terms of pre-treatment outcome values, DiD will differ little from simply comparing differences in post-treatment means (the *POST* estimator discussed above).
 
 
-But in many settings, such as that in Kelly and Ljungqvist ([2012](references.html#ref-Kelly:2012ul)), differences in pre-treatment outcome values exist, suggesting that random assignment is not an appropriate assumption. In such settings, it will therefore be necessary to rely on a different assumption to justify the use of DiD for causal inferences. This **parallel trends assumption** posits that, but for treatment, the expected change in the outcome variable for the treated observations would equal that for control observations. Using this assumption, we can attribute any difference in the change in the outcome variable between the treated and control observations to a treatment effect and random variation and use standard tools of statistical inference to evaluate the null hypothesis that any difference is due to random variation. 
+But in many settings, such as that in @Kelly:2012ul, differences in pre-treatment outcome values exist, suggesting that random assignment is not an appropriate assumption. In such settings, it will therefore be necessary to rely on a different assumption to justify the use of DiD for causal inferences. This **parallel trends assumption** posits that, but for treatment, the expected change in the outcome variable for the treated observations would equal that for control observations. Using this assumption, we can attribute any difference in the change in the outcome variable between the treated and control observations to a treatment effect and random variation and use standard tools of statistical inference to evaluate the null hypothesis that any difference is due to random variation. 
 
 
-That DiD can be predicated on an assumption other than (as-if) random assignment may explain its popularity. Cunningham ([2021, p. 406](references.html#ref-Cunningham:2021vk)) suggests that DiD “has become the single most popular research design in the quantitative social sciences” and Armstrong et al. ([2022, p. 4](references.html#ref-Armstrong:2021uo)) find rapid “increase in [the number of] papers using quasi-experimental methods to draw causal inferences, that more than 75% of such papers use variations of the classic difference-in-differences design.” 
+That DiD can be predicated on an assumption other than (as-if) random assignment may explain its popularity. Cunningham ([2021, p. 406](references.html#ref-Cunningham:2021vk)) suggests that DiD “has become the single most popular research design in the quantitative social sciences” and @Armstrong:2021uo [p.4] find rapid “increase in [the number of] papers using quasi-experimental methods to draw causal inferences, that more than 75% of such papers use variations of the classic difference-in-differences design.” 
 
 
-Arguably DiD is more often used in settings that *without* (as-if) random assignment of treatment. For example, one of the most highly cited papers using DiD is Card and Krueger ([1994](references.html#ref-Card:1994aa)), which compares the change in employment in the fast-food industry in New Jersey and Philadelphia before and after an increase in the minimum wage in New Jersey. In this case, treatment assignment was very clearly non-random—it was a function of being located in New Jersey.
+Arguably DiD is more often used in settings that *without* (as-if) random assignment of treatment. For example, one of the most highly cited papers using DiD is @Card:1994aa, which compares the change in employment in the fast-food industry in New Jersey and Philadelphia before and after an increase in the minimum wage in New Jersey. In this case, treatment assignment was very clearly non-random—it was a function of being located in New Jersey.
 
 
 Unlike the assumption of random assignment, the parallel trends assumption is not implied by a reasonable description of a physical or economic process and thus is of a fundamentally different nature. Random assignment is widely regarded as a reasonable description of, say, a coin toss or the generation of pseudo-random numbers using a computer. In contrast, it is difficult to think of a mechanism for imposing parallel trends on the data. Because DiD is—unlike instrumental variables or regression discontinuity designs—generally *not* predicated on “as-if random variation in the explanatory variable of interest”, it is not correct to consider DiD as a **quasi-experimental method** ([Armstrong et al., 2022, p. 3](references.html#ref-Armstrong:2021uo)).[11](#fn11) 
@@ -1018,10 +1156,10 @@ Two popular approaches to address the parallel trends assumption are discussed b
 The second approach is the placebo test, variants of which are discussed by Cunningham ([2021](references.html#ref-Cunningham:2021vk)) and Huntington-Klein ([2021](references.html#ref-Huntington-Klein:2021uc)). One placebo test involves evaluating the treatment effect in a setting where prior beliefs hold that there should be no effect. Another approach involves a kind of random assignment of a pseudo-treatment. In either case, not finding an effect is considered as providing support for the parallel trends assumption in the analysis of greater interest to the researcher. Of course, one might be sceptical of such placebo tests in light of the concerns raised at the start of this chapter. If applying DiD to state-level data on spending on science, space, and technology provides evidence of an effect on suicides by hanging, strangulation, and suffocation, not finding an effect on deaths by drowning after falling out of a canoe or kayak may provide limited assurance.
 
 
-To illustrate, we now apply a kind of placebo test to evaluate the parallel trends assumption for bid-ask spreads, one of the variables considered in the DiD analysis of Table 2 of Kelly and Ljungqvist ([2012](references.html#ref-Kelly:2012ul)) (we choose spreads in part because it is easy to calculate).
+To illustrate, we now apply a kind of placebo test to evaluate the parallel trends assumption for bid-ask spreads, one of the variables considered in the DiD analysis of Table 2 of @Kelly:2012ul (we choose spreads in part because it is easy to calculate).
 
 
-We first create the data set `spreads`, which contains data on the average spread for stocks over three-month periods—aligning with one measure used Table 2 of Kelly and Ljungqvist ([2012](references.html#ref-Kelly:2012ul))—for a sample period running from Q1, 2001 (the first quarter of 2001) to Q1, 2008, which is the sample period in Kelly and Ljungqvist ([2012](references.html#ref-Kelly:2012ul)). We will conduct a study of a pseudo-treatment that we will assume applies for periods beginning in Q1, 2004, which is roughly halfway through the sample period and we code `post` accordingly.
+We first create the data set `spreads`, which contains data on the average spread for stocks over three-month periods—aligning with one measure used Table 2 of @Kelly:2012ul—for a sample period running from Q1, 2001 (the first quarter of 2001) to Q1, 2008, which is the sample period in @Kelly:2012ul. We will conduct a study of a pseudo-treatment that we will assume applies for periods beginning in Q1, 2004, which is roughly halfway through the sample period and we code `post` accordingly.
 
 
 :::{.panel-tabset}
@@ -1139,13 +1277,13 @@ One indirect effect of short-selling that has been studied in subsequent researc
 ###  Earnings management after Dechow et al. ([1995](references.html#ref-Dechow:1995wr))
 
 
-In [Chapter 16](earnings-mgt.html), we saw that early earnings management research used firm-specific regressions in estimating standard models such as the Jones ([1991](references.html#ref-Jones:1991vx)) model. Fang et al. ([2016](references.html#ref-Fang:2016uy)) apply subsequent innovations in measurement of earnings management, such the **performance-matched discretionary accruals** measure developed in Kothari et al. ([2005](references.html#ref-Kothari:2005aa)).
+In [Chapter 16](earnings-mgt.html), we saw that early earnings management research used firm-specific regressions in estimating standard models such as the Jones ([1991](references.html#ref-Jones:1991vx)) model. Fang et al. ([2016](references.html#ref-Fang:2016uy)) apply subsequent innovations in measurement of earnings management, such the **performance-matched discretionary accruals** measure developed in @Kothari:2005aa .
 
 
-Kothari et al. ([2005](references.html#ref-Kothari:2005aa)) replace the firm-specific regressions seen in Dechow et al. ([1995](references.html#ref-Dechow:1995wr)) with regressions by industry-year, where industries are defined as firms grouped by two-digit SIC codes. Kothari et al. ([2005](references.html#ref-Kothari:2005aa)) also add an intercept term to the Jones Model and estimate discretionary accruals under the Modified Jones Model by applying the coefficients from the Jones Model to the analogous terms of the Modified Jones Model.[15](#fn15)
+@Kothari:2005aa  replace the firm-specific regressions seen in Dechow et al. ([1995](references.html#ref-Dechow:1995wr)) with regressions by industry-year, where industries are defined as firms grouped by two-digit SIC codes. @Kothari:2005aa  also add an intercept term to the Jones Model and estimate discretionary accruals under the Modified Jones Model by applying the coefficients from the Jones Model to the analogous terms of the Modified Jones Model.[15](#fn15)
 
 
-To calculate performance-matched discretionary accruals, Kothari et al. ([2005, p. 1263](references.html#ref-Kothari:2005aa)) “match each sample firm with the firm from the same fiscal year-industry that has the closest return on assets as the given firm. The performance-matched discretionary accruals … are then calculated as the firm-specific discretionary accruals minus the discretionary accruals of the matched firm.” This is the primary measure of earnings management used by Fang et al. ([2016](references.html#ref-Fang:2016uy)), but note that Fang et al. ([2016](references.html#ref-Fang:2016uy)) use the 48-industry Fama-French groupings, rather than the two-digit SIC codes used in Kothari et al. ([2005](references.html#ref-Kothari:2005aa)).
+To calculate performance-matched discretionary accruals, Kothari et al. ([2005, p. 1263](references.html#ref-Kothari:2005aa)) “match each sample firm with the firm from the same fiscal year-industry that has the closest return on assets as the given firm. The performance-matched discretionary accruals … are then calculated as the firm-specific discretionary accruals minus the discretionary accruals of the matched firm.” This is the primary measure of earnings management used by Fang et al. ([2016](references.html#ref-Fang:2016uy)), but note that Fang et al. ([2016](references.html#ref-Fang:2016uy)) use the 48-industry Fama-French groupings, rather than the two-digit SIC codes used in @Kothari:2005aa .
 
 
 ###  FHK: Data steps
@@ -1486,7 +1624,7 @@ ff_data <-
 3. Why is `filter(fyear == lag(fyear) + 1)` required in the creation of `controls_raw`?
 
 
-4. Does the argument for using `salerect_c_at * b_sale_c_at` in creating non-discretionary accruals make sense to you? How do Kothari et al. ([2005](references.html#ref-Kothari:2005aa)) explain this?
+4. Does the argument for using `salerect_c_at * b_sale_c_at` in creating non-discretionary accruals make sense to you? How do @Kothari:2005aa  explain this?
 
 
 5. Does the code above ensure that a performance-matched control firm is used as a control just once? If so, which aspect of the code ensures this is true? If not, how might you ensure this and does this cause problems? (Just describe the approach in general; no need to do this.)
@@ -1651,7 +1789,7 @@ sho_accruals_alt <-
 6. What is the range of values for `year` in `sho_accruals`? Does this suggest any issues with the code `post = year %in% c(2008, 2009, 2010)` above? If so, does fixing any issue have an impact on the results reported above?
 
 
-7. Would it make sense, in creating `perf` above, if we instead calculated `ib_at` as `if_else(at > 0, ib / at, NA))`? What is the effect on the regression results if we use this modified calculation of `ib_at`? What do Kothari et al. ([2005](references.html#ref-Kothari:2005aa)) recommend on this point? (*Hint*: Use `pm_lag = FALSE` where applicable.)
+7. Would it make sense, in creating `perf` above, if we instead calculated `ib_at` as `if_else(at > 0, ib / at, NA))`? What is the effect on the regression results if we use this modified calculation of `ib_at`? What do @Kothari:2005aa  recommend on this point? (*Hint*: Use `pm_lag = FALSE` where applicable.)
 
 
 8. Fang et al. ([2019, p. 10](references.html#ref-Fang:2019tt)) follow Fang et al. ([2016](references.html#ref-Fang:2016uy)), who “exclude observations for which the absolute value of total accruals-to-total assets exceeds one. This is a standard practice in the accounting literature because firms with such high total accruals-to-total assets are often viewed as extreme outliers. Nonetheless, the FHK results are robust to winsorizing the accrual measures at the 1% and 99% levels instead of excluding extreme outliers.” Does this claim hold up in the reproduction above? What happens if the `[filter()](https://dplyr.tidyverse.org/reference/filter.html)` on `abs(acc_at) <= 1` is removed from the code above? (*Hint*: Use `drop_extreme = FALSE` where applicable.)
@@ -1660,13 +1798,30 @@ sho_accruals_alt <-
 9. Explain what each line of the function `plot_coefficients()` before the line starting with `[ggplot()](https://ggplot2.tidyverse.org/reference/ggplot.html)` is doing. (*Hint*: It may be helpful to store the model that is fed to the function above in the variable `model` and then run the function line by line.)
 
 
-## Statistical inference
+<!-- ## Statistical inference -->
+## 統計的推論
 
 
-One point of difference between FHK and BDLYY concerns clustered standard errors. Fang et al. ([2016](references.html#ref-Fang:2016uy)) generally use “standard errors clustered by year and firm” ([2016, p. 1269](references.html#ref-Fang:2016uy)), while Black et al. ([2019](references.html#ref-Black:2019vv)) advocate the use of standard errors clustered by firm. Citing Cameron et al. ([2008](references.html#ref-Cameron:2008ws)), Black et al. ([2019, p. 30](references.html#ref-Black:2019vv)) suggest that “clustered standard errors with a small number of clusters can be downward biased.” In the context of FHK, there are thousands of firms, but a relatively small number of years, so clustering by year (or firm *and* year) may result in problematic standard error estimates (see [Section 5.6.6](stat-inf.html#sec-se-calcs)).
+<!-- One point of difference between FHK and BDLYY concerns clustered standard errors.  -->
+FHKとBDLYYの間の違いの一つは、クラスター標準誤差に関することである。
+<!-- Fang et al. ([2016](references.html#ref-Fang:2016uy)) generally use “standard errors clustered by year and firm” ([2016, p.1269](references.html#ref-Fang:2016uy)), while Black et al. ([2019](references.html#ref-Black:2019vv)) advocate the use of standard errors clustered by firm.  -->
+Fang et al. ([2016](references.html#ref-Fang:2016uy))は一般的に「年と企業でクラスタリングされた標準誤差」を使用しているが、Black et al. ([2019](references.html#ref-Black:2019vv))は企業でクラスタリングされた標準誤差の使用を提唱している。
+<!-- Citing Cameron et al. ([2008](references.html#ref-Cameron:2008ws)), Black et al. ([2019, p.30](references.html#ref-Black:2019vv)) suggest that “clustered standard errors with a small number of clusters can be downward biased.”  -->
+Cameron et al. ([2008](references.html#ref-Cameron:2008ws))を引用して、Black et al. ([2019, p.30](references.html#ref-Black:2019vv))は「クラスタリングされた標準誤差は、クラスター数が少ない場合には下方バイアスになる可能性がある」と述べている。
+<!-- In the context of FHK, there are thousands of firms, but a relatively small number of years, so clustering by year (or firm *and* year) may result in problematic standard error estimates (see [Section 5.6.6](stat-inf.html#sec-se-calcs)). -->
+FHKの文脈では数千の企業が存在しているが、比較的少数の年数であり、年でクラスタリング（または企業*および*年度でクラスタリング）を行うと、問題のある標準誤差の推定値が得られる可能性があります（[Section 5.6.6](stat-inf.html#sec-se-calcs)を参照）。
 
 
-One approach to determining the appropriate clustering is more empirical. In this regard, it is useful to note that cluster-robust standard errors are a generalization of an idea from White ([1980](references.html#ref-White:1980aa)). White ([1980](references.html#ref-White:1980aa)) provides not only an estimator of standard errors that is robust to heteroskedasticity, but also a test of a null hypothesis of homoskedasticity. Intuitively, if the covariance matrix assuming heteroskedasticity is sufficiently different from that assuming homoskedasticity, then we may reject the null hypothesis of homoskedasticity. With a little algebra, it would be possible to develop a test analogous to that of White ([1980](references.html#ref-White:1980aa)) of the null hypothesis of no clustering on variable \(g\). In practice, many researchers will, lacking a formally derived test, compare standard errors with and without clustering on variable \(g\) and elect to cluster on variable \(g\) when the standard errors when doing so seem significantly higher than when not doing so. This heuristic breaks down in the case of Fang et al. ([2016](references.html#ref-Fang:2016uy)) because standard errors are generally lower when clustering on firm and year than when clustering firm alone. However, if clustering on firm alone is appropriate, standard errors clustering on firm and year will provide noisier estimates than clustering on firm alone, and thus could be lower or higher in any given data set.
+<!-- One approach to determining the appropriate clustering is more empirical.  -->
+適切なクラスタリングを決定するためのアプローチの一つは、より経験的なものである。
+<!-- In this regard, it is useful to note that cluster-robust standard errors are a generalization of an idea from White ([1980](references.html#ref-White:1980aa)).  -->
+この点で、クラスター誤差の標準誤差は、White ([1980](references.html#ref-White:1980aa))のアイデアの一般化であることを指摘しておくと、有用である。
+White ([1980](references.html#ref-White:1980aa)) provides not only an estimator of standard errors that is robust to heteroskedasticity, but also a test of a null hypothesis of homoskedasticity. 
+Intuitively, if the covariance matrix assuming heteroskedasticity is sufficiently different from that assuming homoskedasticity, then we may reject the null hypothesis of homoskedasticity. 
+With a little algebra, it would be possible to develop a test analogous to that of White ([1980](references.html#ref-White:1980aa)) of the null hypothesis of no clustering on variable \(g\). 
+In practice, many researchers will, lacking a formally derived test, compare standard errors with and without clustering on variable \(g\) and elect to cluster on variable \(g\) when the standard errors when doing so seem significantly higher than when not doing so. 
+This heuristic breaks down in the case of Fang et al. ([2016](references.html#ref-Fang:2016uy)) because standard errors are generally lower when clustering on firm and year than when clustering firm alone. 
+However, if clustering on firm alone is appropriate, standard errors clustering on firm and year will provide noisier estimates than clustering on firm alone, and thus could be lower or higher in any given data set.
 
 
 A more theoretical approach can be used in the setting of FHK because of our deeper understanding of the assignment mechanism. In this regard, it is important to note that cluster-robust standard errors address correlation in *both* \(X\) *and* \(\epsilon\) across units within clusters. To explore this (slightly) more formally, recall from [Chapter 5](stat-inf.html) that the cluster-robust covariance matrix is estimated using the following expression:
@@ -1675,7 +1830,7 @@ A more theoretical approach can be used in the setting of FHK because of our dee
 $$ 
 \begin{aligned}
 \hat{V}(\hat{\beta}) = 
-(X'X)^{-1} \hat{B} (X'X)^{-1},  \text{where}\  \hat{B} = \sum_{g = 1}^G X'_g u_g u'_g X_g
+(\boldsymbol{X}'\boldsymbol{X})^{-1} \hat{\boldsymbol{B}} (\boldsymbol{X}'\boldsymbol{X})^{-1}, \quad  \text{where} \quad  \hat{B} = \sum_{g = 1}^G \boldsymbol{X}'_g u_g u'_g \boldsymbol{X}_g
 \end{aligned}
 $$
 
@@ -1689,42 +1844,42 @@ If we have a single regressor, demeaned $x$ with no constant term and two firms 
 $$
 \begin{aligned}
 \begin{bmatrix}
-x\_i & x\_j
+x_i & x_j
 \end{bmatrix}
 \begin{bmatrix}
-u\_i \\
-u\_j
+u_i \\
+u_j
 \end{bmatrix}
 \begin{bmatrix}
-u\_i & u\_j
+u_i & u_j
 \end{bmatrix}
 \begin{bmatrix}
-x\_i \\
-x\_j
+x_i \\
+x_j
 \end{bmatrix} &=
 \begin{bmatrix}
-x\_i & x\_j
+x_i & x_j
 \end{bmatrix}
 \begin{bmatrix}
-u\_i^2 & u\_i u\_j \\
-u\_i u\_j & u\_j^2
+u_i^2 & u_i u_j \\
+u_i u_j & u_j^2
 \end{bmatrix}
 \begin{bmatrix}
-x\_i \\
-x\_j
+x_i \\
+x_j
 \end{bmatrix} \\
 &=
 \begin{bmatrix}
-x\_i & x\_j
+x_i & x_j
 \end{bmatrix}
 \begin{bmatrix}
-x\_i u\_i^2 + x\_j u\_i u\_j \\
-x\_i u\_i u\_j + x\_j u\_j^2
+x_i u_i^2 + x_j u_i u_j \\
+x_i u_i u_j + x_j u_j^2
 \end{bmatrix} \\
 &=
 \begin{bmatrix}
-x\_i^2 u\_i^2 + x\_i x\_j u\_i u\_j \\
-x\_i x\_j u\_i u\_j + x\_j^2 u\_j^2
+x_i^2 u_i^2 + x_i x_j u_i u_j \\
+x_i x_j u_i u_j + x_j^2 u_j^2
 \end{bmatrix}
 \end{aligned}
 $$
@@ -1735,19 +1890,36 @@ Now, if $x_i$ and $x_j$ are uncorrelated then, even if $\epsilon_i$ and $\epsilo
 
 $$
 \begin{bmatrix}
-x\_i^2 \sigma\_i^2 \\
-x\_j^2 \sigma\_j^2
+x_i^2 \sigma _i^2 \\
+x_j^2 \sigma _j^2
 \end{bmatrix}
 $$
 
 
-which is the expectation of the analogous component of the heteroskedasticity-robust estimator from White ([1980](references.html#ref-White:1980aa)). In the setting of Fang et al. ([2016](references.html#ref-Fang:2016uy)), the “\(x\)” of primary interest is the Reg SHO pilot indicator, which is assumed to be randomly assigned, and thus (in expectation) uncorrelated across firms. For this reason, we do not expect cross-sectional dependence to affect standard error estimates on average. On the other hand, the Reg SHO pilot indicator is perfectly correlated over time within firm, so any serial dependence in errors within firm over time will lead to effects of time-series dependence on standard error estimates. This (somewhat loose) theoretical analysis suggests we should cluster by firm (time-series dependence), but not by year (cross-sectional dependence), as suggested by Black et al. ([2019, p. 12](references.html#ref-Black:2019vv)).
+<!-- which is the expectation of the analogous component of the heteroskedasticity-robust estimator from White ([1980](references.html#ref-White:1980aa)).  -->
+これは、White ([1980](references.html#ref-White:1980aa))の不均一分散頑健推定量の類似の成分の期待値である。
+<!-- In the setting of Fang et al. ([2016](references.html#ref-Fang:2016uy)), the “\(x\)” of primary interest is the Reg SHO pilot indicator, which is assumed to be randomly assigned, and thus (in expectation) uncorrelated across firms.  -->
+Fang et al. ([2016](references.html#ref-Fang:2016uy))の設定では、主要な関心事である「\(x\)」は、ランダムに割り当てられると仮定されているReg SHOパイロット指標であり、したがって（期待値では）企業間で相関がない。
+<!-- For this reason, we do not expect cross-sectional dependence to affect standard error estimates on average.  -->
+このため、クロスセクション依存性が平均的に標準誤差推定値に影響を与えることはないと予想される。
+<!-- On the other hand, the Reg SHO pilot indicator is perfectly correlated over time within firm, so any serial dependence in errors within firm over time will lead to effects of time-series dependence on standard error estimates.  -->
+一方、Reg SHOパイロット指標は、企業内で時間経過とともに完全に相関しているため、時間経過にわたる企業内の誤差の直列依存性が標準誤差推定値に時間系列依存性の影響を与える。
+<!-- This (somewhat loose) theoretical analysis suggests we should cluster by firm (time-series dependence), but not by year (cross-sectional dependence), as suggested by Black et al. ([2019, p. 12](references.html#ref-Black:2019vv)). -->
+この（やや緩い）理論的分析は、Black et al. ([2019, p. 12](references.html#ref-Black:2019vv))が示唆するように、企業（時間系列依存性）でクラスタリングするべきであるが、年でクラスタリングするべきではないことを示唆している。
 
 
-However, the assumed random assignment of treatment allows us to adopt an alternative approach to statistical inference that is agnostic to the form of clustering in the data. This approach is known as **randomization inference** and builds on the **Fisher sharp null** hypothesis of no effect of any kind. This is a “sharp null” because it is more restrictive that a null hypothesis of zero mean effect, which could be true even if half the observations had a treatment effect of \(+1\) and half the observations had a treatment effect of \(-1\), in which case the Fisher sharp null would not be true even though null hypothesis of zero mean effect is true.
+<!-- However, the assumed random assignment of treatment allows us to adopt an alternative approach to statistical inference that is agnostic to the form of clustering in the data.  -->
+しかし、仮定されたランダムな処置の割り当てにより、データのクラスタリングの形式に無関心な統計推論の代替アプローチを採用することができる。
+<!-- This approach is known as **randomization inference** and builds on the **Fisher sharp null** hypothesis of no effect of any kind.  -->
+このアプローチは**ランダム化推論**(randomization inference)と呼ばれ、いかなる影響も存在しないというフィッシャーの**強い帰無仮説**(Fisher sharp null hypothesis)に基づく。
+<!-- This is a “sharp null” because it is more restrictive that a null hypothesis of zero mean effect, which could be true even if half the observations had a treatment effect of \(+1\) and half the observations had a treatment effect of \(-1\), in which case the Fisher sharp null would not be true even though null hypothesis of zero mean effect is true. -->
+これは「シャープの強い帰無仮説」と呼ばれるのは、ゼロ平均効果の帰無仮説よりも制約が厳しいためである。たとえば、観測の半数がの処置効果を持ち、残りの半数が ￼ の処置効果を持つ場合、ゼロ平均効果の帰無仮説は成立するが、フィッシャーのシャープ・ヌルの帰無仮説は成立しない。
 
 
-Under the Fisher sharp null hypothesis and with random assignment to treatment, in principle we can evaluate the distribution of any given test statistic by considering all possible assignments. Focusing on the 2954 firms that the SEC focused on as its initial sample, if assignment to treatment were purely random, then any other assignment of treatment to 985 was as likely as the one chosen. Given that the Fisher sharp null implies that there was no impact of treatment assignment on outcomes, we know what the distribution of the test statistic would have been if the SEC had chosen any one of those alternative assignments because the outcomes would have been exactly the same. With smaller samples, we might proceed to calculate the test statistic for every possible assignment and thereby construct the exact distribution of the test statistic under the Fisher sharp null.[17](#fn17) But in our case, there will be a huge number of ways to choose 985 treatment firms from 2954 possibilities; so a more feasible approach is to draw a random sample of possible assignments and use the empirical distribution of the test statistic for that random sample as an approximation for the exact distribution.
+Under the Fisher sharp null hypothesis and with random assignment to treatment, in principle we can evaluate the distribution of any given test statistic by considering all possible assignments. 
+Focusing on the 2954 firms that the SEC focused on as its initial sample, if assignment to treatment were purely random, then any other assignment of treatment to 985 was as likely as the one chosen. 
+Given that the Fisher sharp null implies that there was no impact of treatment assignment on outcomes, we know what the distribution of the test statistic would have been if the SEC had chosen any one of those alternative assignments because the outcomes would have been exactly the same. 
+With smaller samples, we might proceed to calculate the test statistic for every possible assignment and thereby construct the exact distribution of the test statistic under the Fisher sharp null.[17](#fn17) But in our case, there will be a huge number of ways to choose 985 treatment firms from 2954 possibilities; so a more feasible approach is to draw a random sample of possible assignments and use the empirical distribution of the test statistic for that random sample as an approximation for the exact distribution.
 
 
 
@@ -1883,43 +2055,95 @@ modelsummary(fms, vcov = vcovs,
 4. Why did we not use the empirical standard error implied by the distribution of coefficients in `rand_results` to calculate standard errors for the control variables (e.g., `log(at)`)?
 
 
-## Causal diagrams
+<!-- ## Causal diagrams -->
+## 因果ダイアグラム
 
 
-It is important to note that we *observe* total accruals, not discretionary accruals. Instead we need to construct *measures* of discretionary accruals. The Jones ([1991](references.html#ref-Jones:1991vx)) model of discretionary accruals “controls for” sales growth and PP&E and the Kothari et al. ([2005](references.html#ref-Kothari:2005aa)) model additionally “controls for” performance.
+<!-- It is important to note that we *observe* total accruals, not discretionary accruals.  -->
+我々は、裁量的アクルーアルではなく、総アクルーアルを*観測*していることに注意することが重要である。
+<!-- Instead we need to construct *measures* of discretionary accruals.  -->
+代わりに、裁量的アクルーアルの*尺度*を構築する必要がある。
+<!-- The Jones ([1991](references.html#ref-Jones:1991vx)) model of discretionary accruals “controls for” sales growth and PP&E and the @Kothari:2005aa  model additionally “controls for” performance. -->
+裁量的アクルーアルのJones ([1991](references.html#ref-Jones:1991vx))モデルは、売上高成長とPP&Eを「制御」し、@Kothari:2005aa モデルはさらにパフォーマンスを「コントロール」している。
 
 
-Assuming that the causal diagram below is correct, we get unbiased estimates of causal effects whether we “control for” pre-treatment outcome values (e.g., using DiD) or not (e.g., using *POST*), and it is not clear that we need to control for other factors that drive total accruals. If being a Reg SHO pilot firm leads to a reduction in earnings management, we should observe lower *total* accruals, even if we posit that the effect is through discretionary accruals, which we do not observe directly. If we accept this causal diagram, then the decision as to which factors to control for is—like the choice between *DiD*, *POST*, and *ANCOVA*—a question of statistical efficiency rather than bias. 
+<!-- Assuming that the causal diagram below is correct, we get unbiased estimates of causal effects whether we “control for” pre-treatment outcome values (e.g., using DiD) or not (e.g., using *POST*), and it is not clear that we need to control for other factors that drive total accruals.  -->
+以下の因果図が正しいと仮定すると、前処置の結果値（例：DiDを使用）を「制御」するかどうか（例：*POST*を使用）に関係なく、因果効果のバイアスのない推定値を得ることができ、総アクルーアルを駆動する他の要因を制御する必要があるかどうかは明確ではない。
+<!-- If being a Reg SHO pilot firm leads to a reduction in earnings management, we should observe lower *total* accruals, even if we posit that the effect is through discretionary accruals, which we do not observe directly.  -->
+Reg SHOのパイロット企業であることが収益管理の低下につながる場合、我々は、我々が直接観測していない裁量的アクルーアルを通じて効果があると仮定していても、より低い*総*アクルーアルを観測するはずである。
+<!-- If we accept this causal diagram, then the decision as to which factors to control for is—like the choice between *DiD*, *POST*, and *ANCOVA* - a question of statistical efficiency rather than bias.  -->
+この因果図を受け入れると、制御する要因の選択は、*DiD*、*POST*、*ANCOVA*の選択と同様に、バイアスではなく統計的効率性の問題である。
 
 
-In this context, it is perhaps useful to consider causal diagrams to sharpen our understanding of the issues, which we explore in the discussion questions below, as matters can be more complicated if the causal diagram in [Figure 19.4](#fig-sho-causal) is incomplete.
+<!-- In this context, it is perhaps useful to consider causal diagrams to sharpen our understanding of the issues, which we explore in the discussion questions below, as matters can be more complicated if the causal diagram in [Figure 19.4](#fig-sho-causal) is incomplete. -->
+この文脈では、[Figure 19.4](#fig-sho-causal)の因果図が不完全である場合、問題が複雑になる可能性があるため、問題をより鮮明に理解するために因果図を考慮することが役立つかもしれない。
 
 
 
 
 
-###  Discussion questions
+<!-- ###  Discussion questions -->
+### ディスカッション課題
 
 
-1. What features of [Figure 19.4](#fig-sho-causal) imply that we do not need to control for performance, sales, and PP&E in estimating the causal effect of Reg SHO on accruals? What is the basis for assuming these features in the causal diagram?
+<!-- 1. What features of [Figure 19.4](#fig-sho-causal) imply that we do not need to control for performance, sales, and PP&E in estimating the causal effect of Reg SHO on accruals?  -->
+1. [Figure 19.4](#fig-sho-causal)のどの特徴が、Reg SHOが総勘定科目に対する因果効果を推定する際に、パフォーマンス、売上高、PP&Eを制御する必要がないことを示しているのか。
+<!-- What is the basis for assuming these features in the causal diagram? -->
+これらの特徴を因果図で仮定する根拠は何か。
 
 
-2. Black et al. ([2024](references.html#ref-Black:2022tz)) report that “over 60 papers in accounting, finance, and economics report that suspension of the price tests had wide-ranging indirect effects on pilot firms, including on earnings management, investments, leverage, acquisitions, management compensation, workplace safety, and more (see Internet Appendix, Table IA-1 for a summary).” In light of the Internet Appendix of Black et al. ([2024](references.html#ref-Black:2022tz)), is there any evidence that Reg SHO might plausibly have an effect on performance, sales growth, or PP&E? If so, how would [Figure 19.4](#fig-sho-causal) need to be modified to account for these consequences? What would be the implications of these changes on the appropriate tests for estimating the causal effects of Reg SHO on accruals?
+<!-- 2. Black et al. ([2024](references.html#ref-Black:2022tz)) report that “over 60 papers in accounting, finance, and economics report that suspension of the price tests had wide-ranging indirect effects on pilot firms, including on earnings management, investments, leverage, acquisitions, management compensation, workplace safety, and more (see Internet Appendix, Table IA-1 for a summary).”  -->
+2. Black et al. (2024)は、「会計、ファイナンス、経済学の60以上の論文が、価格テストの停止がパイロット企業に間接的な影響を及ぼし、収益管理、投資、レバレッジ、買収、経営者の報酬、職場安全性などに広範囲の影響を及ぼしたことを報告している（Internet Appendix, Table IA-1を参照）」と報告している。
+<!-- In light of the Internet Appendix of Black et al. ([2024](references.html#ref-Black:2022tz)), is there any evidence that Reg SHO might plausibly have an effect on performance, sales growth, or PP&E?  -->
+Black et al. (2024)のInternet Appendixを踏まえると、Reg SHOがパフォーマンス、売上成長、またはPP&Eに影響を与える可能性があるかどうかについての証拠はあるか。
+<!-- If so, how would [Figure 19.4](#fig-sho-causal) need to be modified to account for these consequences?  -->
+もしそうであれば、これらの結果を考慮するために[Figure 19.4](#fig-sho-causal)をどのように修正する必要があるか。
+<!-- What would be the implications of these changes on the appropriate tests for estimating the causal effects of Reg SHO on accruals? -->
+これらの変更が、Reg SHOがアクルーアルに対する因果効果を推定するための適切な検定に与える影響は何か。
 
 
-3. Produce a regression table like [Table 19.3](#tbl-baseline) and a plot like [Figure 19.3](#fig-coef-plot), but using discretionary accruals *without* performance matching instead of performance-matched discretionary accruals. How do you interpret these results?
+<!-- 3. Produce a regression table like [Table 19.3](#tbl-baseline) and a plot like [Figure 19.3](#fig-coef-plot), but using discretionary accruals *without* performance matching instead of performance-matched discretionary accruals.  -->
+3. [Table 19.3](#tbl-baseline)のような回帰結果の表と[Figure 19.3](#fig-coef-plot)のようなプロットを作成しなさい。ただしパフォーマンスマッチング裁量的アクルーアルではなく、パフォーマンスマッチングを行わない裁量的アクルーアルを使用なさい。
+<!-- How do you interpret these results? -->
+これらの結果をどのように解釈しますか。
 
 
-4. Produce a regression table and a plot like the ones in the FHK replication above, but using total accruals instead of discretionary accruals and excluding controls (so the coefficients will be simple conditional sample means). How do you interpret these results?
+<!-- 4. Produce a regression table and a plot like the ones in the FHK replication above, but using total accruals instead of discretionary accruals and excluding controls (so the coefficients will be simple conditional sample means).  -->
+4. FHKのレプリケーションのような回帰表とプロットを作成しなさい。ただし、裁量的アクルーアルの代わりに総アクルーアルを使用し、コントロールを除外しなさい（したがって、係数は単純な条件付きサンプル平均になります）。
+<!-- How do you interpret these results? -->
+これらの結果をどのように解釈しますか。
 
 
-5. Suppose you had been brought in by the SEC to design a study examining the research question examined by FHK in the form of a registered report. What analyses would you conduct to try to understand the best research design? For example, how would you choose between *DiD*, *POST*, *ANCOVA*, and other empirical approaches? What controls would you include? How would you decide how to include controls? (For example, one could control for performance by including performance as a regressor in the model of earnings management, by matching on performance, or by including performance in the main regression specification.) How would you calculate standard errors? Discuss how your proposed empirical test differs from that of FHK. Would you have reported similar results to what FHK reported?
+<!-- 5. Suppose you had been brought in by the SEC to design a study examining the research question examined by FHK in the form of a registered report.  -->
+5. SECによって、FHKが検討した研究問題を登録された報告書の形で調査する研究を設計するように依頼されたとする。
+<!-- What analyses would you conduct to try to understand the best research design?  -->
+最適な研究設計を理解するためにどのような分析を行いますか。
+<!-- For example, how would you choose between *DiD*, *POST*, *ANCOVA*, and other empirical approaches?  -->
+たとえば、*DiD*、*POST*、*ANCOVA*、およびその他の経験的アプローチの間でどのように選択するのか？
+<!-- What controls would you include?  -->
+どのようなコントロールを含めるのか？
+<!-- How would you decide how to include controls?  -->
+どのようにしてコントロールを含めるかを決定するのか？
+<!-- (For example, one could control for performance by including performance as a regressor in the model of earnings management, by matching on performance, or by including performance in the main regression specification.)  -->
+（たとえば、パフォーマンスを収益管理のモデルの回帰変数として含める、パフォーマンスにマッチングする、またはパフォーマンスを主要な回帰仕様に含めることで、パフォーマンスを制御することができる。）
+<!-- How would you calculate standard errors?  -->
+標準誤差はどのように計算するのか？
+<!-- Discuss how your proposed empirical test differs from that of FHK.  -->
+提案された経験的テストがFHKのものとどのように異なるかについて議論しなさい。
+<!-- Would you have reported similar results to what FHK reported? -->
+FHKが報告した結果と同様の結果を報告するか？
 
 
-6. Suppose that FHK’s empirical analysis had produced a positive effect of Reg SHO on earnings management? Would this imply a lack of support for their hypotheses? Do you believe that publication in the *Journal of Finance* depended on finding a negative effect?
+<!-- 6. Suppose that FHK’s empirical analysis had produced a positive effect of Reg SHO on earnings management?  -->
+6. FHKの実証分析が利益マネジメントに対するReg SHOの正の効果を示したと仮定する。
+<!-- Would this imply a lack of support for their hypotheses?  -->
+これは彼らの仮説を支持しないことを意味するか？
+<!-- Do you believe that publication in the *Journal of Finance* depended on finding a negative effect? -->
+*Journal of Finance*での発表が負の効果を見つけることに依存していたと思うか？
 
 
-7. What implications would there have been for publication of FHK in the *Journal of Finance* if they had failed to find an effect of Reg SHO on earnings management?
+<!-- 7. What implications would there have been for publication of FHK in the *Journal of Finance* if they had failed to find an effect of Reg SHO on earnings management? -->
+7. Reg SHOが収益管理に与える影響を見つけることができなかった場合、FHKの*Journal of Finance*での発表にはどのような影響があったか。
 
 
 <!-- ## Causal mechanisms -->
@@ -1939,13 +2163,19 @@ Black et al. (2024, p.5133) は「もし企業の経営者が、価格テスト�
 <!-- Black et al. (2024, p. 5134](references.html#ref-Black:2022tz)) suggest that “FHK rely on the manager fear channel. They conjecture that, in response to a greater threat of short selling, pilot firms’ managers reduced earnings management to preemptively deter short sellers.” -->
 Black et al. (2024, p.5134) は次のように示唆している。「FHK は、経営者の恐怖チャネルに依拠している。彼らは、空売りの脅威が高まることに対応して、パイロット企業の経営者が空売り投資家を事前に抑止するために、利益操作を抑制したと推測している。」
 
-###  Discussion questions
+<!-- ###  Discussion questions -->
+### ディスカッション課題
+
+<!-- 1. Do you agree with the assertion of Black et al. ([2024](references.html#ref-Black:2022tz)) that “FHK rely on the manager fear channel”? -->
+1. Black et al. (2024)の主張「FHK は、経営者の恐怖チャネルに依存している」と同意するか？
+<!-- What causal mechanisms are suggested in Fang et al. ([2016](references.html#ref-Fang:2016uy))?  -->
+Fang et al. (2016)では、どのような因果メカニズムが示唆されているか？
+<!-- What evidence do Fang et al. ([2016](references.html#ref-Fang:2016uy)) offer in support of these mechanisms? -->
+Fang et al. (2016)は、これらのメカニズムを支持する証拠をどのように提供しているか？
 
 
-1. Do you agree with the assertion of Black et al. ([2024](references.html#ref-Black:2022tz)) that “FHK rely on the manager fear channel”? What causal mechanisms are suggested in Fang et al. ([2016](references.html#ref-Fang:2016uy))? What evidence do Fang et al. ([2016](references.html#ref-Fang:2016uy)) offer in support of these mechanisms?
-
-
-2. Evaluate the response of Fang et al. ([2019](references.html#ref-Fang:2019tt)) to Black et al. ([2024](references.html#ref-Black:2022tz)) as it relates to causal mechanisms?
+<!-- 2. Evaluate the response of Fang et al. ([2019](references.html#ref-Fang:2019tt)) to Black et al. ([2024](references.html#ref-Black:2022tz)) as it relates to causal mechanisms? -->
+2. 因果メカニズムに関連するFang et al. (2019)のBlack et al. (2024)への反応を評価しなさい。
 
 
 <!-- 3. Do you think evidence of causal mechanisms is more or less important when using a natural experiment (i.e., an experiment outside the control of the researcher that is typically analysed after it has been run) than when conducting a randomized experiment?  -->
