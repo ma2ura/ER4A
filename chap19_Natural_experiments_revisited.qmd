@@ -1912,14 +1912,20 @@ Fang et al. ([2016](references.html#ref-Fang:2016uy))の設定では、主要な
 しかし、仮定されたランダムな処置の割り当てにより、データのクラスタリングの形式に無関心な統計推論の代替アプローチを採用することができる。
 <!-- This approach is known as **randomization inference** and builds on the **Fisher sharp null** hypothesis of no effect of any kind.  -->
 このアプローチは**ランダム化推論**(randomization inference)と呼ばれ、いかなる影響も存在しないというフィッシャーの**強い帰無仮説**(Fisher sharp null hypothesis)に基づく。
-<!-- This is a “sharp null” because it is more restrictive that a null hypothesis of zero mean effect, which could be true even if half the observations had a treatment effect of \(+1\) and half the observations had a treatment effect of \(-1\), in which case the Fisher sharp null would not be true even though null hypothesis of zero mean effect is true. -->
-これは「シャープの強い帰無仮説」と呼ばれるのは、ゼロ平均効果の帰無仮説よりも制約が厳しいためである。たとえば、観測の半数がの処置効果を持ち、残りの半数が ￼ の処置効果を持つ場合、ゼロ平均効果の帰無仮説は成立するが、フィッシャーのシャープ・ヌルの帰無仮説は成立しない。
+<!-- This is a “sharp null” because it is more restrictive that a null hypothesis of zero mean effect, which could be true even if half the observations had a treatment effect of +1 and half the observations had a treatment effect of -1, in which case the Fisher sharp null would not be true even though null hypothesis of zero mean effect is true. -->
+これは「シャープの強い帰無仮説」と呼ばれるのは、ゼロ平均効果の帰無仮説よりも制約が厳しいためである。たとえば、観測の半数が $+1$ の処置効果を持ち、残りの半数が $-1$ の処置効果を持つ場合、ゼロ平均効果の帰無仮説は成立するが、フィッシャーの強い帰無仮説は成立しない。
 
 
-Under the Fisher sharp null hypothesis and with random assignment to treatment, in principle we can evaluate the distribution of any given test statistic by considering all possible assignments. 
-Focusing on the 2954 firms that the SEC focused on as its initial sample, if assignment to treatment were purely random, then any other assignment of treatment to 985 was as likely as the one chosen. 
-Given that the Fisher sharp null implies that there was no impact of treatment assignment on outcomes, we know what the distribution of the test statistic would have been if the SEC had chosen any one of those alternative assignments because the outcomes would have been exactly the same. 
-With smaller samples, we might proceed to calculate the test statistic for every possible assignment and thereby construct the exact distribution of the test statistic under the Fisher sharp null.[17](#fn17) But in our case, there will be a huge number of ways to choose 985 treatment firms from 2954 possibilities; so a more feasible approach is to draw a random sample of possible assignments and use the empirical distribution of the test statistic for that random sample as an approximation for the exact distribution.
+<!-- Under the Fisher sharp null hypothesis and with random assignment to treatment, in principle we can evaluate the distribution of any given test statistic by considering all possible assignments.  -->
+フィッシャーの強い帰無仮説の下で、処置へのランダムな割り当てが行われた場合、原則として、すべての可能な割り当てを考慮することで、任意の検定統計量の分布を評価することができる。
+<!-- Focusing on the 2954 firms that the SEC focused on as its initial sample, if assignment to treatment were purely random, then any other assignment of treatment to 985 was as likely as the one chosen.  -->
+初期サンプルとしてSECが焦点を当てた2954社に焦点を当てると、処置の割り当てが純粋にランダムであれば、985社への処置の他の割り当ては、選択された割り当てと同じくらい可能性があった。
+<!-- Given that the Fisher sharp null implies that there was no impact of treatment assignment on outcomes, we know what the distribution of the test statistic would have been if the SEC had chosen any one of those alternative assignments because the outcomes would have been exactly the same.  -->
+フィッシャーの強い帰無仮説が処置の割り当てが結果に影響を与えなかったことを意味するので、SECが他の割り当てのいずれかを選択した場合、テスト統計量の分布がどのようになるかを知っている。なぜなら、結果はまったく同じだったからである。
+<!-- With smaller samples, we might proceed to calculate the test statistic for every possible assignment and thereby construct the exact distribution of the test statistic under the Fisher sharp null.[17] -->
+サンプルが小さい場合、すべての可能な割り当てに対して検定統計量を計算し、フィッシャーの強い帰無仮説の下での検定統計量の正確な分布を構築することができる。[^17]
+<!-- But in our case, there will be a huge number of ways to choose 985 treatment firms from 2954 possibilities; so a more feasible approach is to draw a random sample of possible assignments and use the empirical distribution of the test statistic for that random sample as an approximation for the exact distribution. -->
+しかし、我々の場合、2954の可能性から985の処置企業を選ぶ方法は膨大であるため、可能な割り当てのランダムサンプルを抽出し、そのランダムサンプルの検定統計量の経験分布を正確な分布の近似として使用することがより現実的である。
 
 
 
@@ -1949,10 +1955,10 @@ get_coef_rand <- function(i) {
 ```
 
 
-The test statistic we are interested in here is the coefficient on $PILOT \times DURING$ . Below we calculate the p-value of the coefficients on variables involving $PILOT$ using the empirical distribution of coefficients, and the standard errors associated with the coefficients as the standard deviation of those coefficients.
-
-
-
+<!-- The test statistic we are interested in here is the coefficient on $PILOT \times DURING$ . -->
+ここで興味がある検定統計量は、$PILOT \times DURING$ の係数である。
+<!-- Below we calculate the p-value of the coefficients on variables involving $PILOT$ using the empirical distribution of coefficients, and the standard errors associated with the coefficients as the standard deviation of those coefficients. -->
+以下では、$PILOT$ に関する変数の係数について、係数の経験的分布を用いてp値を計算し、係数に対応する標準誤差をそれらの係数の標準偏差として求める。
 
 
 ```{r}
@@ -1980,10 +1986,10 @@ rand_results <-
 
 
 
-In the following, we run regressions with standard errors based on clustering by firm and year, by firm alone, and using randomization inference. We start by running regressions—with controls and firm fixed effects—with standard errors based on clustering by firm (`"CL-i"`) and by firm and year (`"CL-2"`).
-
-
-
+<!-- In the following, we run regressions with standard errors based on clustering by firm and year, by firm alone, and using randomization inference.  -->
+以下では、企業と年によるクラスタリング、企業のみによるクラスタリング、およびランダム化推論を用いた標準誤差を基に回帰を実行する。
+<!-- We start by running regressions—with controls and firm fixed effects—with standard errors based on clustering by firm (`"CL-i"`) and by firm and year (`"CL-2"`). -->
+最初に、企業によるクラスタリング（`"CL-i"`）と企業と年によるクラスタリング（`"CL-2"`）に基づいた標準誤差を用いて、コントロールと企業固定効果を持つ回帰を実行する。
 
 ```{r}
 #| eval: false
@@ -1991,26 +1997,29 @@ fms <- list(reg_year_fe(sho_accruals, cl_2 = FALSE),
             reg_year_fe(sho_accruals, cl_2 = TRUE))
 ```
 
-We extract the variance-covariance matrices for each of these two models and place them in the list `vcovs`.
+<!-- We extract the variance-covariance matrices for each of these two models and place them in the list `vcovs`. -->
+これら2つのモデルの分散共分散行列を抽出し、それらをリスト`vcovs`に配置する。
 
 ```{r}
 #| eval: false
-
 vcovs <- list(vcov(fms[[1]]), vcov(fms[[2]]))
 ```
 
 
-Next, we add a third model for which we will calculate standard errors using randomization inference (`"RI"`). The coefficients stored in `fms` for this third model can be taken from either of the two models already stored there.
+<!-- Next, we add a third model for which we will calculate standard errors using randomization inference (`"RI"`).  -->
+次に、ランダム化推論（`"RI"`）を用いて標準誤差を計算するための第3のモデルを追加する。
+<!-- The coefficients stored in `fms` for this third model can be taken from either of the two models already stored there. -->
+この第3のモデルの`fms`に格納された係数は、すでに格納されている2つのモデルのどちらかから取得できる。
 
 ```{r}
 #| eval: false
 fms[[3]] <- fms[[2]]
 ```
 
-For the variance-covariance matrix, we use `CL-i` standard errors as the starting point. Then we replace the elements for coefficients on variables involving \(\mathit{PILOT}\) using the empirical distribution stored in `rand_results`.
-
-
-
+<!-- For the variance-covariance matrix, we use `CL-i` standard errors as the starting point. -->
+分散共分散行列については、`CL-i`標準誤差を出発点として使用する。
+<!-- Then we replace the elements for coefficients on variables involving $PILOT$ using the empirical distribution stored in `rand_results`. -->
+`rand_results`に格納された経験的分布を用いて、$PILOT$ に関する変数の係数の要素を置き換える。
 
 ```{r}
 #| eval: false
@@ -2024,7 +2033,8 @@ vcovs[[3]] <- vcov
 ```
 
 
-Results of this analysis are provided in [Table 19.4](#tbl-rand-inf).
+<!-- Results of this analysis are provided in [Table 19.4](#tbl-rand-inf). -->
+この分析の結果は、[Table 19.4](#tbl-rand-inf)に示されている。
 
 ```{r}
 #| eval: false
@@ -2040,19 +2050,33 @@ modelsummary(fms, vcov = vcovs,
 ```
 
 
-### Exercises
+<!-- ### Exercises -->
+### 練習問題
+
+1. In the function `get_coef_rand()`, we first created the data set `treatment`, then merged this with `reg_data_alt`. 
+`get_coef_rand()`関数では、まずデータセット`treatment`を作成し、次にこれを`reg_data_alt`とマージする。
+<!-- Why did we do it this way rather than simply applying the line `mutate(pilot = sample(pilot, size = length(pilot), replace = FALSE))` directly to `reg_data_alt`? -->
+なぜ、`reg_data_alt`に直接`mutate(pilot = sample(pilot, size = length(pilot), replace = FALSE))`を適用するのではなく、このように行ったのか。
 
 
-1. In the function `get_coef_rand()`, we first created the data set `treatment`, then merged this with `reg_data_alt`. Why did we do it this way rather than simply applying the line `mutate(pilot = sample(pilot, size = length(pilot), replace = FALSE))` directly to `reg_data_alt`?
+<!-- 2. Using randomization inference, calculate a p-value for a one-sided alternative hypothesis that $H_1: \beta < 0$ where $\beta$ is the coefficient on $PILOT \times DURING$ .  -->
+2. ランダム化推論を使用して、$H_1: \beta < 0$（ここで、 $\beta$ は $PILOT \times DURING$ の係数である）の片側の代替仮説の $p$ 値を計算する。
+<!-- (*Hint*: You should not need to run the randomization again; modifying the calculation of `p_value` should suffice.) -->
+（*ヒント*：ランダム化を再実行する必要はありません。`p_value`の計算を変更するだけで十分である。）
 
 
-2. Using randomization inference, calculate a p-value for a one-sided alternative hypothesis that $H_1: \beta < 0$ where $\beta$ is the coefficient on $PILOT \times DURING$ . (*Hint*: You should not need to run the randomization again; modifying the calculation of `p_value` should suffice.)
+<!-- 3. What is the empirical standard error implied by the distribution of coefficients in `rand_results`?  -->
+3. `rand_results`の係数の分布によって示される経験的標準誤差は何か？
+<!-- Is it closer to the two-way cluster robust standard errors obtained in estimating with `cl_2 = TRUE` or with `cl_2 = FALSE`?  -->
+`cl_2 = TRUE` または `cl_2 = FALSE` で推定した2方向クラスター頑健標準誤差により近いか？
+<!-- Why might it be preferable to calculate p-values under randomization inference using the empirical distribution of the test statistic, instead of calculating these from t-statistics based on the estimated coefficient and the empirical standard error?  -->
+推定された係数と経験的標準誤差に基づいたt統計量からp値を計算する代わりに、ランダム化推論を用いて検定統計量の経験的分布を用いてp値を計算することが望ましい理由は何か？
+<!-- Would we get different p-values using the former approach? -->
+前者のアプローチを使用して異なるp値を得ることができるか？
 
 
-3. What is the empirical standard error implied by the distribution of coefficients in `rand_results`? Is it closer to the two-way cluster robust standard errors obtained in estimating with `cl_2 = TRUE` or with `cl_2 = FALSE`? Why might it be preferable to calculate p-values under randomization inference using the empirical distribution of the test statistic, instead of calculating these from t-statistics based on the estimated coefficient and the empirical standard error? Would we get different p-values using the former approach?
-
-
-4. Why did we not use the empirical standard error implied by the distribution of coefficients in `rand_results` to calculate standard errors for the control variables (e.g., `log(at)`)?
+<!-- 4. Why did we not use the empirical standard error implied by the distribution of coefficients in `rand_results` to calculate standard errors for the control variables (e.g., `log(at)`)? -->
+4. `rand_results`の係数の分布によって示される経験的標準誤差を使用して、制御変数（例：`log(at)`）の標準誤差を計算しなかった理由は何か？
 
 
 <!-- ## Causal diagrams -->
