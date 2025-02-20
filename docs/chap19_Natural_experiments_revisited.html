@@ -1789,8 +1789,10 @@ x_j^2 \sigma _j^2
 <!-- ### Exercises -->
 <section id="練習問題" class="level3" data-number="11.7.1"><h3 data-number="11.7.1" class="anchored" data-anchor-id="練習問題">
 <span class="header-section-number">11.7.1</span> 練習問題</h3>
+<!-- 1. In the function `get_coef_rand()`, we first created the data set `treatment`, then merged this with `reg_data_alt`.  -->
 <ol type="1">
-<li>In the function <code>get_coef_rand()</code>, we first created the data set <code>treatment</code>, then merged this with <code>reg_data_alt</code>. <code>get_coef_rand()</code>関数では、まずデータセット<code>treatment</code>を作成し、次にこれを<code>reg_data_alt</code>とマージする。 <!-- Why did we do it this way rather than simply applying the line `mutate(pilot = sample(pilot, size = length(pilot), replace = FALSE))` directly to `reg_data_alt`? --> なぜ、<code>reg_data_alt</code>に直接<code>mutate(pilot = sample(pilot, size = length(pilot), replace = FALSE))</code>を適用するのではなく、このように行ったのか。</li>
+<li>
+<code>get_coef_rand()</code>関数では、まずデータセット<code>treatment</code>を作成し、次にこれを<code>reg_data_alt</code>とマージする。 <!-- Why did we do it this way rather than simply applying the line `mutate(pilot = sample(pilot, size = length(pilot), replace = FALSE))` directly to `reg_data_alt`? --> なぜ、<code>reg_data_alt</code>に直接<code>mutate(pilot = sample(pilot, size = length(pilot), replace = FALSE))</code>を適用するのではなく、このように行ったのか。</li>
 </ol>
 <!-- 2. Using randomization inference, calculate a p-value for a one-sided alternative hypothesis that $H_1: \beta < 0$ where $\beta$ is the coefficient on $PILOT \times DURING$ .  --><ol start="2" type="1">
 <li>ランダム化推論を使用して、<span class="math inline">H_1: \beta &lt; 0</span>（ここで、 <span class="math inline">\beta</span> は <span class="math inline">PILOT \times DURING</span> の係数である）の片側の代替仮説の <span class="math inline">p</span> 値を計算する。 <!-- (*Hint*: You should not need to run the randomization again; modifying the calculation of `p_value` should suffice.) --> （<em>ヒント</em>：ランダム化を再実行する必要はありません。<code>p_value</code>の計算を変更するだけで十分である。）</li>

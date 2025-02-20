@@ -2053,8 +2053,8 @@ modelsummary(fms, vcov = vcovs,
 <!-- ### Exercises -->
 ### 練習問題
 
-1. In the function `get_coef_rand()`, we first created the data set `treatment`, then merged this with `reg_data_alt`. 
-`get_coef_rand()`関数では、まずデータセット`treatment`を作成し、次にこれを`reg_data_alt`とマージする。
+<!-- 1. In the function `get_coef_rand()`, we first created the data set `treatment`, then merged this with `reg_data_alt`.  -->
+1. `get_coef_rand()`関数では、まずデータセット`treatment`を作成し、次にこれを`reg_data_alt`とマージする。
 <!-- Why did we do it this way rather than simply applying the line `mutate(pilot = sample(pilot, size = length(pilot), replace = FALSE))` directly to `reg_data_alt`? -->
 なぜ、`reg_data_alt`に直接`mutate(pilot = sample(pilot, size = length(pilot), replace = FALSE))`を適用するのではなく、このように行ったのか。
 
