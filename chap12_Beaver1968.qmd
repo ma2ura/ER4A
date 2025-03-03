@@ -15,3 +15,4 @@ Beaver (1968)は，投資家の反応を測定するために2つのアプロー
 <!-- We then conduct a “replication” of Beaver (1968) using a more recent sample period and use that replication to think about Beaver (1968) and the issues raised by Bamber et al. (2000). -->
 その後，より新しいサンプル期間を使用してBeaver (1968)の「レプリケーション」を行い，そのレプリケーションを使用してBeaver (1968)とBamber et al. (2000)によって提起された問題について考える。
 
+

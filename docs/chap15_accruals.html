@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja"><head>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.6.40">
@@ -72,7 +72,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-1092c56c6cadf2eb47b1bc8063ab382a.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-88c88708faf0c485c0387dba1f6eb15f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-c58e7bee4ee1a6584ec9d1fc0e841892.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="site_libs/bootstrap/bootstrap-dark-2e8bc3580cc84ea2920b26bb0544913d.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark"><script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -87,20 +87,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   ],
   "show-item-context": false,
   "language": {
-    "search-no-results-text": "一致なし",
-    "search-matching-documents-text": "一致した文書",
-    "search-copy-link-title": "検索へのリンクをコピー",
-    "search-hide-matches-text": "追加の検索結果を非表示",
-    "search-more-match-text": "追加の検索結果",
-    "search-more-matches-text": "追加の検索結果",
-    "search-clear-button-title": "消去",
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
     "search-text-placeholder": "",
-    "search-detached-cancel-button-title": "取消",
-    "search-submit-button-title": "検索",
-    "search-label": "サーチ"
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
-}</script><link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
-<script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script><script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script><script>document.addEventListener("DOMContentLoaded", function () {
+}</script><script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script><script>document.addEventListener("DOMContentLoaded", function () {
  var mathElements = document.getElementsByClassName("math");
  var macros = [];
  for (var i = 0; i < mathElements.length; i++) {
@@ -148,13 +147,13 @@ window.Quarto = {
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="サイドバーを切り替える" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./chap10_FFJR.html">資本市場研究</a></li><li class="breadcrumb-item"><a href="./chap15_accruals.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">アクルーアル</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="サイドバーを切り替える" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
-      <button type="button" class="btn quarto-search-button" aria-label="サーチ" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -163,9 +162,10 @@ window.Quarto = {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Empirical Research in Accounting</a> 
-        <div class="sidebar-tools-main">
-  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="ダークモードの切り替え"><i class="bi"></i></a>
-  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="リーダーモードの切り替え">
+        <div class="sidebar-tools-main tools-wide">
+    <a href="https://github.com/ma2ura/ER4A/" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
   <div class="quarto-reader-toggle-btn">
   <i class="bi"></i>
   </div>
@@ -175,7 +175,7 @@ window.Quarto = {
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
-        <div id="quarto-search" class="" title="サーチ"></div>
+        <div id="quarto-search" class="" title="Search"></div>
         </div>
         </div>
     <div class="sidebar-menu-container"> 
@@ -190,7 +190,7 @@ window.Quarto = {
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
  <span class="menu-text">基礎</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="セクションを切り替え">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -213,7 +213,7 @@ window.Quarto = {
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
  <span class="menu-text">資本市場研究</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="セクションを切り替え">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -257,9 +257,28 @@ window.Quarto = {
       </ul>
 </li>
         <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">因果推論</span></span>
-  </li>
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">因果推論</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chap17_Natural.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">自然実験</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chap18_Causal_mechanisms.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">因果メカニズム</span></span></a>
+  </div>
+</li>
+      </ul>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <span class="sidebar-item-text sidebar-link text-start">
  <span class="menu-text">追加的なトピック</span></span>
@@ -267,8 +286,8 @@ window.Quarto = {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
- <span class="menu-text">付録</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="セクションを切り替え">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -298,7 +317,7 @@ window.Quarto = {
 </nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">目次</h2>
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Table of contents</h2>
    
   <ul>
 <li>
@@ -369,7 +388,7 @@ window.Quarto = {
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">pacman</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/pacman/man/p_load.html">p_load</a></span><span class="op">(</span><span class="va">tidyverse</span>, <span class="va">DBI</span>, <span class="va">farr</span>, <span class="va">modelsummary</span>, <span class="va">dbplyr</span>, <span class="va">car</span>, <span class="va">furrr</span><span class="op">)</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">pacman</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/pacman/man/p_load.html">p_load</a></span><span class="op">(</span><span class="va">tidyverse</span>, <span class="va">DBI</span>, <span class="va">farr</span>, <span class="va">modelsummary</span>, <span class="va">dbplyr</span>, <span class="va">car</span>, <span class="va">furrr</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="sloan-1996" class="level2" data-number="7.1"><h2 data-number="7.1" class="anchored" data-anchor-id="sloan-1996">
 <span class="header-section-number">7.1</span> Sloan (1996)</h2>
@@ -571,7 +590,7 @@ S_t - \bar S = \rho (S_{t-1} - \bar S) + \varepsilon _t
 <span>    <span class="op">}</span></span>
 <span></span>
 <span>    <span class="va">df</span></span>
-<span><span class="op">}</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <!-- To understand a function like this, it can be helpful to set values for the arguments (e.g., add_perc <- 0.03; n_years <- 20) and step through the lines of code one by one, intermittently inspecting the content of variables such as df as you do so.3 -->
 <p>このような関数を理解するためには、引数の値を設定することが役立つ（例：<code>add_perc &lt;- 0.03; n_years &lt;- 20</code>）し、コードの各行を一つずつ進めながら、その際に <code>df</code> などの変数の内容を確認することが役立つ。<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p>
@@ -579,7 +598,7 @@ S_t - \bar S = \rho (S_{t-1} - \bar S) + \varepsilon _t
 <p>1000年分のデータを生成しよう。</p>
 <div class="cell">
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">2021</span><span class="op">)</span></span>
-<span><span class="va">df_1000</span> <span class="op">&lt;-</span> <span class="fu">get_data</span><span class="op">(</span>n_years <span class="op">=</span> <span class="fl">1000</span><span class="op">)</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="va">df_1000</span> <span class="op">&lt;-</span> <span class="fu">get_data</span><span class="op">(</span>n_years <span class="op">=</span> <span class="fl">1000</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The first 20 years are shown in Figure 15.1.</p>
 <div class="cell">
@@ -587,12 +606,12 @@ S_t - \bar S = \rho (S_{t-1} - \bar S) + \varepsilon _t
 <span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">year</span> <span class="op">&lt;=</span> <span class="fl">20</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">geom_line</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>y <span class="op">=</span> <span class="va">sales</span><span class="op">)</span>, colour <span class="op">=</span> <span class="st">"red"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">geom_line</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">sales</span><span class="op">)</span><span class="op">)</span>, colour <span class="op">=</span> <span class="st">"blue"</span><span class="op">)</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span>  <span class="fu">geom_line</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">sales</span><span class="op">)</span><span class="op">)</span>, colour <span class="op">=</span> <span class="st">"blue"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <!-- Now, let’s generate 5,000 random values for the add_perc parameter that we can use to generate simulated data. -->
 <p>次に、シミュレーションデータを生成するために使用できる <code>add_perc</code> パラメータの5,000個のランダム値を生成しよう。</p>
 <div class="cell">
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">add_percs</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">runif</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">5000</span>, min <span class="op">=</span> <span class="fl">0.01</span>, max <span class="op">=</span> <span class="fl">0.05</span><span class="op">)</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">add_percs</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">runif</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">5000</span>, min <span class="op">=</span> <span class="fl">0.01</span>, max <span class="op">=</span> <span class="fl">0.05</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <!-- We will generate simulated data for each value add_percs and store these data in a list called res_list. -->
 <p><code>add_percs</code> の各値に対してシミュレーションデータを生成し、これらのデータを <code>res_list</code> というリストに格納する。</p>
@@ -601,7 +620,7 @@ S_t - \bar S = \rho (S_{t-1} - \bar S) + \varepsilon _t
 <span></span>
 <span><span class="va">res_list</span> <span class="op">&lt;-</span></span>
 <span>  <span class="fu">map</span><span class="op">(</span><span class="va">add_percs</span>, <span class="va">get_data</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu">system_time</span><span class="op">(</span><span class="op">)</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span>  <span class="fu">system_time</span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <!-- While production of res_list takes just a few seconds, because each iteration of get_data() is independent of the others, we could use the future package and plan(multisession) to do it even more quickly. -->
 <p><code>res_list</code> の生成にはわずか数秒しかかからないが、<code>get_data()</code> の各反復が他の反復と独立しているため、さらに高速に行うために <code>future</code> パッケージと <code>plan(multisession)</code> を使用することができる。</p>
@@ -611,12 +630,12 @@ S_t - \bar S = \rho (S_{t-1} - \bar S) + \varepsilon _t
 <span><span class="va">res_list</span> <span class="op">&lt;-</span></span>
 <span>  <span class="fu">future_map</span><span class="op">(</span><span class="va">add_percs</span>, <span class="va">get_data</span>,</span>
 <span>             .options <span class="op">=</span> <span class="fu">furrr_options</span><span class="op">(</span>seed <span class="op">=</span> <span class="fl">2021</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu">system_time</span><span class="op">(</span><span class="op">)</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span>  <span class="fu">system_time</span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <!-- We then make two data frames.  -->
 <p>次に、2つのデータフレームを作成する。 <!-- The first data frame (res_df) stores all the data in a single data frame using the field id to distinguish one simulation run from another.  --> 最初のデータフレーム（<code>res_df</code>）は、<code>id</code> フィールドを使用して、1つのシミュレーション実行を他の実行と区別するためにすべてのデータを1つのデータフレームに格納する。 <!-- These runs might be considered as “firms” with each run being independent of the other. --> これらの実行は、それぞれが他の実行と独立していると考えられるかもしれない。</p>
 <div class="cell">
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">res_df</span> <span class="op">&lt;-</span> <span class="fu">list_rbind</span><span class="op">(</span><span class="va">res_list</span>, names_to <span class="op">=</span> <span class="st">"id"</span><span class="op">)</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">res_df</span> <span class="op">&lt;-</span> <span class="fu">list_rbind</span><span class="op">(</span><span class="va">res_list</span>, names_to <span class="op">=</span> <span class="st">"id"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <!-- To make it easier to compile results, we create get_coefs(), which calculates persistence as the coefficient in a regression of income on its lagged value - a specification similar to that in Sloan (1996) - and returns that value. -->
 <p>結果をまとめやすくするために、<code>get_coefs()</code> を作成し、収益をその遅延値に回帰した際の係数として持続性を計算し、その値を返す。 これはSloan (1996) と似た仕様の関数である。</p>
@@ -630,7 +649,7 @@ S_t - \bar S = \rho (S_{t-1} - \bar S) + \varepsilon _t
 <span></span>
 <span>  <span class="fu">tibble</span><span class="op">(</span>add_perc <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">df</span><span class="op">$</span><span class="va">add_perc</span><span class="op">)</span>,</span>
 <span>         persistence <span class="op">=</span> <span class="va">fm</span><span class="op">$</span><span class="va">coefficients</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span><span class="op">)</span></span>
-<span><span class="op">}</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <!-- We apply get_coefs() to res_list and store the results in the second data frame, results. -->
 <p><code>get_coefs()</code> を <code>res_list</code> に適用し、その結果を2番目のデータフレーム <code>results</code> に格納する。</p>
@@ -638,14 +657,14 @@ S_t - \bar S = \rho (S_{t-1} - \bar S) + \varepsilon _t
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">results</span> <span class="op">&lt;-</span></span>
 <span>  <span class="va">res_list</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">map</span><span class="op">(</span><span class="va">get_coefs</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu">list_rbind</span><span class="op">(</span>names_to <span class="op">=</span> <span class="st">"id"</span><span class="op">)</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span>  <span class="fu">list_rbind</span><span class="op">(</span>names_to <span class="op">=</span> <span class="st">"id"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <!-- We plot the estimated persistence value against the assumed value for add_perc in Figure 15.2. -->
 <p>推定された<em>持続性</em>の値を <code>add_perc</code> の仮定値に対してプロットする。</p>
 <div class="cell">
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">results</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">add_perc</span>, y <span class="op">=</span> <span class="va">persistence</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span>  <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <!-- ### Exercises -->
 </section><section id="練習問題" class="level3" data-number="7.3.3"><h3 data-number="7.3.3" class="anchored" data-anchor-id="練習問題">
@@ -686,7 +705,7 @@ Does the cash flow statement articulate as it should? -->
 <span><span class="va">funda</span> <span class="op">&lt;-</span> <span class="fu">tbl</span><span class="op">(</span><span class="va">db</span>, <span class="fu">Id</span><span class="op">(</span>schema <span class="op">=</span> <span class="st">"comp"</span>, table <span class="op">=</span> <span class="st">"funda"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">company</span> <span class="op">&lt;-</span> <span class="fu">tbl</span><span class="op">(</span><span class="va">db</span>, <span class="fu">Id</span><span class="op">(</span>schema <span class="op">=</span> <span class="st">"comp"</span>, table <span class="op">=</span> <span class="st">"company"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">ccmxpf_lnkhist</span> <span class="op">&lt;-</span> <span class="fu">tbl</span><span class="op">(</span><span class="va">db</span>, <span class="fu">Id</span><span class="op">(</span>schema <span class="op">=</span> <span class="st">"crsp"</span>, table <span class="op">=</span> <span class="st">"ccmxpf_lnkhist"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="va">msf</span> <span class="op">&lt;-</span> <span class="fu">tbl</span><span class="op">(</span><span class="va">db</span>, <span class="fu">Id</span><span class="op">(</span>schema <span class="op">=</span> <span class="st">"crsp"</span>, table <span class="op">=</span> <span class="st">"msf"</span><span class="op">)</span><span class="op">)</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="va">msf</span> <span class="op">&lt;-</span> <span class="fu">tbl</span><span class="op">(</span><span class="va">db</span>, <span class="fu">Id</span><span class="op">(</span>schema <span class="op">=</span> <span class="st">"crsp"</span>, table <span class="op">=</span> <span class="st">"msf"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
@@ -696,7 +715,7 @@ Does the cash flow statement articulate as it should? -->
 <span><span class="va">funda</span> <span class="op">&lt;-</span> <span class="fu">load_parquet</span><span class="op">(</span><span class="va">db</span>, schema <span class="op">=</span> <span class="st">"comp"</span>, table <span class="op">=</span> <span class="st">"funda"</span><span class="op">)</span></span>
 <span><span class="va">company</span> <span class="op">&lt;-</span> <span class="fu">load_parquet</span><span class="op">(</span><span class="va">db</span>, schema <span class="op">=</span> <span class="st">"comp"</span>, table <span class="op">=</span> <span class="st">"company"</span><span class="op">)</span></span>
 <span><span class="va">ccmxpf_lnkhist</span> <span class="op">&lt;-</span> <span class="fu">load_parquet</span><span class="op">(</span><span class="va">db</span>, schema <span class="op">=</span> <span class="st">"crsp"</span>, table <span class="op">=</span> <span class="st">"ccmxpf_lnkhist"</span><span class="op">)</span></span>
-<span><span class="va">msf</span> <span class="op">&lt;-</span> <span class="fu">load_parquet</span><span class="op">(</span><span class="va">db</span>, schema <span class="op">=</span> <span class="st">"crsp"</span>, table <span class="op">=</span> <span class="st">"msf"</span><span class="op">)</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="va">msf</span> <span class="op">&lt;-</span> <span class="fu">load_parquet</span><span class="op">(</span><span class="va">db</span>, schema <span class="op">=</span> <span class="st">"crsp"</span>, table <span class="op">=</span> <span class="st">"msf"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -716,7 +735,7 @@ Does the cash flow statement articulate as it should? -->
 <span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">indfmt</span> <span class="op">==</span> <span class="st">"INDL"</span>, <span class="va">datafmt</span> <span class="op">==</span> <span class="st">"STD"</span>,</span>
 <span>         <span class="va">consol</span> <span class="op">==</span> <span class="st">"C"</span>, <span class="va">popsrc</span> <span class="op">==</span> <span class="st">"D"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">left_join</span><span class="op">(</span><span class="va">sics</span>, by <span class="op">=</span> <span class="st">"gvkey"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu">mutate</span><span class="op">(</span>sic <span class="op">=</span> <span class="fu">coalesce</span><span class="op">(</span><span class="va">sich</span>, <span class="va">sic</span><span class="op">)</span><span class="op">)</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span>  <span class="fu">mutate</span><span class="op">(</span>sic <span class="op">=</span> <span class="fu">coalesce</span><span class="op">(</span><span class="va">sich</span>, <span class="va">sic</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <!-- We next apply the same sample selection criteria as Sloan (1996). -->
 <p>次に、Sloan (1996) と同じサンプル選択基準を適用する。 <!-- We focus on NYSE and AMEX firm-years (i.e., ones with exchg equal to 11 and 12, respectively) and years between 1962 and 1991. --> NYSE と AMEX の企業年（つまり、それぞれ exchg が 11 と 12 に等しいもの）および 1962 年から 1991 年の間の年に焦点を当てる。</p>
@@ -745,7 +764,7 @@ Does the cash flow statement articulate as it should? -->
 <span>  <span class="fu">mutate</span><span class="op">(</span>acc_raw <span class="op">=</span>  <span class="op">(</span><span class="va">d_ca</span> <span class="op">-</span> <span class="va">d_cash</span><span class="op">)</span> <span class="op">-</span> <span class="op">(</span><span class="va">d_cl</span> <span class="op">-</span> <span class="va">d_std</span> <span class="op">-</span> <span class="va">d_tp</span><span class="op">)</span> <span class="op">-</span> <span class="va">dp</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">ungroup</span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="fu">between</span><span class="op">(</span><span class="va">fyear</span>, <span class="fl">1962</span>, <span class="fl">1991</span><span class="op">)</span>,</span>
-<span>         <span class="va">avg_at</span> <span class="op">&gt;</span> <span class="fl">0</span><span class="op">)</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span>         <span class="va">avg_at</span> <span class="op">&gt;</span> <span class="fl">0</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <!-- The final step in our data preparation calculates the core variables earn, acc, and cfo according to the definitions found in Sloan (1996), creates a variable to store the leading value of earn (using the lead() function, which is a window function that complements the lag() function we used above), creates deciles for acc, earn, cfo, and lead_earn, creates a two-digit SIC code, and finally filters out finance firms and observations without values for acc. -->
 <p>データの準備の最終ステップでは、Sloan (1996) で見つかる定義に従って、earn、acc、cfoのコア変数を計算し、earnの先行値を格納する変数を作成する（上記で使用した <code><a href="https://rdrr.io/r/stats/lag.html">lag()</a></code> 関数を補完するウィンドウ関数である <code>lead()</code> 関数を使用）、acc、earn、cfo、lead_earnのデシルを作成し、2桁のSICコードを作成し、最後に、金融企業とaccの値がない観測をフィルタリングする。</p>
@@ -765,7 +784,7 @@ Does the cash flow statement articulate as it should? -->
 <span>         cfo_decile <span class="op">=</span> <span class="fu">ntile</span><span class="op">(</span><span class="va">cfo</span>, <span class="fl">10</span><span class="op">)</span>,</span>
 <span>         lead_earn_decile <span class="op">=</span> <span class="fu">ntile</span><span class="op">(</span><span class="va">lead_earn</span>, <span class="fl">10</span><span class="op">)</span>,</span>
 <span>         sic2 <span class="op">=</span> <span class="fu">str_sub</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/character.html">as.character</a></span><span class="op">(</span><span class="va">sic</span><span class="op">)</span>, <span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span><span class="va">finance</span>, <span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">acc</span><span class="op">)</span><span class="op">)</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span><span class="va">finance</span>, <span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">acc</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <!-- The next step is to collect data on stock returns for each firm-year. -->
 <p>次のステップは、各企業年の株価収益データを収集することである。 <!-- We use ccm_link, which we saw in Chapter 7, to link GVKEYs (Compustat) to PERMNOs (CRSP). --> <code>GVKEY</code>（Compustat）を<code>PERMNO</code>（CRSP）にリンクするために、第7章で見た <code>ccm_link</code> を使用する。</p>
@@ -776,7 +795,7 @@ Does the cash flow statement articulate as it should? -->
 <span>           <span class="va">linkprim</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"C"</span>, <span class="st">"P"</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu">rename</span><span class="op">(</span>permno <span class="op">=</span> <span class="va">lpermno</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu">mutate</span><span class="op">(</span>linkenddt <span class="op">=</span> <span class="fu">coalesce</span><span class="op">(</span><span class="va">linkenddt</span>, <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">linkenddt</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu">select</span><span class="op">(</span><span class="va">gvkey</span>, <span class="va">permno</span>, <span class="va">linkdt</span>, <span class="va">linkenddt</span><span class="op">)</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span>  <span class="fu">select</span><span class="op">(</span><span class="va">gvkey</span>, <span class="va">permno</span>, <span class="va">linkdt</span>, <span class="va">linkenddt</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <!-- Following Sloan (1996), we link (`gvkey`, `datadate`) combinations with permnos and a date range for the twelve-month period beginning four months after the end of the fiscal period. -->
 <p>Sloan (1996) に従い、（<code>gvkey</code>、<code>datadate</code>）の組み合わせを<code>permno</code>とリンクし、決算期間の終了後4か月から始まる12か月間の期間を指定する。</p>
@@ -790,7 +809,7 @@ Does the cash flow statement articulate as it should? -->
 <span>  <span class="fu">mutate</span><span class="op">(</span>start_month <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/as.Date.html">as.Date</a></span><span class="op">(</span><span class="fu">floor_date</span><span class="op">(</span><span class="va">datadate</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/weekday.POSIXt.html">months</a></span><span class="op">(</span><span class="fl">4L</span><span class="op">)</span>, <span class="st">"month"</span><span class="op">)</span><span class="op">)</span>,</span>
 <span>         end_month <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/as.Date.html">as.Date</a></span><span class="op">(</span><span class="fu">floor_date</span><span class="op">(</span><span class="va">datadate</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/weekday.POSIXt.html">months</a></span><span class="op">(</span><span class="fl">16L</span><span class="op">)</span> <span class="op">-</span> <span class="fu">days</span><span class="op">(</span><span class="fl">1L</span><span class="op">)</span>,</span>
 <span>                                        <span class="st">"month"</span><span class="op">)</span><span class="op">)</span>,</span>
-<span>         month <span class="op">=</span> <span class="fu">floor_date</span><span class="op">(</span><span class="va">datadate</span>, <span class="st">'month'</span><span class="op">)</span><span class="op">)</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span>         month <span class="op">=</span> <span class="fu">floor_date</span><span class="op">(</span><span class="va">datadate</span>, <span class="st">'month'</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <!-- We then calculate compounded returns over this window for each (gvkey, datadate, permno) combination. -->
 <p>次に、このウィンドウに対して各（<code>gvkey</code>、<code>datadate</code>、<code>permno</code>）の組み合わせに対して複利収益を計算する。</p>
@@ -803,7 +822,7 @@ Does the cash flow statement articulate as it should? -->
 <span>  <span class="fu">summarize</span><span class="op">(</span>ret <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">exp</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="fl">1</span> <span class="op">+</span> <span class="va">ret</span><span class="op">)</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">-</span> <span class="fl">1</span>,</span>
 <span>            n_months <span class="op">=</span> <span class="fu">n</span><span class="op">(</span><span class="op">)</span>,</span>
 <span>            .groups <span class="op">=</span> <span class="st">"drop"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu">collect</span><span class="op">(</span><span class="op">)</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span>  <span class="fu">collect</span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <!-- Table 4 of Sloan (1996, p. 304) uses abnormal returns, which are “computed by taking the raw buy-hold return … and subtracting the buy-hold return of a size-matched, value-weighted portfolio of firms. -->
 <p>Sloan (1996, p.304) の表4では、異常収益が使用されており、「生の買いホールドリターンを取り、市場価値加重ポートフォリオの買いホールドリターンを引くことによって計算される。 <!-- The size portfolios are based on market value of equity deciles of NYSE and AMEX firms.”  --> サイズポートフォリオは、NYSEおよびAMEX企業の株式の時価総額デシルに基づいている。 <!-- We obtained the returns of individual firms above, but need to collect data on size portfolios, both the returns for each portfolio and the market capitalization cut-offs. --> 上記で個々の企業の収益を取得したが、サイズポートフォリオのデータ、各ポートフォリオの収益と時価総額のカットオフを収集する必要がある。</p>
@@ -811,13 +830,13 @@ Does the cash flow statement articulate as it should? -->
 <p>サイズポートフォリオのデータは、第11章で見たように、Ken Frenchのウェブサイトから取得される。 <!-- Code like that used in Chapter 11 is included in the farr package in two functions: get_size_rets_monthly() and get_me_breakpoints(). --> 第11章で使用されたコードのようなコードは、<code>farr</code>パッケージに2つの関数 <code>get_size_rets_monthly()</code> と <code>get_me_breakpoints()</code> として含まれている。</p>
 <div class="cell">
 <div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">size_rets</span> <span class="op">&lt;-</span> <span class="fu">get_size_rets_monthly</span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="va">size_rets</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="va">size_rets</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <!-- The table returned by get_size_rets_monthly() has four columns, including two measures of returns: one based on equal-weighted portfolios (ew_ret) and one based on value-weighted portfolios (vw_ret). -->
 <p>get_size_rets_monthly() によって返されるテーブルには、等加重ポートフォリオ（<code>ew_ret</code>）と価値加重ポートフォリオ（<code>vw_ret</code>）に基づく2つの収益の測定値を含む4つの列がある。 <!-- Like Sloan (1996), we use vw_ret. --> Sloan (1996) と同様に、<code>vw_ret</code> を使用する。</p>
 <div class="cell">
 <div class="sourceCode" id="cb21"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">me_breakpoints</span> <span class="op">&lt;-</span> <span class="fu">get_me_breakpoints</span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="va">me_breakpoints</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="va">me_breakpoints</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <!-- The table returned by get_me_breakpoints() identifies the size decile (decile) to which firms with market capitalization between me_min and me_max in a given month should be assigned. -->
 <p>get_me_breakpoints() によって返されるテーブルは、特定の月において me_min と me_max の間の時価総額を持つ企業が割り当てられるサイズデシル（<code>decile</code>）を識別する。</p>
@@ -827,7 +846,7 @@ Does the cash flow statement articulate as it should? -->
 <div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">crsp_dates</span> <span class="op">&lt;-</span></span>
 <span>  <span class="va">msf</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">distinct</span><span class="op">(</span><span class="va">date</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu">mutate</span><span class="op">(</span>month <span class="op">=</span> <span class="fu">floor_date</span><span class="op">(</span><span class="va">date</span>, <span class="st">'month'</span><span class="op">)</span><span class="op">)</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span>  <span class="fu">mutate</span><span class="op">(</span>month <span class="op">=</span> <span class="fu">floor_date</span><span class="op">(</span><span class="va">date</span>, <span class="st">'month'</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <!-- The following code assigns firm-years (i.e., (permno, datadate) combinations) to size deciles according to market capitalization and size cut-offs applicable during the month of datadate. -->
 <p>次のコードは、datadateの月に適用される時価総額とサイズのカットオフに従って、企業年（つまり、（<code>permno</code>、<code>datadate</code>）の組み合わせ）をサイズデシルに割り当てる。</p>
@@ -844,7 +863,7 @@ Does the cash flow statement articulate as it should? -->
 <span>  <span class="va">me_breakpoints</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">inner_join</span><span class="op">(</span><span class="va">me_values</span>,</span>
 <span>             <span class="fu">join_by</span><span class="op">(</span><span class="va">month</span>, <span class="va">me_min</span> <span class="op">&lt;=</span> <span class="va">mktcap</span>, <span class="va">me_max</span> <span class="op">&gt;</span> <span class="va">mktcap</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu">select</span><span class="op">(</span><span class="va">permno</span>, <span class="va">datadate</span>, <span class="va">decile</span><span class="op">)</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span>  <span class="fu">select</span><span class="op">(</span><span class="va">permno</span>, <span class="va">datadate</span>, <span class="va">decile</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <!-- For each datadate and size decile, the following code calculates the cumulative returns over the twelve-month period beginning four months after datadate. -->
 <p>各<code>datadate</code>とサイズデシルについて、以下のコードは、<code>datadate</code>の4か月後から始まる12か月間の累積収益を計算する。</p>
@@ -861,7 +880,7 @@ Does the cash flow statement articulate as it should? -->
 <span>  <span class="fu">summarize</span><span class="op">(</span>ew_ret <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">exp</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="fl">1</span> <span class="op">+</span> <span class="va">ew_ret</span><span class="op">)</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">-</span> <span class="fl">1</span>,</span>
 <span>            vw_ret <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">exp</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="fl">1</span> <span class="op">+</span> <span class="va">vw_ret</span><span class="op">)</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">-</span> <span class="fl">1</span>,</span>
 <span>            n_size_months <span class="op">=</span> <span class="fu">n</span><span class="op">(</span><span class="op">)</span>,</span>
-<span>            .groups <span class="op">=</span> <span class="st">"drop"</span><span class="op">)</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span>            .groups <span class="op">=</span> <span class="st">"drop"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <!-- Now we have the data we need to calculate size-adjusted returns. -->
 <p>これで、サイズ調整収益を計算するために必要なデータが揃った。 <!-- We simply combine crsp_data with me_decile_assignments and then with cum_size_rets and calculate size_adj_ret as a simple difference. --> 単純な差として <code>size_adj_ret</code> を計算するために、<code>crsp_data</code> と <code>me_decile_assignments</code>、そして <code>cum_size_rets</code> を組み合わせるだけである。</p>
@@ -871,21 +890,21 @@ Does the cash flow statement articulate as it should? -->
 <span>  <span class="fu">inner_join</span><span class="op">(</span><span class="va">me_decile_assignments</span>, by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"permno"</span>, <span class="st">"datadate"</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">inner_join</span><span class="op">(</span><span class="va">cum_size_rets</span>, by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"datadate"</span>, <span class="st">"decile"</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">mutate</span><span class="op">(</span>size_adj_ret <span class="op">=</span> <span class="va">ret</span> <span class="op">-</span> <span class="va">vw_ret</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu">select</span><span class="op">(</span><span class="va">gvkey</span>, <span class="va">datadate</span>, <span class="va">size_adj_ret</span>, <span class="va">n_months</span>, <span class="va">n_size_months</span><span class="op">)</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span>  <span class="fu">select</span><span class="op">(</span><span class="va">gvkey</span>, <span class="va">datadate</span>, <span class="va">size_adj_ret</span>, <span class="va">n_months</span>, <span class="va">n_size_months</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <!-- For our regression analysis, we simply join our processed data from Compustat (acc_data) with our new data on size-adjusted returns (size_adj_rets). -->
 <p>本稿の回帰分析では、Compustatの処理されたデータ（<code>acc_data</code>）をサイズ調整収益（<code>size_adj_rets</code>）の新しいデータと結合するだけである。</p>
 <div class="cell">
 <div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">reg_data</span> <span class="op">&lt;-</span></span>
 <span>  <span class="va">acc_data</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu">inner_join</span><span class="op">(</span><span class="va">size_adj_rets</span>, by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"gvkey"</span>, <span class="st">"datadate"</span><span class="op">)</span><span class="op">)</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span>  <span class="fu">inner_join</span><span class="op">(</span><span class="va">size_adj_rets</span>, by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"gvkey"</span>, <span class="st">"datadate"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <!-- Before running regression analyses, it is important to examine our data. -->
 <p>回帰分析を実行する前に、データを調査することが重要である。 <!-- One useful benchmark is the set of descriptive statistics reported in Table 1 of Sloan (1996). --> 有用な基準の1つは、Sloan (1996) の Table 1 に報告されている記述統計である。 <!-- Some degree of assurance is provided by the similar of the values seen in Table 15.2 with those reported in Sloan (1996). --> Table 15.2 で見られる値が Sloan (1996) で報告されている値と類似していることにより、ある程度の保証が提供される。</p>
 <div class="cell">
 <div class="sourceCode" id="cb27"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">reg_data</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">acc_decile</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu">summarize</span><span class="op">(</span><span class="fu">across</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">acc</span>, <span class="va">earn</span>, <span class="va">cfo</span><span class="op">)</span>, \<span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">x</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span>  <span class="fu">summarize</span><span class="op">(</span><span class="fu">across</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">acc</span>, <span class="va">earn</span>, <span class="va">cfo</span><span class="op">)</span>, \<span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">x</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <!--------- ここまで15.3 --------->
 <section id="sloan-1996の表2" class="level3" data-number="7.4.1"><h3 data-number="7.4.1" class="anchored" data-anchor-id="sloan-1996の表2">
@@ -901,7 +920,7 @@ Does the cash flow statement articulate as it should? -->
 <span><span class="fu">modelsummary</span><span class="op">(</span><span class="va">fms</span>,</span>
 <span>             estimate <span class="op">=</span> <span class="st">"{estimate}{stars}"</span>,</span>
 <span>             gof_map <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"nobs"</span>, <span class="st">"r.squared"</span><span class="op">)</span>,</span>
-<span>             stars <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'*'</span> <span class="op">=</span> <span class="fl">.1</span>, <span class="st">'**'</span> <span class="op">=</span> <span class="fl">0.05</span>, <span class="st">'***'</span> <span class="op">=</span> <span class="fl">.01</span><span class="op">)</span><span class="op">)</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span>             stars <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'*'</span> <span class="op">=</span> <span class="fl">.1</span>, <span class="st">'**'</span> <span class="op">=</span> <span class="fl">0.05</span>, <span class="st">'***'</span> <span class="op">=</span> <span class="fl">.01</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <!-- To produce “industry level” analysis like that in Table 2 of Sloan (1996), we create run_table_ind(), a small function to produce regression coefficients by industry. -->
 <p>Sloan (1996) の Table 2 のような「業界レベル」の分析を生成するために、業界ごとに回帰係数を生成する小さな関数 <code>run_table_ind()</code> を作成する。 <!-- As seen in Chapter 14, we use !! to distinguish the value sic2 supplied to the function from the variable sic2 found in reg_data.6 --> 第14章で見たように、関数に供給される <code>sic2</code> の値を <code>reg_data</code> で見つかる変数 <code>sic2</code> と区別するために <code>!!</code> を使用する。<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a></p>
@@ -916,7 +935,7 @@ Does the cash flow statement articulate as it should? -->
 <span>  <span class="va">coefs</span> <span class="op">&lt;-</span> <span class="fu">as_tibble</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/t.html">t</a></span><span class="op">(</span><span class="va">fm</span><span class="op">$</span><span class="va">coefficients</span><span class="op">)</span><span class="op">)</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">coefs</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/t.html">t</a></span><span class="op">(</span><span class="va">fm</span><span class="op">$</span><span class="va">coefficients</span><span class="op">)</span><span class="op">)</span></span>
 <span>  <span class="fu">bind_cols</span><span class="op">(</span>sic2 <span class="op">=</span> <span class="va">sic2</span>, <span class="va">coefs</span><span class="op">)</span></span>
-<span><span class="op">}</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <!-- The function stats_for_table() compiles descriptive statistics. -->
 <p>関数 <code>stats_for_table()</code> は記述統計をまとめる。</p>
@@ -926,7 +945,7 @@ Does the cash flow statement articulate as it should? -->
 <span></span>
 <span>  <span class="fu">tibble</span><span class="op">(</span>mean <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">x</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
 <span>         q1 <span class="op">=</span> <span class="va">qs</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>, median <span class="op">=</span> <span class="va">qs</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span>, q3 <span class="op">=</span> <span class="va">qs</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span><span class="op">)</span></span>
-<span><span class="op">}</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <!-- Finally, summ_for_table() calls run_table_ind() and stats_for_table() and produces a summary table. -->
 <p>最後に、<code>summ_for_table()</code> は <code>run_table_ind()</code> と <code>stats_for_table()</code> を呼び出し、サマリーテーブルを生成する。</p>
@@ -940,14 +959,14 @@ Does the cash flow statement articulate as it should? -->
 <span>    <span class="fu">select</span><span class="op">(</span><span class="op">-</span><span class="va">sic2</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu">map</span><span class="op">(</span><span class="va">stats_for_table</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu">list_rbind</span><span class="op">(</span>names_to <span class="op">=</span> <span class="st">"term"</span><span class="op">)</span></span>
-<span><span class="op">}</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <!-- Tables 15.4 and 15.5 parallel the “industry level” results reported in Table 2 of Sloan (1996). -->
 <p>Table 15.4 と Table 15.5 は、Sloan (1996) の Table 2 に報告されている「業界レベル」の結果に対応している。</p>
 <div class="cell">
 <div class="sourceCode" id="cb32"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">summ_for_table</span><span class="op">(</span>lhs <span class="op">=</span> <span class="st">"lead_earn"</span>, rhs <span class="op">=</span> <span class="st">"earn"</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu">summ_for_table</span><span class="op">(</span>lhs <span class="op">=</span> <span class="st">"lead_earn_decile"</span>, rhs <span class="op">=</span> <span class="st">"earn_decile"</span><span class="op">)</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="fu">summ_for_table</span><span class="op">(</span>lhs <span class="op">=</span> <span class="st">"lead_earn_decile"</span>, rhs <span class="op">=</span> <span class="st">"earn_decile"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <!-- Our results thus far might be described as “qualitatively similar” to those in Table 2 of Sloan (1996). -->
 <p>これまでの結果は、Sloan (1996) の Table 2 と「質的に類似している」と言えるかもしれない。 <!-- The main difference may be in the magnitude of the pooled coefficient on earn in the regression with lead_earn as the dependent variable. --> 従属変数が <code>lead_earn</code> である回帰分析における <code>earn</code> のプールされた係数の大きさが異なる点が主な違いであるかもしれない。 <!-- Table 2 of Sloan (1996) reports a coefficient of 0.841, notably higher than the mean coefficient from the industry-level regressions (0.773). --> Sloan (1996) のTable 2では、 <span class="math inline">0.841</span> という係数が報告されており、これは業界レベルの回帰分析の平均係数（ <span class="math inline">0.773</span> ）よりも著しく高い。 <!-- In contrast, the mean coefficients in our pooled and industry-level analyses are much closer to each other. --> 一方、本稿のプールされた分析と業界レベルの分析の平均係数はお互いに非常に近い。</p>
@@ -963,14 +982,14 @@ Does the cash flow statement articulate as it should? -->
 <span><span class="fu">modelsummary</span><span class="op">(</span><span class="va">fms</span>,</span>
 <span>             estimate <span class="op">=</span> <span class="st">"{estimate}{stars}"</span>,</span>
 <span>             gof_map <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"nobs"</span>, <span class="st">"r.squared"</span><span class="op">)</span>,</span>
-<span>             stars <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'*'</span> <span class="op">=</span> <span class="fl">.1</span>, <span class="st">'**'</span> <span class="op">=</span> <span class="fl">0.05</span>, <span class="st">'***'</span> <span class="op">=</span> <span class="fl">.01</span><span class="op">)</span><span class="op">)</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span>             stars <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'*'</span> <span class="op">=</span> <span class="fl">.1</span>, <span class="st">'**'</span> <span class="op">=</span> <span class="fl">0.05</span>, <span class="st">'***'</span> <span class="op">=</span> <span class="fl">.01</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <!-- Tables 15.7 and 15.8 parallel the “industry level” results reported in Table 3 of Sloan (1996). -->
 <p>Table 15.7 と Table 15.8 は、Sloan (1996) の Table 3 に報告されている「業界レベル」の結果に対応している。 <!-- Again we have “qualitatively similar” results to those found in Sloan (1996). --> 再び、Sloan (1996) で見られる結果と「質的に類似した」結果が得られている。</p>
 <div class="cell">
 <div class="sourceCode" id="cb34"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">summ_for_table</span><span class="op">(</span>lhs <span class="op">=</span> <span class="st">"lead_earn"</span>, rhs <span class="op">=</span> <span class="st">"acc + cfo"</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu">summ_for_table</span><span class="op">(</span>lhs <span class="op">=</span> <span class="st">"lead_earn_decile"</span>, rhs <span class="op">=</span> <span class="st">"acc_decile + cfo_decile"</span><span class="op">)</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="fu">summ_for_table</span><span class="op">(</span>lhs <span class="op">=</span> <span class="st">"lead_earn_decile"</span>, rhs <span class="op">=</span> <span class="st">"acc_decile + cfo_decile"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <!-- 15.4.3 Pricing of Earnings components -->
 </section><section id="pricing-of-earnings-components" class="level3" data-number="7.4.3"><h3 data-number="7.4.3" class="anchored" data-anchor-id="pricing-of-earnings-components">
@@ -981,7 +1000,7 @@ Does the cash flow statement articulate as it should? -->
 <div class="sourceCode" id="cb35"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">mms</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">size_adj_ret</span> <span class="op">~</span> <span class="va">lead_earn</span> <span class="op">+</span> <span class="va">acc</span> <span class="op">+</span> <span class="va">cfo</span>,</span>
 <span>               data <span class="op">=</span> <span class="va">reg_data</span><span class="op">)</span>,</span>
 <span>            <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">size_adj_ret</span> <span class="op">~</span> <span class="va">lead_earn_decile</span> <span class="op">+</span> <span class="va">acc_decile</span> <span class="op">+</span> <span class="va">cfo_decile</span>,</span>
-<span>               data <span class="op">=</span> <span class="va">reg_data</span><span class="op">)</span><span class="op">)</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span>               data <span class="op">=</span> <span class="va">reg_data</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <!-- Table 15.9 provides results from this regression. -->
 <p>Table 15.9 は、この回帰分析の結果を示している。</p>
@@ -989,7 +1008,7 @@ Does the cash flow statement articulate as it should? -->
 <div class="sourceCode" id="cb36"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">modelsummary</span><span class="op">(</span><span class="va">mms</span>,</span>
 <span>             estimate <span class="op">=</span> <span class="st">"{estimate}{stars}"</span>,</span>
 <span>             gof_map <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"nobs"</span>, <span class="st">"r.squared"</span><span class="op">)</span>,</span>
-<span>             stars <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'*'</span> <span class="op">=</span> <span class="fl">.1</span>, <span class="st">'**'</span> <span class="op">=</span> <span class="fl">0.05</span>, <span class="st">'***'</span> <span class="op">=</span> <span class="fl">.01</span><span class="op">)</span><span class="op">)</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span>             stars <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'*'</span> <span class="op">=</span> <span class="fl">.1</span>, <span class="st">'**'</span> <span class="op">=</span> <span class="fl">0.05</span>, <span class="st">'***'</span> <span class="op">=</span> <span class="fl">.01</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <!-- In the notation of Sloan (1996), the coefficient on acc can be expressed as $-\beta \gamma ^*_1$ , which is minus one times the product of $\beta$ , the coefficient on `lead_earn` (i.e., earnings roughly contemporaneous with `size_adj_ret`), and $\gamma ^*_1$ , the implied market coefficient on accruals. -->
 <p>Sloan (1996) の表記法では、<code>acc</code> の係数は <span class="math inline">- \beta \gamma_1^*</span> と表すことができ、これは <span class="math inline">\beta</span> （<code>lead_earn</code> に対する係数、つまり <code>size_adj_ret</code> とほぼ同時期の収益）と <span class="math inline">\gamma ^*_1</span> （帳簿価額の暗黙の市場係数）の積をマイナスにしたものである。</p>
@@ -1012,7 +1031,7 @@ Does the cash flow statement articulate as it should? -->
 <span><span class="fu">modelsummary</span><span class="op">(</span><span class="va">eff</span>,</span>
 <span>             estimate <span class="op">=</span> <span class="st">"{estimate}{stars}"</span>,</span>
 <span>             gof_map <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"nobs"</span>, <span class="st">"r.squared"</span><span class="op">)</span>,</span>
-<span>             stars <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'*'</span> <span class="op">=</span> <span class="fl">.1</span>, <span class="st">'**'</span> <span class="op">=</span> <span class="fl">0.05</span>, <span class="st">'***'</span> <span class="op">=</span> <span class="fl">.01</span><span class="op">)</span><span class="op">)</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span>             stars <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'*'</span> <span class="op">=</span> <span class="fl">.1</span>, <span class="st">'**'</span> <span class="op">=</span> <span class="fl">0.05</span>, <span class="st">'***'</span> <span class="op">=</span> <span class="fl">.01</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <!-- From Table 15.10, we see that lagged accruals are negatively associated with abnormal returns. -->
 <p>Table 15.10 から、前期のアクルーアルは異常リターンと負の関連があることがわかる。 <!-- This result is consistent with the market overpricing accruals because it assumes a level of persistence that is too high. --> この結果は、市場が負債計上額を過大評価しているということを示しており、これはあまりに高い持続性を前提としている。</p>
@@ -1035,7 +1054,7 @@ Does the cash flow statement articulate as it should? -->
 <span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(id, year) <span class="sc">|&gt;</span></span>
 <span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">lag_cfo =</span> <span class="fu">lag</span>(cfo),</span>
 <span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">lag_acc =</span> <span class="fu">lag</span>(acc)) <span class="sc">|&gt;</span></span>
-<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ol start="6" type="1">
 <li>Which hypothesis does Figure 1 of Sloan (1996) relate to? What aspects of the plot make it easier or more difficult to interpret the results? The following code replicates a version of Figure 1 from Sloan (1996) using our simulated data. On the basis of Figures 15.3–15.5 and the arguments given in Sloan (1996), is H1 true in our simulated data? Given the other analysis above, is H1 true in our simulated data?</li>
@@ -1053,7 +1072,7 @@ Does the cash flow statement articulate as it should? -->
 <span></span>
 <span><span class="va">reg_data_deciles</span> <span class="op">&lt;-</span></span>
 <span>  <span class="va">sim_reg_data</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu">inner_join</span><span class="op">(</span><span class="va">decile_data</span>, by <span class="op">=</span> <span class="st">"id"</span><span class="op">)</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span>  <span class="fu">inner_join</span><span class="op">(</span><span class="va">decile_data</span>, by <span class="op">=</span> <span class="st">"id"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <!-- The following code produces Figure 15.3: -->
 <p>次のコードは、図15.3を生成する。</p>
@@ -1065,7 +1084,7 @@ Does the cash flow statement articulate as it should? -->
 <span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">ni_decile</span>, <span class="va">year</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">summarize</span><span class="op">(</span>ni <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">ni</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>, .groups <span class="op">=</span> <span class="st">"drop"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, y <span class="op">=</span> <span class="va">ni</span>, group<span class="op">=</span> <span class="va">ni_decile</span>, color <span class="op">=</span> <span class="va">ni_decile</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">geom_line</span><span class="op">(</span><span class="op">)</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span>  <span class="fu">geom_line</span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <!-- The following code produces Figure 15.4: -->
 <p>次のコードは、図15.4を生成する。</p>
@@ -1077,7 +1096,7 @@ Does the cash flow statement articulate as it should? -->
 <span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">cfo_decile</span>, <span class="va">year</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">summarize</span><span class="op">(</span>ni <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">ni</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>, .groups <span class="op">=</span> <span class="st">"drop"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, y <span class="op">=</span> <span class="va">ni</span>, group <span class="op">=</span> <span class="va">cfo_decile</span>, color <span class="op">=</span> <span class="va">cfo_decile</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">geom_line</span><span class="op">(</span><span class="op">)</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span>  <span class="fu">geom_line</span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <!-- The following code produces Figure 15.5: -->
 <p>次のコードは、図15.5を生成する。</p>
@@ -1089,7 +1108,7 @@ Does the cash flow statement articulate as it should? -->
 <span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">acc_decile</span>, <span class="va">year</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">summarize</span><span class="op">(</span>ni <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">ni</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>, .groups <span class="op">=</span> <span class="st">"drop"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, y <span class="op">=</span> <span class="va">ni</span>, group <span class="op">=</span> <span class="va">acc_decile</span>, color <span class="op">=</span> <span class="va">acc_decile</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">geom_line</span><span class="op">(</span><span class="op">)</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span>  <span class="fu">geom_line</span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <!-- ##  Accrual anomaly -->
 </section></section><section id="アクルーアルアノマリー" class="level2" data-number="7.5"><h2 data-number="7.5" class="anchored" data-anchor-id="アクルーアルアノマリー">
@@ -1110,11 +1129,11 @@ Does the cash flow statement articulate as it should? -->
 <span><span class="fu">modelsummary</span><span class="op">(</span><span class="va">fm</span>,</span>
 <span>             estimate <span class="op">=</span> <span class="st">"{estimate}{stars}"</span>,</span>
 <span>             gof_map <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"nobs"</span>, <span class="st">"r.squared"</span><span class="op">)</span>,</span>
-<span>             stars <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'*'</span> <span class="op">=</span> <span class="fl">.1</span>, <span class="st">'**'</span> <span class="op">=</span> <span class="fl">0.05</span>, <span class="st">'***'</span> <span class="op">=</span> <span class="fl">.01</span><span class="op">)</span><span class="op">)</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span>             stars <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'*'</span> <span class="op">=</span> <span class="fl">.1</span>, <span class="st">'**'</span> <span class="op">=</span> <span class="fl">0.05</span>, <span class="st">'***'</span> <span class="op">=</span> <span class="fl">.01</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
 <div class="sourceCode" id="cb44"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">hedge_ret</span> <span class="op">&lt;-</span> <span class="va">fm</span><span class="op">$</span><span class="va">coefficients</span><span class="op">[</span><span class="st">"acc_decile1"</span><span class="op">]</span> <span class="op">-</span> <span class="va">fm</span><span class="op">$</span><span class="va">coefficients</span><span class="op">[</span><span class="st">"acc_decile10"</span><span class="op">]</span></span>
-<span><span class="va">p_val</span> <span class="op">&lt;-</span> <span class="fu">linearHypothesis</span><span class="op">(</span><span class="va">fm</span>, <span class="st">"acc_decile1 = acc_decile10"</span><span class="op">)</span><span class="op">$</span><span class="va">`Pr(&gt;F)`</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="va">p_val</span> <span class="op">&lt;-</span> <span class="fu">linearHypothesis</span><span class="op">(</span><span class="va">fm</span>, <span class="st">"acc_decile1 = acc_decile10"</span><span class="op">)</span><span class="op">$</span><span class="va">`Pr(&gt;F)`</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <!-- The hedge portfolio return (hedge_ret) is 0.1322 with a p-value of 4.4e-06 (p_val). -->
 <p>ヘッジポートフォリオリターン (hedge_ret) は 0.1322 で、p値は 4.4e-06 (p_val) です。</p>
@@ -1336,12 +1355,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // flash "checked"
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "コピーしました");
+    button.setAttribute("title", "Copied!");
     let tooltip;
     if (window.bootstrap) {
       button.setAttribute("data-bs-toggle", "tooltip");
       button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "コピーしました");
+      button.setAttribute("data-bs-title", "Copied!");
       tooltip = new bootstrap.Tooltip(button, 
         { trigger: "manual", 
           customClass: "code-copy-button-tooltip",
@@ -1383,7 +1402,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
+      var filterRegex = new RegExp("https:\/\/so-ichi\.com");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }

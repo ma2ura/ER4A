@@ -78,7 +78,12 @@ format:
     back-to-top-navigation: true
 
   pdf:
-    documentclass: scrreprt
+    pdf-engine: lualatex
+    documentclass: ltjsbook
+    include-in-header:
+      - text: |
+          \usepackage{amsmath}
+          \usepackage{amssymb}
 
 bibliography: book.bib
 bibliographystyle: chicago-author-date.csl

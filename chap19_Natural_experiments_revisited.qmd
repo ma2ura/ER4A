@@ -953,8 +953,8 @@ est_effect <- function(df) {
 ```
 
 
-The `run_sim()` function below calls `get_sample()` for supplied parameter values to create a data set, and returns a data frame containing the results of applying `est_effect()` to that data set. 
-
+<!-- The `run_sim()` function below calls `get_sample()` for supplied parameter values to create a data set, and returns a data frame containing the results of applying `est_effect()` to that data set.  -->
+この`run_sim()`関数は、与えられたパラメータ値に対して`get_sample()`を呼び出してデータセットを作成し、そのデータセットに`est_effect()`を適用した結果を含むデータフレームを返す。
 
 ```{r}
 #| eval: false
@@ -965,8 +965,8 @@ run_sim <- function(i, n = 100, rho = 0, periods = 7, effect = 0) {
 ```
 
 
-To facilitate running of the simulation for various values of `effect` and `rho`, we create a data frame (`params`) with effect sizes running from 0 to 1 and $\rho \in \{ 0, 0.18, 0.36, 0.54, 0.72, 0.9 \}$ .
-
+<!-- To facilitate running of the simulation for various values of `effect` and `rho`, we create a data frame (`params`) with effect sizes running from 0 to 1 and $\rho \in \{ 0, 0.18, 0.36, 0.54, 0.72, 0.9 \}$ . -->
+`effect`と`rho`のさまざまな値に対してシミュレーションを実行するために、`effect`が0から1まで、$\rho \in \{ 0, 0.18, 0.36, 0.54, 0.72, 0.9 \}$ であるデータフレーム（`params`）を作成する。
 
 
 
@@ -978,7 +978,8 @@ effects <- seq(from = 0, to = 1, length.out = 5)
 params <- expand_grid(effect = effects, rho = rhos)
 ```
 
-The `run_sim_n()` function below runs 1000 simulations for the supplied values of `effect` and `rho` and returns a data frame with the results.
+<!-- The `run_sim_n()` function below runs 1000 simulations for the supplied values of `effect` and `rho` and returns a data frame with the results. -->
+以下の`run_sim_n()`関数は、与えられた`effect`と`rho`の値に対して1000回のシミュレーションを実行し、結果を含むデータフレームを返す。
 
 ```{r}
 #| eval: false
@@ -998,12 +999,11 @@ run_sim_n <- function(effect, rho, ...) {
 ```
 
 
-
-
-
-
 :::{.callout-important}
-The following code takes several minutes to run. Using `future_pmap` from the `furrr` package in place of `pmap()` reduces the time needed to run the simulation significantly. Fortunately, nothing in the subsequent exercises requires that you run either variant of this code, so only do so if you have time and want to examine `results` directly.
+<!-- The following code takes several minutes to run. Using `future_pmap` from the `furrr` package in place of `pmap()` reduces the time needed to run the simulation significantly. -->
+次のコードは実行に数分かかる。`pmap()`の代わりに`furrr`パッケージの`future_pmap`を使用すると、シミュレーションを実行するために必要な時間が大幅に短縮される。
+<!-- Fortunately, nothing in the subsequent exercises requires that you run either variant of this code, so only do so if you have time and want to examine `results` directly. -->
+幸いなことに、後続の演習では、このコードのいずれかを実行する必要はない。したがって、時間がある場合や`results`を直接調べたい場合にのみ実行すること。
 :::
 
 
@@ -1020,19 +1020,27 @@ results <-
 ```
 
 
-With `results` in hand, we can do some analysis. The first thing to note is that `est_CHANGE` is equivalent to `est_DiD`, as all estimates are within rounding error of each other for these two methods.
-
+<!-- With `results` in hand, we can do some analysis.  -->
+`results`が手に入ったので、いくつかの分析を行うことができる。
+<!-- The first thing to note is that `est_CHANGE` is equivalent to `est_DiD`, as all estimates are within rounding error of each other for these two methods. -->
+最初に注意すべきことは、`est_CHANGE`が`est_DiD`と同等であることである。これら2つの方法について、すべての推定値がお互いに丸め誤差の範囲内にあるためである。
 
 ```{r}
 #| eval: false
 
-results |> filter(abs(est_DiD - est_CHANGE) > 0.00001) |> nrow()
+results |> 
+  filter(abs(est_DiD - est_CHANGE) > 0.00001) |> 
+  nrow()
 ```
 
 
-Thus we just use the label *DiD* in subsequent analysis.
+<!-- Thus we just use the label *DiD* in subsequent analysis. -->
+したがって、以降の分析では、*DiD*というラベルを使用する。
 
-The second thing we check is that the methods provide unbiased estimates of the causal effect. [Figure 19.1](#fig-bias) suggests that the estimates are very close to the true values of causal effects for all three methods.
+<!-- The second thing we check is that the methods provide unbiased estimates of the causal effect.  -->
+2つ目に確認することは、各方法が因果効果のバイアスのない推定値を提供するかどうかである。
+<!-- [Figure 19.1](#fig-bias) suggests that the estimates are very close to the true values of causal effects for all three methods. -->
+[Figure 19.1](#fig-bias)は、すべての3つの方法について、推定値が因果効果の真の値に非常に近いことを示している。
 
 ```{r}
 #| eval: false
@@ -1051,12 +1059,16 @@ results |>
 ```
 
 
-
-
-
-
-
-Having confirmed that there is no apparent bias in any of the estimators in this setting, we next consider the empirical standard errors for each method. Because we get essentially identical plots with each value of the true effect, we focus on `effect == 0.5` in the following analysis. Here we rearrange the data so that we have a `method` column and an `est` column for the estimated causal effect. We then calculate, for each `method` and value of `rho`, the standard deviation of `est`, which is the empirical standard error we seek. Finally, we plot the values for each value of `rho` in [Figure 19.2](#fig-ses).
+<!-- Having confirmed that there is no apparent bias in any of the estimators in this setting, we next consider the empirical standard errors for each method.  -->
+この設定において、どの推定量にも明らかなバイアスがないことを確認した後、次に各方法の実証的標準誤差を考慮する。
+<!-- Because we get essentially identical plots with each value of the true effect, we focus on `effect == 0.5` in the following analysis.  -->
+真の効果の各値で本質的に同一のプロットを得るため、以下の分析では`effect == 0.5`に焦点を当てる。
+<!-- Here we rearrange the data so that we have a `method` column and an `est` column for the estimated causal effect.  -->
+ここでは、推定された因果効果の`method`列と`est`列を持つデータを再配置する。
+<!-- We then calculate, for each `method` and value of `rho`, the standard deviation of `est`, which is the empirical standard error we seek.  -->
+次に、各`method`と`rho`の値について、`est`の標準偏差を計算し、求めている実証的標準誤差を得る。
+<!-- Finally, we plot the values for each value of `rho` in [Figure 19.2](#fig-ses). -->
+最後に、[Figure 19.2](#fig-ses)に各`rho`の値をプロットする。
 
 
 
@@ -1064,15 +1076,22 @@ Having confirmed that there is no apparent bias in any of the estimators in this
 #| eval: false
 results |>
   filter(effect == 0.5) |>
-  pivot_longer(starts_with("est"), 
-               names_to = "method", values_to = "est") |>
-  mutate(method = str_replace(method, "^est.(.*)$", "\\1")) |>
-  filter(method != "CHANGE") |>
-  group_by(method, rho) |>
-  summarize(se = sd(est), .groups = "drop") |>
-  ggplot(aes(x = rho, y = se, 
-             colour = method, linetype = method)) +
-  geom_line()
+  pivot_longer(
+    starts_with("est"), # estで始まる列を対象
+    names_to = "method",
+    values_to = "est"
+    ) |>
+  mutate(
+    method = str_replace(method, "^est.(.*)$", "\\1")
+    ) |>
+  filter(method != "CHANGE") |> # CHANGEは除外
+  group_by(method, rho) |> # methodとrhoでグループ化
+  summarize(
+    se = sd(est), .groups = "drop" # estの標準偏差を計算
+    ) |>
+  ggplot() + 
+    aes(x = rho, y = se, colour = method, linetype = method) +
+    geom_line()
 ```
 
 
@@ -1144,7 +1163,7 @@ Instead the basis for the parallel trends assumption appears to be that it is *t
 On the one hand, as discussed above, there is no obvious economic basis for the parallel trends assumption with general applicability. On the other hand, there are often reasons to believe that the parallel trends assumption will *not* hold for various outcomes. The parallel trends assumption will be dubious when the outcome variable tends to be mean-reverting. For example, it is well known that accounting-based measures of operating performance tend to revert towards the mean. So if treatment and control observations have different levels of pre-treatment operating performance, the parallel trends assumption will be a highly dubious basis for causal inference.
 
 
-Another reason to doubt the parallel trends assumption is the fact that the measurement of outcomes is often arbitrary. For example, Li et al. ([2018](references.html#ref-Li:2018tj)) examine the effect of legal changes on disclosure of customer identities using a variant of DiD.[12](#fn12) One primary outcome measure considered by Li et al. ([2018](references.html#ref-Li:2018tj)) is \(\texttt{ratio}\), the proportion of significant customers whose identities are not disclosed. But if the parallel trends assumption holds in \(\texttt{ratio}\) then, so long as there are pre-treatment differences between treatment and control observations, it is not mathematically possible for parallel trends to hold in \(\log(1 + \texttt{ratio})\), which is the measure used in the regression analysis in Li et al. ([2018](references.html#ref-Li:2018tj)).
+Another reason to doubt the parallel trends assumption is the fact that the measurement of outcomes is often arbitrary. For example, Li et al. ([2018](references.html#ref-Li:2018tj)) examine the effect of legal changes on disclosure of customer identities using a variant of DiD.[12](#fn12) One primary outcome measure considered by Li et al. ([2018](references.html#ref-Li:2018tj)) is $ratio$ , the proportion of significant customers whose identities are not disclosed. But if the parallel trends assumption holds in $ratio$ then, so long as there are pre-treatment differences between treatment and control observations, it is not mathematically possible for parallel trends to hold in $\log(1 + ratio)$ , which is the measure used in the regression analysis in Li et al. ([2018](references.html#ref-Li:2018tj)).
 
 
 The apparent flimsiness of the parallel trends assumption underlying DiD analysis in non-randomized settings is perhaps reinforced by the treatment of DiD in textbooks. Imbens and Rubin ([2015](references.html#ref-Imbens:2015aa)), a significant recent tome on causal inference, buries DiD in endnotes, merely noting that DiD is “widely used” ([2015, p. 44](references.html#ref-Imbens:2015aa)) before directing the reader to Angrist and Pischke ([2008](references.html#ref-Angrist:2008vk)). While Angrist and Pischke ([2008](references.html#ref-Angrist:2008vk)) discuss DiD and its assumptions, and relate it to fixed-effects regressions and panel data methods, they do little to justify the parallel trends assumption. Cunningham ([2021](references.html#ref-Cunningham:2021vk)) is much more cautious in discussing the parallel trends assumption, which he notes “is by definition untestable since we cannot observe this counterfactual conditional expectation [of post-treatment outcomes absent treatment]”.
